@@ -20,8 +20,8 @@ if ($con->connect_errno) {
 }
 
 
-$sym=$_POST['c_symbol'];
-$num=$_POST['c_number'];
+$sym=$c_symbol;
+$num=$c_number;
 
 echo "okkkkk";
 
