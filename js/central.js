@@ -73,11 +73,11 @@ function shuffle(o) {
 };
 
 function fill_board(){
-
-
-  	$.ajax({url: "methods.php",
-            type: "POST",
-            data: { symbol: "Hearts" , number:  "A" },
+  	$.ajax({url: "methods.php/cards",
+            method: 'PUT',
+            dataType: "json",
+			      contentType: 'application/json',
+            data: JSON.stringify( { symbol: "Hearts" , number:  "A" } ),
             success: fill_real_board });
 }
 
