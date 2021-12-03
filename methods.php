@@ -24,7 +24,7 @@ if ($con->connect_errno) {
 
 //------------------------------------------------------------------------------
  handle_cards($input);
-
+echo $input;
 
 function handle_cards($input){
   if(isset($input['symbol'])) {
