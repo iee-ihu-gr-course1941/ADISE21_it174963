@@ -21,8 +21,8 @@ if ($con->connect_errno) {
   echo " Success AGAIN!!!! ";
 }
 
-  $sym = $_POST['c_symbol'];
-  $num = $_POST['c_number'];
+  $sym = $_POST['symbol'];
+  $num = $_POST['number'];
 
 
 $sql = " UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1";

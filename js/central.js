@@ -77,7 +77,7 @@ function fill_board(){
 
   	$.ajax({url: "methods.php",
             type: "POST",
-            data: { c_symbol: "Hearts" , c_number:  "A" },
+            data: { symbol: "Hearts" , number:  "A" },
             success: fill_real_board });
 }
 
