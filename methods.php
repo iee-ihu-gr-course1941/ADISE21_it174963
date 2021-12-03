@@ -31,7 +31,7 @@ $rs = mysqli_query($con, $sql);
 
 if($rs)
 {
-	echo $sym;
+	echo $db;
 }
 
 
