@@ -23,7 +23,6 @@ if ($con->connect_errno) {
 $sym=$c_symbol;
 $num=$c_number;
 
-echo $sym;
 
 $sql = " UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1";
 
@@ -32,7 +31,7 @@ $rs = mysqli_query($con, $sql);
 
 if($rs)
 {
-	echo " Records Inserted";
+	echo $sym;
 }
 
 
