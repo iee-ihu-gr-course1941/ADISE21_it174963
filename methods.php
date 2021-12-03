@@ -1,7 +1,7 @@
 <?php
 $host='localhost';
 $db = 'ADISE21_it174963';
-require_once "db_upass.php";
+require_once "include/db_upass.php";
 
 $user=$DB_USER;
 $pass=$DB_PASS;
