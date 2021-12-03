@@ -78,7 +78,8 @@ function fill_board(){
 
   	$.ajax({url: "methods.php",
             type: "POST",
-            data: { c_symbol: s , c_number: n },
+            dataType: JSON,
+            data: { c_symbol: JSON.stringify(s) , c_number: JSON.stringify(n) },
             success: fill_real_board });
 }
 
