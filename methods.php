@@ -13,7 +13,7 @@ $num=$_POST['number'];
 
 
 $sql = " UPDATE `board_1`
-         SET `c_symbol`=$sym,`c_number`= $num 
+         SET `c_symbol`='Diamonds',`c_number`='A' 
          WHERE `x`=1 AND `y`=1 ";
 
 
