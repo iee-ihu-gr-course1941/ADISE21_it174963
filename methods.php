@@ -6,6 +6,9 @@ require_once "include/db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
+$sym=0;
+$num=0;
+
 if(gethostname()=='users.iee.ihu.gr') {
 	$con = new mysqli($host, $user, $pass, $db, null, '/home/student/it/2017/it174963/mysql/run/mysql.sock');
 } else {
