@@ -23,9 +23,9 @@ if ($con->connect_errno) {
 $sym=$c_symbol;
 $num=$c_number;
 
-echo "okkkkk";
+echo $sym;
 
-$sql = " UPDATE `board_1` SET `c_symbol`= $sym,`c_number`= $num WHERE `x`=1 AND `y`=1";
+$sql = " UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1";
 
 
 $rs = mysqli_query($con, $sql);
