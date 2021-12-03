@@ -8,11 +8,11 @@ $pass=$DB_PASS;
 
 $con = mysqli_connect($host, $user,$pass,$db);
 
-$symbol=$_POST['symbol'];
-$number=$_POST['number'];
+$sym=$_POST['symbol'];
+$num=$_POST['number'];
 
 
-$sql = " INSERT INTO `board_1` (`x`, `y`, `c_symbol`, `c_number`) VALUES ('1', '1', $symbol , $number) ";
+$sql = " INSERT INTO 'board_1' ('x', 'y', 'c_symbol', 'c_number') VALUES ('1', '1', $sym, $num) ";
 
 
 $rs = mysqli_query($con, $sql);
