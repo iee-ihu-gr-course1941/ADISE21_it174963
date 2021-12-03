@@ -6,7 +6,12 @@ require_once "db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
-$con = mysqli_connect($host, $user,$pass,$db);
+if(gethostname()=='users.iee.ihu.gr') {
+	$con = new mysqli($host, $user, $pass, $db, null, '/home/student/it/2017/it174963/mysql/run/mysql.sock');
+} else {
+  $con = new mysqli($host, $user, $pass, $db);
+}
+
 
 $sym=$_POST['symbol'];
 $num=$_POST['number'];
