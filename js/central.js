@@ -71,3 +71,18 @@ function shuffle(o) {
   for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   return o;
 };
+
+function fill_board(){
+  var symbol = "Hearts";
+  var number = "A";
+
+  	$.ajax({url: "methods.php",
+            type: "POST",
+            data: { symbol: symbol,number: number },
+            dataType: 'json',
+            success: fill_real_board });
+}
+
+function fill_real_board(){
+  
+}
