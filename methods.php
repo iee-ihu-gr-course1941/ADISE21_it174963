@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sym = $_REQUEST['c_symbol'];
   $num = $_REQUEST['c_number'];
   $num=$c_number;
-
+}
 
 $sql = " UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1";
 
