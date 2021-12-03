@@ -73,12 +73,12 @@ function shuffle(o) {
 };
 
 function fill_board(){
-  var symbol = "Hearts";
-  var number = "A";
+  var s = "Hearts";
+  var n = "A";
 
   	$.ajax({url: "methods.php",
             type: "POST",
-            data: { symbol: symbol,number: number },
+            data: { c_symbol: s , c_number: n },
             success: fill_real_board });
 }
 

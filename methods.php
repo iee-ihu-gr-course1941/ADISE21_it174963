@@ -20,9 +20,10 @@ if ($con->connect_errno) {
 }
 
 
-$sym=$_POST['symbol'];
-$num=$_POST['number'];
+$sym=$_POST['c_symbol'];
+$num=$_POST['c_number'];
 
+echo $sym;
 
 $sql = " UPDATE `board_1` SET `c_symbol`= $sym,`c_number`= $num WHERE `x`=1 AND `y`=1";
 
