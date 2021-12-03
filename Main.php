@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+<?php include('include/db_connect.php');  ?>
 <html dir="ltr" lang="eng">
 
 <head>
   <meta charset="utf-8" />
   <title>G A M E</title>
-  <link rel="stylesheet" type="text/css" href="Main.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <script type="text/javascript" src="Main.js"> </script>
+  <script type="text/javascript" src="js/central.js"> </script>
 
 </head>
 
@@ -186,7 +187,7 @@
     <!--CARD SHUFFLE SECTION-->
     <div class="Card_Shuffle_div">
       <div class="shuffle_deck_div">
-        <img id="shuffle_card_img" src="shuffle_card.png" alt="card_back">
+        <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back">
       </div>
       <input type="button" id="shuffle_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
     </div>
