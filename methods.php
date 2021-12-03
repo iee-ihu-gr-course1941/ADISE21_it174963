@@ -24,7 +24,7 @@ $sym=$_POST['symbol'];
 $num=$_POST['number'];
 
 
-$sql = " UPDATE `board_1` SET `c_symbol`='Diamonds',`c_number`='A' WHERE `x`=1 AND `y`=1";
+$sql = " UPDATE `board_1` SET `c_symbol`= $sym,`c_number`= $num WHERE `x`=1 AND `y`=1";
 
 
 $rs = mysqli_query($con, $sql);
