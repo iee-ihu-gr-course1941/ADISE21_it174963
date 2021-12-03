@@ -6,6 +6,8 @@ require_once "include/db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
+$input = json_decode(file_get_contents('php://input'),true);
+
 
 if(gethostname()=='users.iee.ihu.gr') {
 	$con = new mysqli($host, $user, $pass, $db, null, '/home/student/it/2017/it174963/mysql/run/mysql.sock');
