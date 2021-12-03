@@ -79,10 +79,9 @@ function fill_board(){
   	$.ajax({url: "methods.php",
             type: "POST",
             data: { symbol: symbol,number: number },
-            dataType: 'json',
             success: fill_real_board });
 }
 
 function fill_real_board(){
-  
+  alert("success!");
 }
