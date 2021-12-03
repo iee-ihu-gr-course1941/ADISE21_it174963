@@ -12,6 +12,13 @@ if(gethostname()=='users.iee.ihu.gr') {
   $con = new mysqli($host, $user, $pass, $db);
 }
 
+if ($con->connect_errno) {
+    echo "Failed to connect to MySQL: (" .
+    $con->connect_errno . ") " . $con->connect_error;
+}else{
+  echo " Success AGAIN!!!! ";
+}
+
 
 $sym=$_POST['symbol'];
 $num=$_POST['number'];
