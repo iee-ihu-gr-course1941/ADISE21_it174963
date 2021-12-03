@@ -13,7 +13,6 @@
 
   <script type="text/javascript" src="js/central.js"> </script>
 
-  <?php include('methods.php');  ?>
 
 </head>
 
