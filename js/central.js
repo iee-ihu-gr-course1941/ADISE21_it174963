@@ -73,7 +73,7 @@ function shuffle(o) {
 };
 
 function fill_board(){
-  	$.ajax({url: "methods.php/cards",
+  	$.ajax({url: "methods.php",
             method: 'PUT',
             dataType: "json",
 			      contentType: 'application/json',

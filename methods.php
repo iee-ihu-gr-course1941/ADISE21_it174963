@@ -30,7 +30,7 @@ function handle_cards($input){
       $sym = $input['symbol'] ;
       $num = $input['number'] ;
 
-      $stmt = $conn->prepare( "  UPDATE `board_1` SET `c_symbol`= ?,`c_number`= ?  WHERE `x`=? AND `y`=? ") ;
+      $stmt = $con->prepare( "  UPDATE `board_1` SET `c_symbol`= ?,`c_number`= ?  WHERE `x`=? AND `y`=? ") ;
       $stmt->bind_param("ssss", $sym, $num, 1, 1);
       $stmt->execute();
     }else {
@@ -41,13 +41,6 @@ function handle_cards($input){
 }
 //------------------------------------------------------------------------------
 
-
-// $sql = " UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1";
-//
-//
-// $rs = mysqli_query($con, $sql);
-
-if($rs){	echo $sym; }
 
 
 
