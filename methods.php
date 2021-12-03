@@ -12,9 +12,7 @@ $sym=$_POST['symbol'];
 $num=$_POST['number'];
 
 
-$sql = " UPDATE `board_1`
-         SET `c_symbol`='Diamonds',`c_number`='A' 
-         WHERE `x`=1 AND `y`=1 ";
+$sql = " INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','2'); ";
 
 
 $rs = mysqli_query($con, $sql);
