@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php include('include/db_connect.php');  ?>
-<?php include('methods.php');  ?>
 <html dir="ltr" lang="eng">
 
 <head>
@@ -13,6 +12,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="js/central.js"> </script>
+
+  <?php include('methods.php');  ?>
 
 </head>
 
