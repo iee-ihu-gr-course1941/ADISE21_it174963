@@ -6,6 +6,7 @@ require_once "include/db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
+$input = json_decode(file_get_contents('php://input'),true);
 
 
 if(gethostname()=='users.iee.ihu.gr') {
@@ -31,7 +32,7 @@ function handle_cards($input){
       $num = $input['number'] ;
 
 
-			$sql = "UPDATE board_1 SET c_symbol='Hearts', c_number='2' WHERE x=1 AND y=1 ";
+			$sql = "  UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1 ";
 			if ($con->query($sql) === TRUE) {
 				echo "Record updated successfully";
 			} else {
