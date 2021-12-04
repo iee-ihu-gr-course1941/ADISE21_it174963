@@ -77,7 +77,7 @@ function fill_board(){
             method: 'PUT',
             dataType: "json",
 			      contentType: 'application/json',
-            data: JSON.stringify( { symbol: "Hearts" , number:  "A" } ),
+            data:  { "symbol": "Hearts" , "number":  "A" } ,
             success: fill_real_board });
 }
 
