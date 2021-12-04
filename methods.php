@@ -6,7 +6,7 @@ require_once "include/db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
-$input = json_decode(file_get_contents('php://input'),true);
+// $input = json_decode(file_get_contents('php://input'),true);
 
 
 if(gethostname()=='users.iee.ihu.gr') {
@@ -26,10 +26,10 @@ if ($con->connect_errno) {
 handle_cards($input);
 
 function handle_cards($input){
-  if(isset($input['symbol'])) {
-    if(isset($input['number'])) {
-      $sym = $input['symbol'] ;
-      $num = $input['number'] ;
+  // if(isset($input['symbol'])) {
+  //   if(isset($input['number'])) {
+  //     $sym = $input['symbol'] ;
+  //     $num = $input['number'] ;
 
 
 			$sql = "  UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`= '2'  WHERE `x`=1 AND `y`=1 ";
@@ -39,11 +39,11 @@ function handle_cards($input){
   			echo "Error updating record: " . $conn->error;
 			}
 
-    }else {
-      header("HTTP/1.1 400 Bad Request");
-      		print json_encode(['errormesg'=>"Emptyyyyy!!!"]);
-      		exit;    }
-  }
+  //   }else {
+  //     header("HTTP/1.1 400 Bad Request");
+  //     		print json_encode(['errormesg'=>"Emptyyyyy!!!"]);
+  //     		exit;    }
+  // }
 }
 //------------------------------------------------------------------------------
 
