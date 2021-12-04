@@ -31,13 +31,11 @@ function handle_cards(){
   //     $sym = $input['symbol'] ;
   //     $num = $input['number'] ;
 
+	global $mysqli;
+	$sql = 'UPDATE `board_1` SET `c_symbol`=`Hearts`, `c_number`=`2` WHERE `x`=1 AND `y`=1';
+	$st = $mysqli->prepare($sql);
 
-			$sql = 'UPDATE `board_1` SET `c_symbol`=`Hearts`, `c_number`=`2` WHERE `x`=1 AND `y`=1' ;
-			if (mysqli_query($con, $sql)) {
-  			echo "Record updated successfully";
-			} else {
-  			echo "Error updating record: " . mysqli_error($conn);
-			}
+	$st->execute();
 
   //   }else {
   //     header("HTTP/1.1 400 Bad Request");
