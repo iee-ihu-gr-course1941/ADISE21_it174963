@@ -16,13 +16,16 @@ if ($con->connect_errno) {
     echo "Failed to connect to MySQL: (" .
     $con->connect_errno . ") " . $con->connect_error;
 }else{
-  echo " Success AGAIN!!!! ";
+  echo " CONN_2 ";
 }
 
 //------------------------------------------------------------------------------
 $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
 $input = json_decode(file_get_contents('php://input'),true);
+
+print json_encode([$input]);
+
 
 switch ($request) {
   case 'cards': handle_cards($method, $request,$input);
@@ -34,8 +37,6 @@ switch ($request) {
 function handle_cards($method, $request,$input){
 	$sym=$input[0]['symbol'];
 	$num=$input[1]['number'];
-
-	print json_encode([$sym]);
 
 	if(!isset($sym)) {
 		if(!isset($num)) {
