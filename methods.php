@@ -23,7 +23,6 @@ if ($con->connect_errno) {
 }
 
 //------------------------------------------------------------------------------
-echo '<script>alert('$input['symbol']')</script>';
 handle_cards($input);
 
 function handle_cards($input){
@@ -36,9 +35,8 @@ function handle_cards($input){
 
 			$sql = "UPDATE board_1 SET c_symbol=$sym, c_number=$num WHERE x=1 AND y=1 ";
 			if ($con->query($sql) === TRUE) {
-				echo '<script>alert("Record updated successfully")</script>';
+				echo "Record updated successfully";
 			} else {
-				echo '<script>alert("Error updating record")</script>';
   			echo "Error updating record: " . $conn->error;
 			}
 
