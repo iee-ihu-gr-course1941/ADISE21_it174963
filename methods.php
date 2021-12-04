@@ -33,10 +33,10 @@ function handle_cards(){
 
 
 			$sql = "UPDATE `board_1` SET `c_symbol`='Hearts',`c_number`='2' WHERE `x`=1 AND `y`=1 ";
-			if ($con->query($sql) === TRUE) {
-				echo "Record updated successfully";
+			if (mysqli_query($con, $sql)) {
+  			echo "Record updated successfully";
 			} else {
-  			echo "Error updating record: " . $conn->error;
+  			echo "Error updating record: " . mysqli_error($conn);
 			}
 
   //   }else {
