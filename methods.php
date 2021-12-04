@@ -32,7 +32,7 @@ function handle_cards(){
   //     $num = $input['number'] ;
 
 	global $mysqli;
-	$sql = 'UPDATE `board_1` SET `c_symbol`=`Hearts`, `c_number`=`2` WHERE `x`=1 AND `y`=1';
+	$sql = 'UPDATE board_1 SET c_symbol=`Hearts`, c_number=`2` WHERE x=1 AND y=1';
 	$st = $mysqli->prepare($sql);
 
 	$st->execute();
