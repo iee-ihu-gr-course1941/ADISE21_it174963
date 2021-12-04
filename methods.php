@@ -32,7 +32,7 @@ function handle_cards($input){
 
       $stmt = $con->prepare( "  UPDATE `board_1` SET `c_symbol`= ?,`c_number`= ?  WHERE `x`=? AND `y`=? ") ;
 
-			$sql = "UPDATE board_1 SET c_symbol=$sym, c_number=$num WHERE x=1 AND y=1 ";
+			$sql = "UPDATE board_1 SET c_symbol='Hearts', c_number='2' WHERE x=1 AND y=1 ";
 			if ($con->query($sql) === TRUE) {
 				echo "Record updated successfully";
 			} else {
