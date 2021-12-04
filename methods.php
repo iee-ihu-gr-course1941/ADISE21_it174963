@@ -32,7 +32,7 @@ function handle_cards(){
   //     $num = $input['number'] ;
 
 	global $mysqli;
-	$sql = 'INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','2');';
+	$sql = "INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','2');";
 	$st = $mysqli->prepare($sql);
 
 	$st->execute();
