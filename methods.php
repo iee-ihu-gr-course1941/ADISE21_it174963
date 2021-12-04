@@ -23,8 +23,7 @@ if ($con->connect_errno) {
 $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
 $input = json_decode(file_get_contents('php://input'),true);
-
-print json_encode([$input]);
+print json_encode([$request]);
 
 
 switch ($request) {
