@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php include('include/db_connect.php');  ?>
+<?php include('methods.php');  ?>
+
 <html dir="ltr" lang="eng">
 
 <head>
