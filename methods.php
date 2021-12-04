@@ -35,6 +35,8 @@ function handle_cards($method, $request,$input){
 	$sym=$input[0]['symbol'];
 	$num=$input[1]['number'];
 
+	print json_encode([$sym]);
+
 	if(!isset($sym)) {
 		if(!isset($num)) {
 			header("HTTP/1.1 400 Bad Request");
