@@ -32,8 +32,8 @@ switch ($request) {
 }
 
 function handle_cards($method, $request,$input){
-	$sym=$input[0]->symbol;
-	$num=$input[1]->number;
+	$sym=$input[0]['symbol'];
+	$num=$input[1]['number'];
 
 	if(!isset($sym)) {
 		if(!isset($num)) {
