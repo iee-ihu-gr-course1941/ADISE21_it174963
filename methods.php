@@ -32,16 +32,18 @@ switch ($request) {
 }
 
 function handle_cards($method, $request,$input){
-	if(!isset($input['symbol'])) {
-		if(!isset($input['number'])) {
+	$sym=$input->symbol;
+	$num=$input->number;
+
+	if(!isset($sym)) {
+		if(!isset($num)) {
 			header("HTTP/1.1 400 Bad Request");
 			print json_encode(['errormesg'=>"No data given."]);
 			exit;
 		}
 	}
 
-	$sym=$input->symbol;
-	$num=$input->number;
+
 
 	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
 	$st = $mysqli->prepare($sql);
