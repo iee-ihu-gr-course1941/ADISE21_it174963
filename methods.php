@@ -23,9 +23,9 @@ if ($con->connect_errno) {
 }
 
 //------------------------------------------------------------------------------
-handle_cards($input);
+// handle_cards($input);
 
-function handle_cards($input){
+function handle_cards(){
   // if(isset($input['symbol'])) {
   //   if(isset($input['number'])) {
   //     $sym = $input['symbol'] ;
