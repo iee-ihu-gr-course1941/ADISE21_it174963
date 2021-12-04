@@ -22,7 +22,7 @@ if ($con->connect_errno) {
 //------------------------------------------------------------------------------
 $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
-$input = json_decode(file_get_contents('php://input'),true);
+$input = json_decode(file_get_contents('php://input'));
 
 switch ($request) {
   case 'cards': handle_cards($method, $request,$input);
@@ -40,8 +40,8 @@ function handle_cards($method, $request,$input){
 		}
 	}
 
-	$sym=$input['symbol'];
-	$num=$input['number'];
+	$sym=$input->symbol;
+	$num=$input->number;
 
 	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
 	$st = $mysqli->prepare($sql);
