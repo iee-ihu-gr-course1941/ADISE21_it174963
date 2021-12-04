@@ -24,7 +24,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
 $input = json_decode(file_get_contents('php://input'),true);
 
-switch ($r=array_shift($request)) {
+switch ($request) {
   case 'cards': handle_cards($method, $request,$input);
             		break;
   default:  header("HTTP/1.1 404 Not Found");
