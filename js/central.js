@@ -75,7 +75,8 @@ function shuffle(o) {
 function fill_board(){
   	$.ajax({url: "methods.php/cards",
             method: 'POST',
-            data:  { "symbol": "Hearts" , "number":  "A" } ,
+            contentType: application/json,
+            data:  JSON.stringify({ "symbol": "Hearts" , "number":  "A" }) ,
             success: fill_real_board });
 }
 

@@ -22,7 +22,7 @@ if ($con->connect_errno) {
 //------------------------------------------------------------------------------
 $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
-$input = json_decode(file_get_contents('php://input'));
+$input = json_decode(file_get_contents('php://input'),true);
 
 switch ($request) {
   case 'cards': handle_cards($method, $request,$input);
