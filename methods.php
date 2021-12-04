@@ -23,7 +23,7 @@ if ($con->connect_errno) {
 }
 
 //------------------------------------------------------------------------------
-echo $input['symbol'];
+echo '<script>alert('$input['symbol']')</script>';
 handle_cards($input);
 
 function handle_cards($input){
@@ -33,8 +33,15 @@ function handle_cards($input){
       $num = $input['number'] ;
 
       $stmt = $con->prepare( "  UPDATE `board_1` SET `c_symbol`= ?,`c_number`= ?  WHERE `x`=? AND `y`=? ") ;
-      $stmt->bind_param("ssss", $sym, $num, 1, 1);
-      $stmt->execute();
+
+			$sql = "UPDATE board_1 SET c_symbol=$sym, c_number=$num WHERE x=1 AND y=1 ";
+			if ($con->query($sql) === TRUE) {
+				echo '<script>alert("Record updated successfully")</script>';
+			} else {
+				echo '<script>alert("Error updating record")</script>';
+  			echo "Error updating record: " . $conn->error;
+			}
+
     }else {
       header("HTTP/1.1 400 Bad Request");
       		print json_encode(['errormesg'=>"Emptyyyyy!!!"]);
