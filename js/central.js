@@ -74,8 +74,8 @@ function shuffle(o) {
 
 function fill_board(){
   	$.ajax({url: "methods.php",
-            method: 'POST',
-            data:  { "symbol": "Hearts" , "number":  "A" } ,
+            method: 'PUT',
+            data:  { symbol: "Hearts" , number:  "A" } ,
             success: fill_real_board });
 }
 
