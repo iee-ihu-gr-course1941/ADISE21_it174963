@@ -23,7 +23,7 @@ if ($con->connect_errno) {
 
 //------------------------------------------------------------------------------
 
-function handle_cards(){
+
 	$sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
 	if($con->query($sql) === true){
 	    echo "Records inserted successfully.";
@@ -32,7 +32,7 @@ function handle_cards(){
 	}
 
 
-}
+
 //------------------------------------------------------------------------------
 
 
