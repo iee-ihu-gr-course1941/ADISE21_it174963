@@ -6,7 +6,6 @@ require_once "include/db_upass.php";
 $user=$DB_USER;
 $pass=$DB_PASS;
 
-// $input = json_decode(file_get_contents('php://input'),true);
 
 
 if(gethostname()=='users.iee.ihu.gr') {
@@ -23,25 +22,16 @@ if ($con->connect_errno) {
 }
 
 //------------------------------------------------------------------------------
-// handle_cards($input);
 
 function handle_cards(){
-  // if(isset($input['symbol'])) {
-  //   if(isset($input['number'])) {
-  //     $sym = $input['symbol'] ;
-  //     $num = $input['number'] ;
+	$sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
+	if($con->query($sql) === true){
+	    echo "Records inserted successfully.";
+	} else{
+	    echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+	}
 
-	global $mysqli;
-	$sql = "INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','2');";
-	$st = $mysqli->prepare($sql);
 
-	$st->execute();
-
-  //   }else {
-  //     header("HTTP/1.1 400 Bad Request");
-  //     		print json_encode(['errormesg'=>"Emptyyyyy!!!"]);
-  //     		exit;    }
-  // }
 }
 //------------------------------------------------------------------------------
 
