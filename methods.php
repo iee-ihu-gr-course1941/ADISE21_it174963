@@ -22,7 +22,7 @@ if ($con->connect_errno) {
 //------------------------------------------------------------------------------
 $method = $_SERVER['REQUEST_METHOD'];
 $request = 'cards';
-$input = json_decode(file_get_contents('php://input'),true);
+$input = json_decode(file_get_contents('php://input'));
 print json_encode([$input]);
 
 
@@ -40,7 +40,7 @@ function handle_cards($method, $request,$input){
 	if(!isset($sym)) {
 		if(!isset($num)) {
 			header("HTTP/1.1 400 Bad Request");
-			print json_encode(['errormesg'=>"No data given."]);
+			print json_encode(["No data given."]);
 			exit;
 		}
 	}
