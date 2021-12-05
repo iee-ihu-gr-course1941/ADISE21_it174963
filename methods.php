@@ -20,20 +20,20 @@ if ($con->connect_errno) {
 }
 
 //------------------------------------------------------------------------------
-$method = $_SERVER['REQUEST_METHOD'];
-$request = 'cards';
+// $method = $_SERVER['REQUEST_METHOD'];
+// $request = 'cards';
 $input = json_decode(file_get_contents('php://input'));
 print json_encode([$input]);
 
 
-switch ($request) {
-  case 'cards': handle_cards($method, $request,$input);
-            		break;
-  default:  header("HTTP/1.1 404 Not Found");
-            exit;
-}
+// switch ($request) {
+//   case 'cards': handle_cards($method, $request,$input);
+//             		break;
+//   default:  header("HTTP/1.1 404 Not Found");
+//             exit;
+// }
 
-function handle_cards($method, $request,$input){
+// function handle_cards($method, $request,$input){
 	$sym=$input['symbol'];
 	$num=$input['number'];
 
@@ -45,14 +45,12 @@ function handle_cards($method, $request,$input){
 		}
 	}
 
-
-
 	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
 	$st = $mysqli->prepare($sql);
 	$st->bind_param('ss',$sym,$num);
 	$st->execute();
 
-}
+// }
 
 
 
