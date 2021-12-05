@@ -1,23 +1,26 @@
 <?php
 //-------------CONNECTION-------------------------------------------------------
-$host='localhost';
-$db = 'ADISE21_it174963';
-$user=$DB_USER;
-$pass=$DB_PASS;
-require_once "include/db_upass.php";
+// $host='localhost';
+// $db = 'ADISE21_it174963';
+// $user=$DB_USER;
+// $pass=$DB_PASS;
+// require_once "include/db_upass.php";
+//
+// if(gethostname()=='users.iee.ihu.gr') {
+// 	$con = new mysqli($host, $user, $pass, $db, null, '/home/student/it/2017/it174963/mysql/run/mysql.sock');
+// } else {
+//   $con = new mysqli($host, $user, $pass, $db);
+// }
+//
+// if ($con->connect_errno) {
+//     echo "Failed to connect to MySQL: (" .
+//     $con->connect_errno . ") " . $con->connect_error;
+// }else{
+//   echo " CONN_2 ";
+// }
 
-if(gethostname()=='users.iee.ihu.gr') {
-	$con = new mysqli($host, $user, $pass, $db, null, '/home/student/it/2017/it174963/mysql/run/mysql.sock');
-} else {
-  $con = new mysqli($host, $user, $pass, $db);
-}
+require_once "include/db_connect.php";
 
-if ($con->connect_errno) {
-    echo "Failed to connect to MySQL: (" .
-    $con->connect_errno . ") " . $con->connect_error;
-}else{
-  echo " CONN_2 ";
-}
 
 //------------------------------------------------------------------------------
 // $method = $_SERVER['REQUEST_METHOD'];
