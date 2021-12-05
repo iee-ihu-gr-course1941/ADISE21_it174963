@@ -76,7 +76,9 @@ function fill_board(){
   var data =JSON.stringify( { symbol: "Hearts" , number:  "A" } );
 
   $.ajax({url: "methods.php",
-          method: 'PUT',
+          type: 'POST', 
+          headers: {"X-HTTP-Method-Override": "PUT"},
+          // method: 'PUT',
           dataType: "json",
           contentType: "application/json" ,
           data:  data ,
