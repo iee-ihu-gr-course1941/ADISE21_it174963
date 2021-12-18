@@ -26,7 +26,9 @@ function handle_cards_clear($method, $request, $conn){
   //         SET `c_symbol` = ''  ,  `c_number` = ''
   //         WHERE `x` = 1 AND `y`=1 " ;
 
-  $sql = "SELECT * FROM `board_1` ";
+  $sql =  "UPDATE 'board_1'
+           INNER JOIN 'board_empty'  ON 'board_1.x'='board_empty.x' AND 'board_1.y'='board_empty.y'
+           SET 'board_1.c_symbol' = 'board_empty.c_symbol' , 'board_1.c_number' = 'board_empty.c_number' ;" ;
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
