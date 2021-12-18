@@ -26,7 +26,7 @@ function handle_cards_clear(){
   //         SET `c_symbol` = ''  ,  `c_number` = ''
   //         WHERE `x` = 1 AND `y`=1 " ;
 
-  $sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (3,3,'Hearts','4')";
+  $sql = "SELECT * FROM `board_1` ";
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
