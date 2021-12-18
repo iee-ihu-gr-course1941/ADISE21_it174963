@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>G A M E</title>
+  <link rel="icon" type="image/x-icon" href="extras/favicon.ico">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
