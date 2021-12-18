@@ -28,6 +28,7 @@ function handle_cards($method, $request,$data){
 			exit;
 		}
 	}
+}
 	//
 	// $sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
 	// $st = $mysqli->prepare($sql);
