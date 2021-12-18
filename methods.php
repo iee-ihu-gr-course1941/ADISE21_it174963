@@ -10,7 +10,8 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-echo $request;
+$r=array_shift($request)
+echo $r;
 
 
 switch ($r=array_shift($request)) {
@@ -36,7 +37,7 @@ function handle_cards($method, $request, $data, $conn){
 
 	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`=1 AND `y`=1 ;" ;
 		if (mysqli_query($conn, $sql)) {
-			echo "New record created successfully";
+			echo "Record updated successfully ";
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}

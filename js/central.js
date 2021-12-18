@@ -73,7 +73,7 @@ function shuffle(o) {
 };
 
 function fill_board(){
-  var data =JSON.stringify( { symbol: "Hearts" , number:  "A" } );
+  var data =JSON.stringify( { symbol: "Hearts" , number:  "2" } );
 
   $.ajax({url: "methods.php/cards/",
           method: 'POST',
