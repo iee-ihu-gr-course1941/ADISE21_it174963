@@ -74,13 +74,12 @@ function shuffle(o) {
 
 function fill_board(){
   // var data =JSON.stringify( { symbol: "Hearts" , number:  "A" } );
-  var data =JSON.stringify( { name : "spiros" } );
 
   $.ajax({url: "methods.php",
           method: 'POST',
           dataType: "json",
           contentType: "application/json" ,
-          data:  data ,
+          data:  { name : "spiros" } ,
           success: fill_real_board });
 }
 
