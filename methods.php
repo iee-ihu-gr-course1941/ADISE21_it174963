@@ -4,11 +4,11 @@ require_once "include/db_connect.php";
 
 
 //------------------------------------------------------------------------------
-$sql = "INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','A') ";
-if (mysqli_query($con, $sql)) {
+$sql = "INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','A') ;" ;
+if (mysqli_query($sql)) {
   echo "New record created successfully";
 } else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($con);
+  echo "Error: " . $sql . "<br>" . mysqli_error();
 }
 
 // $sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
