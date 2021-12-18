@@ -73,7 +73,7 @@ function shuffle(o) {
 };
 
 function fill_board(){
-  alert $('#div_card_0.span.number').html();
+  // alert $('#div_card_0.span.number').html();
 
 
 
