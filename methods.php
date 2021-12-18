@@ -26,7 +26,7 @@ function handle_cards_clear(){
   //         SET `c_symbol` = ''  ,  `c_number` = ''
   //         WHERE `x` = 1 AND `y`=1 " ;
 
-  $sql = "UPDATE board_1 SET c_symbol='Hearts' , c_number='2'  WHERE x= '1' AND y='1'";
+  $sql = "UPDATE `board_1` SET `c_symbol`='Hearts',`c_number`='2' WHERE `x`=1 AND `y`=1;";
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
