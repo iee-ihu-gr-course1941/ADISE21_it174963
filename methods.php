@@ -54,6 +54,11 @@ function handle_cards_1($method, $request, $data, $conn){
   $y1 = $data->y;
 	$sym = $data->symbol;
 	$num = $data->number;
+  echo "$x1";
+  echo "$y1";
+  echo "$sym";
+  echo "$num";
+
 
 	if(!isset($sym)) {
 		if(!isset($num)) {
