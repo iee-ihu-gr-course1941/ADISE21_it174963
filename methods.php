@@ -34,12 +34,19 @@ function handle_cards($method, $request,$data){
 		}
 	}
 
+//-----------ΦΘΑΝΟΥΝ ΜΕΧΡΙ ΕΔΩ ΟΙ ΤΙΜΕΣ ΠΟΥ ΘΕΛΩ--------------------------------
 
-	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,$sym,$num) ';
-	$st = $mysqli->prepare($sql);
+	// $sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
+	// $st = $mysqli->prepare($sql);
 	// $st->bind_param('ss',$sym,$num);
-	$st->execute();
+	// $st->execute();
 
+	$sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
+	if($con->query($sql) === true){
+			echo "Records inserted successfully.";
+	} else{
+			echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+	}
 }
 
 
