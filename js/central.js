@@ -139,11 +139,11 @@ function fill_board(){
 }
 
 function fill_real_board_1(){
-  $('#insert_to_board_btn').attr('disabled', 'disabled');
-  alert("! S U C C E S S board_1 !");
+  // $('#insert_to_board_btn').attr('disabled', 'disabled');
+  // alert("! S U C C E S S board_1 !");
 }
 
 function fill_real_board_2(){
-  $('#insert_to_board_btn').attr('disabled', 'disabled');
-  alert("! S U C C E S S board_2 !");
+  // $('#insert_to_board_btn').attr('disabled', 'disabled');
+  // alert("! S U C C E S S board_2 !");
 }
