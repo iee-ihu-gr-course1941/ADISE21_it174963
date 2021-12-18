@@ -4,7 +4,7 @@ require_once "include/db_connect.php";
 
 
 //------------------------------------------------------------------------------
-$sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
+$sql = "INSERT INTO `board_1`(`x`, `y`, `c_symbol`, `c_number`) VALUES (1,1,'Hearts','A') ";
 if (mysqli_query($con, $sql)) {
   echo "New record created successfully";
 } else {
