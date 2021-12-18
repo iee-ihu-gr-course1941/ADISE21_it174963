@@ -5,10 +5,10 @@ require_once "include/db_connect.php";
 
 //------------------------------------------------------------------------------
 $sql = "INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,'Hearts','2') ";
-if($con->query($sql) === true){
-		echo "Records inserted successfully.";
-} else{
-		echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 // $method = $_SERVER['REQUEST_METHOD'];
 // $request = 'cards';
