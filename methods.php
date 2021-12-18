@@ -23,21 +23,21 @@ $json = '["geeks", "for", "geeks"]';
 // }
 
 // function handle_cards($method, $request,$input){
-	$sym=$input['symbol'];
-	$num=$input['number'];
-
-	if(!isset($sym)) {
-		if(!isset($num)) {
-			header("HTTP/1.1 400 Bad Request");
-			print json_encode(["No data given."]);
-			exit;
-		}
-	}
-
-	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
-	$st = $mysqli->prepare($sql);
-	$st->bind_param('ss',$sym,$num);
-	$st->execute();
+	// $sym=$input['symbol'];
+	// $num=$input['number'];
+	//
+	// if(!isset($sym)) {
+	// 	if(!isset($num)) {
+	// 		header("HTTP/1.1 400 Bad Request");
+	// 		print json_encode(["No data given."]);
+	// 		exit;
+	// 	}
+	// }
+	//
+	// $sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
+	// $st = $mysqli->prepare($sql);
+	// $st->bind_param('ss',$sym,$num);
+	// $st->execute();
 
 // }
 
