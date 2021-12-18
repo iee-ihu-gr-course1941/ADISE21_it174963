@@ -73,7 +73,8 @@ function shuffle(o) {
 };
 
 function fill_board(){
-  var data =JSON.stringify( { symbol: "Hearts" , number:  "A" } );
+  // var data =JSON.stringify( { symbol: "Hearts" , number:  "A" } );
+  var data =JSON.stringify( { "spiros" } );
 
   $.ajax({url: "methods.php",
           method: 'POST',
