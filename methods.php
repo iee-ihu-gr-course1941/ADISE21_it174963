@@ -29,7 +29,7 @@ function handle_cards_clear($method, $request, $conn){
 	if (mysqli_query($conn, $sql)) {
 		echo "Records cleared successfully  \n";
 	} else {
-		echo "Error: " . $sql . "<br>" .  mysqli_error($conn);
+		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
 	}
 
   $sql = "UPDATE board_2 B2
@@ -38,7 +38,7 @@ function handle_cards_clear($method, $request, $conn){
 	if (mysqli_query($conn, $sql)) {
     echo "- Records cleared successfully \n";
 	} else {
-		echo "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
 	}
 
 
