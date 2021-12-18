@@ -13,7 +13,7 @@ $data = json_decode($json);
 echo $request;
 
 
-switch ($request) {
+switch ($r=array_shift($request)) {
   case 'cards': handle_cards($method, $request, $data, $conn);
             		break;
   default:  header("HTTP/1.1 404 Not Found");
