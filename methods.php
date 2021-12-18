@@ -10,12 +10,12 @@ $data = json_decode($json);
 
 
 
-switch ($r=array_shift($request)) {
-  case 'cards': handle_cards($method, $request, $data, $conn);
-            			break;
-  default:  header("HTTP/1.1 404 Not Found");
-            exit;
-}
+// switch ($r=array_shift($request)) {
+//   case 'cards': handle_cards($method, $request, $data, $conn);
+//             			break;
+//   default:  header("HTTP/1.1 404 Not Found");
+//             exit;
+// }
 
 // function handle_cards($method, $request, $data, $conn){
 // 	$sym=$data->symbol;
