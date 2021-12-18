@@ -6,7 +6,7 @@ require_once "include/db_connect.php";
 //------------------------------------------------------------------------------
 
 $method = $_SERVER['REQUEST_METHOD'];
-$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$request = explode('/', trim($_SERVER['PATH_INFO']));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
