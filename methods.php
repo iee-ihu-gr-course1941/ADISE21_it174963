@@ -20,7 +20,7 @@ switch ($r=array_shift($request)) {
             exit;
 }
 
-function handle_cards_clear(){
+function handle_cards_clear($method, $request, $conn){
   // $sql = "UPDATE 'board_1'
   //         INNER JOIN board_empty  ON `board_1.x` = `board_empty.x` AND `board_1.y`=`board_empty.y`
   //         SET `c_symbol` = ''  ,  `c_number` = ''
