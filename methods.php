@@ -20,19 +20,19 @@ switch ($request) {
 }
 
 function handle_cards($method, $request,$data){
-	$sym=$data->symbol;
-	$num=$data->number;
-	echo $sym;
-	echo $num;
-
-
-	if(!isset($sym)) {
-		if(!isset($num)) {
-			header("HTTP/1.1 400 Bad Request");
-			print json_encode(["No data given."]);
-			exit;
-		}
-	}
+	// $sym=$data->symbol;
+	// $num=$data->number;
+	// echo $sym;
+	// echo $num;
+	//
+	//
+	// if(!isset($sym)) {
+	// 	if(!isset($num)) {
+	// 		header("HTTP/1.1 400 Bad Request");
+	// 		print json_encode(["No data given."]);
+	// 		exit;
+	// 	}
+	// }
 
 //-----------ΦΘΑΝΟΥΝ ΜΕΧΡΙ ΕΔΩ ΟΙ ΤΙΜΕΣ ΠΟΥ ΘΕΛΩ--------------------------------
 
