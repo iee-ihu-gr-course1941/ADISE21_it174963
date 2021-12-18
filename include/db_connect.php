@@ -1,5 +1,5 @@
 <?php
-$host='localhost';
+$host='127.0.0.1';
 $db = 'ADISE21_it174963';
 require_once "db_upass.php";
 
