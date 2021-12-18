@@ -74,12 +74,12 @@ function shuffle(o) {
 
 function fill_board(){
   var card_0 = $('#div_card_0').find('span');
-  var s = card_0[0].innerHTML;
-  alert (s);
+  var cn = card_0[0].innerHTML;
+  var cs = card_0[1].innerHTML;
 
 
 
-  var data =JSON.stringify( { symbol: "Hearts" , number:  "2" } );
+  var data =JSON.stringify( { symbol: cs , number:  cn } );
 
   $.ajax({url: "methods.php/cards/",
           method: 'POST',
