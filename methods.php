@@ -14,13 +14,13 @@ $data = json_decode($json);
 
 
 switch ($request) {
-  case 'cards': handle_cards($method, $request,$data);
+  case 'cards': handle_cards($method, $request, $data, $conn);
             		break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
 }
 
-function handle_cards($method, $request,$data){
+function handle_cards($method, $request, $data, $conn){
 	$sym=$data->symbol;
 	$num=$data->number;
 	echo $sym;
