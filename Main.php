@@ -192,7 +192,7 @@
         <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back">
       </div>
       <input type="button" id="shuffle_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
-      <input type="button" id="insert_to_board_btn" name="" value="FILL BOARD" onclick="fill_board()">
+      <input type="button" id="insert_to_board_btn" name="" value="FILL BOARD" onclick="fill_board()" disabled="disabled" >
     </div>
 
     <!--COMMANDS SECTION-->

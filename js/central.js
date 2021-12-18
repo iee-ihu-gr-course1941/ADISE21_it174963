@@ -4,7 +4,6 @@ function login_to_game() {
   $('.Player1_name').text($('#username').val());
 }
 
-  $('#insert_to_board_btn').attr('disabled', 'disabled');
 
 
 //-----------------RULES SECTION------------------------------------------------
@@ -50,7 +49,7 @@ function shuffle_deck() {
   $('#shuffle_card_img').fadeTo( "slow", 0.40 );
   $('#shuffled_deck').empty();
 
-  $('#insert_to_board_btn').attr('disabled', '');
+  $('#insert_to_board_btn').removeAttr('disabled');
 
   myDeck = shuffle(myDeck);
 
