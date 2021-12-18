@@ -10,12 +10,14 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 // echo $data->symbol;
 
-switch ($request) {
-  case 'cards': handle_cards($method, $request,$data);
-            		break;
-  default:  header("HTTP/1.1 404 Not Found");
-            exit;
-}
+handle_cards($method, $request,$data);
+
+// switch ($request) {
+//   case 'cards': handle_cards($method, $request,$data);
+//             		break;
+//   default:  header("HTTP/1.1 404 Not Found");
+//             exit;
+// }
 
 function handle_cards($method, $request,$data){
 	$sym=$data['symbol'];
