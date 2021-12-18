@@ -128,6 +128,8 @@ function fill_board(){
         pos_2_y == 0;
       }
       pos_2_y++;
+    }
+  }
 }
 
 
