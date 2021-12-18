@@ -64,7 +64,7 @@ function handle_cards_1($method, $request, $data, $conn){
 	}
 
 
-	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`=$x1 AND `y`=$y1 ;" ;
+	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x1' AND `y`=' $y1' ;" ;
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
@@ -88,7 +88,7 @@ function handle_cards_2($method, $request, $data, $conn){
 	}
 
 
-	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`=$x2 AND `y`=$y2;" ;
+	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x2' AND `y`='$y2' ;" ;
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
