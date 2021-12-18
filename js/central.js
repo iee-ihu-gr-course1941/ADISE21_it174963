@@ -4,6 +4,8 @@ function login_to_game() {
   $('.Player1_name').text($('#username').val());
 }
 
+  $('#insert_to_board_btn').attr('disabled', 'disabled');
+
 
 //-----------------RULES SECTION------------------------------------------------
 var Rules_counter = true;
@@ -47,6 +49,8 @@ var myDeck = new deck();
 function shuffle_deck() {
   $('#shuffle_card_img').fadeTo( "slow", 0.40 );
   $('#shuffled_deck').empty();
+
+  $('#insert_to_board_btn').attr('disabled', '');
 
   myDeck = shuffle(myDeck);
 
@@ -101,5 +105,6 @@ function fill_board(){
 }
 
 function fill_real_board(){
+  $('#insert_to_board_btn').attr('disabled', 'disabled');
   alert("! S U C C E S S !");
 }
