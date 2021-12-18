@@ -79,7 +79,7 @@ function fill_board(){
           method: 'POST',
           // dataType: "json",
           // contentType: "application/json" ,
-          data:  { symbol: "Hearts" , number:  "A" } ,
+          data:  { "Hearts" , "A" } ,
           success: fill_real_board });
 }
 
