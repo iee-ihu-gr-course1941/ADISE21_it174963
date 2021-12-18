@@ -75,99 +75,128 @@ function shuffle(o) {
   return o;
 };
 
+
+var pos_1_x = 1;
+var pos_1_y = 1;
+var pos_2_x = 1;
+var pos_2_y = 1;
+
 function fill_board(){
-      var var_card = $('#div_card_0').find('span');
-      var cn = var_card[0].innerHTML;
-      var cs = var_card[1].innerHTML;
+      // var var_card = $('#div_card_0').find('span');
+      // var cn = var_card[0].innerHTML;
+      // var cs = var_card[1].innerHTML;
+      //
+      // switch(cs) {
+      //   case "♣":
+      //     cs = "Clubs";
+      //     break;
+      //   case "♥":
+      //     cs = "Hearts";
+      //     break;
+      //   case "♠":
+      //     cs = "Spades";
+      //     break;
+      //   case "♦":
+      //     cs = "Diamonds";
+      //     break;
+      // }
+      //
+      // var data =JSON.stringify( { symbol: cs , number:  cn } );
+      //
+      // $.ajax({url: "methods.php/cards/",
+      //         method: 'POST',
+      //         data:  data ,
+      //         success: fill_real_board });
 
-      switch(cs) {
-        case "♣":
-          cs = "Clubs";
-          break;
-        case "♥":
-          cs = "Hearts";
-          break;
-        case "♠":
-          cs = "Spades";
-          break;
-        case "♦":
-          cs = "Diamonds";
-          break;
+  for(i=0; i<=51; i++){
+    if( i%2 == 0 ){
+
+      fill_board_1(i, pos_1_x , pos_1_y);
+
+      if(pos_1_y == 12){
+        pos_1_x++;
+        pos_1_y == 0;
       }
+      pos_1_y++;
 
-      var data =JSON.stringify( { symbol: cs , number:  cn } );
+    }else{
 
-      $.ajax({url: "methods.php/cards/",
-              method: 'POST',
-              data:  data ,
-              success: fill_real_board });
-  // for(i=0; i<=51; i++){
-  //   if( i%2 == 0 ){
-  //
-  //     var var_card = $('#div_card_'+ i).find('span');
-  //     var cn = var_card[0].innerHTML;
-  //     var cs = var_card[1].innerHTML;
-  //
-  //     switch(cs) {
-  //       case "♣":
-  //         cs = "Clubs";
-  //         break;
-  //       case "♥":
-  //         cs = "Hearts";
-  //         break;
-  //       case "♠":
-  //         cs = "Spades";
-  //         break;
-  //       case "♦":
-  //         cs = "Diamonds";
-  //         break;
-  //     }
-  //
-  //     var data =JSON.stringify( { symbol: cs , number:  cn } );
-  //
-  //     $.ajax({url: "methods.php/cards_1/",
-  //             method: 'POST',
-  //             data:  data ,
-  //             success: fill_real_board_1 });
-  //
-  //   }else{
-  //
-  //     var var_card = $('#div_card_'+ i).find('span');
-  //     var cn = var_card[0].innerHTML;
-  //     var cs = var_card[1].innerHTML;
-  //
-  //     switch(cs) {
-  //       case "♣":
-  //         cs = "Clubs";
-  //         break;
-  //       case "♥":
-  //         cs = "Hearts";
-  //         break;
-  //       case "♠":
-  //         cs = "Spades";
-  //         break;
-  //       case "♦":
-  //         cs = "Diamonds";
-  //         break;
-  //     }
-  //
-  //     var data =JSON.stringify( { symbol: cs , number:  cn } );
-  //
-  //     $.ajax({url: "methods.php/cards_2/",
-  //             method: 'POST',
-  //             data:  data ,
-  //             success: fill_real_board_2 });
-  //   }
-  // }
+      fill_board_2(i, pos_2_x , pos_2_y);
 
+      if(pos_2_y == 12){
+        pos_2_x++;
+        pos_2_y == 0;
+      }
+      pos_2_y++;
 }
 
-function fill_real_board(){
+
+function fill_board_1(i, x1, y1){
+
+  var var_card = $('#div_card_'+ i).find('span');
+  var cn = var_card[0].innerHTML;
+  var cs = var_card[1].innerHTML;
+
+  switch(cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+
+  var data =JSON.stringify( {x: x1 , y: y1 , symbol: cs , number:  cn } );
+
+  $.ajax({url: "methods.php/cards_1/",
+          method: 'POST',
+          data:  data ,
+          success: fill_real_board_1 });
+}
+
+function fill_board_2(i, x2, y2){
+
+  var var_card = $('#div_card_'+ i).find('span');
+  var cn = var_card[0].innerHTML;
+  var cs = var_card[1].innerHTML;
+
+  switch(cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+
+  var data =JSON.stringify( {x: x2 , y: y2 , symbol: cs , number:  cn } );
+
+  $.ajax({url: "methods.php/cards_2/",
+          method: 'POST',
+          data:  data ,
+          success: fill_real_board_2 });
+}
+
+
+
+function fill_real_board_1(){
   $('#insert_to_board_btn').attr('disabled', 'disabled');
-  alert("! S U C C E S S board_1 !");
+  alert("! S U C C E S S !");
 }
 
 function fill_real_board_2(){
-  // $('#insert_to_board_btn').attr('disabled', 'disabled');
-  // alert("! S U C C E S S board_2 !");
+  $('#insert_to_board_btn').attr('disabled', 'disabled');
+  alert("! S U C C E S S board_2 !");
 }
