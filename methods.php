@@ -9,8 +9,11 @@ $request = 'cards';
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 // echo $data->symbol;
+$sym=$data['symbol'];
+$num=$data['number'];
+echo $sym;
+echo $num;
 
-handle_cards($method, $request,$data);
 
 // switch ($request) {
 //   case 'cards': handle_cards($method, $request,$data);
@@ -19,21 +22,21 @@ handle_cards($method, $request,$data);
 //             exit;
 // }
 
-function handle_cards($method, $request,$data){
-	$sym=$data['symbol'];
-	$num=$data['number'];
-	echo $sym;
-	echo $num;
-
-
-	if(!isset($sym)) {
-		if(!isset($num)) {
-			header("HTTP/1.1 400 Bad Request");
-			print json_encode(["No data given."]);
-			exit;
-		}
-	}
-}
+// function handle_cards($method, $request,$data){
+// 	$sym=$data['symbol'];
+// 	$num=$data['number'];
+// 	echo $sym;
+// 	echo $num;
+//
+//
+// 	if(!isset($sym)) {
+// 		if(!isset($num)) {
+// 			header("HTTP/1.1 400 Bad Request");
+// 			print json_encode(["No data given."]);
+// 			exit;
+// 		}
+// 	}
+// }
 	//
 	// $sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
 	// $st = $mysqli->prepare($sql);
