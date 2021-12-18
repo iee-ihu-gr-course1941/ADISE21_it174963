@@ -88,7 +88,7 @@ function fill_board(){
 
       if(pos_1_y == 12){
         pos_1_x++;
-        pos_1_y == 0;
+        pos_1_y = 0;
       }
       pos_1_y++;
 
@@ -97,7 +97,7 @@ function fill_board(){
 
       if(pos_2_y == 12){
         pos_2_x++;
-        pos_2_y == 0;
+        pos_2_y = 0;
       }
       pos_2_y++;
     }
