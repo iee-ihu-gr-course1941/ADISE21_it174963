@@ -54,18 +54,41 @@ function shuffle_deck() {
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
-    div = document.createElement('div');
-    div.className = 'card';
-    div.id = 'div_card_' + i;
+    if (i % 2 == 0) {
+      div = document.createElement('div');
+      div.className = 'card';
+      div.id = 'div_card_' + i;
 
-    if (myDeck[i].suit == 'Diamonds') {
-      var ascii_char = '&diams;';
-    } else {
-      var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+      if (myDeck[i].suit == 'Diamonds') {
+        var ascii_char = '&diams;';
+      } else {
+        var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+      }
+
+      div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
+      var vtable = $('#player1_cards').find('tbody');
+      var vtablerow = vtable[pos_1_x].find('tr');
+      vtablerow[pos_1_y].appendChild(div);
     }
+    //
+    // div = document.createElement('div');
+    // div.className = 'card';
+    // div.id = 'div_card_' + i;
+    //
+    // if (myDeck[i].suit == 'Diamonds') {
+    //   var ascii_char = '&diams;';
+    // } else {
+    //   var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+    // }
+    //
+    // div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
+    // document.getElementById("shuffled_deck").appendChild(div);
 
-    div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
-    document.getElementById("shuffled_deck").appendChild(div);
+    if (pos_1_y == 12) {
+      pos_1_x++;
+      pos_1_y = 0;
+    }
+    pos_1_y++;
   }
 
 }

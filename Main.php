@@ -111,7 +111,7 @@
       <b>
         <p class="Player2_name">----- PLAYER 2 -----</p>
       </b> <br>
-      <table id="player1_cards" border="1">
+      <table id="player2_cards" border="1">
         <tbody>
           <tr>
             <td>1-1 &nbsp;</td>
