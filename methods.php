@@ -8,8 +8,7 @@ require_once "include/db_connect.php";
 // $request = 'cards';
 $json = file_get_contents('php://input');
 $data = json_decode($json);
-echo $data['symbol'];
-
+echo $data->symbol;
 
 // switch ($request) {
 //   case 'cards': handle_cards($method, $request,$input);
