@@ -9,8 +9,8 @@ $request = 'cards';
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 // echo $data->symbol;
-$sym=$data['symbol'];
-$num=$data['number'];
+$sym=$data->symbol;
+$num=$data->number;
 echo $sym;
 echo $num;
 
