@@ -188,11 +188,14 @@
   <div class="Game_Details_div">
     <!--CARD SHUFFLE SECTION-->
     <div class="Card_Shuffle_div">
-      <div class="shuffle_deck_div">
+      <div class="Card_Shuffle_img_div">
         <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back">
       </div>
-      <input type="button" id="shuffle_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
-      <input type="button" id="insert_to_board_btn" name="" value="FILL BOARD" onclick="fill_board()" disabled="disabled" >
+      <div class="Card_Shuffle_buttons_div">
+        <input type="button" id="shuffle_cards_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
+        <input type="button" id="fill_board_btn" name="" value="FILL BOARD" onclick="fill_board()" disabled="disabled" >
+      </div>
+
     </div>
 
     <!--COMMANDS SECTION-->

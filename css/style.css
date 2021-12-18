@@ -193,20 +193,30 @@ td{
   box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.6);
 }
 
-.shuffle_deck_div{
+.Card_Shuffle_img_div{
 	background-color: #f2f2f2;
   float: left;
   text-align: center;
-	margin-right: 15%;
+	/* margin-right: 15%; */
   height: 100%;
   width: 50%;
 }
 
-.shuffle_deck_div img{
+.Card_Shuffle_img_div img{
   width: 55%;
   margin: 1.5% 0 0 25%;
   float: left;
 }
+
+.Card_Shuffle_buttons_div{
+	background-color: #f2f2f2;
+  float: left;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+}
+
+
 
 .Game_Details_div {
   background-color: #f2f2f2;
@@ -254,7 +264,7 @@ td{
 /*---------BUTTONS SECTION----------------------------------------------------*/
 
 /*----SHUFFLE CARDS SECTION----*/
-#shuffle_btn {
+#shuffle_cards_btn {
 	display: block;
   padding: 7px 10px 7px 10px;
   text-align: center;
@@ -262,13 +272,32 @@ td{
   background-color: #323232;
   color: white;
   border-radius: 25px;
-  margin-top: 15%;
+  margin: 20% 0 0 23.5%;
 }
 
-#shuffle_btn:hover {
+#shuffle_cards_btn:hover {
   background-color: #548bac;
   transition: 1.5s;
 }
+
+
+/*----FILL BOARDS SECTION----*/
+#fill_board_btn {
+	display: block;
+  padding: 7px 10px 7px 10px;
+  text-align: center;
+  font-size: 1vw;
+  background-color: #323232;
+  color: white;
+  border-radius: 25px;
+  margin:  15% 0 0 20%;
+}
+
+#fill_board_btn:hover {
+  background-color: #548bac;
+  transition: 1.5s;
+}
+
 
 /*----RULES BUTTON----*/
 #Rules-btn {
