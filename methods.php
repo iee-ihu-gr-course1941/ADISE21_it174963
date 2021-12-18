@@ -23,9 +23,9 @@ switch ($r=array_shift($request)) {
 function handle_cards_clear($method, $request, $conn){
 
 
-  $sql = "UPDATE board_1
-          INNER JOIN board_empty  ON 'board_1.x' = 'board_empty.x' AND 'board_1.y' = 'board_empty.y'
-          SET 'board_1.c_symbol' = 'board_empty.c_symbol' , 'board_1.c_number' = 'board_empty.c_number' ";
+  $sql = "UPDATE board_1 B1
+          INNER JOIN board_empty BE  ON B1.x = BE.x AND B1.y = BE.y
+          SET B1.c_symbol = BE.c_symbol , B1.c_number = BE.c_number ";
 	if (mysqli_query($conn, $sql)) {
 		echo "Record updated successfully ";
 	} else {
