@@ -20,8 +20,8 @@ switch ($request) {
 }
 
 function handle_cards($method, $request,$data){
-$sym=$data->symbol;
-$num=$data->number;
+	$sym=$data->symbol;
+	$num=$data->number;
 	echo $sym;
 	echo $num;
 
@@ -33,14 +33,14 @@ $num=$data->number;
 			exit;
 		}
 	}
-}
-	//
-	// $sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
-	// $st = $mysqli->prepare($sql);
-	// $st->bind_param('ss',$sym,$num);
-	// $st->execute();
 
-// }
+
+	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
+	$st = $mysqli->prepare($sql);
+	$st->bind_param('ss',$sym,$num);
+	$st->execute();
+
+}
 
 
 
