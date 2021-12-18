@@ -10,7 +10,7 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-$r=array_shift($request)
+$r=array_shift($request);
 echo $r;
 
 
