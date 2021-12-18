@@ -75,7 +75,7 @@ function shuffle(o) {
 function fill_board(){
   var card_0 = $('#div_card_0').find('span');
   var s = card_0[0].innerHTML;
-  alert s;
+  alert (s);
 
 
 
