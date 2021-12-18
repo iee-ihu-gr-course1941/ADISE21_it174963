@@ -167,10 +167,10 @@ function fill_board_2(i, x2, y2){
 
 function fill_real_board_1(){
   $('#insert_to_board_btn').attr('disabled', 'disabled');
-  alert("! S U C C E S S !");
+  // alert("! S U C C E S S !");
 }
 
 function fill_real_board_2(){
   $('#insert_to_board_btn').attr('disabled', 'disabled');
-  alert("! S U C C E S S board_2 !");
+  // alert("! S U C C E S S board_2 !");
 }
