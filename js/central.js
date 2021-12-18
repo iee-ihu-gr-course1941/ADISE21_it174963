@@ -73,6 +73,10 @@ function shuffle(o) {
 };
 
 function fill_board(){
+  alert $('#div_card_0.span.number').html();
+
+
+
   var data =JSON.stringify( { symbol: "Hearts" , number:  "2" } );
 
   $.ajax({url: "methods.php/cards/",

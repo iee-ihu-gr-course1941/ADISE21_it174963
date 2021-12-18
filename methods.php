@@ -2,9 +2,7 @@
 //-------------CONNECTION-------------------------------------------------------
 require_once "include/db_connect.php";
 
-
 //------------------------------------------------------------------------------
-
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
@@ -38,8 +36,7 @@ function handle_cards($method, $request, $data, $conn){
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
-
-
+		
 }
 
 //------------------------------------------------------------------------------
