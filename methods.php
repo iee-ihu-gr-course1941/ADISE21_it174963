@@ -20,6 +20,9 @@ switch ($request) {
 function handle_cards($method, $request,$data){
 	$sym=$data['symbol'];
 	$num=$data['number'];
+	echo $sym;
+	echo $num;
+
 
 	if(!isset($sym)) {
 		if(!isset($num)) {
