@@ -194,6 +194,7 @@
       <div class="Card_Shuffle_buttons_div">
         <input type="button" id="shuffle_cards_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
         <input type="button" id="fill_board_btn" name="" value="FILL BOARD" onclick="fill_board()" disabled="disabled" >
+        <input type="button" id="clear_board_btn" name="" value="CLEAR BOARD" onclick="clear_board()"  >
       </div>
 
     </div>

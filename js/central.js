@@ -75,6 +75,13 @@ function shuffle(o) {
   return o;
 };
 
+function clear_board(){
+  $.ajax({url: "methods.php/cards_clear/",
+          method: 'POST',
+          // data:  data ,
+          success: clear_real_board });
+}
+
 
 var pos_1_x = 1;
 var pos_1_y = 1;
@@ -164,13 +171,14 @@ function fill_board_2(i, x2, y2){
 }
 
 
+function clear_real_board_1(){
+  alert("! S U C C E S S !");
+}
 
 function fill_real_board_1(){
   $('#fill_board_btn').attr('disabled', 'disabled');
-  // alert("! S U C C E S S !");
 }
 
 function fill_real_board_2(){
   $('#fill_board_btn').attr('disabled', 'disabled');
-  // alert("! S U C C E S S board_2 !");
 }

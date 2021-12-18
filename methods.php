@@ -14,8 +14,32 @@ switch ($r=array_shift($request)) {
             			break;
 	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
 									break;
+  case 'cards_clear': handle_cards_clear($method, $request, $conn);
+                  break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
+}
+
+function handle_cards_clear(){
+  $sql = "UPDATE 'board_1' B1
+  		    INNER JOIN 'board_empty' BE ON 'B1.x'='BE.x' AND 'B1.y'='BE.y'
+          SET 'B1.c_symbol' = 'BE.c_symbol' , 'B1.c_number' = 'BE.c_number' ;" ;
+    if (mysqli_query($conn, $sql)) {
+      echo "Record updated successfully ";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    $sql = "UPDATE 'board_2' B2
+            INNER JOIN 'board_empty' BE ON 'B2.x'='BE.x' AND 'B2.y'='BE.y'
+            SET 'B2.c_symbol' = 'BE.c_symbol' , 'B2.c_number' = 'BE.c_number' ;" ;
+      if (mysqli_query($conn, $sql)) {
+        echo "Record updated successfully ";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+
+
 }
 
 
