@@ -76,6 +76,9 @@ function fill_board(){
   var card_0 = $('#div_card_0').find('span');
   var cn = card_0[0].innerHTML;
   var cs = card_0[1].innerHTML;
+  if(cs == "♣"){
+    cs = "Clubs";
+  }
 
 
 
