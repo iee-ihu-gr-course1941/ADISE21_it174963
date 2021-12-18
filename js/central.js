@@ -76,11 +76,21 @@ function fill_board(){
   var card_0 = $('#div_card_0').find('span');
   var cn = card_0[0].innerHTML;
   var cs = card_0[1].innerHTML;
-  if(cs == "♣"){
-    cs = "Clubs";
+
+  switch(cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
   }
-
-
 
   var data =JSON.stringify( { symbol: cs , number:  cn } );
 
@@ -91,5 +101,5 @@ function fill_board(){
 }
 
 function fill_real_board(){
-  alert("success!");
+  alert("! S U C C E S S !");
 }
