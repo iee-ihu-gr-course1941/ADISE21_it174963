@@ -36,9 +36,9 @@ function handle_cards_clear($method, $request, $conn){
           INNER JOIN board_empty BE  ON B2.x = BE.x AND B2.y = BE.y
           SET B2.c_symbol = BE.c_symbol , B2.c_number = BE.c_number ";
 	if (mysqli_query($conn, $sql)) {
-    echo "Records cleared successfully \n";
+    echo "- Records cleared successfully \n";
 	} else {
-		echo "Error: " . $sql . "<br>" .  mysqli_error($conn);
+		echo "- Error: " . $sql . "<br>" .  mysqli_error($conn);
 	}
 
 
