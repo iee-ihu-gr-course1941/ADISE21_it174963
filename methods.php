@@ -30,7 +30,7 @@ function handle_cards_clear(){
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully ";
 		} else {
-			echo mysqli_error($conn);
+			echo "Error: " . $sql . "<br>" .  mysqli_error($conn);
 		}
 
     // $sql = "UPDATE 'board_2'
