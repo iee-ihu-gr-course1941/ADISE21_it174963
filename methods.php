@@ -6,13 +6,9 @@ require_once "include/db_connect.php";
 //------------------------------------------------------------------------------
 // $method = $_SERVER['REQUEST_METHOD'];
 // $request = 'cards';
-// $input = json_decode(file_get_contents('php://input'));
-// $input = file_get_contents('php://input');
-// print $input['symbol'];
-
-$json = '["geeks", "for", "geeks"]';
-  $data = json_decode($json);
-  echo $data[0];
+$json = file_get_contents('php://input');
+$data = json_decode($json);
+echo $data[0];
 
 
 // switch ($request) {
