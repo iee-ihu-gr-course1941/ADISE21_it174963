@@ -10,6 +10,8 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
+echo $request;
+
 
 switch ($request) {
   case 'cards': handle_cards($method, $request, $data, $conn);
