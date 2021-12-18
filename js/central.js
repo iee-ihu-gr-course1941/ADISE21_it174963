@@ -77,8 +77,8 @@ function fill_board(){
 
   $.ajax({url: "methods.php",
           method: 'POST',
-          dataType: "json",
-          contentType: "application/json" ,
+          // dataType: "json",
+          // contentType: "application/json" ,
           data:  { name : "spiros" } ,
           success: fill_real_board });
 }
