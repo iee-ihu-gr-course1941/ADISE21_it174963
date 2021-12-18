@@ -77,7 +77,7 @@ function shuffle(o) {
 
 function fill_board(){
 
-  for(i=0; i<=52; i++){
+  for(i=0; i<=51; i++){
     if( i%2 == 0 ){
 
       var var_card = $('#div_card_'+ i).find('span');
