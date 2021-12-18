@@ -15,6 +15,7 @@ switch ($r=array_shift($request)) {
 	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
 									break;
   case 'cards_clear': handle_cards_clear($method, $request, $conn);
+                      echo "going to";
                   break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
