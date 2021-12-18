@@ -35,9 +35,9 @@ function handle_cards($method, $request,$data){
 	}
 
 
-	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,?,?) ';
+	$sql = 'INSERT INTO board_1(x, y, c_symbol, c_number) VALUES (1,1,$sym,$num) ';
 	$st = $mysqli->prepare($sql);
-	$st->bind_param('ss',$sym,$num);
+	// $st->bind_param('ss',$sym,$num);
 	$st->execute();
 
 }
