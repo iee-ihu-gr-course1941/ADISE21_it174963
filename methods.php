@@ -37,7 +37,7 @@ function handle_cards($method, $request, $data, $conn){
 
 //-----------ΦΘΑΝΟΥΝ ΜΕΧΡΙ ΕΔΩ ΟΙ ΤΙΜΕΣ ΠΟΥ ΘΕΛΩ--------------------------------
 
-	$sql = "UPDATE `board_1` SET `c_symbol`='Hearts',`c_number`='4' WHERE `x`=1 AND `y`=1 ;" ;
+	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`=1 AND `y`=1 ;" ;
 	if (mysqli_query($conn, $sql)) {
 		echo "New record created successfully";
 	} else {
