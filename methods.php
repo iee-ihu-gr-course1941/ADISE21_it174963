@@ -25,11 +25,11 @@ function handle_cards_clear(){
   //         INNER JOIN board_empty  ON `board_1.x` = `board_empty.x` AND `board_1.y`=`board_empty.y`
   //         SET `c_symbol` = ''  ,  `c_number` = ''
   //         WHERE `x` = 1 AND `y`=1 " ;
-  $sql = "UPDATE `board_1` SET `c_symbol`= NULL,`c_number`=NULL WHERE `x`= 1 AND `y`=1 ;" ;
+  $sql = "UPDATE `board_1` SET `c_symbol`= 'Hearts',`c_number`='A' WHERE `x`= 1 AND `y`=1 ;" ;
     if (mysqli_query($conn, $sql)) {
-      echo "Record updated successfully ";
+      echo "\n Record updated successfully ";
     } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      echo "\n Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
     // $sql = "UPDATE 'board_2'
