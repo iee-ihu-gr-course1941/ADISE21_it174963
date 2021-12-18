@@ -82,35 +82,8 @@ var pos_2_x = 1;
 var pos_2_y = 1;
 
 function fill_board(){
-      // var var_card = $('#div_card_0').find('span');
-      // var cn = var_card[0].innerHTML;
-      // var cs = var_card[1].innerHTML;
-      //
-      // switch(cs) {
-      //   case "♣":
-      //     cs = "Clubs";
-      //     break;
-      //   case "♥":
-      //     cs = "Hearts";
-      //     break;
-      //   case "♠":
-      //     cs = "Spades";
-      //     break;
-      //   case "♦":
-      //     cs = "Diamonds";
-      //     break;
-      // }
-      //
-      // var data =JSON.stringify( { symbol: cs , number:  cn } );
-      //
-      // $.ajax({url: "methods.php/cards/",
-      //         method: 'POST',
-      //         data:  data ,
-      //         success: fill_real_board });
-
   for(i=0; i<=51; i++){
     if( i%2 == 0 ){
-
       fill_board_1(i, pos_1_x , pos_1_y);
 
       if(pos_1_y == 12){
@@ -120,7 +93,6 @@ function fill_board(){
       pos_1_y++;
 
     }else{
-
       fill_board_2(i, pos_2_x , pos_2_y);
 
       if(pos_2_y == 12){
