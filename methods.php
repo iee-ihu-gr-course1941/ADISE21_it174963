@@ -25,10 +25,10 @@ function handle_cards_clear(){
   //         INNER JOIN board_empty  ON `board_1.x` = `board_empty.x` AND `board_1.y`=`board_empty.y`
   //         SET `c_symbol` = ''  ,  `c_number` = ''
   //         WHERE `x` = 1 AND `y`=1 " ;
-  $x1 = "1";
-  $y1 = "1";
-  $sym = "Hearts";
-  $num = "2";
+  $x1 = 1;
+  $y1 = 1;
+  $sym = 'Hearts';
+  $num = 2;
   echo "$x1";
   echo "$y1";
   echo "$sym";
