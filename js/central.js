@@ -46,7 +46,7 @@ function deck() {
 var myDeck = new deck();
 
 function shuffle_deck() {
-  $('#shuffle_card_img').fadeTo( "slow", 0.40 );
+  $('#shuffle_card_img').fadeTo("slow", 0.40);
   $('#shuffled_deck').empty();
 
   $('#fill_board_btn').removeAttr('disabled');
@@ -75,11 +75,13 @@ function shuffle(o) {
   return o;
 };
 
-function clear_board(){
-  $.ajax({url: "methods.php/cards_clear/",
-          method: 'POST',
-          // data:  data ,
-          success: clear_real_board });
+function clear_board() {
+  $.ajax({
+    url: "methods.php/cards_clear/",
+    method: 'POST',
+    // data:  data ,
+    success: clear_real_board
+  });
 }
 
 
@@ -88,21 +90,21 @@ var pos_1_y = 1;
 var pos_2_x = 1;
 var pos_2_y = 1;
 
-function fill_board(){
-  for(i=0; i<=51; i++){
-    if( i%2 == 0 ){
-      fill_board_1(i, pos_1_x , pos_1_y);
+function fill_board() {
+  for (i = 0; i <= 51; i++) {
+    if (i % 2 == 0) {
+      fill_board_1(i, pos_1_x, pos_1_y);
 
-      if(pos_1_y == 12){
+      if (pos_1_y == 12) {
         pos_1_x++;
         pos_1_y = 0;
       }
       pos_1_y++;
 
-    }else{
-      fill_board_2(i, pos_2_x , pos_2_y);
+    } else {
+      fill_board_2(i, pos_2_x, pos_2_y);
 
-      if(pos_2_y == 12){
+      if (pos_2_y == 12) {
         pos_2_x++;
         pos_2_y = 0;
       }
@@ -112,13 +114,13 @@ function fill_board(){
 }
 
 
-function fill_board_1(i, x1, y1){
+function fill_board_1(i, x1, y1) {
 
-  var var_card = $('#div_card_'+ i).find('span');
+  var var_card = $('#div_card_' + i).find('span');
   var cn = var_card[0].innerHTML;
   var cs = var_card[1].innerHTML;
 
-  switch(cs) {
+  switch (cs) {
     case "♣":
       cs = "Clubs";
       break;
@@ -133,21 +135,28 @@ function fill_board_1(i, x1, y1){
       break;
   }
 
-  var data =JSON.stringify( {x: x1 , y: y1 , symbol: cs , number:  cn } );
+  var data = JSON.stringify({
+    x: x1,
+    y: y1,
+    symbol: cs,
+    number: cn
+  });
 
-  $.ajax({url: "methods.php/cards_1/",
-          method: 'POST',
-          data:  data ,
-          success: fill_real_board_1 });
+  $.ajax({
+    url: "methods.php/cards_1/",
+    method: 'POST',
+    data: data,
+    success: fill_real_board_1
+  });
 }
 
-function fill_board_2(i, x2, y2){
+function fill_board_2(i, x2, y2) {
 
-  var var_card = $('#div_card_'+ i).find('span');
+  var var_card = $('#div_card_' + i).find('span');
   var cn = var_card[0].innerHTML;
   var cs = var_card[1].innerHTML;
 
-  switch(cs) {
+  switch (cs) {
     case "♣":
       cs = "Clubs";
       break;
@@ -162,23 +171,30 @@ function fill_board_2(i, x2, y2){
       break;
   }
 
-  var data =JSON.stringify( {x: x2 , y: y2 , symbol: cs , number:  cn } );
+  var data = JSON.stringify({
+    x: x2,
+    y: y2,
+    symbol: cs,
+    number: cn
+  });
 
-  $.ajax({url: "methods.php/cards_2/",
-          method: 'POST',
-          data:  data ,
-          success: fill_real_board_2 });
+  $.ajax({
+    url: "methods.php/cards_2/",
+    method: 'POST',
+    data: data,
+    success: fill_real_board_2
+  });
 }
 
 
-function clear_real_board(){
+function clear_real_board() {
   alert("! S U C C E S S !");
 }
 
-function fill_real_board_1(){
+function fill_real_board_1() {
   $('#fill_board_btn').attr('disabled', 'disabled');
 }
 
-function fill_real_board_2(){
+function fill_real_board_2() {
   $('#fill_board_btn').attr('disabled', 'disabled');
 }
