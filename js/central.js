@@ -224,7 +224,7 @@ function card_picked(cp){
   $('.Card_OnTop_div').empty();
   div = document.createElement('div');
   div.className = 'card';
-  div.id = 'div_card_picked_' + cp;
+  div.id = 'div_card_picked';
 
   var cp_splited =cp.split("-");
   if(cp_splited[0] == 1){
