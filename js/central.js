@@ -3,11 +3,7 @@ function login_to_game() {
   $('#formModal').hide();
   $('.Player1_name').text($('#username').val());
 }
-
-//-----------------BOARD/TABLE SECTION------------------------------------------
-$('.card').click(function(){
-  alert ("clicked" ) ;
-});
+//------------------------------------------------------------------------------
 
 
 //-----------------RULES SECTION------------------------------------------------
@@ -24,6 +20,7 @@ function ShowRules() {
     Rules_counter = true;
   }
 }
+//------------------------------------------------------------------------------
 
 
 //-----------------SHUFFLE CARDS SECTION----------------------------------------
@@ -46,6 +43,7 @@ function deck() {
   }
   return cards;
 }
+//------------------------------------------------------------------------------
 
 
 //------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
@@ -106,7 +104,8 @@ function shuffle_deck() {
     }
   }
 
-}
+}//------------------------------------------------------------------------------
+
 
 //------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
 function handle_shuffle_buttons(){
@@ -129,6 +128,7 @@ function clear_board() {
     success: clear_real_board
   });
 }
+//------------------------------------------------------------------------------
 
 
 //-------Fill board_1 of the MYSQL database with data---------------------------
@@ -167,6 +167,8 @@ function fill_board_1(i, x1, y1) {
     success: fill_real_board_1
   });
 }
+//------------------------------------------------------------------------------
+
 
 //-------Fill board_2 of the MYSQL database with data---------------------------
 function fill_board_2(i, x2, y2) {
@@ -212,3 +214,10 @@ function fill_real_board_2() {}
 function clear_real_board() {
   alert("! S U C C E S S !");
 }
+//------------------------------------------------------------------------------
+
+
+//-----------------BOARD/TABLE SECTION------------------------------------------
+$('.card').click(function(){
+  alert ("clicked" ) ;
+});
