@@ -218,6 +218,17 @@ function clear_real_board() {
 
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
-function card_picked(){
+function card_picked(x){
+  div = document.createElement('div');
+  div.className = 'card';
+  div.id = 'card_found';
+
+  var var_card_picked = x.find('span');
+  var cn = var_card_picked[0].innerHTML;
+  var cs = var_card_picked[1].innerHTML;
+
+  div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
+  $('.Card_OnTop_div').append(div);
+
   alert('clicked');
 }
