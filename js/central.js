@@ -22,7 +22,8 @@ function ShowRules() {
 }
 
 
-//-----------------SHUFFLE CARDS SECTION SECTION--------------------------------
+//-----------------SHUFFLE CARDS SECTION----------------------------------------
+//------CREATE CARDS  SECTION---------------------------------------------------
 function card(value, name, suit) {
   this.value = value;
   this.name = name;
@@ -39,10 +40,11 @@ function deck() {
       cards.push(new card(n + 1, this.names[n], this.suits[s]));
     }
   }
-
   return cards;
 }
 
+
+//------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
 var myDeck = new deck();
 var pos_1_x = 1;
 var pos_1_y = 1;
@@ -102,12 +104,10 @@ function shuffle_deck() {
 
 }
 
+//------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
 function handle_shuffle_buttons(){
-
-
   $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn();
   document.getElementById("shuffle_card_img").style.transform = "rotate(" + 90 + "deg)";
-
 
   $('#shuffle_cards_btn').prop('disabled', true);
   $('#shuffle_cards_btn').fadeTo("slow", 0.4);
@@ -201,15 +201,6 @@ function fill_board_2(i, x2, y2) {
   });
 }
 
-
 function clear_real_board() {
   alert("! S U C C E S S !");
-}
-
-function fill_real_board_1() {
-  $('#fill_board_btn').attr('disabled', 'disabled');
-}
-
-function fill_real_board_2() {
-  $('#fill_board_btn').attr('disabled', 'disabled');
 }
