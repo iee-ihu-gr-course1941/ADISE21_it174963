@@ -50,6 +50,7 @@ function shuffle_deck() {
   $('#shuffled_deck').empty();
 
   $('#fill_board_btn').removeAttr('disabled');
+  $('#fill_board_btn').fadeTo("slow", 1);
 
   myDeck = shuffle(myDeck);
 

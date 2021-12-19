@@ -288,16 +288,14 @@ td{
   padding: 7px 10px 7px 10px;
   text-align: center;
   font-size: 1vw;
-  background-color: #323232;
+  background-color: #548bac;
   color: white;
+  opacity: 0.3;
   border-radius: 25px;
   margin:  15% 0 0 20%;
 }
 
-#fill_board_btn:hover {
-  background-color: #548bac;
-  transition: 1.5s;
-}
+
 
 
 /*----RULES BUTTON----*/
