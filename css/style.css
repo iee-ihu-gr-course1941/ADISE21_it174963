@@ -350,6 +350,13 @@ td{
 	text-align:center;
 }
 
+.suit_red{
+  width:100%;
+  display:block;
+  text-align:center;
+  color: red;
+}
+
 
 #div_card_picked{
 	width:150px;

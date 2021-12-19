@@ -67,11 +67,15 @@ function shuffle_deck() {
 
     if (myDeck[i].suit == 'Diamonds') {
       var ascii_char = '&diams;';
-    } else {
+      div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
+    } else if(myDeck[i].suit == "Hearts"){
       var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+      div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
+    }else{
+      var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+      div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
     }
 
-    div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
 
     var cell_1 = "#c1-" + (i+1);
     var cell_2 = "#c2-" + (i+1);
