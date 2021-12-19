@@ -201,6 +201,10 @@ function fill_board_2(i, x2, y2) {
   });
 }
 
+function fill_real_board_1() {}
+
+function fill_real_board_1() {}
+
 function clear_real_board() {
   alert("! S U C C E S S !");
 }
