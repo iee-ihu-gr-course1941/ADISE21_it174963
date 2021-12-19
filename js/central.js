@@ -44,6 +44,10 @@ function deck() {
 }
 
 var myDeck = new deck();
+var pos_1_x = 1;
+var pos_1_y = 1;
+var pos_2_x = 1;
+var pos_2_y = 1;
 
 function shuffle_deck() {
   $('#shuffle_card_img').fadeTo("slow", 0.40);
@@ -76,10 +80,26 @@ function shuffle_deck() {
       $(cell_2).html("");
       $(cell_1).append(div);
 
+      fill_board_1(i, pos_1_x, pos_1_y);
+
+      if (pos_1_y == 12) {
+        pos_1_x++;
+        pos_1_y = 0;
+      }
+      pos_1_y++;
+
     } else {
       $(cell_2).html("");
       $(cell_1).html("");
       $(cell_2).append(div);
+
+      fill_board_2(i, pos_2_x, pos_2_y);
+
+      if (pos_2_y == 12) {
+        pos_2_x++;
+        pos_2_y = 0;
+      }
+      pos_2_y++;
     }
 
 
@@ -104,32 +124,32 @@ function clear_board() {
 }
 
 
-var pos_1_x = 1;
-var pos_1_y = 1;
-var pos_2_x = 1;
-var pos_2_y = 1;
+// var pos_1_x = 1;
+// var pos_1_y = 1;
+// var pos_2_x = 1;
+// var pos_2_y = 1;
 
 function fill_board() {
-  for (i = 0; i <= 51; i++) {
-    if (i % 2 == 0) {
-      fill_board_1(i, pos_1_x, pos_1_y);
-
-      if (pos_1_y == 12) {
-        pos_1_x++;
-        pos_1_y = 0;
-      }
-      pos_1_y++;
-
-    } else {
-      fill_board_2(i, pos_2_x, pos_2_y);
-
-      if (pos_2_y == 12) {
-        pos_2_x++;
-        pos_2_y = 0;
-      }
-      pos_2_y++;
-    }
-  }
+  // for (i = 0; i <= 51; i++) {
+  //   if (i % 2 == 0) {
+  //     fill_board_1(i, pos_1_x, pos_1_y);
+  //
+  //     if (pos_1_y == 12) {
+  //       pos_1_x++;
+  //       pos_1_y = 0;
+  //     }
+  //     pos_1_y++;
+  //
+  //   } else {
+  //     fill_board_2(i, pos_2_x, pos_2_y);
+  //
+  //     if (pos_2_y == 12) {
+  //       pos_2_x++;
+  //       pos_2_y = 0;
+  //     }
+  //     pos_2_y++;
+  //   }
+  // }
 }
 
 
