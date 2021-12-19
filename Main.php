@@ -42,7 +42,7 @@
       <table id="player1_cards" border="1">
         <tbody>
           <tr>
-            <td id="c1-1" onclick="card_picked(1-1)">1-1 &nbsp;</td>
+            <td id="c1-1" onclick="card_picked('1-1')">1-1 &nbsp;</td>
             <td id="c1-2" onclick="card_picked(2)">1-2 &nbsp;</td>
             <td id="c1-3" onclick="card_picked(3)">1-3 &nbsp;</td>
             <td id="c1-4" onclick="card_picked(4)">1-4 &nbsp;</td>
