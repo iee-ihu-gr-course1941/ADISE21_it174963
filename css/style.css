@@ -344,6 +344,17 @@ td{
 	cursor:pointer;
 }
 
+.card_picked_ontop{
+	width:30px;
+	height:40px;
+	border:1px solid #151718;
+	float:left;
+  margin: 5px 0 5px 12.5px;
+	border-radius:2px;
+	font-family:courier;
+	cursor:pointer;
+}
+
 .number, .suit{
 	width:100%;
 	display:block;
