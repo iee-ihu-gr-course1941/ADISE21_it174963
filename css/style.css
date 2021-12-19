@@ -352,15 +352,20 @@ td{
 
 
 #div_card_picked{
-	width:30px;
-	height:40px;
+	width:150px;
+	height:220px;
 	border:1px solid #151718;
 	float:left;
-  margin: 5px 0 5px 12.5px;
-	border-radius:2px;
+  margin: 75px 0 5px 35px;
+	border-radius:10px;
 	font-family:courier;
 	cursor:pointer;
 }
+
+#div_card_picked span{
+  font-size: 5vw;
+}
+
 
 
 
