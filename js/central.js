@@ -50,11 +50,8 @@ var pos_2_x = 1;
 var pos_2_y = 1;
 
 function shuffle_deck() {
-  $('#shuffle_card_img').fadeTo("slow", 0.40);
-  $('#shuffled_deck').empty();
 
-  $('#fill_board_btn').removeAttr('disabled');
-  $('#fill_board_btn').fadeTo("slow", 1);
+  handle_shuffle_buttons();
 
   myDeck = shuffle(myDeck);
 
@@ -101,12 +98,14 @@ function shuffle_deck() {
       }
       pos_2_y++;
     }
-
-
-    // document.getElementById("shuffled_deck").appendChild(div);
-
   }
 
+}
+
+function handle_shuffle_buttons(){
+  $('#shuffle_card_img').fadeTo("slow", 0.4);
+  $('#shuffle_cards_btn').prop('disabled', true);
+  $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
 
 function shuffle(o) {
@@ -124,35 +123,7 @@ function clear_board() {
 }
 
 
-// var pos_1_x = 1;
-// var pos_1_y = 1;
-// var pos_2_x = 1;
-// var pos_2_y = 1;
-
-function fill_board() {
-  // for (i = 0; i <= 51; i++) {
-  //   if (i % 2 == 0) {
-  //     fill_board_1(i, pos_1_x, pos_1_y);
-  //
-  //     if (pos_1_y == 12) {
-  //       pos_1_x++;
-  //       pos_1_y = 0;
-  //     }
-  //     pos_1_y++;
-  //
-  //   } else {
-  //     fill_board_2(i, pos_2_x, pos_2_y);
-  //
-  //     if (pos_2_y == 12) {
-  //       pos_2_x++;
-  //       pos_2_y = 0;
-  //     }
-  //     pos_2_y++;
-  //   }
-  // }
-}
-
-
+//-------Fill board_1 of the MYSQL database with data---------------------------
 function fill_board_1(i, x1, y1) {
 
   var var_card = $('#div_card_' + i).find('span');
@@ -189,6 +160,7 @@ function fill_board_1(i, x1, y1) {
   });
 }
 
+//-------Fill board_2 of the MYSQL database with data---------------------------
 function fill_board_2(i, x2, y2) {
 
   var var_card = $('#div_card_' + i).find('span');

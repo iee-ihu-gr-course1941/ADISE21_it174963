@@ -29,8 +29,9 @@ td{
   width: 60px;
   height: 50px
 }
-
 /*----------------------------------------------------------------------------*/
+
+
 /*---------HEADER SECTION-----------------------------------------------------*/
 #h1 {
   font-size: 40px;
@@ -45,33 +46,26 @@ td{
   margin-bottom: 2.5%;
   box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.6);
 }
-
 /*----------------------------------------------------------------------------*/
+
+
 /*---------LOGIN SECTION------------------------------------------------------*/
 .LogIn {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   overflow: none;
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   background-color: rgb(0, 0, 0);
-  /* Fallback color */
   background-color: rgba(0, 0, 0, 0.6);
-  /* Black w/ opacity */
 }
 
 .LogIn_content {
   background-color: #fefefe;
   margin: 10% auto;
-  /* 15% from the top and centered */
   padding: 0;
   width: 450px;
   height: 400px;
@@ -143,8 +137,9 @@ td{
   opacity: 0.8;
   transition: 1.5s
 }
-
 /*----------------------------------------------------------------------------*/
+
+
 /*---------DIV SECTION------------------------------------------------------*/
 .Game_div {
   background-color: #f2f2f2;
@@ -221,8 +216,6 @@ td{
   width: 50%;
 }
 
-
-
 .Game_Details_div {
   background-color: #f2f2f2;
   margin: 1% 0 4% 1%;
@@ -251,8 +244,9 @@ td{
   height: 45%;
   width: 100%;
 }
-
 /*----------------------------------------------------------------------------*/
+
+
 /*---------RULES SECTION------------------------------------------------------*/
 #Rules_box {
   background-color: #fefefe;
@@ -264,11 +258,12 @@ td{
   height: 220px;
   box-shadow: 0 2px 10px 2px grey;
 }
-
 /*----------------------------------------------------------------------------*/
+
+
 /*---------BUTTONS SECTION----------------------------------------------------*/
 
-/*----SHUFFLE CARDS SECTION----*/
+/*----SHUFFLE CARDS AND FILL board_1 AND board_2 SECTION----*/
 #shuffle_cards_btn {
 	display: block;
   padding: 7px 10px 7px 10px;
@@ -286,19 +281,23 @@ td{
 }
 
 
-/*----FILL BOARDS SECTION----*/
-#fill_board_btn {
+/*----CLEAR BOARDS SECTION----*/
+#clear_board_btn {
 	display: block;
   padding: 7px 10px 7px 10px;
   text-align: center;
   font-size: 1vw;
-  background-color: #548bac;
+  background-color: #323232;
   color: white;
   opacity: 0.3;
   border-radius: 25px;
   margin:  15% 0 0 20%;
 }
 
+#clear_board_btn:hover {
+  background-color: #548bac;
+  transition: 1.5s;
+}
 
 
 
@@ -321,9 +320,7 @@ td{
 }
 
 /*-----------------SHUFFLE CARDS SECTION -------------------------------------*/
-.shuffled_deck{
-  border: 2px solid black;
-}
+
 
 .card{
 	width:30px;
