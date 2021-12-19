@@ -106,7 +106,7 @@ function handle_shuffle_buttons(){
 
 
   $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn();
-  document.getElementById("shuffle_card_img").style.transform = "rotate(" + 45 + "deg)";
+  document.getElementById("shuffle_card_img").style.transform = "rotate(" + 90 + "deg)";
 
 
   $('#shuffle_cards_btn').prop('disabled', true);
