@@ -4,6 +4,10 @@ function login_to_game() {
   $('.Player1_name').text($('#username').val());
 }
 
+//-----------------BOARD/TABLE SECTION------------------------------------------
+$('.card').click(function(){
+  alert ("clicked" ) ;
+});
 
 
 //-----------------RULES SECTION------------------------------------------------
