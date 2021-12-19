@@ -219,6 +219,7 @@ function clear_real_board() {
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
 function card_picked(x){
+  $('.Card_OnTop_div').empty();
   div = document.createElement('div');
   div.className = 'card';
   div.id = 'card_found';

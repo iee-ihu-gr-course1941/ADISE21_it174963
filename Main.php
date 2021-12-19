@@ -43,65 +43,65 @@
         <tbody>
           <tr>
             <td id="c1-1" onclick="card_picked(1)">1-1 &nbsp;</td>
-            <td id="c1-2" onclick="card_picked()">1-2 &nbsp;</td>
-            <td id="c1-3" onclick="card_picked()">1-3 &nbsp;</td>
-            <td id="c1-4" onclick="card_picked()">1-4 &nbsp;</td>
-            <td id="c1-5" onclick="card_picked()">1-5 &nbsp;</td>
-            <td id="c1-6" onclick="card_picked()">1-6 &nbsp;</td>
-            <td id="c1-7" onclick="card_picked()">1-7 &nbsp;</td>
-            <td id="c1-8" onclick="card_picked()">1-8 &nbsp;</td>
-            <td id="c1-9" onclick="card_picked()">1-9 &nbsp;</td>
-            <td id="c1-10" onclick="card_picked()">1-10 &nbsp;</td>
-            <td id="c1-11" onclick="card_picked()">1-11 &nbsp;</td>
-            <td id="c1-12" onclick="card_picked()">1-12 &nbsp;</td>
+            <td id="c1-2" onclick="card_picked(2)">1-2 &nbsp;</td>
+            <td id="c1-3" onclick="card_picked(3)">1-3 &nbsp;</td>
+            <td id="c1-4" onclick="card_picked(4)">1-4 &nbsp;</td>
+            <td id="c1-5" onclick="card_picked(5)">1-5 &nbsp;</td>
+            <td id="c1-6" onclick="card_picked(6)">1-6 &nbsp;</td>
+            <td id="c1-7" onclick="card_picked(7)">1-7 &nbsp;</td>
+            <td id="c1-8" onclick="card_picked(8)">1-8 &nbsp;</td>
+            <td id="c1-9" onclick="card_picked(9)">1-9 &nbsp;</td>
+            <td id="c1-10" onclick="card_picked(10)">1-10 &nbsp;</td>
+            <td id="c1-11" onclick="card_picked(11)">1-11 &nbsp;</td>
+            <td id="c1-12" onclick="card_picked(12)">1-12 &nbsp;</td>
           </tr>
           <tr>
-            <td id="c1-13" onclick="card_picked()">2-1 &nbsp;</td>
-            <td id="c1-14" onclick="card_picked()">2-2 &nbsp;</td>
-            <td id="c1-15" onclick="card_picked()">2-3 &nbsp;</td>
-            <td id="c1-16" onclick="card_picked()">2-4 &nbsp;</td>
-            <td id="c1-17" onclick="card_picked()">2-5 &nbsp;</td>
-            <td id="c1-18" onclick="card_picked()">2-6 &nbsp;</td>
-            <td id="c1-19" onclick="card_picked()">2-7 &nbsp;</td>
-            <td id="c1-20" onclick="card_picked()">2-8 &nbsp;</td>
-            <td id="c1-21" onclick="card_picked()">2-9 &nbsp;</td>
-            <td id="c1-22" onclick="card_picked()">2-10 &nbsp;</td>
-            <td id="c1-23" onclick="card_picked()">2-11 &nbsp;</td>
-            <td id="c1-24" onclick="card_picked()">2-12 &nbsp;</td>
+            <td id="c1-13" onclick="card_picked(13)">2-1 &nbsp;</td>
+            <td id="c1-14" onclick="card_picked(14)">2-2 &nbsp;</td>
+            <td id="c1-15" onclick="card_picked(15)">2-3 &nbsp;</td>
+            <td id="c1-16" onclick="card_picked(16)">2-4 &nbsp;</td>
+            <td id="c1-17" onclick="card_picked(17)">2-5 &nbsp;</td>
+            <td id="c1-18" onclick="card_picked(18)">2-6 &nbsp;</td>
+            <td id="c1-19" onclick="card_picked(19)">2-7 &nbsp;</td>
+            <td id="c1-20" onclick="card_picked(20)">2-8 &nbsp;</td>
+            <td id="c1-21" onclick="card_picked(21)">2-9 &nbsp;</td>
+            <td id="c1-22" onclick="card_picked(22)">2-10 &nbsp;</td>
+            <td id="c1-23" onclick="card_picked(23)">2-11 &nbsp;</td>
+            <td id="c1-24" onclick="card_picked(24)">2-12 &nbsp;</td>
           </tr>
           <tr>
-            <td id="c1-25" onclick="card_picked()">3-1 &nbsp;</td>
-            <td id="c1-26" onclick="card_picked()">3-2 &nbsp;</td>
-            <td id="c1-27" onclick="card_picked()">3-3 &nbsp;</td>
-            <td id="c1-28" onclick="card_picked()">3-4 &nbsp;</td>
-            <td id="c1-29" onclick="card_picked()">3-5 &nbsp;</td>
-            <td id="c1-30" onclick="card_picked()">3-6 &nbsp;</td>
-            <td id="c1-31" onclick="card_picked()">3-7 &nbsp;</td>
-            <td id="c1-32" onclick="card_picked()">3-8 &nbsp;</td>
-            <td id="c1-33" onclick="card_picked()">3-9 &nbsp;</td>
-            <td id="c1-34" onclick="card_picked()">3-10 &nbsp;</td>
-            <td id="c1-35" onclick="card_picked()">3-11 &nbsp;</td>
-            <td id="c1-36" onclick="card_picked()">3-12 &nbsp;</td>
+            <td id="c1-25" onclick="card_picked(25)">3-1 &nbsp;</td>
+            <td id="c1-26" onclick="card_picked(26)">3-2 &nbsp;</td>
+            <td id="c1-27" onclick="card_picked(27)">3-3 &nbsp;</td>
+            <td id="c1-28" onclick="card_picked(28)">3-4 &nbsp;</td>
+            <td id="c1-29" onclick="card_picked(29)">3-5 &nbsp;</td>
+            <td id="c1-30" onclick="card_picked(30)">3-6 &nbsp;</td>
+            <td id="c1-31" onclick="card_picked(31)">3-7 &nbsp;</td>
+            <td id="c1-32" onclick="card_picked(32)">3-8 &nbsp;</td>
+            <td id="c1-33" onclick="card_picked(33)">3-9 &nbsp;</td>
+            <td id="c1-34" onclick="card_picked(34)">3-10 &nbsp;</td>
+            <td id="c1-35" onclick="card_picked(35)">3-11 &nbsp;</td>
+            <td id="c1-36" onclick="card_picked(36)">3-12 &nbsp;</td>
           </tr>
           <tr>
-            <td id="c1-37" onclick="card_picked()">4-1 &nbsp;</td>
-            <td id="c1-38" onclick="card_picked()">4-2 &nbsp;</td>
-            <td id="c1-39" onclick="card_picked()">4-3 &nbsp;</td>
-            <td id="c1-40" onclick="card_picked()">4-4 &nbsp;</td>
-            <td id="c1-41" onclick="card_picked()">4-5 &nbsp;</td>
-            <td id="c1-42" onclick="card_picked()">4-6 &nbsp;</td>
-            <td id="c1-43" onclick="card_picked()">4-7 &nbsp;</td>
-            <td id="c1-44" onclick="card_picked()">4-8 &nbsp;</td>
-            <td id="c1-45" onclick="card_picked()">4-9 &nbsp;</td>
-            <td id="c1-46" onclick="card_picked()">4-10 &nbsp;</td>
-            <td id="c1-47" onclick="card_picked()">4-11 &nbsp;</td>
-            <td id="c1-48" onclick="card_picked()">4-12 &nbsp;</td>
+            <td id="c1-37" onclick="card_picked(37)">4-1 &nbsp;</td>
+            <td id="c1-38" onclick="card_picked(38)">4-2 &nbsp;</td>
+            <td id="c1-39" onclick="card_picked(39)">4-3 &nbsp;</td>
+            <td id="c1-40" onclick="card_picked(40)">4-4 &nbsp;</td>
+            <td id="c1-41" onclick="card_picked(41)">4-5 &nbsp;</td>
+            <td id="c1-42" onclick="card_picked(42)">4-6 &nbsp;</td>
+            <td id="c1-43" onclick="card_picked(43)">4-7 &nbsp;</td>
+            <td id="c1-44" onclick="card_picked(44)">4-8 &nbsp;</td>
+            <td id="c1-45" onclick="card_picked(45)">4-9 &nbsp;</td>
+            <td id="c1-46" onclick="card_picked(46)">4-10 &nbsp;</td>
+            <td id="c1-47" onclick="card_picked(47)">4-11 &nbsp;</td>
+            <td id="c1-48" onclick="card_picked(48)">4-12 &nbsp;</td>
           </tr>
           <tr>
-            <td id="c1-49" onclick="card_picked()">5-1 &nbsp;</td>
-            <td id="c1-50" onclick="card_picked()">5-2 &nbsp;</td>
-            <td id="c1-51" onclick="card_picked()">5-3 &nbsp;</td>
-            <td id="c1-52" onclick="card_picked()">5-4 &nbsp;</td>
+            <td id="c1-49" onclick="card_picked(49)">5-1 &nbsp;</td>
+            <td id="c1-50" onclick="card_picked(50)">5-2 &nbsp;</td>
+            <td id="c1-51" onclick="card_picked(51)">5-3 &nbsp;</td>
+            <td id="c1-52" onclick="card_picked(52)">5-4 &nbsp;</td>
           </tr>
         </tbody>
       </table>
