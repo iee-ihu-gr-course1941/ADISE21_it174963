@@ -241,13 +241,13 @@ function card_picked(cp){
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
-  // if(cs == ♥){
-  //   div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
-  // }else if(cs == ♦){
-  //   div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
-  // }else{
+  if(cs == '&diams;'){
+    div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
+  }else if(cs == '&hearts;'){
+    div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
+  }else{
     div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
-  // }
+  }
 
   $('.Card_OnTop_div').append(div);
 
