@@ -68,14 +68,17 @@ function shuffle_deck() {
 
     div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
 
+    var cell_1 = "#c1-" + (i+1);
+    var cell_2 = "#c2-" + (i+1);
+
     if (i % 2 == 0) {
-      var cell_1 = "#c1-" + (i+1);
       $(cell_1).html("");
+      $(cell_2).html("");
       $(cell_1).append(div);
 
     } else {
-      var cell_2 = "#c2-" + (i+1);
       $(cell_2).html("");
+      $(cell_1).html("");
       $(cell_2).append(div);
     }
 
