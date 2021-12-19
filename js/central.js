@@ -110,7 +110,7 @@ function handle_shuffle_buttons(){
 
   $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn()
 
-  $('#shuffle_card_img').fadeTo("slow", 0.5);
+  // $('#shuffle_card_img').fadeTo("slow", 0.5);
   $('#shuffle_cards_btn').prop('disabled', true);
   $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
