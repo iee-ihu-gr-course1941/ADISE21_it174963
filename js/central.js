@@ -223,7 +223,7 @@ function card_picked(x){
   div.className = 'card';
   div.id = 'card_found';
 
-  var var_card_picked = x.find('span');
+  var var_card_picked = $('#div_card_' + x).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
