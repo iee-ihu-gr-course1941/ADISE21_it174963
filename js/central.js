@@ -223,7 +223,7 @@ function clear_real_board() {
 function card_picked(cp){
   $('.Card_OnTop_div').empty();
   div = document.createElement('div');
-  div.className = 'card_picked_ontop';
+  div.className = 'card';
   div.id = 'div_card_picked_' + cp;
 
   var cp_splited =cp.split("-");
@@ -237,7 +237,7 @@ function card_picked(cp){
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
-  div.innerHTML = '<span class="card_picked_number">' + cn + '</span><span class="card_picked_suit">' + cs + '</span>';
+  div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
   $('.Card_OnTop_div').append(div);
 
 }
