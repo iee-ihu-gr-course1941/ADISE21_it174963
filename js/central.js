@@ -241,7 +241,7 @@ function card_picked(cp){
   var cs = var_card_picked[1].innerHTML;
   alert(cn , cs);
 
-  if(var_card_picked.attr('class') == "&suit_red"){
+  if(var_card_picked[1].attr('class') == "&suit_red"){
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
   }else{
     div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
