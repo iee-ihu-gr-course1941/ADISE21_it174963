@@ -63,7 +63,6 @@ function shuffle_deck() {
 
     div = document.createElement('div');
     div.className = 'card';
-    // div.id = 'div_card_' + i;
 
     if (myDeck[i].suit == 'Diamonds') {
       var ascii_char = '&diams;';
@@ -242,9 +241,7 @@ function card_picked(cp){
   var cs = var_card_picked[1].innerHTML;
   alert(cn , cs);
 
-  if(cs == '&diams;'){
-    div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
-  }else if(cs == '&hearts;'){
+  if(cs.attr('class') == "&suit_red"){
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
   }else{
     div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
