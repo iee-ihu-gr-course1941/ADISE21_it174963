@@ -218,6 +218,6 @@ function clear_real_board() {
 
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
-$('.card').click(function(){
+$('#player1_cards td').click(function(){
   alert ("clicked" ) ;
 });
