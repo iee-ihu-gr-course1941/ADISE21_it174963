@@ -63,7 +63,7 @@ function shuffle_deck() {
 
     div = document.createElement('div');
     div.className = 'card';
-    div.id = 'div_card_' + i;
+    // div.id = 'div_card_' + i;
 
     if (myDeck[i].suit == 'Diamonds') {
       var ascii_char = '&diams;';
@@ -79,6 +79,7 @@ function shuffle_deck() {
     if (i % 2 == 0) {
       $(cell_1).html("");
       $(cell_2).html("");
+      div.id = 'div_card_1_' + i;
       $(cell_1).append(div);
 
       fill_board_1(i, pos_1_x, pos_1_y);
@@ -92,6 +93,7 @@ function shuffle_deck() {
     } else {
       $(cell_2).html("");
       $(cell_1).html("");
+      div.id = 'div_card_2_' + i;
       $(cell_2).append(div);
 
       fill_board_2(i, pos_2_x, pos_2_y);
@@ -134,7 +136,7 @@ function clear_board() {
 //-------Fill board_1 of the MYSQL database with data---------------------------
 function fill_board_1(i, x1, y1) {
 
-  var var_card = $('#div_card_' + i).find('span');
+  var var_card = $('#div_card_1_' + i).find('span');
   var cn = var_card[0].innerHTML;
   var cs = var_card[1].innerHTML;
 
@@ -173,7 +175,7 @@ function fill_board_1(i, x1, y1) {
 //-------Fill board_2 of the MYSQL database with data---------------------------
 function fill_board_2(i, x2, y2) {
 
-  var var_card = $('#div_card_' + i).find('span');
+  var var_card = $('#div_card_2_' + i).find('span');
   var cn = var_card[0].innerHTML;
   var cs = var_card[1].innerHTML;
 
@@ -224,7 +226,9 @@ function card_picked(x){
   div.className = 'card';
   div.id = 'card_found';
 
-  var var_card_picked = $( '#div_card_' + (x-1) ).find('span');
+  var y = x.split("-");
+
+  var var_card_picked = $( '#div_card_' + (y[1]-1) ).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
