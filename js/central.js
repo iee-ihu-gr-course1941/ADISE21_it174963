@@ -240,6 +240,7 @@ function card_picked(cp){
   var var_card_picked = $( cp_num + cp_splited[1] ).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
+  alert(cn , cs);
 
   if(cs == '&diams;'){
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
