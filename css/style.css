@@ -350,11 +350,11 @@ td{
 	text-align:center;
 }
 
-.suit_red{
+.number_red, .suit_red{
   width:100%;
   display:block;
   text-align:center;
-  color: red;
+  color: #bb0000;
 }
 
 
