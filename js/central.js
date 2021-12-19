@@ -227,8 +227,11 @@ function card_picked(x){
   div.id = 'card_found';
 
   var y = x.split("-");
+  if(y[0] == 1){
+    var w = '#div_card_1_';
+  }
 
-  var var_card_picked = $( '#div_card_' + (y[1]-1) ).find('span');
+  var var_card_picked = $( w + (y[1]-1) ).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
