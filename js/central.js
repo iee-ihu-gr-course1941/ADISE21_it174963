@@ -103,14 +103,11 @@ function shuffle_deck() {
 }
 
 function handle_shuffle_buttons(){
-  // $('#shuffle_card_img').attr("src", "extras/shuffled_card.png");
-  // $('#shuffle_card_img').animate({
-  //   opacity: '0.5'
-  // },5000);
 
-  $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn()
 
-  // $('#shuffle_card_img').fadeTo("slow", 0.5);
+  $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn();
+  $("#shuffle_card_img").rotate( -1500, { duration: 1500,easing: 'easeOutExpo' } );
+
   $('#shuffle_cards_btn').prop('disabled', true);
   $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
