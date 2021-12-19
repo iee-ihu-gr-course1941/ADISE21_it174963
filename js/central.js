@@ -242,7 +242,7 @@ function card_picked(cp){
 
   var spanClass = $( cp_num + cp_splited[1] ).find('span').attr('class');
 
-  if(spanClass == "suit_red"){
+  if(spanClass == "number_red"){
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
   }else{
     div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
