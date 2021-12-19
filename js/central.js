@@ -220,18 +220,20 @@ function clear_real_board() {
 
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
-function card_picked(x){
+function card_picked(cp){
   $('.Card_OnTop_div').empty();
   div = document.createElement('div');
   div.className = 'card';
   div.id = 'card_found';
 
-  var y = x.split("-");
-  if(y[0] == 1){
-    var w = '#div_card_1_';
+  var cp_splited =cp.split("-");
+  if(cp_splited[0] == 1){
+    var cp_num = '#div_card_1_';
+  }else{
+    var cp_num = '#div_card_2_';
   }
 
-  var var_card_picked = $( w + (y[1]-1) ).find('span');
+  var var_card_picked = $( cp_num + cp_splited[1] ).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
