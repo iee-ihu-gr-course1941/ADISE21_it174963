@@ -42,66 +42,66 @@
       <table id="player1_cards" border="1">
         <tbody>
           <tr>
-            <td>1-1 &nbsp;</td>
-            <td>1-2 &nbsp;</td>
-            <td>1-3 &nbsp;</td>
-            <td>1-4 &nbsp;</td>
-            <td>1-5 &nbsp;</td>
-            <td>1-6 &nbsp;</td>
-            <td>1-7 &nbsp;</td>
-            <td>1-8 &nbsp;</td>
-            <td>1-9 &nbsp;</td>
-            <td>1-10 &nbsp;</td>
-            <td>1-11 &nbsp;</td>
-            <td>1-12 &nbsp;</td>
+            <td id="c1-1">1-1 &nbsp;</td>
+            <td id="c1-2">1-2 &nbsp;</td>
+            <td id="c1-3">1-3 &nbsp;</td>
+            <td id="c1-4">1-4 &nbsp;</td>
+            <td id="c1-5">1-5 &nbsp;</td>
+            <td id="c1-6">1-6 &nbsp;</td>
+            <td id="c1-7">1-7 &nbsp;</td>
+            <td id="c1-8">1-8 &nbsp;</td>
+            <td id="c1-9">1-9 &nbsp;</td>
+            <td id="c1-10">1-10 &nbsp;</td>
+            <td id="c1-11">1-11 &nbsp;</td>
+            <td id="c1-12">1-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>2-1 &nbsp;</td>
-            <td>2-2 &nbsp;</td>
-            <td>2-3 &nbsp;</td>
-            <td>2-4 &nbsp;</td>
-            <td>2-5 &nbsp;</td>
-            <td>2-6 &nbsp;</td>
-            <td>2-7 &nbsp;</td>
-            <td>2-8 &nbsp;</td>
-            <td>2-9 &nbsp;</td>
-            <td>2-10 &nbsp;</td>
-            <td>2-11 &nbsp;</td>
-            <td>2-12 &nbsp;</td>
+            <td id="c1-13">2-1 &nbsp;</td>
+            <td id="c1-14">2-2 &nbsp;</td>
+            <td id="c1-15">2-3 &nbsp;</td>
+            <td id="c1-16">2-4 &nbsp;</td>
+            <td id="c1-17">2-5 &nbsp;</td>
+            <td id="c1-18">2-6 &nbsp;</td>
+            <td id="c1-19">2-7 &nbsp;</td>
+            <td id="c1-20">2-8 &nbsp;</td>
+            <td id="c1-21">2-9 &nbsp;</td>
+            <td id="c1-22">2-10 &nbsp;</td>
+            <td id="c1-23">2-11 &nbsp;</td>
+            <td id="c1-24">2-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>3-1 &nbsp;</td>
-            <td>3-2 &nbsp;</td>
-            <td>3-3 &nbsp;</td>
-            <td>3-4 &nbsp;</td>
-            <td>3-5 &nbsp;</td>
-            <td>3-6 &nbsp;</td>
-            <td>3-7 &nbsp;</td>
-            <td>3-8 &nbsp;</td>
-            <td>3-9 &nbsp;</td>
-            <td>3-10 &nbsp;</td>
-            <td>3-11 &nbsp;</td>
-            <td>3-12 &nbsp;</td>
+            <td id="c1-25">3-1 &nbsp;</td>
+            <td id="c1-26">3-2 &nbsp;</td>
+            <td id="c1-27">3-3 &nbsp;</td>
+            <td id="c1-28">3-4 &nbsp;</td>
+            <td id="c1-29">3-5 &nbsp;</td>
+            <td id="c1-30">3-6 &nbsp;</td>
+            <td id="c1-31">3-7 &nbsp;</td>
+            <td id="c1-32">3-8 &nbsp;</td>
+            <td id="c1-33">3-9 &nbsp;</td>
+            <td id="c1-34">3-10 &nbsp;</td>
+            <td id="c1-35">3-11 &nbsp;</td>
+            <td id="c1-36">3-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>4-1 &nbsp;</td>
-            <td>4-2 &nbsp;</td>
-            <td>4-3 &nbsp;</td>
-            <td>4-4 &nbsp;</td>
-            <td>4-5 &nbsp;</td>
-            <td>4-6 &nbsp;</td>
-            <td>4-7 &nbsp;</td>
-            <td>4-8 &nbsp;</td>
-            <td>4-9 &nbsp;</td>
-            <td>4-10 &nbsp;</td>
-            <td>4-11 &nbsp;</td>
-            <td>4-12 &nbsp;</td>
+            <td id="c1-37">4-1 &nbsp;</td>
+            <td id="c1-38">4-2 &nbsp;</td>
+            <td id="c1-39">4-3 &nbsp;</td>
+            <td id="c1-40">4-4 &nbsp;</td>
+            <td id="c1-41">4-5 &nbsp;</td>
+            <td id="c1-42">4-6 &nbsp;</td>
+            <td id="c1-43">4-7 &nbsp;</td>
+            <td id="c1-44">4-8 &nbsp;</td>
+            <td id="c1-45">4-9 &nbsp;</td>
+            <td id="c1-46">4-10 &nbsp;</td>
+            <td id="c1-47">4-11 &nbsp;</td>
+            <td id="c1-48">4-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>5-1 &nbsp;</td>
-            <td>5-2 &nbsp;</td>
-            <td>5-3 &nbsp;</td>
-            <td>5-4 &nbsp;</td>
+            <td id="c1-49">5-1 &nbsp;</td>
+            <td id="c1-50">5-2 &nbsp;</td>
+            <td id="c1-51">5-3 &nbsp;</td>
+            <td id="c1-52">5-4 &nbsp;</td>
           </tr>
         </tbody>
       </table>
@@ -114,66 +114,66 @@
       <table id="player2_cards" border="1">
         <tbody>
           <tr>
-            <td>1-1 &nbsp;</td>
-            <td>1-2 &nbsp;</td>
-            <td>1-3 &nbsp;</td>
-            <td>1-4 &nbsp;</td>
-            <td>1-5 &nbsp;</td>
-            <td>1-6 &nbsp;</td>
-            <td>1-7 &nbsp;</td>
-            <td>1-8 &nbsp;</td>
-            <td>1-9 &nbsp;</td>
-            <td>1-10 &nbsp;</td>
-            <td>1-11 &nbsp;</td>
-            <td>1-12 &nbsp;</td>
+            <td id="c2-1">1-1 &nbsp;</td>
+            <td id="c2-2">1-2 &nbsp;</td>
+            <td id="c2-3">1-3 &nbsp;</td>
+            <td id="c2-4">1-4 &nbsp;</td>
+            <td id="c2-5">1-5 &nbsp;</td>
+            <td id="c2-6">1-6 &nbsp;</td>
+            <td id="c2-7">1-7 &nbsp;</td>
+            <td id="c2-8">1-8 &nbsp;</td>
+            <td id="c2-9">1-9 &nbsp;</td>
+            <td id="c2-10">1-10 &nbsp;</td>
+            <td id="c2-11">1-11 &nbsp;</td>
+            <td id="c2-12">1-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>2-1 &nbsp;</td>
-            <td>2-2 &nbsp;</td>
-            <td>2-3 &nbsp;</td>
-            <td>2-4 &nbsp;</td>
-            <td>2-5 &nbsp;</td>
-            <td>2-6 &nbsp;</td>
-            <td>2-7 &nbsp;</td>
-            <td>2-8 &nbsp;</td>
-            <td>2-9 &nbsp;</td>
-            <td>2-10 &nbsp;</td>
-            <td>2-11 &nbsp;</td>
-            <td>2-12 &nbsp;</td>
+            <td id="c2-13">2-1 &nbsp;</td>
+            <td id="c2-14">2-2 &nbsp;</td>
+            <td id="c2-15">2-3 &nbsp;</td>
+            <td id="c2-16">2-4 &nbsp;</td>
+            <td id="c2-17">2-5 &nbsp;</td>
+            <td id="c2-18">2-6 &nbsp;</td>
+            <td id="c2-19">2-7 &nbsp;</td>
+            <td id="c2-20">2-8 &nbsp;</td>
+            <td id="c2-21">2-9 &nbsp;</td>
+            <td id="c2-22">2-10 &nbsp;</td>
+            <td id="c2-23">2-11 &nbsp;</td>
+            <td id="c2-24">2-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>3-1 &nbsp;</td>
-            <td>3-2 &nbsp;</td>
-            <td>3-3 &nbsp;</td>
-            <td>3-4 &nbsp;</td>
-            <td>3-5 &nbsp;</td>
-            <td>3-6 &nbsp;</td>
-            <td>3-7 &nbsp;</td>
-            <td>3-8 &nbsp;</td>
-            <td>3-9 &nbsp;</td>
-            <td>3-10 &nbsp;</td>
-            <td>3-11 &nbsp;</td>
-            <td>3-12 &nbsp;</td>
+            <td id="c2-25">3-1 &nbsp;</td>
+            <td id="c2-26">3-2 &nbsp;</td>
+            <td id="c2-27">3-3 &nbsp;</td>
+            <td id="c2-28">3-4 &nbsp;</td>
+            <td id="c2-29">3-5 &nbsp;</td>
+            <td id="c2-30">3-6 &nbsp;</td>
+            <td id="c2-31">3-7 &nbsp;</td>
+            <td id="c2-32">3-8 &nbsp;</td>
+            <td id="c2-33">3-9 &nbsp;</td>
+            <td id="c2-34">3-10 &nbsp;</td>
+            <td id="c2-35">3-11 &nbsp;</td>
+            <td id="c2-36">3-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>4-1 &nbsp;</td>
-            <td>4-2 &nbsp;</td>
-            <td>4-3 &nbsp;</td>
-            <td>4-4 &nbsp;</td>
-            <td>4-5 &nbsp;</td>
-            <td>4-6 &nbsp;</td>
-            <td>4-7 &nbsp;</td>
-            <td>4-8 &nbsp;</td>
-            <td>4-9 &nbsp;</td>
-            <td>4-10 &nbsp;</td>
-            <td>4-11 &nbsp;</td>
-            <td>4-12 &nbsp;</td>
+            <td id="c2-37">4-1 &nbsp;</td>
+            <td id="c2-38">4-2 &nbsp;</td>
+            <td id="c2-39">4-3 &nbsp;</td>
+            <td id="c2-40">4-4 &nbsp;</td>
+            <td id="c2-41">4-5 &nbsp;</td>
+            <td id="c2-42">4-6 &nbsp;</td>
+            <td id="c2-43">4-7 &nbsp;</td>
+            <td id="c2-44">4-8 &nbsp;</td>
+            <td id="c2-45">4-9 &nbsp;</td>
+            <td id="c2-46">4-10 &nbsp;</td>
+            <td id="c2-47">4-11 &nbsp;</td>
+            <td id="c2-48">4-12 &nbsp;</td>
           </tr>
           <tr>
-            <td>5-1 &nbsp;</td>
-            <td>5-2 &nbsp;</td>
-            <td>5-3 &nbsp;</td>
-            <td>5-4 &nbsp;</td>
+            <td id="c2-49">5-1 &nbsp;</td>
+            <td id="c2-50">5-2 &nbsp;</td>
+            <td id="c2-51">5-3 &nbsp;</td>
+            <td id="c2-52">5-4 &nbsp;</td>
           </tr>
         </tbody>
       </table>

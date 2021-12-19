@@ -67,7 +67,20 @@ function shuffle_deck() {
     }
 
     div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
-    document.getElementById("shuffled_deck").appendChild(div);
+
+    if (i % 2 == 0) {
+      var cell_1 = "#c1-" + (i+1);
+      $(cell_1).html("");
+      $(cell_1).append(div);
+
+    } else {
+      var cell_2 = "#c2-" + (i+1);
+      $(cell_2).html("");
+      $(cell_2).append(div);
+    }
+
+
+    // document.getElementById("shuffled_deck").appendChild(div);
 
   }
 
