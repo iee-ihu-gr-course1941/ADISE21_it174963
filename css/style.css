@@ -355,6 +355,13 @@ td{
 	cursor:pointer;
 }
 
+
+.card_picked_number, .card_picked_suit{
+	width:100%;
+	display:block;
+	text-align:center;
+}
+
 .number, .suit{
 	width:100%;
 	display:block;
