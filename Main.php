@@ -28,10 +28,13 @@
       <label for="name"><b>Name</b></label>
       <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name" name="username" required=""><br><br>
 
-      <select>
-        <option value="1">Player - 1</option>
-        <option value="2">Player - 2</option>
-      </select>
+      <div id="LogIn_select_player">
+        <select>
+          <option value="1">Player - 1</option>
+          <option value="2">Player - 2</option>
+        </select>
+      </div>
+
 
       <button id="LogIn-btn" class="btn" onclick="login_to_game()">E N T E R</button>
     </div>
