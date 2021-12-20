@@ -1,4 +1,6 @@
 //-----------------LOGIN SECTION------------------------------------------------
+var me={token:null};
+
 function login_to_game() {
   $('#formModal').hide();
   $('.Player1_name').text($('#username').val());
@@ -12,6 +14,7 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
+    headers: {"X-Token": me.token},
     data: data,
     success: login_result
   });
@@ -147,6 +150,7 @@ function clear_board() {
   $.ajax({
     url: "methods.php/cards_clear/",
     method: 'POST',
+    headers: {"X-Token": me.token},
     success: clear_real_board
   });
 }
@@ -185,6 +189,7 @@ function fill_board_1(i, x1, y1) {
   $.ajax({
     url: "methods.php/cards_1/",
     method: 'POST',
+    headers: {"X-Token": me.token},
     data: data,
     success: fill_real_board_1
   });
@@ -224,6 +229,7 @@ function fill_board_2(i, x2, y2) {
   $.ajax({
     url: "methods.php/cards_2/",
     method: 'POST',
+    headers: {"X-Token": me.token},
     data: data,
     success: fill_real_board_2
   });
