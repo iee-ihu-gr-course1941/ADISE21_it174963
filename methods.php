@@ -26,12 +26,19 @@ switch ($r=array_shift($request)) {
 function log_user($method, $request, $data, $conn){
   $user = $data->username;
   echo ($user);
+
   if(!isset($user) || $user == '') {
 		header("HTTP/1.1 400 Bad Request");
 		print json_encode(['errormesg'=>"No username given."]);
 		exit;
 	}
 
+  $sql = "UPDATE `players` SET `username`='$user',`token`=0000,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`=1 );" ;
+    if (mysqli_query($conn, $sql)) {
+      echo "Record of user updated successfully ";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 
 }
 
