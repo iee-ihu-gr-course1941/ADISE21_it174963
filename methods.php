@@ -8,11 +8,12 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-if(isset($_SERVER['HTTP_X_TOKEN'])) {
-    $data['token']=$_SERVER['HTTP_X_TOKEN'];
-} else {
-    $data['token']='';
-}
+echo "$_SERVER['HTTP_X_TOKEN']";
+// if(isset($_SERVER['HTTP_X_TOKEN'])) {
+//     $data['token']=$_SERVER['HTTP_X_TOKEN'];
+// } else {
+//     $data['token']='';
+// }
 
 
 switch ($r=array_shift($request)) {
