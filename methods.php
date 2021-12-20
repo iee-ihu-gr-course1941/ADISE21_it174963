@@ -7,14 +7,12 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
-  $w = $_SERVER['X_TOKEN'];
-echo "$w";
 
-// if(isset($_SERVER['HTTP_X_TOKEN'])) {
-//     $data['token']=$_SERVER['HTTP_X_TOKEN'];
-// } else {
-//     $data['token']='';
-// }
+if(isset($_SERVER['HTTP_X_AUTHORIZATION'])) {
+    $input['token']=$_SERVER['HTTP_X_AUTHORIZATION'];
+} else {
+    $input['token']='';
+}
 
 
 switch ($r=array_shift($request)) {
@@ -58,19 +56,6 @@ function log_user($method, $request, $data, $conn){
   }else{
     echo "<br>" . "- There is not an available seat for player ";
   }
-
-
-
-
-
-  //
-  // $sql2 = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
-  //   if (mysqli_query($conn, $sql2)) {
-  //     echo "<br>" . "- Record of user updated successfully ";
-  //   } else {
-  //     echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
-  //   }
-
 }
 
 
