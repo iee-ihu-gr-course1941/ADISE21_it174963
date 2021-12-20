@@ -8,6 +8,12 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
+if(isset($_SERVER['HTTP_X_TOKEN'])) {
+    $data['token']=$_SERVER['HTTP_X_TOKEN'];
+} else {
+    $data['token']='';
+}
+
 
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
@@ -21,6 +27,7 @@ switch ($r=array_shift($request)) {
   default:  header("HTTP/1.1 404 Not Found");
             exit;
 }
+
 
 //---------LOG USER INTO players BOARD SECTION----------------------------------
 function log_user($method, $request, $data, $conn){
