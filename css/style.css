@@ -107,27 +107,13 @@ td{
 .LogIn_content input[type=text] {
   width: 90%;
   padding: 15px;
-  margin: 2px 0 22px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #e3e3e3;
-}
-
-.LogIn_content #pcolor {
-  width: 90%;
-  padding: 15px;
-  margin: 2px 0 40px 20px;
+  margin: 2px 0 10px 20px;
   border: none;
   border-radius: 5px;
   background-color: #e3e3e3;
 }
 
 .LogIn_content input[type=text]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-.LogIn_content #pcolor:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -151,7 +137,13 @@ td{
 }
 
 .LogIn_content div {
-  margin: 0 0 15px 180px;
+  margin: 0 0 25px 180px;
+}
+
+.LogIn_content div select{
+  border-radius: 5px;
+  background-color: #e3e3e3;
+  color: #878787 ;
 }
 
 /*----------------------------------------------------------------------------*/
