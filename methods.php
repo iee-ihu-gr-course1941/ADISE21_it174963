@@ -38,7 +38,7 @@ function log_user($method, $request, $data, $conn){
   $result = mysqli_query($conn, $sql1);
   if ($result) {
     // echo "<br>" . "- Good job ";
-    echo $result;
+    echo "$result";
   } else {
     echo "<br>" . "- Error: " . $sql1 . "<br>" . mysqli_error($conn);
   }
