@@ -1,5 +1,5 @@
 //-----------------LOGIN SECTION------------------------------------------------
-var me={token:1};
+var me={token:null};
 
 function login_to_game() {
   $('#formModal').hide();
@@ -14,7 +14,7 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-    headers: {"X-Token": me.token},
+    headers: {"X-Auth-Token": me.token},
     data: data,
     success: login_result
   });
