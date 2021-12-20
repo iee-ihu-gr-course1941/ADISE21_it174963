@@ -34,12 +34,34 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $sql = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
-    if (mysqli_query($conn, $sql)) {
-      echo "<br>" . "- Record of user updated successfully ";
-    } else {
-      echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+  $sql1 = "SELECT `username`  FROM `players` WHERE `player_side`='$p_side'";
+  if (mysqli_query($conn, $sql2)) {
+    $result = mysqli_query($conn, $sql1);
+    if($result == "" ){
+      echo "<br>" . "- There is an available seat for player ";
+      $sql2 = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
+        if (mysqli_query($conn, $sql2)) {
+          echo "<br>" . "- Record of user updated successfully ";
+        } else {
+          echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }else{
+      echo "<br>" . "- There is not an available seat for player ";
     }
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+
+
+
+
+  // 
+  // $sql2 = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
+  //   if (mysqli_query($conn, $sql2)) {
+  //     echo "<br>" . "- Record of user updated successfully ";
+  //   } else {
+  //     echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+  //   }
 
 }
 
