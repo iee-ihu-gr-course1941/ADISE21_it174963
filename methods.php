@@ -25,6 +25,7 @@ switch ($r=array_shift($request)) {
 //---------LOG USER INTO players BOARD SECTION----------------------------------
 function log_user($method, $request, $data, $conn){
   $user = $data->username;
+  $StringToToken = $user.date("Y-m-d H:i:s");
 
   if(!isset($user) || $user == '') {
 		header("HTTP/1.1 400 Bad Request");
@@ -32,8 +33,6 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $StringToToken = $user.date("Y-m-d H:i:s");
-  echo (md5( $StringToToken ));
   $sql = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`=1 ;" ;
     if (mysqli_query($conn, $sql)) {
       echo "<br>" . "- Record of user updated successfully ";
