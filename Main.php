@@ -29,7 +29,7 @@
       <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name" name="username" required=""><br><br>
 
       <div>
-        <select>
+        <select id="LogIn_selected_player_side">
           <option value="1">Player - 1</option>
           <option value="2">Player - 2</option>
         </select>

@@ -3,6 +3,9 @@ function login_to_game() {
   $('#formModal').hide();
   $('.Player1_name').text($('#username').val());
 
+  var selected_player_side_value = $('#LogIn_selected_player_side :selected').val();
+  alert (selected_player_side_value);
+
   var data = JSON.stringify({
     username: $('#username').val()
   });
