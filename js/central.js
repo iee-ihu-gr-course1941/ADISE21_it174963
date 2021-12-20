@@ -2,6 +2,21 @@
 function login_to_game() {
   $('#formModal').hide();
   $('.Player1_name').text($('#username').val());
+
+  var data = JSON.stringify({
+    username: $('#username').val()
+  });
+
+  $.ajax({
+    url: "methods.php/players/",
+    method: 'POST',
+    data: data,
+    success: login_result
+  });
+}
+
+function login_result(){
+  alert('Login successful');
 }
 //------------------------------------------------------------------------------
 
@@ -67,17 +82,17 @@ function shuffle_deck() {
     if (myDeck[i].suit == 'Diamonds') {
       var ascii_char = '&diams;';
       div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    } else if(myDeck[i].suit == "Hearts"){
+    } else if (myDeck[i].suit == "Hearts") {
       var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
       div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    }else{
+    } else {
       var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
       div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
     }
 
 
-    var cell_1 = "#c1-" + (i+1);
-    var cell_2 = "#c2-" + (i+1);
+    var cell_1 = "#c1-" + (i + 1);
+    var cell_2 = "#c2-" + (i + 1);
 
     if (i % 2 == 0) {
       $(cell_1).html("");
@@ -109,12 +124,12 @@ function shuffle_deck() {
     }
   }
 
-}//------------------------------------------------------------------------------
+} //------------------------------------------------------------------------------
 
 
 //------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
-function handle_shuffle_buttons(){
-  $("#shuffle_card_img").attr("src","extras/shuffled_card.png").stop(true,true).hide().fadeIn();
+function handle_shuffle_buttons() {
+  $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
   document.getElementById("shuffle_card_img").style.transform = "rotate(" + 90 + "deg)";
 
   $('#shuffle_cards_btn').prop('disabled', true);
@@ -223,28 +238,28 @@ function clear_real_board() {
 
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
-function card_picked(cp){
+function card_picked(cp) {
   $('.Card_OnTop_div').empty();
   div = document.createElement('div');
   div.className = 'card';
   div.id = 'div_card_picked';
 
-  var cp_splited =cp.split("-");
-  if(cp_splited[0] == 1){
+  var cp_splited = cp.split("-");
+  if (cp_splited[0] == 1) {
     var cp_num = '#div_card_1_';
-  }else{
+  } else {
     var cp_num = '#div_card_2_';
   }
 
-  var var_card_picked = $( cp_num + cp_splited[1] ).find('span');
+  var var_card_picked = $(cp_num + cp_splited[1]).find('span');
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
-  var spanClass = $( cp_num + cp_splited[1] ).find('span').attr('class');
+  var spanClass = $(cp_num + cp_splited[1]).find('span').attr('class');
 
-  if(spanClass == "number_red"){
+  if (spanClass == "number_red") {
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
-  }else{
+  } else {
     div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
   }
 
