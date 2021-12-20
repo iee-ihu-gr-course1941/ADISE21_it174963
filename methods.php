@@ -34,8 +34,14 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $sql1 = "SELECT `username`  FROM `players` WHERE `player_side`='$p_side'";
+  $sql1 = "SELECT `username` FROM `players` WHERE `player_side`='$p_side'";
   $result = mysqli_query($conn, $sql1);
+
+  if (!$result) {
+    echo 'Could not run query: ' . mysql_error();
+    exit;
+}
+
   $row = mysql_fetch_row($result);
 
   echo $row[0]; // 42
