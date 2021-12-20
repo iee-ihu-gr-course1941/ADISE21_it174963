@@ -7,14 +7,14 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
-  $w = $data->token;
+  $w = $_SERVER->HTTP_X_TOKEN;
 echo "$w";
 
-if(isset($_SERVER['HTTP_X_TOKEN'])) {
-    $data['token']=$_SERVER['HTTP_X_TOKEN'];
-} else {
-    $data['token']='';
-}
+// if(isset($_SERVER['HTTP_X_TOKEN'])) {
+//     $data['token']=$_SERVER['HTTP_X_TOKEN'];
+// } else {
+//     $data['token']='';
+// }
 
 
 switch ($r=array_shift($request)) {
