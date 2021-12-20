@@ -36,7 +36,9 @@ function log_user($method, $request, $data, $conn){
 
   $sql1 = "SELECT `username`  FROM `players` WHERE `player_side`='$p_side'";
   $result = mysqli_query($conn, $sql1);
-  echo $result;
+  $row = mysql_fetch_row($result);
+
+  echo $row[0]; // 42
 
   // if (mysqli_query($conn, $sql2)) {
   //   $result = mysqli_query($conn, $sql1);
