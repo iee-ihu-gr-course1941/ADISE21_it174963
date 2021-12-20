@@ -1,5 +1,5 @@
 //-----------------LOGIN SECTION------------------------------------------------
-var me={token:null};
+var me={token:1};
 
 function login_to_game() {
   $('#formModal').hide();
