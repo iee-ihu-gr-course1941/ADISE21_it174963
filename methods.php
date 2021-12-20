@@ -32,7 +32,9 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $sql = "UPDATE `players` SET `username`='$user',`token`=md5( $user.date("Y-m-d H:i:s") ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`=1 ;" ;
+  $StringToToken = $user.date("Y-m-d H:i:s");
+  echo $StringToToken;
+  $sql = "UPDATE `players` SET `username`='$user',`token`=md5( $StringToToken ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`=1 ;" ;
     if (mysqli_query($conn, $sql)) {
       echo "<br>" . "- Record of user updated successfully ";
     } else {
