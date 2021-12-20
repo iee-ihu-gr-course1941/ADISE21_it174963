@@ -33,7 +33,7 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $sql = "UPDATE `players` SET `username`='$user',`token`=0000,`last_action`=CURRENT_TIMESTAMP WHERE `player_side`=1 );" ;
+  $sql = "UPDATE `players` SET `username`='$user',`token`=0000,`last_action`='2021-12-20 22:58:55' WHERE `player_side`=1 ;" ;
     if (mysqli_query($conn, $sql)) {
       echo "Record of user updated successfully ";
     } else {
