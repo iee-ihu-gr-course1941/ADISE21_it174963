@@ -36,7 +36,7 @@ function log_user($method, $request, $data, $conn){
 
   $sql1 = "SELECT `username` FROM `players` WHERE `player_side`='$p_side'";
   $result = mysqli_query($conn, $sql1);
-  if (mysqli_query($conn, $sql1)) {
+  if ($result) {
     echo "<br>" . "- Good job ";
   } else {
     echo "<br>" . "- Error: " . $sql1 . "<br>" . mysqli_error($conn);
