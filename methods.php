@@ -9,9 +9,9 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 if(isset($_SERVER['HTTP_X_TOKEN'])) {
-    $input['token']=$_SERVER['HTTP_X_TOKEN'];
+    $input->token=$_SERVER->HTTP_X_TOKEN;
 } else {
-    $input['token']='';
+    $input->token='';
 }
 
 
