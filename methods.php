@@ -8,12 +8,6 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-if(isset($_SERVER['HTTP_X_TOKEN'])) {
-    $input->token=$_SERVER->HTTP_X_TOKEN;
-} else {
-    $input->token='';
-}
-
 
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
@@ -103,9 +97,9 @@ function handle_cards_1($method, $request, $data, $conn){
 
 	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x1' AND `y`=' $y1' ;" ;
 		if (mysqli_query($conn, $sql)) {
-			echo "Record updated successfully ";
+			echo "<br>" . "- Record updated successfully ";
 		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 }
 
@@ -127,9 +121,9 @@ function handle_cards_2($method, $request, $data, $conn){
 
 	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x2' AND `y`='$y2' ;" ;
 		if (mysqli_query($conn, $sql)) {
-			echo "Record updated successfully ";
+			echo "<br>" . "- Record updated successfully ";
 		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 
 }
