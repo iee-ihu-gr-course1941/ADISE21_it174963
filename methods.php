@@ -9,8 +9,8 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 
-  $filename = $_SERVER['HTTP_X_REQUESTED_WITH'];
-  echo "$filename";
+  $fileToken = $_SERVER['HTTP_X_TOKEN'];
+  echo "$fileToken";
 
 
 switch ($r=array_shift($request)) {
