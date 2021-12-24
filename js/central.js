@@ -24,7 +24,7 @@ function login_to_game() {
 }
 
 function login_result(data){
-  alert('Login successful' + data[0]);
+  alert('Login successful' + data[110]);
 }
 //------------------------------------------------------------------------------
 
