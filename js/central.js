@@ -28,7 +28,8 @@ function login_result(data){
   for(var i=111; i<=142; i++){
     t += data[i];
   }
-  alert('Login successful' + t);
+  token = t;
+  alert('Login successful' + token);
 }
 //------------------------------------------------------------------------------
 
