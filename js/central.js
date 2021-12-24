@@ -10,7 +10,7 @@ function login_to_game() {
   var data = JSON.stringify({
     username: $('#username').val(),
     player_side: $('#LogIn_selected_player_side :selected').val(),
-    token: me.token
+
   });
 
   $.ajax({
