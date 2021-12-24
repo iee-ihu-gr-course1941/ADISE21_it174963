@@ -40,15 +40,15 @@ function log_user($method, $request, $data, $conn){
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   if($row["username"] == "" ){
-    echo "<br>" . "- There is an available seat for player ";
+    // echo "<br>" . "- There is an available seat for player ";
     $sql2 = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
     if (mysqli_query($conn, $sql2)) {
-      echo "<br>" . "- Record of user updated successfully ";
+      // echo "<br>" . "- Record of user updated successfully ";
     } else {
-      echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+      // echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
     }
   }else{
-    echo "<br>" . "- There is not an available seat for player ";
+    // echo "<br>" . "- There is not an available seat for player ";
   }
 
   echo json_encode( md5($StringToToken) );
