@@ -51,7 +51,8 @@ function log_user($method, $request, $data, $conn){
     echo "<br>" . "- There is not an available seat for player ";
   }
 
-  echo json_encode( $row["player_side"] );
+  $x =  $row["player_side"];
+  echo json_encode( $x );
 }
 
 
