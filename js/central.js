@@ -7,7 +7,7 @@ function login_to_game() {
   $('.Player1_name').text($('#username').val());
 
 
-  var data = JSON.stringify({
+  var dataToPass = JSON.stringify({
     username: $('#username').val(),
     player_side: $('#LogIn_selected_player_side :selected').val(),
 
@@ -16,15 +16,15 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-		headers: {"X-Token": token},	 
+		headers: {"X-Token": token},
     contentType: 'application/json',
-    data: data,
+    data: dataToPass,
     success: login_result
   });
 }
 
-function login_result(){
-  alert('Login successful');
+function login_result(data){
+  alert('Login successful' + data);
 }
 //------------------------------------------------------------------------------
 
