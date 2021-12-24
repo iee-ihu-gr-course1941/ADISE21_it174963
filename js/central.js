@@ -25,7 +25,7 @@ function login_to_game() {
 
 function login_result(data){
   var t = "";
-  for(i=111; i<=136; i++){
+  for(var i=111; i<=136; i++){
     t += data[i];
   }
   alert('Login successful' + t);
