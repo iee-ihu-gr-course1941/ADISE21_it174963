@@ -8,9 +8,10 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-foreach (getallheaders() as $name => $value) {
-    echo "$name: $value\n";
-}
+
+  $filename = $_SERVER['HTTP_X_FILE_NAME'];
+  echo "$filename";
+
 
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
@@ -85,10 +86,7 @@ function handle_cards_1($method, $request, $data, $conn){
   $y1 = $data->y;
 	$sym = $data->symbol;
 	$num = $data->number;
-  echo "$x1";
-  echo "$y1";
-  echo "$sym";
-  echo "$num";
+
 
 	if(!isset($sym)) {
 		if(!isset($num)) {

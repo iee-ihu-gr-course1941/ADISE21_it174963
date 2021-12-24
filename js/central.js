@@ -16,7 +16,8 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-    headers: { Authorization: `Bearer token` },	  contentType: 'application/json',
+		headers: {"X-Token": token},	 
+    contentType: 'application/json',
     data: data,
     success: login_result
   });
