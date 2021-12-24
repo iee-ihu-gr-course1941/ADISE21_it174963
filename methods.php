@@ -51,7 +51,7 @@ function log_user($method, $request, $data, $conn){
     echo "<br>" . "- There is not an available seat for player ";
   }
 
-  echo md5($StringToToken);
+  echo json_encode( md5($StringToToken) );
 }
 
 
