@@ -9,7 +9,7 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 
-  $filename = $_SERVER['HTTP_X_TOKEN'];
+  $filename = $_SERVER['X-Token'];
   echo "$filename";
 
 
