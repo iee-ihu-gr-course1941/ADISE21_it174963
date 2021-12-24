@@ -10,7 +10,7 @@ $data = json_decode($json);
 
 
   $fileToken = $_SERVER['HTTP_X_TOKEN'];
-  echo "$fileToken";
+  echo "\n $fileToken";
 
 
 switch ($r=array_shift($request)) {
