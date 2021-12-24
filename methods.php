@@ -75,6 +75,17 @@ function handle_cards_clear($method, $request, $conn){
 	} else {
 		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
 	}
+
+
+  for($i=1; $i<=2; $i++){
+    $sql = "UPDATE `players` SET `username`= '',`token`='' WHERE `player_side`='$i' ";
+  	if (mysqli_query($conn, $sql)) {
+      echo "<br>" . "- Records for players cleared successfully ";
+  	} else {
+  		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  	}
+  }
+
 }
 
 
