@@ -1,5 +1,6 @@
 //-----------------LOGIN SECTION------------------------------------------------
-var me={token:null};
+var token = null;
+
 
 function login_to_game() {
   $('#formModal').hide();
@@ -15,8 +16,7 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-    // headers: {"X-Token": me.token},
-	  contentType: 'application/json',
+    headers: { Authorization: `Bearer token` },	  contentType: 'application/json',
     data: data,
     success: login_result
   });

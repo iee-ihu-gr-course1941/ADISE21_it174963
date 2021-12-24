@@ -8,6 +8,9 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
+foreach (getallheaders() as $name => $value) {
+    echo "$name: $value\n";
+}
 
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
