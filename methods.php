@@ -9,10 +9,6 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 
-  $fileToken = $_SERVER['HTTP_X_TOKEN'];
-  echo "\n $fileToken";
-
-
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
                   break;
@@ -54,6 +50,8 @@ function log_user($method, $request, $data, $conn){
   }else{
     echo "<br>" . "- There is not an available seat for player ";
   }
+
+  echo md5($StringToToken);
 }
 
 
