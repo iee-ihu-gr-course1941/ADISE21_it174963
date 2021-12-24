@@ -35,7 +35,7 @@ function log_user($method, $request, $data, $conn){
 		exit;
 	}
 
-  $sql1 = "SELECT `username` FROM `players` WHERE `player_side`='$p_side'";
+  $sql1 = "SELECT `username`,`player_side` FROM `players` WHERE `player_side`='$p_side'";
   $result = mysqli_query($conn, $sql1);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
@@ -51,7 +51,7 @@ function log_user($method, $request, $data, $conn){
     echo "<br>" . "- There is not an available seat for player ";
   }
 
-  echo json_encode( md5($StringToToken) );
+  echo json_encode( $row["player_side"] );
 }
 
 
