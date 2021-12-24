@@ -29,7 +29,7 @@ function login_result(data){
     t += data[i];
   }
   token = t;
-  alert('Login successful');
+  alert('Login successful' + token);
 }
 //------------------------------------------------------------------------------
 
