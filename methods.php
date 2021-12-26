@@ -64,9 +64,6 @@ function update_game_status($conn) {
 
 	$status = $row["status"];
   $status_player_turn = $row["p_turn"];
-  echo "<br>" . "- status: " .$status;
-  echo "<br>" . "- status_player_turn: " .$status_player_turn;
-
 
 	$new_status = null;
 	$new_turn = null;
@@ -76,7 +73,6 @@ function update_game_status($conn) {
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$aborted = $row["aborted"];
 
-  echo "<br>" . "- aborted: " .$aborted;
 
 	if($aborted>0) {
 		$sql = "UPDATE `players` SET `username` = NULL, `token` = NULL WHERE `last_action` < (NOW() - INTERVAL 5 MINUTE)";
@@ -92,7 +88,6 @@ function update_game_status($conn) {
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$active_players = $row["c"];
 
-  echo "<br>" . "- active_players: " . $active_players;
 
 	switch($active_players) {
 		case 0:
@@ -100,9 +95,6 @@ function update_game_status($conn) {
             break;
 		case 1:
             $new_status='initialized';
-            if($status_player_turn == null) {
-                   $new_turn=null;
-            }
             break;
 		case 2:
             $new_status='started';
