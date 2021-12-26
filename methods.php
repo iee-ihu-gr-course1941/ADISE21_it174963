@@ -137,7 +137,7 @@ function handle_cards_clear($method, $request, $conn){
 
 
   for($i=1; $i<=2; $i++){
-    $sql = "UPDATE `players` SET `username`= '',`token`='' WHERE `player_side`='$i' ";
+    $sql = "UPDATE `players` SET `username`= NULL ,`token`= NULL WHERE `player_side`='$i' ";
   	if (mysqli_query($conn, $sql)) {
       echo "<br>" . "- Records for players cleared successfully ";
   	} else {
