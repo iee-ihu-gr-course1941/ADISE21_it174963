@@ -139,7 +139,8 @@ function shuffle_deck() {
     }
   }
 
-} //------------------------------------------------------------------------------
+}
+//------------------------------------------------------------------------------
 
 
 //------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
@@ -155,7 +156,10 @@ function shuffle(o) {
   for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   return o;
 };
+//------------------------------------------------------------------------------
 
+
+//-------Clear board_1 , board_2 of all data------------------------------------
 function clear_board() {
   $.ajax({
     url: "methods.php/cards_clear/",
