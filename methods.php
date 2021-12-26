@@ -79,7 +79,7 @@ function update_game_status($conn) {
   echo "<br>" . "- aborted: " .$aborted;
 
 	if($aborted>0) {
-		$sql = "UPDATE players SET username=NULL, token=NULL WHERE last_action< (NOW() - INTERVAL 5 MINUTE)";
+		$sql = "UPDATE `players` SET `username` = NULL, `token` = NULL WHERE `last_action` < (NOW() - INTERVAL 5 MINUTE)";
 		mysqli_query($conn, $sql);
 		if($status == 'started') {
 			$new_status='aborted';
@@ -100,6 +100,9 @@ function update_game_status($conn) {
             break;
 		case 1:
             $new_status='initialized';
+            if($status_player_turn == null) {
+                   $new_turn="";
+            }
             break;
 		case 2:
             $new_status='started';
