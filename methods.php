@@ -107,6 +107,8 @@ function update_game_status($conn) {
 				    break;
 	}
 
+  echo $new_turn;
+
   $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "-  Game Status changed successfully ";
