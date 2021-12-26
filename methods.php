@@ -68,53 +68,53 @@ function update_game_status($conn) {
   echo "<br>" . "- status_player_turn: " .$status_player_turn;
 
 
-	$new_status = null;
-	$new_turn = null;
-
-  $sql = "SELECT COUNT(*) AS aborted FROM `players` WHERE `last_action`< (NOW() - INTERVAL 5 MINUTE )";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	$aborted = $row["aborted"];
-
-  echo "<br>" . "- aborted: " .$aborted;
-
-	if($aborted>0) {
-		$sql = "UPDATE players SET username=NULL, token=NULL WHERE last_action< (NOW() - INTERVAL 5 MINUTE)";
-		mysqli_query($conn, $sql);
-		if($status == 'started') {
-			$new_status='aborted';
-		}
-	}
-
-
-	$sql = "SELECT COUNT(*) AS c FROM `players` WHERE `username` IS NOT NULL";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	$active_players = $row["c"];
-
-  echo "<br>" . "- active_players: " . $active_players;
-
-	switch($active_players) {
-		case 0:
-            $new_status='not active';
-            break;
-		case 1:
-            $new_status='initialized';
-            break;
-		case 2:
-            $new_status='started';
-				        if($status_player_turn == null) {
-					             $new_turn=1;
-				        }
-				    break;
-	}
-
-  $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
-  if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "-  Game Status changed successfully ";
-  } else {
-    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  }
+	// $new_status = null;
+	// $new_turn = null;
+  //
+  // $sql = "SELECT COUNT(*) AS aborted FROM `players` WHERE `last_action`< (NOW() - INTERVAL 5 MINUTE )";
+  // $result = mysqli_query($conn, $sql);
+  // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// $aborted = $row["aborted"];
+  //
+  // echo "<br>" . "- aborted: " .$aborted;
+  //
+	// if($aborted>0) {
+	// 	$sql = "UPDATE players SET username=NULL, token=NULL WHERE last_action< (NOW() - INTERVAL 5 MINUTE)";
+	// 	mysqli_query($conn, $sql);
+	// 	if($status == 'started') {
+	// 		$new_status='aborted';
+	// 	}
+	// }
+  //
+  //
+	// $sql = "SELECT COUNT(*) AS c FROM `players` WHERE `username` IS NOT NULL";
+  // $result = mysqli_query($conn, $sql);
+  // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// $active_players = $row["c"];
+  //
+  // echo "<br>" . "- active_players: " . $active_players;
+  //
+	// switch($active_players) {
+	// 	case 0:
+  //           $new_status='not active';
+  //           break;
+	// 	case 1:
+  //           $new_status='initialized';
+  //           break;
+	// 	case 2:
+  //           $new_status='started';
+	// 			        if($status_player_turn == null) {
+	// 				             $new_turn=1;
+	// 			        }
+	// 			    break;
+	// }
+  //
+  // $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
+  // if (mysqli_query($conn, $sql)) {
+  //   echo "<br>" . "-  Game Status changed successfully ";
+  // } else {
+  //   echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  // }
 
 }
 
