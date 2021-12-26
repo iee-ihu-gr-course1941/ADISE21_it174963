@@ -96,13 +96,13 @@ function update_game_status($conn) {
 		case 1:
             $new_status='initialized';
             if($status_player_turn == null) {
-                   $new_turn= $status_player_turn;
+                   $new_turn = 2;
             }
             break;
 		case 2:
             $new_status='started';
 				        if($status_player_turn == null) {
-					             $new_turn=1;
+					             $new_turn = 1;
 				        }
 				    break;
 	}
