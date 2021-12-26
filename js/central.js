@@ -27,7 +27,7 @@ function login_to_game() {
 
 function login_result(data){
   var t = "";
-  for(var i=111; i<=142; i++){
+  for(var i=151; i<=172; i++){
     t += data[i];
   }
   token = t;
