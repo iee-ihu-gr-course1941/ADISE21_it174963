@@ -98,7 +98,7 @@ function update_game_status($conn) {
             // if($status_player_turn == null) {
             //        $new_turn = 0;
             // }
-            // break;
+            break;
 		case 2:
             $new_status='started';
 				        if($status_player_turn == null) {
