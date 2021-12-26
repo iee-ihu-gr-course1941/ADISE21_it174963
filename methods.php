@@ -51,18 +51,22 @@ function log_user($method, $request, $data, $conn){
     echo "<br>" . "- There is not an available seat for player ";
   }
 
-  update_game_status();
+  update_game_status($conn);
+  
   echo json_encode( md5( $StringToToken ) );
 }
 
 //---------UPDATE GAME STATUS SECTION-------------------------------------------
-function update_game_status() {
+function update_game_status($conn) {
   $sql = "SELECT * FROM `game_status` ";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 	$status = $row["status"];
   $status_player_turn = $row["p_turn"];
+  echo $status;
+  echo $status_player_turn;
+
 
 	$new_status = null;
 	$new_turn = null;
@@ -71,6 +75,9 @@ function update_game_status() {
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$aborted = $row["aborted"];
+
+  echo $aborted;
+
 	if($aborted>0) {
 		$sql = "UPDATE players SET username=NULL, token=NULL WHERE last_action< (NOW() - INTERVAL 5 MINUTE)";
 		mysqli_query($conn, $sql);
@@ -85,6 +92,7 @@ function update_game_status() {
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$active_players = $row["c"];
 
+  echo $active_players;
 
 	switch($active_players) {
 		case 0: $new_status='not active'; break;
