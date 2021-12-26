@@ -21,6 +21,8 @@ function login_to_game() {
     data: dataToPass,
     success: login_result
   });
+
+  
 }
 
 function login_result(data){
