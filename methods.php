@@ -53,7 +53,7 @@ function log_user($method, $request, $data, $conn){
 
   update_game_status($conn);
 
-  echo json_encode( md5( $StringToToken ) );
+  print json_encode( md5( $StringToToken ) );
 }
 
 //---------UPDATE GAME STATUS SECTION-------------------------------------------
@@ -95,9 +95,6 @@ function update_game_status($conn) {
             break;
 		case 1:
             $new_status='initialized';
-            // if($status_player_turn == null) {
-            //        $new_turn = 0;
-            // }
             break;
 		case 2:
             $new_status='started';
@@ -107,7 +104,6 @@ function update_game_status($conn) {
 				    break;
 	}
 
-  echo $new_turn;
 
   $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
   if (mysqli_query($conn, $sql)) {

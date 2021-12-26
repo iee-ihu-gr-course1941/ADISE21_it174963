@@ -22,7 +22,7 @@ function login_to_game() {
     success: login_result
   });
 
-  
+
 }
 
 function login_result(data){
@@ -31,7 +31,7 @@ function login_result(data){
     t += data[i];
   }
   token = t;
-  alert('Login successful' + token);
+  alert('Login successful' + data[0]);
 }
 //------------------------------------------------------------------------------
 
