@@ -92,16 +92,21 @@ function update_game_status($conn) {
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	$active_players = $row["c"];
 
-  echo "<br>" . "- active_players: " .$active_players;
+  echo "<br>" . "- active_players: " . $active_players;
 
 	switch($active_players) {
-		case 0: $new_status='not active'; break;
-		case 1: $new_status='initialized'; break;
-		case 2: $new_status='started';
-				if($status_player_turn == null) {
-					$new_turn='1';
-				}
-				break;
+		case 0:
+            $new_status='not active';
+            break;
+		case 1:
+            $new_status='initialized';
+            break;
+		case 2:
+            $new_status='started';
+				        if($status_player_turn == null) {
+					             $new_turn=1;
+				        }
+				    break;
 	}
 
   $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
