@@ -66,7 +66,7 @@ function update_game_status($conn) {
   $status_player_turn = $row["p_turn"];
 
 	$new_status = null;
-	$new_turn = null;
+	$new_turn = 0;
 
   $sql = "SELECT COUNT(*) AS aborted FROM `players` WHERE `last_action`< (NOW() - INTERVAL 5 MINUTE )";
   $result = mysqli_query($conn, $sql);
