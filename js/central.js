@@ -27,11 +27,11 @@ function login_to_game() {
 
 function login_result(data){
   var t = "";
-  for(var i=151; i<=172; i++){
+  for(var i=151; i<=182; i++){
     t += data[i];
   }
   token = t;
-  alert('Login successful' + t);
+  alert('LogIn successful \n' + t);
 }
 //------------------------------------------------------------------------------
 
