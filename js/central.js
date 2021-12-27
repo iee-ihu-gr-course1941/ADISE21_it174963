@@ -1,6 +1,29 @@
 //-----------------LOGIN SECTION------------------------------------------------
 var token = null;
+var timer = null;
+var Rules_counter = true;
+var myDeck = new deck();
+var pos_1_x = 1;
+var pos_1_y = 1;
+var pos_2_x = 1;
+var pos_2_y = 1;
 
+$(function(){
+  find_game_status();
+});
+
+function find_game_status(){
+  clearTimeout(timer);
+  $.ajax({
+    	url: "methods.php/status/",
+      headers: {"X-Token": me.token} ,
+      success: update_status
+  });
+}
+
+function update_status(){
+
+}
 
 function login_to_game() {
   $('#formModal').hide();
@@ -37,8 +60,6 @@ function login_result(data){
 
 
 //-----------------RULES SECTION------------------------------------------------
-var Rules_counter = true;
-
 function ShowRules() {
   if (Rules_counter == true) {
     $('#Rules-btn').html("Hide Rules");
@@ -77,12 +98,6 @@ function deck() {
 
 
 //------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
-var myDeck = new deck();
-var pos_1_x = 1;
-var pos_1_y = 1;
-var pos_2_x = 1;
-var pos_2_y = 1;
-
 function shuffle_deck() {
 
   handle_shuffle_buttons();
