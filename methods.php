@@ -3,6 +3,7 @@
 require_once "include/db_connect.php";
 
 //------------------------------------------------------------------------------
+
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
@@ -12,6 +13,8 @@ $data = json_decode($json);
 switch ($r=array_shift($request)) {
   case 'players': log_user($method, $request, $data, $conn);
                   break;
+  case 'status': handle_status($conn);
+                 break;
   case 'cards_1': handle_cards_1($method, $request, $data, $conn);
             			break;
 	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
@@ -21,42 +24,33 @@ switch ($r=array_shift($request)) {
   default:  header("HTTP/1.1 404 Not Found");
             exit;
 }
+//------------------------------------------------------------------------------
 
 
-//---------LOG USER INTO players BOARD SECTION----------------------------------
-function log_user($method, $request, $data, $conn){
-  $user = $data->username;
-  $p_side = $data->player_side;
-  $StringToToken = $user.date("Y-m-d H:i:s");
 
-  if(!isset($user) || $user == '') {
-		header("HTTP/1.1 400 Bad Request");
-		print json_encode(['errormesg'=>"No username given."]);
-		exit;
-	}
+//---------STATUS SECTION-------------------------------------------------------
+function handle_status() {
+	check_abort();
 
-  $sql = "SELECT `username`,`player_side` FROM `players` WHERE `player_side`='$p_side'";
+	$sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-  if($row["username"] == "" ){
-    echo "<br>" . "- There is an available seat for player ";
-    $sql = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
-    if (mysqli_query($conn, $sql)) {
-      echo "<br>" . "- Record of user updated successfully ";
-    } else {
-      echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-  }else{
-    echo "<br>" . "- There is not an available seat for player ";
-  }
-
-  update_game_status($conn);
-
-  print json_encode( md5( $StringToToken ) );
+  print json_encode($row);
 }
 
-//---------UPDATE GAME STATUS SECTION-------------------------------------------
+
+function check_abort() {
+	$sql = "UPDATE `game_status` SET `status` = 'aborded',`p_turn` = NULL,`result` = if(p_turn='1','2','D')
+          WHERE p_turn IS NOT NULL AND `last_change` < (now()-INTERVAL 5 MINUTE) AND `status` = 'started'";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "-  Game Status 2 changed successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
+}
+
+
 function update_game_status($conn) {
   $sql = "SELECT * FROM `game_status` ";
   $result = mysqli_query($conn, $sql);
@@ -113,6 +107,43 @@ function update_game_status($conn) {
   }
 
 }
+//------------------------------------------------------------------------------
+
+
+
+//---------LOG USER INTO players BOARD SECTION----------------------------------
+function log_user($method, $request, $data, $conn){
+  $user = $data->username;
+  $p_side = $data->player_side;
+  $StringToToken = $user.date("Y-m-d H:i:s");
+
+  if(!isset($user) || $user == '') {
+		header("HTTP/1.1 400 Bad Request");
+		print json_encode(['errormesg'=>"No username given."]);
+		exit;
+	}
+
+  $sql = "SELECT `username`,`player_side` FROM `players` WHERE `player_side`='$p_side'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+  if($row["username"] == "" ){
+    echo "<br>" . "- There is an available seat for player ";
+    $sql = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
+    if (mysqli_query($conn, $sql)) {
+      echo "<br>" . "- Record of user updated successfully ";
+    } else {
+      echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+  }else{
+    echo "<br>" . "- There is not an available seat for player ";
+  }
+
+  update_game_status($conn);
+
+  print json_encode( md5( $StringToToken ) );
+}
+//------------------------------------------------------------------------------
 
 
 
@@ -153,6 +184,8 @@ function handle_cards_clear($method, $request, $conn){
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }
 }
+//------------------------------------------------------------------------------
+
 
 
 //---------FILL board_1 WITH DATA SECTION---------------------------------------
@@ -170,6 +203,8 @@ function handle_cards_1($method, $request, $data, $conn){
 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 }
+//------------------------------------------------------------------------------
+
 
 
 //---------FILL board_2 WITH DATA SECTION---------------------------------------
@@ -188,6 +223,5 @@ function handle_cards_2($method, $request, $data, $conn){
 		}
 
 }
-
 //------------------------------------------------------------------------------
  ?>
