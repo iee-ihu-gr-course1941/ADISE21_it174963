@@ -1,13 +1,18 @@
-//-----------------LOGIN SECTION------------------------------------------------
-var token = null;
+//-----------------VARIABLES SECTION--------------------------------------------
+var me={token:null,player_turn:null};
 var timer = null;
+var game_status={};
+var last_update=new Date().getTime();
 var Rules_counter = true;
 var myDeck = new deck();
 var pos_1_x = 1;
 var pos_1_y = 1;
 var pos_2_x = 1;
 var pos_2_y = 1;
+//------------------------------------------------------------------------------
 
+
+//-----------------STATUS SECTION-----------------------------------------------
 $(function(){
   find_game_status();
 });
@@ -21,10 +26,32 @@ function find_game_status(){
   });
 }
 
-function update_status(){
 
+function update_status(data) {
+  last_update = new Date().getTime();
+  var game_stat_old = game_status;
+  game_status=data[0];
+
+  // update_info();
+
+  clearTimeout(timer);
+
+  if(game_status.p_turn==me.player_turn &&  me.player_turn!=null) {
+    x=0;
+    // do play
+    if(game_stat_old.p_turn!=game_status.p_turn) {
+      fill_board();
+    }
+    timer=setTimeout(function() { game_status_update();}, 15000);
+  } else {
+    // must wait for something
+    timer=setTimeout(function() { game_status_update();}, 4000);
+  }
 }
+//------------------------------------------------------------------------------
 
+
+//-----------------LOGIN SECTION------------------------------------------------
 function login_to_game() {
   $('#formModal').hide();
   $('.Player1_name').text($('#username').val());
@@ -44,17 +71,20 @@ function login_to_game() {
     data: dataToPass,
     success: login_result
   });
-
-
 }
+
 
 function login_result(data){
   var t = "";
+  var pt = "";
+
   for(var i=151; i<=182; i++){
     t += data[i];
   }
-  token = t;
-  alert('LogIn successful \n' + t);
+
+  me.token = t;
+  me.player_turn = data[183];
+  alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 }
 //------------------------------------------------------------------------------
 
@@ -99,13 +129,11 @@ function deck() {
 
 //------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
 function shuffle_deck() {
-
   handle_shuffle_buttons();
 
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
-
     div = document.createElement('div');
     div.className = 'card';
 
