@@ -34,7 +34,7 @@ function handle_status() {
 
 	$sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
-  $row = mysql_fetch_array($result, MYSQL_ASSOC)
+  $row = mysql_fetch_array($result, MYSQL_ASSOC);
   print_r($row['status']);
 }
 
