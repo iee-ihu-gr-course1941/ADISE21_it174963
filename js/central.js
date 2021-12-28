@@ -66,7 +66,7 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-		headers: {"X-Token": token},
+		headers: {"X-Token": me.token},
     contentType: 'application/json',
     data: dataToPass,
     success: login_result
@@ -207,7 +207,7 @@ function clear_board() {
   $.ajax({
     url: "methods.php/cards_clear/",
     method: 'POST',
-    headers: {"X-Token": token},
+    headers: {"X-Token":  me.token},
     contentType: 'application/json',
     success: clear_real_board
   });
@@ -247,7 +247,7 @@ function fill_board_1(i, x1, y1) {
   $.ajax({
     url: "methods.php/cards_1/",
     method: 'POST',
-    headers: {"X-Token": token},
+    headers: {"X-Token":  me.token},
     contentType: 'application/json',
     data: data,
     success: fill_real_board_1
@@ -288,7 +288,7 @@ function fill_board_2(i, x2, y2) {
   $.ajax({
     url: "methods.php/cards_2/",
     method: 'POST',
-    headers: {"X-Token": token},
+    headers: {"X-Token":  me.token},
     contentType: 'application/json',
     data: data,
     success: fill_real_board_2
