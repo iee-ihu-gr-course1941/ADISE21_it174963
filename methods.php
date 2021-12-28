@@ -40,7 +40,7 @@ function handle_status($conn) {
 }
 
 
-function check_abort() {
+function check_abort($conn) {
   $sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)) {
