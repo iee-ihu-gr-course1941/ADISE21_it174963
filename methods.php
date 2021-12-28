@@ -34,8 +34,9 @@ function handle_status($conn) {
 
 	$sql = "SELECT `status` FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-  echo json_encode($row['status']);
+  while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+    print_r($row);
+  }
 }
 
 
