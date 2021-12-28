@@ -32,10 +32,10 @@ function update_status(data) {
   var gs = "";
   last_update = new Date().getTime();
   var game_stat_old = game_status;
-  for(var i=67; i<=77; i++){
-    gs += data[i];
-  }
-  game_status=gs;
+  // for(var i=67; i<=77; i++){
+  //   gs += data[i];
+  // }
+  game_status = data[67];
 
   // update_info();
 
