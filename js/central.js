@@ -41,10 +41,10 @@ function update_status(data) {
 
   clearTimeout(timer);
 
-  if(game_status.p_turn==me.player_turn &&  me.player_turn!=null) {
+  if(game_status == me.player_turn  &&  me.player_turn != null) {
     x=0;
     // do play
-    if(game_stat_old.p_turn!=game_status.p_turn) {
+    if(game_stat_old != game_status) {
       // fill_board();
     }
     timer=setTimeout(function() { find_game_status();}, 15000);
