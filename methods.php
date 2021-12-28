@@ -43,10 +43,11 @@ function handle_status($conn) {
 function check_abort() {
   $sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  if($row["status"] == 'started'){
-    if( isset($row["p_turn"]) ){
-      $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL";
+  while($row = mysqli_fetch_assoc($result)) {
+    if($row["status"] == 'started'){
+      if( isset($row["p_turn"]) ){
+        $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL";
+      }
     }
   }
 
