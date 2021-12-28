@@ -29,7 +29,7 @@ switch ($r=array_shift($request)) {
 
 
 //---------STATUS SECTION-------------------------------------------------------
-function handle_status() {
+function handle_status($conn) {
 	// check_abort();
 
 	$sql = "SELECT * FROM `game_status`" ;
