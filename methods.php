@@ -33,14 +33,9 @@ function handle_status($conn) {
 	// check_abort();
 
 	$sql = "SELECT * FROM `game_status`" ;
-  // $result = mysqli_query($conn, $sql);
-  if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "-  Game Status 2 changed successfully ";
-  } else {
-    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  }
-  // $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-  // echo json_encode($result);
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result, MYSQL_ASSOC);
+  echo json_encode($row);
 }
 
 
