@@ -37,6 +37,7 @@ function handle_status($conn) {
   // if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       print json_encode($row["status"]);
+      echo $row["p_turn"];
     }
   // } else {
   //   echo "0 results";
