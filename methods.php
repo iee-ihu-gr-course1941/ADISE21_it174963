@@ -32,7 +32,7 @@ switch ($r=array_shift($request)) {
 function handle_status() {
 	check_abort();
 
-	$sql = "SELECT * FROM `game_status`" ;
+	$sql = "SELECT `status` FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQL_ASSOC);
   print json_encode($row["status"]);
