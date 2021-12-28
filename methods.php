@@ -41,8 +41,8 @@ function handle_status($conn) {
 
 
 function check_abort() {
-	$sql = "UPDATE `game_status` SET `status` = 'aborded',`p_turn` = NULL,`result` = 0
-          WHERE p_turn IS NOT NULL AND `last_change` < (NOW() - INTERVAL 5 MINUTE) AND `status` = 'started'";
+	$sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL
+          WHERE p_turn IS NOT NULL  AND `status` = 'started'";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "-  Game Status 2 changed successfully ";
   } else {
