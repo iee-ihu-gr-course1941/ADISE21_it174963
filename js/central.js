@@ -83,7 +83,7 @@ function login_result(data){
   }
 
   me.token = t;
-  me.player_turn = data[183];
+  me.player_turn = data[185];
   alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 }
 //------------------------------------------------------------------------------
