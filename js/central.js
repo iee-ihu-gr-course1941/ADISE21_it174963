@@ -28,6 +28,8 @@ function find_game_status(){
 
 
 function update_status(data) {
+
+  var gs = "";
   last_update = new Date().getTime();
   var game_stat_old = game_status;
   for(var i=69; i<=79; i++){
