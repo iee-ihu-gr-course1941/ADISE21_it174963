@@ -32,12 +32,11 @@ switch ($r=array_shift($request)) {
 function handle_status($conn) {
 	// check_abort();
 
-	$sql = "SELECT `status` FROM `game_status`" ;
+	$sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
-  // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-      echo "Status: " . $row["status"];
+      echo "<br>" . "Status: " . $row;
     }
   } else {
     echo "0 results";
