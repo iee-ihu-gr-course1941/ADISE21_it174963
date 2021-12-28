@@ -33,9 +33,14 @@ function handle_status() {
 	// check_abort();
 
 	$sql = "SELECT `username` FROM `players` WHERE `player_side`='1' " ;
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-  echo json_encode($result);
+  // $result = mysqli_query($conn, $sql);
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "-  Game Status 2 changed successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
+  // $row = mysqli_fetch_array($result, MYSQL_ASSOC);
+  // echo json_encode($result);
 }
 
 
