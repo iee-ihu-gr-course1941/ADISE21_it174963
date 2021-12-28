@@ -32,18 +32,12 @@ function update_status(data) {
   var gs = "";
   last_update = new Date().getTime();
   var game_stat_old = game_status;
-  // for(var i=67; i<=77; i++){
-  //   gs += data[i];
-  // }
   game_status = data[67];
-
-  // update_info();
 
   clearTimeout(timer);
 
   if(game_status == me.player_turn  &&  me.player_turn != null) {
-    x=0;
-    // do play
+    //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     if(game_stat_old != game_status) {
       // fill_board();
     }
@@ -65,12 +59,9 @@ function login_to_game() {
       $('.Player2_name').text($('#username').val());
   }
 
-
-
   var dataToPass = JSON.stringify({
     username: $('#username').val(),
-    player_side: $('#LogIn_selected_player_side :selected').val(),
-
+    player_side: $('#LogIn_selected_player_side :selected').val()
   });
 
   $.ajax({
