@@ -32,7 +32,7 @@ switch ($r=array_shift($request)) {
 function handle_status() {
 	// check_abort();
 
-	$sql = "SELECT `username` FROM `players` WHERE `player_side`='1' " ;
+	$sql = "SELECT `username` FROM `players` WHERE `player_side`=1 " ;
   // $result = mysqli_query($conn, $sql);
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "-  Game Status 2 changed successfully ";
