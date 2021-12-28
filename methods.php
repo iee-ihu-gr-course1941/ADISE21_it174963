@@ -35,7 +35,7 @@ function handle_status() {
 	$sql = "SELECT `username` FROM `players` WHERE `player_side`='1' " ;
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-  echo $row["username"];
+  echo $row;
 }
 
 
