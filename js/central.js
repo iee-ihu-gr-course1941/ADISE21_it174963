@@ -40,12 +40,12 @@ function update_status(data) {
     x=0;
     // do play
     if(game_stat_old.p_turn!=game_status.p_turn) {
-      fill_board();
+      // fill_board();
     }
-    timer=setTimeout(function() { game_status_update();}, 15000);
+    timer=setTimeout(function() { find_game_status();}, 15000);
   } else {
     // must wait for something
-    timer=setTimeout(function() { game_status_update();}, 4000);
+    timer=setTimeout(function() { find_game_status();}, 4000);
   }
 }
 //------------------------------------------------------------------------------
