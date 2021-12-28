@@ -30,7 +30,10 @@ function find_game_status(){
 function update_status(data) {
   last_update = new Date().getTime();
   var game_stat_old = game_status;
-  game_status=data[0];
+  for(var i=69; i<=79; i++){
+    gs += data[i];
+  }
+  game_status=gs;
 
   // update_info();
 
