@@ -54,7 +54,12 @@ function update_status(data) {
 //-----------------LOGIN SECTION------------------------------------------------
 function login_to_game() {
   $('#formModal').hide();
-  $('.Player1_name').text($('#username').val());
+  if($('#LogIn_selected_player_side :selected').val() == 1){
+      $('.Player1_name').text($('#username').val());
+  }else{
+      $('.Player2_name').text($('#username').val());
+  }
+
 
 
   var dataToPass = JSON.stringify({

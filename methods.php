@@ -41,17 +41,7 @@ function handle_status($conn) {
 
 
 function check_abort($conn) {
-  // $sql = "SELECT * FROM `game_status`" ;
-  // $result = mysqli_query($conn, $sql);
-  // while($row = mysqli_fetch_assoc($result)) {
-  //   if($row["status"] == 'started'){
-  //     if( isset($row["p_turn"]) ){
-  //       $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL";
-  //     }
-  //   }
-  // }
-
-	$sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL
+  $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL
           WHERE p_turn IS NOT NULL AND last_change< (NOW() - INTERVAL 1 MINUTE) AND `status` = 'started'";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "-  Game Status 2 changed successfully ";
