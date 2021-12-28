@@ -34,13 +34,13 @@ function handle_status($conn) {
 
 	$sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($result) > 0) {
+  // if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
-      echo "<br>" . "Status: " . $row;
+      print json_encode($row["status"]);
     }
-  } else {
-    echo "0 results";
-  }
+  // } else {
+  //   echo "0 results";
+  // }
 }
 
 
