@@ -30,29 +30,24 @@ switch ($r=array_shift($request)) {
 
 //---------STATUS SECTION-------------------------------------------------------
 function handle_status($conn) {
-	// check_abort();
+	check_abort();
 
 	$sql = "SELECT * FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
-  // if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-      print json_encode($row["status"]);
-      echo $row["p_turn"];
-    }
-  // } else {
-  //   echo "0 results";
-  // }
+  while($row = mysqli_fetch_assoc($result)) {
+    print json_encode($row["status"]);
+  }
 }
 
 
 function check_abort() {
-	// $sql = "UPDATE `game_status` SET `status` = 'aborded',`p_turn` = NULL,`result` = 0
-  //         WHERE p_turn IS NOT NULL AND `last_change` < (NOW() - INTERVAL 5 MINUTE) AND `status` = 'started'";
-  // if (mysqli_query($conn, $sql)) {
-  //   echo "<br>" . "-  Game Status 2 changed successfully ";
-  // } else {
-  //   echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  // }
+	$sql = "UPDATE `game_status` SET `status` = 'aborded',`p_turn` = NULL,`result` = 0
+          WHERE p_turn IS NOT NULL AND `last_change` < (NOW() - INTERVAL 5 MINUTE) AND `status` = 'started'";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "-  Game Status 2 changed successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
 }
 
 
