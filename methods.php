@@ -30,12 +30,12 @@ switch ($r=array_shift($request)) {
 
 //---------STATUS SECTION-------------------------------------------------------
 function handle_status() {
-	check_abort();
+	// check_abort();
 
 	$sql = "SELECT `status` FROM `game_status`" ;
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-  print json_encode($row["status"]);
+  echo json_encode($row["status"]);
 }
 
 
