@@ -70,7 +70,7 @@ function hide_players_card(data){
   var show_symbol="";
   var show_number="";
 
-  
+
 
 
   // if(me.player_turn == 1){
@@ -137,12 +137,12 @@ function login_result(data){
   var t = "";
   var pt = "";
 
-  for(var i=151; i<=182; i++){
+  for(var i=1; i<=32; i++){
     t += data[i];
   }
 
   me.token = t;
-  me.player_turn = data[185];
+  me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 }
 //------------------------------------------------------------------------------
