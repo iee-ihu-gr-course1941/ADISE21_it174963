@@ -20,7 +20,7 @@ $(function(){
 function find_game_status(){
   clearTimeout(timer);
 
-  refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
+  refresh_everything();
 
   $.ajax({
     	url: "methods.php/status/",
@@ -63,7 +63,12 @@ function refresh_everything(){
 
 function hide_players_card(data){
   clearTimeout(timer);
-  alert(data[28]);
+
+  var show_x="";
+  for(var i=25; i<=86; i++){
+    show_x += "\n" data[i];
+  }
+  alert(show_x);
   // if(me.player_turn == 1){
   //   for(var i=0; i<=51; i++){
   //     var cid = "#div_card_2_" + i;
