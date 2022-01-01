@@ -69,9 +69,9 @@ function hide_players_card(data){
   var show_y="";
   for(var i=25; i<=125; i++){
     if(i<=75){
-      show_x += "\n" + board[i];
+      show_x += "\n" + data[i];
     }else{
-      show_y += "\n" + board[i];
+      show_y += "\n" + data[i];
     }
   }
   alert(show_x);
