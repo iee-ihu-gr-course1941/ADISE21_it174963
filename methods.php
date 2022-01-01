@@ -156,8 +156,8 @@ function log_user($method, $request, $data, $conn){
 
   update_game_status($conn);
 
-  echo json_encode( md5( $StringToToken ) );
-  echo json_encode($p_side);
+  print json_encode( md5( $StringToToken ) );
+  print json_encode($p_side);
 
 }
 //------------------------------------------------------------------------------

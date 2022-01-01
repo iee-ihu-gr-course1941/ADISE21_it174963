@@ -34,7 +34,7 @@ function update_status(data) {
   var gs = "";
   last_update = new Date().getTime();
   var game_stat_old = game_status;
-  game_status = data[67];
+  game_status = data[1];
 
   clearTimeout(timer);
 
