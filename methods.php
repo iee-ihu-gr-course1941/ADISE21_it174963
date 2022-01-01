@@ -46,7 +46,7 @@ function check_abort($conn) {
   $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL
           WHERE p_turn IS NOT NULL AND last_change< (NOW() - INTERVAL 1 MINUTE) AND `status` = 'started'";
   if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "-  Game Status 2 changed successfully ";
+    // echo "<br>" . "-  Game Status 2 changed successfully ";
   } else {
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }
@@ -103,7 +103,7 @@ function update_game_status($conn) {
 
   $sql = "UPDATE `game_status` SET `status`= '$new_status',`p_turn`='$new_turn' ";
   if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "-  Game Status changed successfully ";
+    // echo "<br>" . "-  Game Status changed successfully ";
   } else {
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }
@@ -119,15 +119,8 @@ function handle_refresh($conn){
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {
-      printf("%s - %s - %s - %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
+      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
   }
-
-
-
-  // while($row = mysqli_fetch_assoc($result)) {
-  //   echo $row;
-  // }
-
 }
 //------------------------------------------------------------------------------
 
@@ -150,15 +143,15 @@ function log_user($method, $request, $data, $conn){
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   if($row["username"] == "" ){
-    echo "<br>" . "- There is an available seat for player ";
+    // echo "<br>" . "- There is an available seat for player ";
     $sql = "UPDATE `players` SET `username`='$user',`token`=md5( '$StringToToken' ) ,`last_action`=CURRENT_TIMESTAMP() WHERE `player_side`='$p_side' ;" ;
     if (mysqli_query($conn, $sql)) {
-      echo "<br>" . "- Record of user updated successfully ";
+      // echo "<br>" . "- Record of user updated successfully ";
     } else {
       echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
     }
   }else{
-    echo "<br>" . "- There is not an available seat for player ";
+    // echo "<br>" . "- There is not an available seat for player ";
   }
 
   update_game_status($conn);
