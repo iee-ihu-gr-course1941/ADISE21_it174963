@@ -67,15 +67,25 @@ function hide_players_card(data){
 
   var show_x="";
   var show_y="";
-  for(var i=25; i<=125; i++){
-    if(i<=75){
-      show_x += "\n" + data[i];
-    }else{
-      show_y += "\n" + data[i];
-    }
+  var show_symbol="";
+  var show_number="";
+
+  for(var i=25; i<=75; i++){
+    show_x += "\n" + data[i];
   }
-  alert(show_x);
-  alert(show_y);
+  for(var i=75; i<=125; i++){
+    show_x += "\n" + data[i];
+  }
+  for(var i=125; i<=175; i++){
+    show_symbol += "\n" + data[i];
+  }
+  for(var i=175; i<=225; i++){
+    show_number += "\n" + data[i];
+  }
+  console.log(show_x);
+  console.log(show_y);
+  console.log(show_symbol);
+  console.log(show_number);
 
 
 
