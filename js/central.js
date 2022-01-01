@@ -66,7 +66,7 @@ function hide_players_card(data){
 
   var show_x="";
   for(var i=25; i<=86; i++){
-    show_x += "\n" data[i];
+    show_x += "\n" + data[i];
   }
   alert(show_x);
   // if(me.player_turn == 1){
