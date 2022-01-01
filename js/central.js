@@ -36,6 +36,8 @@ function update_status(data) {
 
   clearTimeout(timer);
 
+  $('.bcard').hide();
+
   if(game_status == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + (i+1);
