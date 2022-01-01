@@ -40,22 +40,25 @@ function update_status(data) {
   if(game_status == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + (i+1);
-      var remove_bCard = cid +" > img";
-      $(remove_bCard).remove();
+      var remove_bCard = cid +" > span";
+      // $(remove_bCard).remove();
 
       var hasCardInside = $(cid).is(':has(span.number)');
       if(hasCardInside == true){
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+        $(remove_bCard).hide();
+        // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
     }
   }else{
     for(var i=0; i<=51; i++){
       var cid = "#div_card_1_" + (i+1);
-      $(remove_bCard).remove();
+      var remove_bCard = cid +" > span";
+      // $(remove_bCard).remove();
 
       var hasCardInside = $(cid).is(':has(span.number)');
       if(hasCardInside == true){
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+        $(remove_bCard).hide();
+        // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
     }
   }
