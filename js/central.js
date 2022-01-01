@@ -43,7 +43,9 @@ function update_status(data) {
       var remove_bCard = cid +" > span";
       // $(remove_bCard).remove();
 
-      var hasCardInside = $(cid).is(':has(span.number)');
+      var hasCardInside1 = $(cid).is(':has(span.number)');
+      var hasCardInside2 = $(cid).is(':has(span.number_red)');
+      if(hasCardInside1 == true  &&  hasCardInside2 == true){
       if(hasCardInside == true){
         $(remove_bCard).hide();
         // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
@@ -55,8 +57,9 @@ function update_status(data) {
       var remove_bCard = cid +" > span";
       // $(remove_bCard).remove();
 
-      var hasCardInside = $(cid).is(':has(span.number)');
-      if(hasCardInside == true){
+      var hasCardInside1 = $(cid).is(':has(span.number)');
+      var hasCardInside2 = $(cid).is(':has(span.number_red)');
+      if(hasCardInside1 == true  &&  hasCardInside2 == true){
         $(remove_bCard).hide();
         // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
