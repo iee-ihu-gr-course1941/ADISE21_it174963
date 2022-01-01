@@ -117,9 +117,14 @@ function update_game_status($conn) {
 function handle_refresh($conn){
   $sql = " SELECT * FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
-  while($row = mysqli_fetch_assoc($result)) {
-    echo $row;
-  }
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  echo $row;
+
+
+
+  // while($row = mysqli_fetch_assoc($result)) {
+  //   echo $row;
+  // }
 
 }
 //------------------------------------------------------------------------------

@@ -67,15 +67,20 @@ function hide_players_card(data){
   var show_x="";
   var show_y="";
   for(var i=25; i<=125; i++){
-    if(i<=75){
-      show_x += "\n" + data[i];
+    for(var z=0; z<=3; z++){
+      if(i<=75){
+        show_x += "\n" + data[i][0];
 
-    }else{
-      show_y += "\n" + data[i];
+      }else{
+        show_y += "\n" + data[i][1];
+      }
     }
   }
   alert(show_x);
   alert(show_y);
+
+
+
   // if(me.player_turn == 1){
   //   for(var i=0; i<=51; i++){
   //     var cid = "#div_card_2_" + i;
