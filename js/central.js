@@ -39,7 +39,7 @@ function update_status(data) {
 
   if(game_status == 1){
     for(var i=0; i<=51; i++){
-      var cid = "#div_card_2_" + (i+1);
+      var cid = "#div_card_2_" + i;
       var remove_bCard = cid +" > span";
       // $(remove_bCard).remove();
 
@@ -51,7 +51,7 @@ function update_status(data) {
     }
   }else{
     for(var i=0; i<=51; i++){
-      var cid = "#div_card_1_" + (i+1);
+      var cid = "#div_card_1_" + i;
       var remove_bCard = cid +" > span";
       // $(remove_bCard).remove();
 
