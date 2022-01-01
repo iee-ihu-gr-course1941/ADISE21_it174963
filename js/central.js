@@ -15,7 +15,6 @@ var pos_2_y = 1;
 //-----------------STATUS SECTION-----------------------------------------------
 $(function(){
   find_game_status();
-  refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
 });
 
 function find_game_status(){
@@ -52,6 +51,9 @@ function update_status(data) {
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh_everything(){
   clearTimeout(timer);
+
+  refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
+  
   $.ajax({
     	url: "methods.php/refresh/",
       headers: {"X-Token": me.token} ,
@@ -92,7 +94,7 @@ function hide_players_card(data){
   //   }
   // }
 
-  timer=setTimeout(function() { refresh_everything();}, 10000);
+  // timer=setTimeout(function() { refresh_everything();}, 10000);
 }
 //------------------------------------------------------------------------------
 
