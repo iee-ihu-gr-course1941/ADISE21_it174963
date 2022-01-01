@@ -19,6 +19,9 @@ $(function(){
 
 function find_game_status(){
   clearTimeout(timer);
+
+  refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
+
   $.ajax({
     	url: "methods.php/status/",
       headers: {"X-Token": me.token} ,
@@ -51,9 +54,6 @@ function update_status(data) {
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh_everything(){
   clearTimeout(timer);
-
-  refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
-  
   $.ajax({
     	url: "methods.php/refresh/",
       headers: {"X-Token": me.token} ,
