@@ -45,7 +45,7 @@ function update_status(data) {
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  &&  hasCardInside2 == true){
+      if(hasCardInside1 == true  ||  hasCardInside2 == true){
         $(remove_bCard).hide();
         // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
