@@ -71,11 +71,24 @@ function hide_players_card(data){
   var show_number="";
 
   var dataArraySplitted = data.split("<br>",52);
-var x=";"
+
+  var x=";"
   for(var i=0; i<dataArraySplitted.length; i++){
-    x += "\n" + dataArraySplitted[i];
+    var xArray = dataArraySplitted[i].split(" ",4);
+
+    x += "\n" + xArray[2];
   }
   alert(x);
+
+
+
+
+
+  // var x=";"
+  // for(var i=0; i<dataArraySplitted.length; i++){
+  //   x += "\n" + dataArraySplitted[i];
+  // }
+  // alert(x);
 
 
   // if(me.player_turn == 1){
