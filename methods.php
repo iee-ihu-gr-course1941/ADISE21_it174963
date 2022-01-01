@@ -119,7 +119,7 @@ function handle_refresh($conn){
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   $x1 = $row["x"];
-  echo json_encode($x1);
+  echo $x1;
 }
 //------------------------------------------------------------------------------
 

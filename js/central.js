@@ -60,7 +60,7 @@ function refresh_everything(){
 
 function hide_players_card(data){
   clearTimeout(timer);
-  alert(data[4]);
+  alert(data[28]);
   // if(me.player_turn == 1){
   //   for(var i=0; i<=51; i++){
   //     var cid = "#div_card_2_" + i;
