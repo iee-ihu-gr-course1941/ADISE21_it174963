@@ -58,38 +58,38 @@ function refresh_everything(){
   });
 }
 
-function hide_players_card(){
+function hide_players_card(data){
   clearTimeout(timer);
 
-  if(me.player_turn == 1){
-    for(var i=0; i<=51; i++){
-      var cid = "#div_card_2_" + i;
-      var hide_spans = cid +" > span";
-      var remove_bCard = cid +" > img";
-      $(remove_bCard).remove();
-
-      var hasCardInside1 = $(cid).is(':has(span.number)');
-      var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  ||  hasCardInside2 == true){
-        $(hide_spans).hide();
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-      }
-    }
-  }else{
-    for(var i=0; i<=51; i++){
-      var cid = "#div_card_1_" + i;
-      var hide_spans = cid +" > span";
-      var remove_bCard = cid +" > img";
-      $(remove_bCard).remove();
-
-      var hasCardInside1 = $(cid).is(':has(span.number)');
-      var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  &&  hasCardInside2 == true){
-        $(hide_spans).hide();
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-      }
-    }
-  }
+  // if(me.player_turn == 1){
+  //   for(var i=0; i<=51; i++){
+  //     var cid = "#div_card_2_" + i;
+  //     var hide_spans = cid +" > span";
+  //     var remove_bCard = cid +" > img";
+  //     $(remove_bCard).remove();
+  //
+  //     var hasCardInside1 = $(cid).is(':has(span.number)');
+  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
+  //     if(hasCardInside1 == true  ||  hasCardInside2 == true){
+  //       $(hide_spans).hide();
+  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+  //     }
+  //   }
+  // }else{
+  //   for(var i=0; i<=51; i++){
+  //     var cid = "#div_card_1_" + i;
+  //     var hide_spans = cid +" > span";
+  //     var remove_bCard = cid +" > img";
+  //     $(remove_bCard).remove();
+  //
+  //     var hasCardInside1 = $(cid).is(':has(span.number)');
+  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
+  //     if(hasCardInside1 == true  &&  hasCardInside2 == true){
+  //       $(hide_spans).hide();
+  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+  //     }
+  //   }
+  // }
 
   timer=setTimeout(function() { refresh_everything();}, 8000);
 }

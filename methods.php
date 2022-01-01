@@ -15,6 +15,8 @@ switch ($r=array_shift($request)) {
                   break;
   case 'status': handle_status($conn);
                  break;
+  case 'refresh': handle_refresh($conn);
+                  break;
   case 'cards_1': handle_cards_1($method, $request, $data, $conn);
             			break;
 	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
@@ -111,6 +113,18 @@ function update_game_status($conn) {
 
 
 
+//---------REFRESH EVERYTHING SECTION-------------------------------------------
+function handle_refresh($conn){
+  $sql = " SELECT * FROM `board_1`  ";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  $x1 = $row["x"];
+  echo json_encode($x1);
+}
+//------------------------------------------------------------------------------
+
+
+
 //---------LOG USER INTO players BOARD SECTION----------------------------------
 function log_user($method, $request, $data, $conn){
   $user = $data->username;
@@ -142,7 +156,7 @@ function log_user($method, $request, $data, $conn){
   update_game_status($conn);
 
   echo json_encode( md5( $StringToToken ) );
-  echo json_encode($p_side );
+  echo json_encode($p_side);
 
 }
 //------------------------------------------------------------------------------
