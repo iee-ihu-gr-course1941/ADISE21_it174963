@@ -36,11 +36,13 @@ function update_status(data) {
 
   clearTimeout(timer);
 
-  $('.bcard').hide();
 
   if(game_status == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + (i+1);
+      var remove_bCard = cid +" > img";
+      $(remove_bCard).remove();
+
       var hasCardInside = $(cid).is(':has(span.number)');
       if(hasCardInside == true){
         $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
@@ -49,6 +51,8 @@ function update_status(data) {
   }else{
     for(var i=0; i<=51; i++){
       var cid = "#div_card_1_" + (i+1);
+      $(remove_bCard).remove();
+
       var hasCardInside = $(cid).is(':has(span.number)');
       if(hasCardInside == true){
         $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
