@@ -36,15 +36,33 @@ function update_status(data) {
 
   clearTimeout(timer);
 
+  if(game_status == 1){
+    for(var i=0; i<=51; i++){
+      var cid = "#div_card_2_" + (i+1);
+      var hasCardInside = $(cid).is(':has(span.number)');
+      if(hasCardInside == true){
+        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+      }
+    }
+  }else{
+    for(var i=0; i<=51; i++){
+      var cid = "#div_card_1_" + (i+1);
+      var hasCardInside = $(cid).is(':has(span.number)');
+      if(hasCardInside == true){
+        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+      }
+    }
+  }
+
   if(game_status == me.player_turn  &&  me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
-    alert("Turn: " + me.player_turn + "15sec");
+    alert("Turn: " + me.player_turn + " - 15sec");
     timer=setTimeout(function() { find_game_status();}, 15000);
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    alert("Turn: " + me.player_turn + "4sec");
+    alert("Turn: " + me.player_turn + " - 4sec");
     timer=setTimeout(function() { find_game_status();}, 4000);
   }
 }
@@ -205,7 +223,7 @@ function shuffle(o) {
 
 
 //-------Clear board_1 , board_2 of all data------------------------------------
-function clear_board() {
+function reset_everything() {
   $.ajax({
     url: "methods.php/cards_clear/",
     method: 'POST',
@@ -252,7 +270,6 @@ function fill_board_1(i, x1, y1) {
     headers: {"X-Token":  me.token},
     contentType: 'application/json',
     data: data,
-    success: fill_real_board_1
   });
 }
 //------------------------------------------------------------------------------
@@ -293,16 +310,11 @@ function fill_board_2(i, x2, y2) {
     headers: {"X-Token":  me.token},
     contentType: 'application/json',
     data: data,
-    success: fill_real_board_2
   });
 }
 
-function fill_real_board_1() {}
-
-function fill_real_board_2() {}
-
 function clear_real_board() {
-  alert("! S U C C E S S !");
+  alert("! RESET SUCCESSFUL !");
 }
 //------------------------------------------------------------------------------
 

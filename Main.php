@@ -201,7 +201,7 @@
       </div>
       <div class="Card_Shuffle_buttons_div">
         <input type="button" id="shuffle_cards_btn" name="" value="SHUFFLE" onclick="shuffle_deck()">
-        <input type="button" id="clear_board_btn" name="" value="RESET" onclick="clear_board()"  >
+        <input type="button" id="clear_board_btn" name="" value="RESET" onclick="reset_everything()"  >
       </div>
 
     </div>
