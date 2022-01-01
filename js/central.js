@@ -39,10 +39,12 @@ function update_status(data) {
   if(game_status == me.player_turn  &&  me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
+    alert("Turn: " + me.player_turn + "15sec");
     timer=setTimeout(function() { find_game_status();}, 15000);
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
-    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης 
+    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
+    alert("Turn: " + me.player_turn + "4sec");
     timer=setTimeout(function() { find_game_status();}, 4000);
   }
 }
