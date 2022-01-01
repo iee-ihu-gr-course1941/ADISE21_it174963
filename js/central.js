@@ -67,13 +67,10 @@ function hide_players_card(data){
   var show_x="";
   var show_y="";
   for(var i=25; i<=125; i++){
-    for(var z=0; z<=3; z++){
-      if(i<=75){
-        show_x += "\n" + data[i][0];
-
-      }else{
-        show_y += "\n" + data[i][1];
-      }
+    if(i<=75){
+      show_x += "\n" + data[i].x;
+    }else{
+      show_y += "\n" + data[i].y;
     }
   }
   alert(show_x);
