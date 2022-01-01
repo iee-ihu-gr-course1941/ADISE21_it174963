@@ -65,7 +65,7 @@ function hide_players_card(data){
   clearTimeout(timer);
 
   var show_x="";
-  for(var i=25; i<=86; i++){
+  for(var i=25; i<=75; i++){
     show_x += "\n" + data[i];
   }
   alert(show_x);
