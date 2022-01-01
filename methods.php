@@ -118,11 +118,9 @@ function handle_refresh($conn){
   $sql = " SELECT * FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)) {
-    echo $row["x"];
+    echo $row;
   }
-  while($row = mysqli_fetch_assoc($result)) {
-    echo $row["y"];
-  }
+
 }
 //------------------------------------------------------------------------------
 
