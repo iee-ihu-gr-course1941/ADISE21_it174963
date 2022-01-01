@@ -117,9 +117,9 @@ function update_game_status($conn) {
 function handle_refresh($conn){
   $sql = " SELECT `x` FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-  $x1 = $row["x"];
-  echo $x1;
+  while($row = mysqli_fetch_assoc($result)) {
+    print json_encode($row["x"]);
+  }
 }
 //------------------------------------------------------------------------------
 
