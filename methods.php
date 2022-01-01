@@ -119,7 +119,11 @@ function handle_refresh($conn){
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {
-      printf("%s %s %s %s \n", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
+      printf("%s \n", $row["x"]);
+  }
+
+  foreach ($rows as $row) {
+      printf(" %s %s %s \n", $row["y"], $row["c_symbol"], $row["c_number"]);
   }
 
 
