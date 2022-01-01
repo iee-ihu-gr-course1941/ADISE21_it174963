@@ -354,6 +354,9 @@ td{
   color: #bb0000;
 }
 
+.bCard{
+  width: 50%; 
+}
 
 #div_card_picked{
 	width:150px;
