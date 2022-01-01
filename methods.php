@@ -117,8 +117,10 @@ function update_game_status($conn) {
 function handle_refresh($conn){
   $sql = " SELECT * FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-  echo $row;
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s (%s)\n", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
+  }
 
 
 
