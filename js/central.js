@@ -15,7 +15,6 @@ var pos_2_y = 1;
 //-----------------STATUS SECTION-----------------------------------------------
 $(function(){
   find_game_status();
-
 });
 
 function find_game_status(){
@@ -29,7 +28,6 @@ function find_game_status(){
 
 
 function update_status(data) {
-
   var gs = "";
   last_update = new Date().getTime();
   var game_stat_old = game_status;
@@ -37,7 +35,33 @@ function update_status(data) {
 
   clearTimeout(timer);
 
-  if(game_status == 1){
+  if(game_status == me.player_turn  &&  me.player_turn != null) {
+    //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
+    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
+    timer=setTimeout(function() { find_game_status();}, 8000);
+  } else {
+    // αν οχι, περιμενω κινηση απο τον αλλον
+    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
+    timer=setTimeout(function() { find_game_status();}, 4000);
+  }
+}
+//------------------------------------------------------------------------------
+
+
+//-----------------REFRESH SECTION----------------------------------------------
+function refresh_everything(){
+  clearTimeout(timer);
+  $.ajax({
+    	url: "methods.php/refresh/",
+      headers: {"X-Token": me.token} ,
+      success: hide_players_card
+  });
+}
+
+function hide_players_card(){
+  clearTimeout(timer);
+
+  if(me.player_turn == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + i;
       var hide_spans = cid +" > span";
@@ -67,17 +91,7 @@ function update_status(data) {
     }
   }
 
-  if(game_status == me.player_turn  &&  me.player_turn != null) {
-    //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
-    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
-    alert("Turn: " + me.player_turn + " - 15sec");
-    timer=setTimeout(function() { find_game_status();}, 8000);
-  } else {
-    // αν οχι, περιμενω κινηση απο τον αλλον
-    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    alert("Turn: " + me.player_turn + " - 4sec");
-    timer=setTimeout(function() { find_game_status();}, 4000);
-  }
+  timer=setTimeout(function() { refresh_everything();}, 8000);
 }
 //------------------------------------------------------------------------------
 
@@ -117,8 +131,7 @@ function login_result(data){
 
   me.token = t;
   me.player_turn = data[185];
-  alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
-
+  // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 }
 //------------------------------------------------------------------------------
 
@@ -216,6 +229,7 @@ function shuffle_deck() {
     }
   }
 
+refresh_everything(); //1η φορα που κανει refresh για να γεμισει τους πινακες σωστα και να κρυψει τις καρτες του αντιπαλου.
 }
 //------------------------------------------------------------------------------
 
