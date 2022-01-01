@@ -121,9 +121,13 @@ function handle_refresh($conn){
   foreach ($rows as $row) {
       printf("%s \n", $row["x"]);
   }
-
   foreach ($rows as $row) {
-      printf(" %s %s %s \n", $row["y"], $row["c_symbol"], $row["c_number"]);
+      printf("%s \n", $row["y"]);
+  }foreach ($rows as $row) {
+      printf("%s \n", $row["c_symbol"]);
+  }
+  foreach ($rows as $row) {
+      printf("%s \n", $row["c_number"]);
   }
 
 
