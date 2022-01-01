@@ -38,12 +38,11 @@ function update_status(data) {
 
   if(game_status == me.player_turn  &&  me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
-    if(game_stat_old != game_status) {
-      // fill_board();
-    }
+    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
     timer=setTimeout(function() { find_game_status();}, 15000);
   } else {
-    // must wait for something
+    // αν οχι, περιμενω κινηση απο τον αλλον
+    //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης 
     timer=setTimeout(function() { find_game_status();}, 4000);
   }
 }
