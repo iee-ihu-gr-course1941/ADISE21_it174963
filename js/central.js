@@ -65,10 +65,17 @@ function hide_players_card(data){
   clearTimeout(timer);
 
   var show_x="";
-  for(var i=25; i<=75; i++){
-    show_x += "\n" + data[i];
+  var show_y="";
+  for(var i=25; i<=125; i++){
+    if(i<=75){
+      show_x += "\n" + data[i];
+
+    }else{
+      show_y += "\n" + data[i];
+    }
   }
   alert(show_x);
+  alert(show_y);
   // if(me.player_turn == 1){
   //   for(var i=0; i<=51; i++){
   //     var cid = "#div_card_2_" + i;
