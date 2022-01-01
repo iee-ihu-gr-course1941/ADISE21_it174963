@@ -70,7 +70,11 @@ function hide_players_card(data){
   var show_symbol="";
   var show_number="";
 
+  var dataArraySplitted = data.split("<br>",52);
 
+  for(var i=0; i<dataArraySplitted.length; i++){
+    console.log(dataArraySplitted[i]);
+  }
 
 
   // if(me.player_turn == 1){
