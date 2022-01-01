@@ -2,6 +2,7 @@
 var me={token:null,player_turn:null};
 var timer = null;
 var game_status={};
+var board={};
 var last_update=new Date().getTime();
 var Rules_counter = true;
 var myDeck = new deck();
@@ -64,13 +65,15 @@ function refresh_everything(){
 function hide_players_card(data){
   clearTimeout(timer);
 
+  board=data;
+
   var show_x="";
   var show_y="";
   for(var i=25; i<=125; i++){
     if(i<=75){
-      show_x += "\n" + data[i];
+      show_x += "\n" + board[i].x;
     }else{
-      show_y += "\n" + data[i];
+      show_y += "\n" + board[i].y;
     }
   }
   alert(show_x);
