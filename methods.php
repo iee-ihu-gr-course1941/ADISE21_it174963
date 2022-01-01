@@ -119,6 +119,8 @@ function handle_refresh($conn){
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)) {
     echo $row["x"];
+  }
+  while($row = mysqli_fetch_assoc($result)) {
     echo $row["y"];
   }
 }
