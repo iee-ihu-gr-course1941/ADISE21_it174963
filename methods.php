@@ -115,7 +115,7 @@ function update_game_status($conn) {
 
 //---------REFRESH EVERYTHING SECTION-------------------------------------------
 function handle_refresh($conn){
-  $sql = " SELECT * FROM `board_1`  ";
+  $sql = " SELECT `x` FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
   $x1 = $row["x"];
