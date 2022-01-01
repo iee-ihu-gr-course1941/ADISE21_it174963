@@ -36,7 +36,7 @@ function update_status(data) {
   game_status = data[67];
 
   clearTimeout(timer);
-  
+
   if(game_status == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + i;
@@ -71,7 +71,7 @@ function update_status(data) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
     alert("Turn: " + me.player_turn + " - 15sec");
-    timer=setTimeout(function() { find_game_status();}, 15000);
+    timer=setTimeout(function() { find_game_status();}, 8000);
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
