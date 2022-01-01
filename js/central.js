@@ -83,8 +83,14 @@ function hide_players_card(data){
     show_number += "\n" + data[i];
   }
   console.log(show_x);
+  console.log("---------------------");
+
   console.log(show_y);
+  console.log("---------------------");
+
   console.log(show_symbol);
+  console.log("---------------------");
+
   console.log(show_number);
 
 
