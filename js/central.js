@@ -15,6 +15,7 @@ var pos_2_y = 1;
 //-----------------STATUS SECTION-----------------------------------------------
 $(function(){
   find_game_status();
+
 });
 
 function find_game_status(){
@@ -35,32 +36,33 @@ function update_status(data) {
   game_status = data[67];
 
   clearTimeout(timer);
-
-
+  
   if(game_status == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + i;
-      var remove_bCard = cid +" > span";
-      // $(remove_bCard).remove();
+      var hide_spans = cid +" > span";
+      var remove_bCard = cid +" > img";
+      $(remove_bCard).remove();
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
       if(hasCardInside1 == true  ||  hasCardInside2 == true){
-        $(remove_bCard).hide();
-        // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+        $(hide_spans).hide();
+        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
     }
   }else{
     for(var i=0; i<=51; i++){
       var cid = "#div_card_1_" + i;
-      var remove_bCard = cid +" > span";
-      // $(remove_bCard).remove();
+      var hide_spans = cid +" > span";
+      var remove_bCard = cid +" > img";
+      $(remove_bCard).remove();
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
       if(hasCardInside1 == true  &&  hasCardInside2 == true){
-        $(remove_bCard).hide();
-        // $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+        $(hide_spans).hide();
+        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
     }
   }
@@ -116,6 +118,7 @@ function login_result(data){
   me.token = t;
   me.player_turn = data[185];
   alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
+
 }
 //------------------------------------------------------------------------------
 
