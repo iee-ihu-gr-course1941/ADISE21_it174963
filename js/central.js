@@ -71,10 +71,11 @@ function hide_players_card(data){
   var show_number="";
 
   var dataArraySplitted = data.split("<br>",52);
-
+var x=";"
   for(var i=0; i<dataArraySplitted.length; i++){
-    console.log(dataArraySplitted[i]);
+    x += "\n" + dataArraySplitted[i];
   }
+  alert(x);
 
 
   // if(me.player_turn == 1){
