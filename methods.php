@@ -44,7 +44,7 @@ function handle_status($conn) {
 
 function check_abort($conn) {
   $sql = "UPDATE `game_status` SET `status` = 'aborded', `p_turn` = NULL, `result` = NULL
-          WHERE p_turn IS NOT NULL AND last_change< (NOW() - INTERVAL 1 MINUTE) AND `status` = 'started'";
+          WHERE p_turn IS NOT NULL AND last_change< (NOW() - INTERVAL 5 MINUTE) AND `status` = 'started'";
   if (mysqli_query($conn, $sql)) {
     // echo "<br>" . "-  Game Status 2 changed successfully ";
   } else {
@@ -116,6 +116,15 @@ function update_game_status($conn) {
 //---------REFRESH EVERYTHING SECTION-------------------------------------------
 function handle_refresh($conn){
   $sql = " SELECT * FROM `board_1`  ";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
+  }
+
+  echo("-");
+
+  $sql = " SELECT * FROM `board_2`  ";
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {

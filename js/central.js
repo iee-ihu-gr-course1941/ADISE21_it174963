@@ -64,31 +64,51 @@ function refresh_everything(){
 function hide_players_card(data){
   clearTimeout(timer);
 
-
   var show_x="";
   var show_y="";
   var show_symbol="";
   var show_number="";
 
-  var dataArraySplitted = data.split("<br>",52);
+  var dataArrays_Splitted = data.split("-",2);
 
-  var x=";"
-  for(var i=0; i<dataArraySplitted.length; i++){
-    var xArray = dataArraySplitted[i].split(" ",4);
+  var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>",52);
+  var dataArray_2_Splitted = dataArrays_Splitted[0].split("<br>",52);
 
-    x += "\n" + xArray[2];
+  for(var i=0; i<51; i++){
+    //-----------Clear both sides from any cards--------------------------------
+    var cell_1 = "#c1-" + (index + 1);
+    var cell_2 = "#c2-" + (index + 1);
+    $(cell_1).html("");
+    $(cell_2).html("");
+
+    //-----------Για το board_1-------------------------------------------------
+    var dataArray1_RowSplitted = dataArray_1_Splitted[i].split(" ",4);
+    var x1 = dataArray1_RowSplitted[0]; //---------ολα τα x---------------------
+    var y1 = dataArray1_RowSplitted[1]; //---------ολα τα y---------------------
+    var c_s1 = dataArray1_RowSplitted[2]; //---------ολα τα c_symbol------------
+    var c_n1 = dataArray1_RowSplitted[3]; //---------ολα τα c_number------------
+
+    if(c_s1 != ""){
+      var side_1=1;
+      create_Cards(i, side_1, x1, y1, c_s1, c_n1);
+    }
+
+
+    //-----------Για το board_2-------------------------------------------------
+    var dataArray2_RowSplitted = dataArray_2_Splitted[i].split(" ",4);
+    var x2 = dataArray2_RowSplitted[0]; //---------ολα τα x---------------------
+    var y2 = dataArray2_RowSplitted[1]; //---------ολα τα y---------------------
+    var c_s2 = dataArray2_RowSplitted[2]; //---------ολα τα c_symbol------------
+    var c_n2 = dataArray2_RowSplitted[3]; //---------ολα τα c_number------------
+
+    if(c_s2 != ""){
+      var side_2=2;
+      create_Cards(i, side_2, x2, y2, c_s2, c_n2);
+    }
+
   }
-  alert(x);
 
 
-
-
-
-  // var x=";"
-  // for(var i=0; i<dataArraySplitted.length; i++){
-  //   x += "\n" + dataArraySplitted[i];
-  // }
-  // alert(x);
 
 
   // if(me.player_turn == 1){
@@ -121,7 +141,32 @@ function hide_players_card(data){
   //   }
   // }
 
-  // timer=setTimeout(function() { refresh_everything();}, 10000);
+}
+
+function create_Cards(index , side , x , y , c_s , c_n){
+  div = document.createElement('div');
+  div.className = 'card';
+
+  if (c_s == 'Diamonds') {
+    var ascii_char = '&diams;';
+    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
+  } else if (c_s == "Hearts") {
+    var ascii_char = '&' + c_n.toLowerCase() + ';';
+    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
+  } else {
+    var ascii_char = '&' + c_n.toLowerCase() + ';';
+    div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
+  }
+
+
+  if(side == 1){
+    div.id = 'div_card_1_' + index;
+    $(cell_1).append(div);
+  }else{
+    div.id = 'div_card_2_' + index;
+    $(cell_2).append(div);
+  }
+
 }
 //------------------------------------------------------------------------------
 
@@ -235,7 +280,7 @@ function shuffle_deck() {
       div.id = 'div_card_1_' + i;
       $(cell_1).append(div);
 
-      fill_board_1(i, pos_1_x, pos_1_y);
+      fill_board_1_game(i, pos_1_x, pos_1_y);
 
       if (pos_1_y == 12) {
         pos_1_x++;
@@ -249,7 +294,7 @@ function shuffle_deck() {
       div.id = 'div_card_2_' + i;
       $(cell_2).append(div);
 
-      fill_board_2(i, pos_2_x, pos_2_y);
+      fill_board_2_game(i, pos_2_x, pos_2_y);
 
       if (pos_2_y == 12) {
         pos_2_x++;
@@ -258,6 +303,95 @@ function shuffle_deck() {
       pos_2_y++;
     }
   }
+}
+//------------------------------------------------------------------------------
+
+
+//-------Fill board_1 of the MYSQL database with data---------------------------
+function fill_board_1_game(i, x1, y1) {
+
+  var var_card = $('#div_card_1_' + i).find('span');
+  var cn = var_card[0].innerHTML;
+  var cs = var_card[1].innerHTML;
+
+  switch (cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+
+  var dataToPass = JSON.stringify({
+    x: x1,
+    y: y1,
+    symbol: cs,
+    number: cn
+  });
+
+  fill_board_1_db(dataToPass);
+}
+//------------------------------------------------------------------------------
+
+
+//-------Fill board_2 of the MYSQL database with data---------------------------
+function fill_board_2_game(i, x2, y2) {
+
+  var var_card = $('#div_card_2_' + i).find('span');
+  var cn = var_card[0].innerHTML;
+  var cs = var_card[1].innerHTML;
+
+  switch (cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+
+  var dataToPass = JSON.stringify({
+    x: x2,
+    y: y2,
+    symbol: cs,
+    number: cn
+  });
+
+  fill_board_2_db(dataToPass);
+}
+
+
+function fill_board_1_db(dataToPass){
+  $.ajax({
+    url: "methods.php/cards_1/",
+    method: 'POST',
+    headers: {"X-Token":  me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+  });
+}
+
+function fill_board_2_db(dataToPass){
+  $.ajax({
+    url: "methods.php/cards_2/",
+    method: 'POST',
+    headers: {"X-Token":  me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+  });
 }
 //------------------------------------------------------------------------------
 
@@ -286,86 +420,6 @@ function reset_everything() {
     headers: {"X-Token":  me.token},
     contentType: 'application/json',
     success: clear_real_board
-  });
-}
-//------------------------------------------------------------------------------
-
-
-//-------Fill board_1 of the MYSQL database with data---------------------------
-function fill_board_1(i, x1, y1) {
-
-  var var_card = $('#div_card_1_' + i).find('span');
-  var cn = var_card[0].innerHTML;
-  var cs = var_card[1].innerHTML;
-
-  switch (cs) {
-    case "♣":
-      cs = "Clubs";
-      break;
-    case "♥":
-      cs = "Hearts";
-      break;
-    case "♠":
-      cs = "Spades";
-      break;
-    case "♦":
-      cs = "Diamonds";
-      break;
-  }
-
-  var data = JSON.stringify({
-    x: x1,
-    y: y1,
-    symbol: cs,
-    number: cn
-  });
-
-  $.ajax({
-    url: "methods.php/cards_1/",
-    method: 'POST',
-    headers: {"X-Token":  me.token},
-    contentType: 'application/json',
-    data: data,
-  });
-}
-//------------------------------------------------------------------------------
-
-
-//-------Fill board_2 of the MYSQL database with data---------------------------
-function fill_board_2(i, x2, y2) {
-
-  var var_card = $('#div_card_2_' + i).find('span');
-  var cn = var_card[0].innerHTML;
-  var cs = var_card[1].innerHTML;
-
-  switch (cs) {
-    case "♣":
-      cs = "Clubs";
-      break;
-    case "♥":
-      cs = "Hearts";
-      break;
-    case "♠":
-      cs = "Spades";
-      break;
-    case "♦":
-      cs = "Diamonds";
-      break;
-  }
-
-  var data = JSON.stringify({
-    x: x2,
-    y: y2,
-    symbol: cs,
-    number: cn
-  });
-
-  $.ajax({
-    url: "methods.php/cards_2/",
-    method: 'POST',
-    headers: {"X-Token":  me.token},
-    contentType: 'application/json',
-    data: data,
   });
 }
 
