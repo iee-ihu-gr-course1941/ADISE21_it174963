@@ -70,16 +70,16 @@ function hide_players_card(data){
   var show_symbol="";
   var show_number="";
 
-  for(var i=25; i<=75; i++){
+  for(var i=25; i<=76; i++){
     show_x += "\n" + data[i];
   }
-  for(var i=75; i<=125; i++){
+  for(var i=77; i<=140; i++){
     show_x += "\n" + data[i];
   }
-  for(var i=125; i<=175; i++){
+  for(var i=141; i<=307; i++){
     show_symbol += "\n" + data[i];
   }
-  for(var i=175; i<=225; i++){
+  for(var i=308; i<=335; i++){
     show_number += "\n" + data[i];
   }
   console.log(show_x);
