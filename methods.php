@@ -118,7 +118,7 @@ function handle_refresh($conn){
   $sql = " SELECT `x` FROM `board_1`  ";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)) {
-    print json_encode($row["x"]);
+    echo $row["x"];
   }
 }
 //------------------------------------------------------------------------------
