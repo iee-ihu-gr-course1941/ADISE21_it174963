@@ -53,7 +53,6 @@ function update_status(data) {
 
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh_everything(){
-  clearTimeout(timer);
   $.ajax({
     	url: "methods.php/refresh/",
       headers: {"X-Token": me.token} ,
