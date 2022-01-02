@@ -150,10 +150,10 @@ function create_Cards(index , side , cell_1 , cell_2 , x , y , c_s , c_n){
     var ascii_char = '&diams;';
     div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
   } else if (c_s == "Hearts") {
-    var ascii_char = '&' + c_n.toLowerCase() + ';';
+    var ascii_char = '&' + c_s.toLowerCase() + ';';
     div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
   } else {
-    var ascii_char = '&' + c_n.toLowerCase() + ';';
+    var ascii_char = '&' + c_s.toLowerCase() + ';';
     div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
   }
 
