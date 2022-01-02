@@ -130,6 +130,15 @@ function handle_refresh($conn){
   foreach ($rows as $row) {
       printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
   }
+
+  echo("-");
+
+  $sql = " SELECT `username` FROM `players`  ";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s <br>", $row["username"]);
+  }
 }
 //------------------------------------------------------------------------------
 

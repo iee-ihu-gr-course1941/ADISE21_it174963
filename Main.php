@@ -26,7 +26,7 @@
       <h1>LOG IN</h1>
 
       <label for="name"><b>Name</b></label>
-      <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name" name="username" required=""><br><br>
+      <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name (must be 6 characters)" name="username" required=""><br><br>
 
       <div>
         <select id="LogIn_selected_player_side">
@@ -206,7 +206,9 @@
 
     </div>
 
-    
+    <div>
+      <h2 class="players_turn_txt"></h2>
+    </div>
 
     <!--RULES SECTION-->
     <div class="Rules_div">

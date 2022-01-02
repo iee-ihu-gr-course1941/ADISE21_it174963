@@ -1,5 +1,5 @@
 //-----------------VARIABLES SECTION--------------------------------------------
-var me={token:null,player_turn:null};
+var me={token:null, player_turn:null};
 var timer = null;
 var game_status={};
 var last_update=new Date().getTime();
@@ -20,7 +20,7 @@ $(function(){
 function find_game_status(){
   clearTimeout(timer);
 
-  refresh_everything();
+  refresh();
 
   $.ajax({
     	url: "methods.php/status/",
@@ -52,27 +52,30 @@ function update_status(data) {
 
 
 //-----------------REFRESH SECTION----------------------------------------------
-function refresh_everything(){
+function refresh(){
   $.ajax({
     	url: "methods.php/refresh/",
       headers: {"X-Token": me.token} ,
-      success: hide_players_card
+      success: refresh_everything
   });
 }
 
-function hide_players_card(data){
+function refresh_everything(data){
   clearTimeout(timer);
 
-  var show_x="";
-  var show_y="";
-  var show_symbol="";
-  var show_number="";
+  //split all returned data into board_1-data, board_2-data, both player's name
+  var dataArrays_Splitted = data.split("-",3);
 
-  var dataArrays_Splitted = data.split("-",2);
+  var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>",52);// board_1-data
+  var dataArray_2_Splitted = dataArrays_Splitted[1].split("<br>",52);// board_2-data
+  var dataArray_3_Splitted = dataArrays_Splitted[2].split("<br>",2); // both player's name
 
-  var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>",52);
-  var dataArray_2_Splitted = dataArrays_Splitted[1].split("<br>",52);
+  //refresh names
+  $('.Player1_name').text(dataArray_3_Splitted[0]);
+  $('.Player2_name').text(dataArray_3_Splitted[1]);
 
+
+  //refresh cards
   for(var i=0; i<=51; i++){
     //-----------Clear both sides from any cards--------------------------------
     var cell_1 = "#c1-" + (i + 1);
@@ -80,7 +83,7 @@ function hide_players_card(data){
     $(cell_1).html("");
     $(cell_2).html("");
 
-    //-----------Για το board_1-------------------------------------------------
+    //-----------For board_1----------------------------------------------------
     var dataArray1_RowSplitted = dataArray_1_Splitted[i].split(" ",4);
     var x1 = dataArray1_RowSplitted[0]; //---------ολα τα x---------------------
     var y1 = dataArray1_RowSplitted[1]; //---------ολα τα y---------------------
@@ -92,8 +95,7 @@ function hide_players_card(data){
       create_Cards(i, side_1, cell_1, cell_2, x1, y1, c_s1, c_n1);
     }
 
-
-    //-----------Για το board_2-------------------------------------------------
+    //-----------For board_2----------------------------------------------------
     var dataArray2_RowSplitted = dataArray_2_Splitted[i].split(" ",4);
     var x2 = dataArray2_RowSplitted[0]; //---------ολα τα x---------------------
     var y2 = dataArray2_RowSplitted[1]; //---------ολα τα y---------------------
@@ -104,12 +106,10 @@ function hide_players_card(data){
       var side_2=2;
       create_Cards(i, side_2, cell_1, cell_2, x2, y2, c_s2, c_n2);
     }
-
   }
 
 
-
-
+  //hide opponent's cards
   if(me.player_turn == 1){
     for(var i=0; i<=51; i++){
       var cid = "#div_card_2_" + i;
@@ -173,11 +173,6 @@ function create_Cards(index , side , cell_1 , cell_2 , x , y , c_s , c_n){
 //-----------------LOGIN SECTION------------------------------------------------
 function login_to_game() {
   $('#formModal').hide();
-  if($('#LogIn_selected_player_side :selected').val() == 1){
-      $('.Player1_name').text($('#username').val());
-  }else{
-      $('.Player2_name').text($('#username').val());
-  }
 
   var dataToPass = JSON.stringify({
     username: $('#username').val(),
