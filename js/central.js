@@ -73,7 +73,7 @@ function hide_players_card(data){
   var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>",52);
   var dataArray_2_Splitted = dataArrays_Splitted[1].split("<br>",52);
 
-  for(var i=0; i<51; i++){
+  for(var i=0; i<=51; i++){
     //-----------Clear both sides from any cards--------------------------------
     var cell_1 = "#c1-" + (i + 1);
     var cell_2 = "#c2-" + (i + 1);
