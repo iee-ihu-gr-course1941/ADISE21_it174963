@@ -1,10 +1,11 @@
 //-----------------VARIABLES SECTION--------------------------------------------
 var me={token:null, player_turn:null};
 var timer = null;
-var game_status={};
-var last_update=new Date().getTime();
+var game_status = {};
+var last_update = new Date().getTime();
 var Rules_counter = true;
 var myDeck = new deck();
+var hasBeenShuffled = 0;
 var pos_1_x = 1;
 var pos_1_y = 1;
 var pos_2_x = 1;
@@ -21,6 +22,9 @@ function find_game_status(){
   clearTimeout(timer);
 
   refresh();
+  if(hasBeenShuffled > 0){
+    handle_shuffle_buttons();
+  }
 
   $.ajax({
     	url: "methods.php/status/",
@@ -302,7 +306,14 @@ function shuffle_deck() {
       pos_2_y++;
     }
   }
+
+  hasBeenShuffled++;
 }
+
+function shuffle(o) {
+  for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  return o;
+};
 //------------------------------------------------------------------------------
 
 
@@ -403,11 +414,6 @@ function handle_shuffle_buttons() {
   $('#shuffle_cards_btn').prop('disabled', true);
   $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
-
-function shuffle(o) {
-  for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-  return o;
-};
 //------------------------------------------------------------------------------
 
 
