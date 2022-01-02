@@ -12,9 +12,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="js/central.js"> </script>
-
-
-
 </head>
 
 <body>
@@ -26,7 +23,7 @@
       <h1>LOG IN</h1>
 
       <label for="name"><b>Name</b></label>
-      <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name (must be 6 characters)" name="username" required=""><br><br>
+      <input id="username" type="text" title="3-10 letters" pattern="^[α-ωa-z]{3,10}$" placeholder="Enter Name" name="username" required=""><br><br>
 
       <div>
         <select id="LogIn_selected_player_side">
@@ -35,10 +32,10 @@
         </select>
       </div>
 
-
       <button id="LogIn-btn" class="btn" onclick="login_to_game()">E N T E R</button>
     </div>
   </div>
+
 
   <!--Main Page SECTION -->
   <div class="Game_div">
@@ -189,9 +186,7 @@
   </div>
 
   <!--CARD SHUFFLE SECTION-->
-  <div class="Card_OnTop_div">
-
-  </div>
+  <div class="Card_OnTop_div">    </div>
 
   <div class="Game_Details_div">
     <!--CARD SHUFFLE SECTION-->
@@ -206,7 +201,7 @@
 
     </div>
 
-    <div>
+    <div class="div_players_turn_txt">
       <h2 class="players_turn_txt"></h2>
     </div>
 
