@@ -31,21 +31,26 @@ function find_game_status(){
 
 
 function update_status(data) {
-  var gs = "";
   last_update = new Date().getTime();
-  var game_stat_old = game_status;
   game_status = data[1];
 
   clearTimeout(timer);
 
+  //show whose turn it is to make a move
+  if(game_status == 1){
+    $('.players_turn_txt').text("! It is " + $('.Player1_name').text() + "turn to pick a card. !" ) ;
+  }else{
+    $('.players_turn_txt').text("! It is " + $('.Player2_name').text() + "turn to pick a card. !" ) ;
+  }
+
   if(game_status == me.player_turn  &&  me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
-    timer=setTimeout(function() { find_game_status();}, 8000);
+    timer=setTimeout(function() { find_game_status();}, 10000);
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    timer=setTimeout(function() { find_game_status();}, 4000);
+    timer=setTimeout(function() { find_game_status();}, 5000);
   }
 }
 //------------------------------------------------------------------------------
