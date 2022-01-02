@@ -206,12 +206,7 @@
 
     </div>
 
-    <!--COMMANDS SECTION-->
-    <div class="Commands_div">
-      <h3>Pick A Card From The Opponent's Hand</h3>
-      <input type="text" placeholder="row" name="" value="" >
-      <input type="text" placeholder="column" name="" value="">
-    </div>
+    
 
     <!--RULES SECTION-->
     <div class="Rules_div">
