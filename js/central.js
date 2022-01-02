@@ -5,7 +5,6 @@ var game_status = {};
 var last_update = new Date().getTime();
 var Rules_counter = true;
 var myDeck = new deck();
-var hasBeenShuffled = 0;
 var pos_1_x = 1;
 var pos_1_y = 1;
 var pos_2_x = 1;
@@ -22,9 +21,6 @@ function find_game_status(){
   clearTimeout(timer);
 
   refresh();
-  if(hasBeenShuffled > 0){
-    handle_shuffle_buttons();
-  }
 
   $.ajax({
     	url: "methods.php/status/",
