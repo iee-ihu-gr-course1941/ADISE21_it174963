@@ -89,7 +89,7 @@ function hide_players_card(data){
 
     if(c_s1 != ""){
       var side_1=1;
-      create_Cards(i, side_1, x1, y1, c_s1, c_n1);
+      create_Cards(i, side_1, cell_1, cell_2, x1, y1, c_s1, c_n1);
     }
 
 
@@ -102,7 +102,7 @@ function hide_players_card(data){
 
     if(c_s2 != ""){
       var side_2=2;
-      create_Cards(i, side_2, x2, y2, c_s2, c_n2);
+      create_Cards(i, side_2, cell_1, cell_2, x2, y2, c_s2, c_n2);
     }
 
   }
@@ -142,7 +142,7 @@ function hide_players_card(data){
 
 }
 
-function create_Cards(index , side , x , y , c_s , c_n){
+function create_Cards(index , side , cell_1 , cell_2 , x , y , c_s , c_n){
   div = document.createElement('div');
   div.className = 'card';
 
