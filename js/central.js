@@ -75,8 +75,8 @@ function hide_players_card(data){
 
   for(var i=0; i<51; i++){
     //-----------Clear both sides from any cards--------------------------------
-    var cell_1 = "#c1-" + (index + 1);
-    var cell_2 = "#c2-" + (index + 1);
+    var cell_1 = "#c1-" + (i + 1);
+    var cell_2 = "#c2-" + (i + 1);
     $(cell_1).html("");
     $(cell_2).html("");
 
