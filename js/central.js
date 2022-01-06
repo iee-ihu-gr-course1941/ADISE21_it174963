@@ -41,9 +41,9 @@ function update_status(data) {
 
   //show whose turn it is to make a move
   if(game_status == 1){
-    $('.players_turn_txt').text("! It is " + $('.Player1_name').text() + "turn to pick a card. !" ) ;
+    $('.players_turn_txt').text( "Player's  turn : " + $('.Player1_name').text() ) ;
   }else if(game_status == 2){
-    $('.players_turn_txt').text("! It is " + $('.Player2_name').text() + "turn to pick a card. !" ) ;
+    $('.players_turn_txt').text( "Player's  turn : " + $('.Player2_name').text() ) ;
   }
 
   if(game_status == me.player_turn  &&  me.player_turn != null) {
