@@ -41,7 +41,7 @@
   <div class="Game_div">
     <div class="Player1_div">
       <b>
-        <p class="Player1_name">----- PLAYER 1 -----</p>
+        <p class="Player1_name"> PLAYER 1 </p>
       </b> <br>
 
       <table id="player1_cards" border="1">
@@ -114,7 +114,7 @@
 
     <div class="Player2_div">
       <b>
-        <p class="Player2_name">----- PLAYER 2 -----</p>
+        <p class="Player2_name"> PLAYER 2 </p>
       </b> <br>
       <table id="player2_cards" border="1">
         <tbody>
