@@ -212,7 +212,7 @@ function login_result(data){
   me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 
-  shuffle_deck();
+
 }
 //------------------------------------------------------------------------------
 
