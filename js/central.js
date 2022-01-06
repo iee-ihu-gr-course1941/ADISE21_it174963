@@ -12,11 +12,12 @@ var pos_2_y = 1;
 //------------------------------------------------------------------------------
 
 
-//-----------------STATUS SECTION-----------------------------------------------
+//---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
 $(function(){
   shuffle_deck();
-  // find_game_status();
 });
+
+//---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
 
 function find_game_status(){
   clearTimeout(timer);
@@ -59,6 +60,8 @@ function update_status(data) {
 
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh(){
+  handle_shuffle_effects();
+
   $.ajax({
     	url: "methods.php/refresh/",
       headers: {"X-Token": me.token} ,
@@ -214,19 +217,23 @@ function login_result(data){
 //------------------------------------------------------------------------------
 
 
-//-----------------RULES SECTION------------------------------------------------
-function ShowRules() {
-  if (Rules_counter == true) {
-    $('#Rules-btn').html("Hide Rules");
-    $('#Rules_box').show();
-    Rules_counter = false;
-  } else {
-    $('#Rules-btn').html("Show Rules");
-    $('#Rules_box').hide();
-    Rules_counter = true;
-  }
+
+//-------Clear board_1 , board_2 of all data------------------------------------
+function reset_everything() {
+  $.ajax({
+    url: "methods.php/cards_clear/",
+    method: 'POST',
+    headers: {"X-Token":  me.token},
+    contentType: 'application/json',
+    success: clear_real_board
+  });
+}
+
+function clear_real_board() {
+  alert("! RESET SUCCESSFUL !");
 }
 //------------------------------------------------------------------------------
+
 
 
 //-----------------SHUFFLE CARDS SECTION----------------------------------------
@@ -254,8 +261,6 @@ function deck() {
 
 //------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
 function shuffle_deck() {
-  handle_shuffle_buttons();
-
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
@@ -405,30 +410,40 @@ function fill_board_2_db(dataToPass){
 //------------------------------------------------------------------------------
 
 
-//------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
-function handle_shuffle_buttons() {
-  $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
-  document.getElementById("shuffle_card_img").style.transform = "rotate(" + 90 + "deg)";
 
-  $('#shuffle_cards_btn').prop('disabled', true);
-  $('#shuffle_cards_btn').fadeTo("slow", 0.4);
+
+
+
+
+
+//---------------------------------------------------------------- E X T R A  F U N C T I O N S ----------------------------------------------------------------------------------------
+
+//------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
+function handle_shuffle_effects() {
+  if( $("#shuffle_card_img").attr("src") == "extras/shuffled_card.png" ){
+    $("#shuffle_card_img").attr("src", "extras/shuffle_card.png").stop(true, true).hide().fadeIn();
+  }else{
+    $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
+  }
+
+
+  // $('#shuffle_cards_btn').prop('disabled', true);
+  // $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
 //------------------------------------------------------------------------------
 
 
-//-------Clear board_1 , board_2 of all data------------------------------------
-function reset_everything() {
-  $.ajax({
-    url: "methods.php/cards_clear/",
-    method: 'POST',
-    headers: {"X-Token":  me.token},
-    contentType: 'application/json',
-    success: clear_real_board
-  });
-}
-
-function clear_real_board() {
-  alert("! RESET SUCCESSFUL !");
+//-----------------RULES SECTION------------------------------------------------
+function ShowRules() {
+  if (Rules_counter == true) {
+    $('#Rules-btn').html("Hide Rules");
+    $('#Rules_box').show();
+    Rules_counter = false;
+  } else {
+    $('#Rules-btn').html("Show Rules");
+    $('#Rules_box').hide();
+    Rules_counter = true;
+  }
 }
 //------------------------------------------------------------------------------
 
