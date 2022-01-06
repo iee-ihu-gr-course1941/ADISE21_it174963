@@ -14,8 +14,7 @@ var pos_2_y = 1;
 
 //---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
 $(function(){
-  // shuffle_deck();
-  find_game_status();
+  shuffle_deck();
 });
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
@@ -61,7 +60,7 @@ function update_status(data) {
 
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh(){
-  handle_shuffle_effects();
+  // handle_shuffle_effects();
 
   $.ajax({
     	url: "methods.php/refresh/",
@@ -212,7 +211,7 @@ function login_result(data){
   me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 
-
+  find_game_status();
 }
 //------------------------------------------------------------------------------
 
