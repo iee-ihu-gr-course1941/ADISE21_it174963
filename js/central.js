@@ -13,9 +13,9 @@ var pos_2_y = 1;
 
 
 //-----------------STATUS SECTION-----------------------------------------------
-$(function(){
-  find_game_status();
-});
+// $(function(){
+//   find_game_status();
+// });
 
 function find_game_status(){
   clearTimeout(timer);
@@ -138,7 +138,7 @@ function refresh_everything(data){
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  &&  hasCardInside2 == true){
+      if(hasCardInside1 == true  ||  hasCardInside2 == true){
         $(hide_spans).hide();
         $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
@@ -206,6 +206,9 @@ function login_result(data){
   me.token = t;
   me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
+
+  find_game_status();
+
 }
 //------------------------------------------------------------------------------
 
