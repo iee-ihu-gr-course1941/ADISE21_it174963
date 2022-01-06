@@ -23,7 +23,7 @@ $(function(){
 function find_game_status(){
   clearTimeout(timer);
 
-  // refresh();
+  refresh();
 
   $.ajax({
     	url: "methods.php/status/",
@@ -38,8 +38,6 @@ function update_status(data) {
   game_status = data[1];
 
   clearTimeout(timer);
-
-  refresh();
 
   //show whose turn it is to make a move
   if(game_status == 1){
