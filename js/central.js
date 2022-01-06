@@ -212,7 +212,6 @@ function login_result(data){
   me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 
-  find_game_status();
 }
 //------------------------------------------------------------------------------
 
