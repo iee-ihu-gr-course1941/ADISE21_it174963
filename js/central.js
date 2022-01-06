@@ -312,6 +312,7 @@ function shuffle_deck() {
       pos_2_y++;
     }
   }
+  find_game_status();
 
 }
 
