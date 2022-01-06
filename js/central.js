@@ -303,7 +303,6 @@ function shuffle_deck() {
     }
   }
 
-  hasBeenShuffled++;
 }
 
 function shuffle(o) {
