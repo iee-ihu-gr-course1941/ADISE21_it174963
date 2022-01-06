@@ -206,13 +206,16 @@ td{
   float: left;
   text-align: center;
   height: 100%;
-  width: 50%;
+  width: 100%;
 }
 
 .Card_Shuffle_img_div img{
-  width: 55%;
-  margin: 1.5% 0 0 25%;
+  transform: rotate(90deg);
+  width: 25%;
+  margin: 3% 0 0 37.5%;
   float: left;
+  border: 2px solid grey;
+  border-radius: 5px;
 }
 
 /* .Card_Shuffle_buttons_div{
