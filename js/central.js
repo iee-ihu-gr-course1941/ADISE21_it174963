@@ -61,7 +61,7 @@ function update_status(data) {
 
 //-----------------REFRESH SECTION----------------------------------------------
 function refresh(){
-  // handle_shuffle_effects();
+  handle_shuffle_effects();
 
   $.ajax({
     	url: "methods.php/refresh/",
