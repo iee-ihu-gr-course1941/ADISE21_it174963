@@ -14,7 +14,7 @@ var pos_2_y = 1;
 
 //---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
 $(function(){
-  shuffle_deck();
+  // shuffle_deck();
   find_game_status();
 });
 
@@ -212,8 +212,7 @@ function login_result(data){
   me.player_turn = data[35];
   // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
 
-  find_game_status();
-
+  shuffle_deck();
 }
 //------------------------------------------------------------------------------
 
@@ -312,8 +311,6 @@ function shuffle_deck() {
       pos_2_y++;
     }
   }
-  find_game_status();
-
 }
 
 function shuffle(o) {
