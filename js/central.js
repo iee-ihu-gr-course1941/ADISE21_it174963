@@ -13,9 +13,10 @@ var pos_2_y = 1;
 
 
 //-----------------STATUS SECTION-----------------------------------------------
-// $(function(){
-//   find_game_status();
-// });
+$(function(){
+  shuffle_deck();
+  // find_game_status();
+});
 
 function find_game_status(){
   clearTimeout(timer);
