@@ -56,7 +56,7 @@ function update_status(data) {
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    timer=setTimeout(function() { find_game_status();}, 5000);\
+    timer=setTimeout(function() { find_game_status();}, 5000);
     console.log("time : 10000" );
   }
 }
