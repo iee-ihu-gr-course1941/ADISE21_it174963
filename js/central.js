@@ -230,7 +230,7 @@ function reset_everything() {
 }
 
 function clear_real_board() {
-  alert("! RESET SUCCESSFUL !");
+  console.log("! RESET SUCCESSFUL !");
 }
 //------------------------------------------------------------------------------
 
