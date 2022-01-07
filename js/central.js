@@ -240,7 +240,56 @@ function deck() {
 //------------------------------------------------------------------------------
 
 
-//------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
+//------SHUFFLE CARDS SECTION---------------------------------------------------
+function shuffle(o) {
+  for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  return o;
+};
+
+function shuffle_deck() {
+  myDeck = shuffle(myDeck);
+
+  for (var i = 0; i < myDeck.length; i++) {
+    var side_1=1;
+    var cell_1 = "#c1-" + (i + 1);
+    var card_1 = '#div_card_1_';
+    var side_2=2;
+    var cell_2 = "#c2-" + (i + 1);
+    var card_2 = '#div_card_2_';
+
+    if (i % 2 == 0) {
+      $(cell_1).html("");
+      $(cell_2).html("");
+      var c_s1 = myDeck[i].suit;
+      var c_n1 = myDeck[i].name;
+      create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
+
+      fill_board_game(i, pos_1_x, pos_1_y,card_1);
+
+      if (pos_1_y == 12) {
+        pos_1_x++;
+        pos_1_y = 0;
+      }
+      pos_1_y++;
+    }else{
+      $(cell_1).html("");
+      $(cell_2).html("");
+      var c_s2 = myDeck[i].suit;
+      var c_n2 = myDeck[i].name;
+      create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
+
+      fill_board_game(i, pos_2_x, pos_2_y,card_2);
+
+      if (pos_2_y == 12) {
+        pos_2_x++;
+        pos_2_y = 0;
+      }
+      pos_2_y++;
+    }
+  }
+}
+
+//------CREATE CARDS SECTION----------------------------------------------------
 function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
   div = document.createElement('div');
   div.className = 'card';
@@ -265,61 +314,13 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
     $(cell_2).append(div);
   }
 }
-
-
-function shuffle_deck() {
-  myDeck = shuffle(myDeck);
-
-  for (var i = 0; i < myDeck.length; i++) {
-    var side_1=1;
-    var cell_1 = "#c1-" + (i + 1);
-    var side_2=2;
-    var cell_2 = "#c2-" + (i + 1);
-
-
-    if (i % 2 == 0) {
-      $(cell_1).html("");
-      $(cell_2).html("");
-      var c_s1 = myDeck[i].suit;
-      var c_n1 = myDeck[i].name;
-      create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
-
-      fill_board_1_game(i, pos_1_x, pos_1_y);
-
-      if (pos_1_y == 12) {
-        pos_1_x++;
-        pos_1_y = 0;
-      }
-      pos_1_y++;
-    }else{
-      $(cell_1).html("");
-      $(cell_2).html("");
-      var c_s2 = myDeck[i].suit;
-      var c_n2 = myDeck[i].name;
-      create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
-
-      fill_board_2_game(i, pos_2_x, pos_2_y);
-
-      if (pos_2_y == 12) {
-        pos_2_x++;
-        pos_2_y = 0;
-      }
-      pos_2_y++;
-    }
-  }
-}
-
-function shuffle(o) {
-  for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-  return o;
-};
 //------------------------------------------------------------------------------
 
 
 //-------Fill board_1 of the MYSQL database with data---------------------------
-function fill_board_1_game(i, x1, y1) {
+function fill_board_game(i, x, y, card) {
 
-  var var_card = $('#div_card_1_' + i).find('span');
+  var var_card = $(card + i).find('span');
   var cn = var_card[0].innerHTML;
   var cs = var_card[1].innerHTML;
 
@@ -339,63 +340,69 @@ function fill_board_1_game(i, x1, y1) {
   }
 
   var dataToPass = JSON.stringify({
-    x: x1,
-    y: y1,
+    x: x,
+    y: y,
     symbol: cs,
     number: cn
   });
 
-  fill_board_1_db(dataToPass);
+  fill_board_db(dataToPass , card);
 }
 //------------------------------------------------------------------------------
 
 
 //-------Fill board_2 of the MYSQL database with data---------------------------
-function fill_board_2_game(i, x2, y2) {
+// function fill_board_2_game(i, x2, y2) {
+//
+//   var var_card = $('#div_card_2_' + i).find('span');
+//   var cn = var_card[0].innerHTML;
+//   var cs = var_card[1].innerHTML;
+//
+//   switch (cs) {
+//     case "♣":
+//       cs = "Clubs";
+//       break;
+//     case "♥":
+//       cs = "Hearts";
+//       break;
+//     case "♠":
+//       cs = "Spades";
+//       break;
+//     case "♦":
+//       cs = "Diamonds";
+//       break;
+//   }
+//
+//   var dataToPass = JSON.stringify({
+//     x: x2,
+//     y: y2,
+//     symbol: cs,
+//     number: cn
+//   });
+//
+//   fill_board_2_db(dataToPass);
+// }
 
-  var var_card = $('#div_card_2_' + i).find('span');
-  var cn = var_card[0].innerHTML;
-  var cs = var_card[1].innerHTML;
 
-  switch (cs) {
-    case "♣":
-      cs = "Clubs";
-      break;
-    case "♥":
-      cs = "Hearts";
-      break;
-    case "♠":
-      cs = "Spades";
-      break;
-    case "♦":
-      cs = "Diamonds";
-      break;
+// function fill_board_1_db(dataToPass){
+//   $.ajax({
+//     url: "methods.php/cards_1/",
+//     method: 'POST',
+//     headers: {"X-Token":  me.token},
+//     contentType: 'application/json',
+//     data: dataToPass,
+//   });
+// }
+
+function fill_board_db(dataToPass , card){
+  if(card == '#div_card_1_'){
+    var url_value = "methods.php/cards_1/"
+  }else{
+    var url_value = "methods.php/cards_2/"
   }
-
-  var dataToPass = JSON.stringify({
-    x: x2,
-    y: y2,
-    symbol: cs,
-    number: cn
-  });
-
-  fill_board_2_db(dataToPass);
-}
-
-
-function fill_board_1_db(dataToPass){
+  
   $.ajax({
-    url: "methods.php/cards_1/",
-    method: 'POST',
-    headers: {"X-Token":  me.token},
-    contentType: 'application/json',
-    data: dataToPass,
-  });
-}
-
-function fill_board_2_db(dataToPass){
-  $.ajax({
-    url: "methods.php/cards_2/",
+    url: url_value,
     method: 'POST',
     headers: {"X-Token":  me.token},
     contentType: 'application/json',
@@ -420,15 +427,12 @@ function handle_shuffle_effects() {
   }else{
     $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
   }
-
-  // $('#shuffle_cards_btn').prop('disabled', true);
-  // $('#shuffle_cards_btn').fadeTo("slow", 0.4);
 }
 //------------------------------------------------------------------------------
 
 
 
-//-----------------REOMOVE DOUBLES SECTION--------------------------------------
+//-----------------FIND - REMOVE DOUBLES SECTION--------------------------------
 function find_pairs(){
   var cell="";
   var card="";
@@ -440,63 +444,6 @@ function find_pairs(){
     cell="#c2-";
     card="#div_card_2_";
     remove_pairs(i , cell , card);
-
-
-    //Find pairs of Player_1 cards----------------------------------------------
-    // var counter_1 = 0;
-    // var array_1_found = [];
-    // var c1_i_exists = $("#c1-" + (i+1)).find("div");
-    // var c1_i_span_exists = c1_i_exists.find("span");
-    //
-    // if(c1_i_exists.length){
-    //   for(var z=0; z<=51; z++){
-    //     var c1_z_exists = $("#c1-" + (z+1)).find("div");
-    //     var c1_z_span_exists = c1_z_exists.find("span");
-    //
-    //     if(c1_z_exists.length){
-    //       if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-    //         array_1_found.push(z);
-    //         counter_1++;
-    //         // Delete pairs of Player_1 cards
-    //         if(counter_1 == 2){
-    //           for(var w=0; w<array_1_found.length; w++){
-    //             var cid = "#div_card_1_" + array_1_found[w];
-    //             $(cid).remove();
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-    //
-    //
-    // //Find pairs of Player_2 cards----------------------------------------------
-    // var counter_2 = 0;
-    // var array_2_found = [];
-    // var c2_i_exists = $("#c2-" + (i+1)).find("div");
-    // var c2_i_span_exists = c2_i_exists.find("span");
-    //
-    // if(c2_i_exists.length){
-    //   for(var z=0; z<=51; z++){
-    //     var c2_z_exists = $("#c2-" + (z+1)).find("div");
-    //     var c2_z_span_exists = c2_z_exists.find("span");
-    //
-    //     if(c2_z_exists.length){
-    //       if( (c2_i_span_exists[0].innerHTML) == (c2_z_span_exists[0].innerHTML) ){
-    //         array_2_found.push(z);
-    //         counter_2++;
-    //         // Delete pairs of Player_2 cards
-    //         if(counter_2 == 2){
-    //           for(var w=0; w<array_2_found.length; w++){
-    //             var cid = "#div_card_2_" + array_2_found[w];
-    //             $(cid).remove();
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-
   }
 }
 
