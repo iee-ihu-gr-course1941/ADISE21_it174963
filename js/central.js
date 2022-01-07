@@ -345,9 +345,9 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
 //-------Fill the board and the MYSQL database with data------------------------
 function fill_board_game(i, x, y, card_found) {
 
-  var x = $(card_found).attr("id");
+  var c = $(card_found).attr("id");
   var cardToPass = $(card_found).find("span");
-  var cTP = x.substring(0, 11);
+  var cTP = c.substring(0, 11);
 
   var cn = cardToPass[0].innerHTML;
   var cs = cardToPass[1].innerHTML;
