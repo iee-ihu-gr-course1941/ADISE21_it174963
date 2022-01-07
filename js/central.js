@@ -346,7 +346,7 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
 function fill_board_game(i, x, y, card_found) {
 
   var x = $(card_found).attr("id");
-  var cardToPass = x.find("span");
+  var cardToPass = $(card_found).find("span");
   var cTP = x.substring(0, 11);
 
   var cn = cardToPass[0].innerHTML;
