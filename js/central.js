@@ -440,26 +440,27 @@ function handle_shuffle_effects() {
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
 function remove_doubles_from_decks(){
   var c_1 = "#c1-";
-  var count = 0;
 
   for(var i=0; i<=51; i++){
+
     var c1_i_exists = $(c_1 + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
-    var pos = "";
+
     if(c1_i_exists.length){
-      count++;
 
       for(var z=0; z<=51; z++){
+
         var c1_z_exists = $(c_1 + (z+1)).find("div");
         var c1_z_span_exists = c1_z_exists.find("span");
 
         if(c1_z_exists.length){
           if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-            pos += ( (z+1) + " , ");
+            var cid = "#div_card_1_" + i;
+            $(cid).remove();
           }
         }
       }
-      console.log(count + ": Has been found in these positions: " +  pos);
+
     }
   }
 
