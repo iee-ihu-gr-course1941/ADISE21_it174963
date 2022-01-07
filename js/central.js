@@ -439,7 +439,7 @@ function handle_shuffle_effects() {
 
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
 function remove_doubles_from_decks(){
-  var c_1 = "c1-";
+  var c_1 = "#c1-";
 
   for(var i=1; i<52; i++){
     var c1_i_exists = $(c_1 + i).find("div");
