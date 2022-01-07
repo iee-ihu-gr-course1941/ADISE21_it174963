@@ -439,7 +439,7 @@ function remove_pairs(){
 
     if(c1_i_exists.length){
       for(var z=0; z<=51; z++){
-        var c1_z_exists = $(c_1 + (z+1)).find("div");
+        var c1_z_exists = $("#c1-" + (z+1)).find("div");
         var c1_z_span_exists = c1_z_exists.find("span");
 
         if(c1_z_exists.length){
@@ -467,7 +467,7 @@ function remove_pairs(){
 
     if(c2_i_exists.length){
       for(var z=0; z<=51; z++){
-        var c2_z_exists = $(c_2 + (z+1)).find("div");
+        var c2_z_exists = $("#c2-" + (z+1)).find("div");
         var c2_z_span_exists = c2_z_exists.find("span");
 
         if(c2_z_exists.length){
