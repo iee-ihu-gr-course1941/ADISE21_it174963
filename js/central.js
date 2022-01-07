@@ -503,7 +503,7 @@ function find_pairs(){
 function remove_pairs(cell , card){
   var counter = 0;
   var array_found = [];
-  var cell_i_exists = $(cell + (i+1).find("div");
+  var cell_i_exists = $(cell + (i+1)).find("div");
   var cell_i_span_exists = cell_i_exists.find("span");
 
   if(cell_i_exists.length){
