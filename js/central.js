@@ -35,25 +35,29 @@ function find_game_status(){
 
 function update_status(data) {
   last_update = new Date().getTime();
-  game_status = data[1];
+  game_players_turn = data[1];
+
+  console.log("game_status : " + game_players_turn);
 
   clearTimeout(timer);
 
   //show whose turn it is to make a move
-  if(game_status == 1){
+  if(game_players_turn == 1){
     $('.players_turn_txt').text( "Player's  turn : " + $('.Player1_name').text() ) ;
-  }else if(game_status == 2){
+  }else if(game_players_turn == 2){
     $('.players_turn_txt').text( "Player's  turn : " + $('.Player2_name').text() ) ;
   }
 
-  if(game_status == me.player_turn  &&  me.player_turn != null) {
+  if(game_players_turn == me.player_turn  &&  me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
     timer=setTimeout(function() { find_game_status();}, 10000);
+    console.log("time : 10000" );
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    timer=setTimeout(function() { find_game_status();}, 5000);
+    timer=setTimeout(function() { find_game_status();}, 5000);\
+    console.log("time : 10000" );
   }
 }
 //------------------------------------------------------------------------------
@@ -210,7 +214,7 @@ function login_result(data){
 
   me.token = t;
   me.player_turn = data[35];
-  // alert('LogIn successful \n' + me.token + "\n" + me.player_turn );
+  console.log('LogIn successful \n' + me.token + "\n" + me.player_turn );
   find_game_status();
 
 }
