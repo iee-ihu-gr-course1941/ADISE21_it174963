@@ -430,15 +430,11 @@ function handle_shuffle_effects() {
 
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
 function remove_pairs(){
-  var c_1 = "#c1-";
-  var c_2 = "#c2-";
-
-
   for(var i=0; i<=51; i++){
     //Find pairs of Player_1 cards----------------------------------------------
     var counter_1 = 0;
     var array_1_found = [];
-    var c1_i_exists = $(c_1 + (i+1)).find("div");
+    var c1_i_exists = $("#c1-" + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
 
     if(c1_i_exists.length){
@@ -466,7 +462,7 @@ function remove_pairs(){
     //Find pairs of Player_2 cards----------------------------------------------
     var counter_2 = 0;
     var array_2_found = [];
-    var c2_i_exists = $(c_2 + (i+1)).find("div");
+    var c2_i_exists = $("#c2-" + (i+1)).find("div");
     var c2_i_span_exists = c2_i_exists.find("span");
 
     if(c2_i_exists.length){
