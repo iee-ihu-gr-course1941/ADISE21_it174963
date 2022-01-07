@@ -16,7 +16,7 @@ var pos_2_y = 1;
 $(function(){
   reset_everything();
   shuffle_deck();
-  remove_doubles_from_decks();
+  remove_pairs();
 });
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ function refresh_everything(data){
 
     if(c_s1 != ""){
       var side_1=1;
-      create_Cards(i, side_1, cell_1, cell_2, x1, y1, c_s1, c_n1);
+      create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
     }
 
     //-----------For board_2----------------------------------------------------
@@ -123,7 +123,7 @@ function refresh_everything(data){
 
     if(c_s2 != ""){
       var side_2=2;
-      create_Cards(i, side_2, cell_1, cell_2, x2, y2, c_s2, c_n2);
+      create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
     }
   }
 
@@ -161,31 +161,7 @@ function refresh_everything(data){
 
 }
 
-function create_Cards(index , side , cell_1 , cell_2 , x , y , c_s , c_n){
-  div = document.createElement('div');
-  div.className = 'card';
 
-  if (c_s == 'Diamonds') {
-    var ascii_char = '&diams;';
-    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
-  } else if (c_s == "Hearts") {
-    var ascii_char = '&' + c_s.toLowerCase() + ';';
-    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
-  } else {
-    var ascii_char = '&' + c_s.toLowerCase() + ';';
-    div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
-  }
-
-
-  if(side == 1){
-    div.id = 'div_card_1_' + index;
-    $(cell_1).append(div);
-  }else{
-    div.id = 'div_card_2_' + index;
-    $(cell_2).append(div);
-  }
-
-}
 //------------------------------------------------------------------------------
 
 
@@ -265,33 +241,63 @@ function deck() {
 
 
 //------SHUFFLE CARDS AND FILL BOARDS SECTION-----------------------------------
+function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
+  div = document.createElement('div');
+  div.className = 'card';
+
+  if (c_s == 'Diamonds') {
+    var ascii_char = '&diams;';
+    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
+  } else if (c_s == "Hearts") {
+    var ascii_char = '&' + c_s.toLowerCase() + ';';
+    div.innerHTML = '<span class="number_red">' + c_n + '</span><span class="suit_red">' + ascii_char + '</span>';
+  } else {
+    var ascii_char = '&' + c_s.toLowerCase() + ';';
+    div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
+  }
+
+
+  if(side == 1){
+    div.id = 'div_card_1_' + index;
+    $(cell_1).append(div);
+  }else{
+    div.id = 'div_card_2_' + index;
+    $(cell_2).append(div);
+  }
+}
+
+
 function shuffle_deck() {
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
-    div = document.createElement('div');
-    div.className = 'card';
+    // div = document.createElement('div');
+    // div.className = 'card';
+    //
+    // if (myDeck[i].suit == 'Diamonds') {
+    //   var ascii_char = '&diams;';
+    //   div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
+    // } else if (myDeck[i].suit == "Hearts") {
+    //   var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+    //   div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
+    // } else {
+    //   var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+    //   div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
+    // }
 
-    if (myDeck[i].suit == 'Diamonds') {
-      var ascii_char = '&diams;';
-      div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    } else if (myDeck[i].suit == "Hearts") {
-      var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-      div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    } else {
-      var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-      div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
-    }
 
-
+    var side_1=1;
     var cell_1 = "#c1-" + (i + 1);
+    var side_2=2;
     var cell_2 = "#c2-" + (i + 1);
+
 
     if (i % 2 == 0) {
       $(cell_1).html("");
       $(cell_2).html("");
-      div.id = 'div_card_1_' + i;
-      $(cell_1).append(div);
+      var c_s1 = myDeck[i].suit;
+      var c_n1 = myDeck[i].name;
+      create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
 
       fill_board_1_game(i, pos_1_x, pos_1_y);
 
@@ -300,12 +306,12 @@ function shuffle_deck() {
         pos_1_y = 0;
       }
       pos_1_y++;
-
-    } else {
-      $(cell_2).html("");
+    }else{
       $(cell_1).html("");
-      div.id = 'div_card_2_' + i;
-      $(cell_2).append(div);
+      $(cell_2).html("");
+      var c_s2 = myDeck[i].suit;
+      var c_n2 = myDeck[i].name;
+      create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
 
       fill_board_2_game(i, pos_2_x, pos_2_y);
 
@@ -315,6 +321,41 @@ function shuffle_deck() {
       }
       pos_2_y++;
     }
+
+
+
+
+
+
+
+    // if (i % 2 == 0) {
+    //   $(cell_1).html("");
+    //   $(cell_2).html("");
+    //   div.id = 'div_card_1_' + i;
+    //   $(cell_1).append(div);
+    //
+    //   fill_board_1_game(i, pos_1_x, pos_1_y);
+    //
+    //   if (pos_1_y == 12) {
+    //     pos_1_x++;
+    //     pos_1_y = 0;
+    //   }
+    //   pos_1_y++;
+    //
+    // } else {
+    //   $(cell_2).html("");
+    //   $(cell_1).html("");
+    //   div.id = 'div_card_2_' + i;
+    //   $(cell_2).append(div);
+    //
+    //   fill_board_2_game(i, pos_2_x, pos_2_y);
+    //
+    //   if (pos_2_y == 12) {
+    //     pos_2_x++;
+    //     pos_2_y = 0;
+    //   }
+    //   pos_2_y++;
+    // }
   }
 }
 
@@ -438,7 +479,7 @@ function handle_shuffle_effects() {
 
 
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
-function remove_doubles_from_decks(){
+function remove_pairs(){
   var c_1 = "#c1-";
   var c_2 = "#c2-";
 
