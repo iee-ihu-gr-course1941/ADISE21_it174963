@@ -440,36 +440,66 @@ function handle_shuffle_effects() {
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
 function remove_doubles_from_decks(){
   var c_1 = "#c1-";
+  var c_2 = "#c2-";
+
 
   for(var i=0; i<=51; i++){
-    var counter = 0;
-    var array_found = [];
+    //Find pairs of Player_1 cards----------------------------------------------
+    var counter_1 = 0;
+    var array_1_found = [];
     var c1_i_exists = $(c_1 + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
 
     if(c1_i_exists.length){
-
       for(var z=0; z<=51; z++){
-
         var c1_z_exists = $(c_1 + (z+1)).find("div");
         var c1_z_span_exists = c1_z_exists.find("span");
 
         if(c1_z_exists.length){
           if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-            array_found.push(z);
-            counter++;
+            array_1_found.push(z);
+            counter_1++;
           }
         }
       }
-      if(counter > 1){
-        for(var w=0; w<array_found.length; w++){
-          var cid = "#div_card_1_" + array_found[w];
+      // Delete pairs of Player_1 cards
+      if(counter_1 > 1){
+        for(var w=0; w<array_1_found.length; w++){
+          var cid = "#div_card_1_" + array_1_found[w];
           $(cid).remove();
         }
       }
     }
-  }
 
+
+    //Find pairs of Player_2 cards----------------------------------------------
+    var counter_2 = 0;
+    var array_2_found = [];
+    var c2_i_exists = $(c_2 + (i+1)).find("div");
+    var c2_i_span_exists = c2_i_exists.find("span");
+
+    if(c2_i_exists.length){
+      for(var z=0; z<=51; z++){
+        var c2_z_exists = $(c_2 + (z+1)).find("div");
+        var c2_z_span_exists = c2_z_exists.find("span");
+
+        if(c2_z_exists.length){
+          if( (c2_i_span_exists[0].innerHTML) == (c2_z_span_exists[0].innerHTML) ){
+            array_2_found.push(z);
+            counter_2++;
+          }
+        }
+      }
+      // Delete pairs of Player_2 cards
+      if(counter_2 > 1){
+        for(var w=0; w<array_2_found.length; w++){
+          var cid = "#div_card_2_" + array_2_found[w];
+          $(cid).remove();
+        }
+      }
+    }
+
+  }
 }
 //------------------------------------------------------------------------------
 
