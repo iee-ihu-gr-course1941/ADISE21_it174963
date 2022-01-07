@@ -457,7 +457,7 @@ function remove_doubles_from_decks(){
           }
         }
       }
-      console.log( "Has been found in these positions: " +  pos);
+      console.log((z+1)+ ": Has been found in these positions: " +  pos);
     }
   }
 
