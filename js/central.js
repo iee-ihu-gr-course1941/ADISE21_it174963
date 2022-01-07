@@ -16,7 +16,6 @@ var pos_2_y = 1;
 $(function(){
   reset_everything();
   shuffle_deck();
-  find_pairs();
 });
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
@@ -264,7 +263,7 @@ function shuffle_deck() {
       var c_n1 = myDeck[i].name;
       create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
 
-      fill_board_game(i, pos_1_x, pos_1_y,card_1);
+      fill_board_game(i , pos_1_x , pos_1_y , card_1);
 
       if (pos_1_y == 12) {
         pos_1_x++;
@@ -278,13 +277,36 @@ function shuffle_deck() {
       var c_n2 = myDeck[i].name;
       create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
 
-      fill_board_game(i, pos_2_x, pos_2_y,card_2);
+      fill_board_game(i, pos_2_x , pos_2_y , card_2);
 
       if (pos_2_y == 12) {
         pos_2_x++;
         pos_2_y = 0;
       }
       pos_2_y++;
+    }
+  }
+
+  find_pairs();// Find all pairs of 2 and remove them from the game-------------
+
+  var pos_1_x = 1;
+  var pos_1_y = 1;
+  var pos_2_x = 1;
+  var pos_2_y = 1;
+
+  for (var i=0; i<=51; i++) {
+    if (i % 2 == 0) {
+      fill_board_game(i , pos_1_x , pos_1_y , card_1);
+      if (pos_1_y == 12) {
+        pos_1_x++;
+        pos_1_y = 0;
+      }pos_1_y++;
+    }else{
+      fill_board_game(i, pos_2_x , pos_2_y , card_2);
+      if (pos_2_y == 12) {
+        pos_2_x++;
+        pos_2_y = 0;
+      }pos_2_y++;
     }
   }
 }
@@ -317,7 +339,7 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
 //------------------------------------------------------------------------------
 
 
-//-------Fill board_1 of the MYSQL database with data---------------------------
+//-------Fill the board and the MYSQL database with data------------------------
 function fill_board_game(i, x, y, card) {
 
   var var_card = $(card + i).find('span');
@@ -350,57 +372,13 @@ function fill_board_game(i, x, y, card) {
 }
 //------------------------------------------------------------------------------
 
-
-//-------Fill board_2 of the MYSQL database with data---------------------------
-// function fill_board_2_game(i, x2, y2) {
-//
-//   var var_card = $('#div_card_2_' + i).find('span');
-//   var cn = var_card[0].innerHTML;
-//   var cs = var_card[1].innerHTML;
-//
-//   switch (cs) {
-//     case "♣":
-//       cs = "Clubs";
-//       break;
-//     case "♥":
-//       cs = "Hearts";
-//       break;
-//     case "♠":
-//       cs = "Spades";
-//       break;
-//     case "♦":
-//       cs = "Diamonds";
-//       break;
-//   }
-//
-//   var dataToPass = JSON.stringify({
-//     x: x2,
-//     y: y2,
-//     symbol: cs,
-//     number: cn
-//   });
-//
-//   fill_board_2_db(dataToPass);
-// }
-
-
-// function fill_board_1_db(dataToPass){
-//   $.ajax({
-//     url: "methods.php/cards_1/",
-//     method: 'POST',
-//     headers: {"X-Token":  me.token},
-//     contentType: 'application/json',
-//     data: dataToPass,
-//   });
-// }
-
 function fill_board_db(dataToPass , card){
   if(card == '#div_card_1_'){
     var url_value = "methods.php/cards_1/"
   }else{
     var url_value = "methods.php/cards_2/"
   }
-  
+
   $.ajax({
     url: url_value,
     method: 'POST',
