@@ -343,32 +343,35 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
 function fill_board_game(i, x, y, card) {
 
   var var_card = $(card + i).find('span');
-  var cn = var_card[0].innerHTML;
-  var cs = var_card[1].innerHTML;
 
-  switch (cs) {
-    case "♣":
-      cs = "Clubs";
-      break;
-    case "♥":
-      cs = "Hearts";
-      break;
-    case "♠":
-      cs = "Spades";
-      break;
-    case "♦":
-      cs = "Diamonds";
-      break;
-  }
+  if(var_card.length){
+    var cn = var_card[0].innerHTML;
+    var cs = var_card[1].innerHTML;
 
-  var dataToPass = JSON.stringify({
-    x: x,
-    y: y,
-    symbol: cs,
-    number: cn
-  });
+    switch (cs) {
+      case "♣":
+        cs = "Clubs";
+        break;
+      case "♥":
+        cs = "Hearts";
+        break;
+      case "♠":
+        cs = "Spades";
+        break;
+      case "♦":
+        cs = "Diamonds";
+        break;
+    }
 
-  fill_board_db(dataToPass , card);
+    var dataToPass = JSON.stringify({
+      x: x,
+      y: y,
+      symbol: cs,
+      number: cn
+    });
+
+    fill_board_db(dataToPass , card);
+  }  
 }
 //------------------------------------------------------------------------------
 
