@@ -256,14 +256,12 @@ function shuffle_deck() {
     var cell_2 = "#c2-" + (i + 1);
     var card_2 = '#div_card_2_';
 
-    if (i % 2 == 0) {
+    if (i % 2 == 0) { // Calls the function that creates each card--------------
       $(cell_1).html("");
       $(cell_2).html("");
       var c_s1 = myDeck[i].suit;
       var c_n1 = myDeck[i].name;
       create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
-
-      // fill_board_game(i , pos_1_x , pos_1_y , card_1);
 
       if (pos_1_y == 12) {
         pos_1_x++;
@@ -277,8 +275,6 @@ function shuffle_deck() {
       var c_n2 = myDeck[i].name;
       create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
 
-      // fill_board_game(i, pos_2_x , pos_2_y , card_2);
-
       if (pos_2_y == 12) {
         pos_2_x++;
         pos_2_y = 0;
@@ -287,7 +283,7 @@ function shuffle_deck() {
     }
   }
 
-  find_pairs();// Find all pairs of 2 and remove them from the game-------------
+  find_pairs(); // Calls the function that finds and remove pairs of 2 ---------
 
   var pos_1_x = 1;
   var pos_1_y = 1;
@@ -296,17 +292,25 @@ function shuffle_deck() {
 
   for (var i=0; i<=51; i++) {
     if (i % 2 == 0) {
-      fill_board_game(i , pos_1_x , pos_1_y , card_1);
-      if (pos_1_y == 12) {
-        pos_1_x++;
-        pos_1_y = 0;
-      }pos_1_y++;
+      var card_found = $(card_1 + i).find('span');
+
+      if(card_found.length){
+        fill_board_game(i , pos_1_x , pos_1_y , card_found); // Calls the function that fills the game and database with the cards
+        if (pos_1_y == 12) {
+          pos_1_x++;
+          pos_1_y = 0;
+        }pos_1_y++;
+      }
     }else{
-      fill_board_game(i, pos_2_x , pos_2_y , card_2);
-      if (pos_2_y == 12) {
-        pos_2_x++;
-        pos_2_y = 0;
-      }pos_2_y++;
+      var card_found = $(card_2 + i).find('span');
+
+      if(card_found.length){
+        fill_board_game(i, pos_2_x , pos_2_y , card_found); // Calls the function that fills the game and database with the cards
+        if (pos_2_y == 12) {
+          pos_2_x++;
+          pos_2_y = 0;
+        }pos_2_y++;
+      }
     }
   }
 }
@@ -327,7 +331,6 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
     div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
   }
 
-
   if(side == 1){
     div.id = 'div_card_1_' + index;
     $(cell_1).append(div);
@@ -340,43 +343,43 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
 
 
 //-------Fill the board and the MYSQL database with data------------------------
-function fill_board_game(i, x, y, card) {
+function fill_board_game(i, x, y, card_found) {
 
-  var var_card = $(card + i).find('span');
+  var x = $(card_found).attr("id");
+  var cardToPass = x.substring(0, 11));
 
-  if(var_card.length){
-    var cn = var_card[0].innerHTML;
-    var cs = var_card[1].innerHTML;
+  var cn = var_card[0].innerHTML;
+  var cs = var_card[1].innerHTML;
 
-    switch (cs) {
-      case "♣":
-        cs = "Clubs";
-        break;
-      case "♥":
-        cs = "Hearts";
-        break;
-      case "♠":
-        cs = "Spades";
-        break;
-      case "♦":
-        cs = "Diamonds";
-        break;
-    }
+  switch (cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
 
-    var dataToPass = JSON.stringify({
-      x: x,
-      y: y,
-      symbol: cs,
-      number: cn
-    });
+  var dataToPass = JSON.stringify({
+    x: x,
+    y: y,
+    symbol: cs,
+    number: cn
+  });
 
-    fill_board_db(dataToPass , card);
-  }  
+  fill_board_db(dataToPass , cardToPass);
+
 }
 //------------------------------------------------------------------------------
 
-function fill_board_db(dataToPass , card){
-  if(card == '#div_card_1_'){
+function fill_board_db(dataToPass , cardToPass){
+  if(cardToPass == '#div_card_1_'){
     var url_value = "methods.php/cards_1/"
   }else{
     var url_value = "methods.php/cards_2/"
@@ -412,7 +415,6 @@ function handle_shuffle_effects() {
 //------------------------------------------------------------------------------
 
 
-
 //-----------------FIND - REMOVE DOUBLES SECTION--------------------------------
 function find_pairs(){
   var cell="";
@@ -437,7 +439,7 @@ function remove_pairs(i , cell , card){
   if(cell_i_exists.length){
   	for(var z=0; z<=51; z++){
   		var cell_z_exists = $(cell + (z+1)).find("div");
-          	var cell_z_span_exists = cell_z_exists.find("span");
+      var cell_z_span_exists = cell_z_exists.find("span");
   		if(cell_z_exists .length){
             		if( (cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML) ){
               			array_found.push(z);
@@ -455,7 +457,6 @@ function remove_pairs(i , cell , card){
       }
 }
 //------------------------------------------------------------------------------
-
 
 
 //-----------------RULES SECTION------------------------------------------------
