@@ -292,7 +292,7 @@ function shuffle_deck() {
 
   for (var i=0; i<=51; i++) {
     if (i % 2 == 0) {
-      var card_found = $(card_1 + i).find('span');
+      var card_found =  $("#c1-" + (i + 1)).find("div");;
 
       if(card_found.length){
         fill_board_game(i , pos_1_x , pos_1_y , card_found); // Calls the function that fills the game and database with the cards
@@ -302,7 +302,7 @@ function shuffle_deck() {
         }pos_1_y++;
       }
     }else{
-      var card_found = $(card_2 + i).find('span');
+      var card_found =  $("#c2-" + (i + 1)).find("div");;
 
       if(card_found.length){
         fill_board_game(i, pos_2_x , pos_2_y , card_found); // Calls the function that fills the game and database with the cards
