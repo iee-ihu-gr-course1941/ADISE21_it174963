@@ -263,7 +263,7 @@ function shuffle_deck() {
       var c_n1 = myDeck[i].name;
       create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
 
-      fill_board_game(i , pos_1_x , pos_1_y , card_1);
+      // fill_board_game(i , pos_1_x , pos_1_y , card_1);
 
       if (pos_1_y == 12) {
         pos_1_x++;
@@ -277,7 +277,7 @@ function shuffle_deck() {
       var c_n2 = myDeck[i].name;
       create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
 
-      fill_board_game(i, pos_2_x , pos_2_y , card_2);
+      // fill_board_game(i, pos_2_x , pos_2_y , card_2);
 
       if (pos_2_y == 12) {
         pos_2_x++;
