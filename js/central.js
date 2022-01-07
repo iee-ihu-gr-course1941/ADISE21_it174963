@@ -380,7 +380,7 @@ function fill_board_game(i, x, y, card_found) {
 //------------------------------------------------------------------------------
 
 function fill_board_db(dataToPass , cTP){
-  if(cTP == '#div_card_1_'){
+  if(cTP == 'div_card_1_'){
     var url_value = "methods.php/cards_1/"
   }else{
     var url_value = "methods.php/cards_2/"
