@@ -3,7 +3,7 @@ var me={token:null, player_turn:null};
 var timer = null;
 var game_status = {};
 var last_update = new Date().getTime();
-var Rules_counter = true;
+var Rules_flag = true;
 var myDeck = new deck();
 var pos_1_x = 1;
 var pos_1_y = 1;
@@ -26,10 +26,10 @@ function find_game_status(){
   refresh();
 
   $.ajax({
-    	url: "methods.php/status/",
-      headers: {"X-Token": me.token} ,
-      success: update_status
-  });
+        	url: "methods.php/status/",
+          headers: {"X-Token": me.token} ,
+          success: update_status
+        });
 }
 
 
@@ -57,7 +57,7 @@ function update_status(data) {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
     timer=setTimeout(function() { find_game_status();}, 5000);
-    console.log("time : 10000" );
+    console.log("time : 5000" );
   }
 }
 //------------------------------------------------------------------------------
@@ -68,10 +68,10 @@ function refresh(){
   handle_shuffle_effects();
 
   $.ajax({
-    	url: "methods.php/refresh/",
-      headers: {"X-Token": me.token} ,
-      success: refresh_everything
-  });
+        	url: "methods.php/refresh/",
+          headers: {"X-Token": me.token} ,
+          success: refresh_everything
+        });
 }
 
 function refresh_everything(data){
@@ -188,33 +188,30 @@ function create_Cards(index , side , cell_1 , cell_2 , x , y , c_s , c_n){
 function login_to_game() {
   $('#formModal').hide();
 
-  var dataToPass = JSON.stringify({
-    username: $('#username').val(),
-    player_side: $('#LogIn_selected_player_side :selected').val()
-  });
+  var dataToPass = JSON.stringify({   username: $('#username').val(),
+                                      player_side: $('#LogIn_selected_player_side :selected').val()   });
 
   $.ajax({
-    url: "methods.php/players/",
-    method: 'POST',
-		headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: dataToPass,
-    success: login_result
-  });
+            url: "methods.php/players/",
+            method: 'POST',
+        		headers: {"X-Token": me.token},
+            contentType: 'application/json',
+            data: dataToPass,
+            success: login_result
+          });
 }
 
 
 function login_result(data){
-  var t = "";
-  var pt = "";
-
+  var temp_token = "";
   for(var i=1; i<=32; i++){
-    t += data[i];
+    temp_token += data[i];
   }
 
-  me.token = t;
+  me.token = temp_token;
   me.player_turn = data[35];
-  console.log('LogIn successful \n' + me.token + "\n" + me.player_turn );
+
+  console.log('Log_In successful \n' + 'Token: ' +  me.token + "\n Players turn: " + me.player_turn );
   find_game_status();
 
 }
@@ -225,12 +222,12 @@ function login_result(data){
 //-------Clear board_1 , board_2 of all data------------------------------------
 function reset_everything() {
   $.ajax({
-    url: "methods.php/cards_clear/",
-    method: 'POST',
-    headers: {"X-Token":  me.token},
-    contentType: 'application/json',
-    success: clear_real_board
-  });
+            url: "methods.php/cards_clear/",
+            method: 'POST',
+            headers: {"X-Token":  me.token},
+            contentType: 'application/json',
+            success: clear_real_board
+          });
 }
 
 function clear_real_board() {
@@ -438,14 +435,14 @@ function handle_shuffle_effects() {
 
 //-----------------RULES SECTION------------------------------------------------
 function ShowRules() {
-  if (Rules_counter == true) {
+  if (Rules_flag == true) {
     $('#Rules-btn').html("Hide Rules");
     $('#Rules_box').show();
-    Rules_counter = false;
+    Rules_flag = false;
   } else {
     $('#Rules-btn').html("Show Rules");
     $('#Rules_box').hide();
-    Rules_counter = true;
+    Rules_flag = true;
   }
 }
 //------------------------------------------------------------------------------
