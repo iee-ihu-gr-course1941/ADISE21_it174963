@@ -271,21 +271,6 @@ function shuffle_deck() {
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
-    // div = document.createElement('div');
-    // div.className = 'card';
-    //
-    // if (myDeck[i].suit == 'Diamonds') {
-    //   var ascii_char = '&diams;';
-    //   div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    // } else if (myDeck[i].suit == "Hearts") {
-    //   var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-    //   div.innerHTML = '<span class="number_red">' + myDeck[i].name + '</span><span class="suit_red">' + ascii_char + '</span>';
-    // } else {
-    //   var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-    //   div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
-    // }
-
-
     var side_1=1;
     var cell_1 = "#c1-" + (i + 1);
     var side_2=2;
@@ -321,41 +306,6 @@ function shuffle_deck() {
       }
       pos_2_y++;
     }
-
-
-
-
-
-
-
-    // if (i % 2 == 0) {
-    //   $(cell_1).html("");
-    //   $(cell_2).html("");
-    //   div.id = 'div_card_1_' + i;
-    //   $(cell_1).append(div);
-    //
-    //   fill_board_1_game(i, pos_1_x, pos_1_y);
-    //
-    //   if (pos_1_y == 12) {
-    //     pos_1_x++;
-    //     pos_1_y = 0;
-    //   }
-    //   pos_1_y++;
-    //
-    // } else {
-    //   $(cell_2).html("");
-    //   $(cell_1).html("");
-    //   div.id = 'div_card_2_' + i;
-    //   $(cell_2).append(div);
-    //
-    //   fill_board_2_game(i, pos_2_x, pos_2_y);
-    //
-    //   if (pos_2_y == 12) {
-    //     pos_2_x++;
-    //     pos_2_y = 0;
-    //   }
-    //   pos_2_y++;
-    // }
   }
 }
 
@@ -500,14 +450,14 @@ function remove_pairs(){
           if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
             array_1_found.push(z);
             counter_1++;
+            // Delete pairs of Player_1 cards
+            if(counter_1 == 2){
+              for(var w=0; w<array_1_found.length; w++){
+                var cid = "#div_card_1_" + array_1_found[w];
+                $(cid).remove();
+              }
+            }
           }
-        }
-      }
-      // Delete pairs of Player_1 cards
-      if(counter_1 > 1){
-        for(var w=0; w<array_1_found.length; w++){
-          var cid = "#div_card_1_" + array_1_found[w];
-          $(cid).remove();
         }
       }
     }
@@ -528,14 +478,14 @@ function remove_pairs(){
           if( (c2_i_span_exists[0].innerHTML) == (c2_z_span_exists[0].innerHTML) ){
             array_2_found.push(z);
             counter_2++;
+            // Delete pairs of Player_2 cards
+            if(counter_2 == 2){
+              for(var w=0; w<array_2_found.length; w++){
+                var cid = "#div_card_2_" + array_2_found[w];
+                $(cid).remove();
+              }
+            }
           }
-        }
-      }
-      // Delete pairs of Player_2 cards
-      if(counter_2 > 1){
-        for(var w=0; w<array_2_found.length; w++){
-          var cid = "#div_card_2_" + array_2_found[w];
-          $(cid).remove();
         }
       }
     }
