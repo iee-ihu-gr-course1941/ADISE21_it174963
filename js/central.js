@@ -447,7 +447,7 @@ function remove_doubles_from_decks(){
     if(c1_i_exists.length){
 
       for(var z=0; z<=51; z++){
-        var c1_z_exists = $(c_1 + 9z+1)).find("div");
+        var c1_z_exists = $(c_1 + (z+1)).find("div");
         var c1_z_span_exists = c1_z_exists.find("span");
 
         if(c1_z_exists.length){
