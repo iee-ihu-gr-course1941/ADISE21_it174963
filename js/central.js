@@ -509,7 +509,7 @@ function remove_pairs(i , cell , card){
   if(cell_i_exists.length){
   	for(var z=0; z<=51; z++){
   		var cell_z_exists = $(cell + (z+1)).find("div");
-          	var cell_z_span_exists = c2_z_exists.find("span");
+          	var cell_z_span_exists = cell_z_exists.find("span");
   		if(cell_z_exists .length){
             		if( (cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML) ){
               			array_found.push(z);
