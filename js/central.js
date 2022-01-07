@@ -440,11 +440,13 @@ function handle_shuffle_effects() {
 //-----------------REOMOVE DOUBLES SECTION--------------------------------------
 function remove_doubles_from_decks(){
   var c_1 = "#c1-";
+  var count = 0;
 
   for(var i=0; i<=51; i++){
     var c1_i_exists = $(c_1 + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
     var pos = "";
+    count++;
     if(c1_i_exists.length){
 
       for(var z=0; z<=51; z++){
@@ -457,7 +459,7 @@ function remove_doubles_from_decks(){
           }
         }
       }
-      console.log((i+1)+ ": Has been found in these positions: " +  pos);
+      console.log(count + ": Has been found in these positions: " +  pos);
     }
   }
 
