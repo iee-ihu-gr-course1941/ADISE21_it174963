@@ -16,6 +16,7 @@ var pos_2_y = 1;
 $(function(){
   reset_everything();
   shuffle_deck();
+  remove_doubles_from_decks();
 });
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
@@ -217,7 +218,6 @@ function login_result(data){
 
   console.log('Log_In successful \n' + 'Token: ' +  me.token + "\nPlayers turn: " + me.player_turn );
   find_game_status();
-
 }
 //------------------------------------------------------------------------------
 
@@ -436,6 +436,36 @@ function handle_shuffle_effects() {
 //------------------------------------------------------------------------------
 
 
+
+//-----------------REOMOVE DOUBLES SECTION--------------------------------------
+function remove_doubles_from_decks(){
+  var c_1 = "c1-";
+
+  for(var i=1; i<52; i++){
+    var c1_i_exists = $(c_1 + i).find("div");
+    var c1_i_span_exists = c1_i_exists.find("span");
+    if(c1_i_exists.length){
+
+      for(var z=1; z<52; z++){
+        var c1_z_exists = $(c_1 + z).find("div");
+        var c1_z_span_exists = c1_z_exists.find("span");
+
+        if(c1_z_exists.length){
+          if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
+            console.log( "1: "c1_i_span_exists[0].innerHTML + c1_i_span_exists[1].innerHTML + "/ 2: " + c1_z_span_exists[0].innerHTML + c1_z_span_exists[1].innerHTML);
+          }
+        }
+
+      }
+
+    }
+  }
+
+}
+//------------------------------------------------------------------------------
+
+
+
 //-----------------RULES SECTION------------------------------------------------
 function ShowRules() {
   if (Rules_flag == true) {
@@ -449,6 +479,7 @@ function ShowRules() {
   }
 }
 //------------------------------------------------------------------------------
+
 
 
 //-----------------BOARD/TABLE SECTION------------------------------------------
