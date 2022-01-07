@@ -444,6 +444,7 @@ function remove_doubles_from_decks(){
   for(var i=0; i<=51; i++){
     var c1_i_exists = $(c_1 + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
+    var pos = "";
     if(c1_i_exists.length){
 
       for(var z=0; z<=51; z++){
@@ -452,12 +453,11 @@ function remove_doubles_from_decks(){
 
         if(c1_z_exists.length){
           if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-            console.log( "first: " + (i+1) + "/ second: " + (z+1) );
+            pos += (z + " , ");
           }
         }
-
       }
-
+      console.log( "Has been found in these positions: " +  pos);
     }
   }
 
