@@ -210,9 +210,13 @@
       <button id="Rules-btn" type="button" onclick="ShowRules()">Show Rules</button>
       <div id="Rules_box" style="display: none;">
         <b>----- RULES -----</b> <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc venenatis cursus ex ut vestibulum. Donec sollicitudin nisi sapien, eget tristique tellus vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla id
-          dolor fermentum, luctus magna non, aliquet lacus. Nam justo libero, egestas et tempor eu, porttitor sed magna. Fusce diam justo, feugiat sed semper sed, sollicitudin ac arcu. Phasellus et nulla rhoncus, aliquam mauris quis, congue nisi.
-          Maecenas mi purus, gravida ut nisi eu, euismod volutpat ex. </p>
+        <p>Στόχος :
+            Ο στόχος του παιχνιδιού είναι να μείνεις χωρίς φύλλα στο χέρι. Αυτός που θα μείνει με ένα φύλλο είναι ο χαμένος.
+           Διαδικασία παιχνιδιού :
+             Ο πρώτος παίχτης τραβάει ένα φύλλο από αυτόν που κάθετε απέναντί του, αν κάνει ζευγάρι το νέο χαρτί με κάποια από τα δικά του τότε τα ρίχνει,
+             αλλιώς τα κρατάει και συνεχίζει ο αντίπαλος. Όποιος ζευγαρώσει όλα τα φύλλα του βγαίνει από το παιχνίδι. Όποιος μείνει τελευταίος
+             με τον Ρήγα Μπαστούνι (τον Μουτζούρη) στο χέρι του είναι ο χαμένος, και οι υπόλοιποι παίχτες αποφασίζουν την ποινή του.
+        </p>
       </div>
     </div>
   </div>
