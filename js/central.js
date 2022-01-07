@@ -456,7 +456,7 @@ function remove_doubles_from_decks(){
 
         if(c1_z_exists.length){
           if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-            array_found[counter].push(i);
+            array_found.push(i);
             counter++;
           }
         }
