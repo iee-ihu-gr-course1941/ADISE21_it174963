@@ -435,11 +435,11 @@ function find_pairs(){
   for(var i=0; i<=51; i++){
     cell="#c1-";
     card="#div_card_1_";
-    remove_pairs(cell , card);
+    remove_pairs(i , cell , card);
 
     cell="#c2-";
     card="#div_card_2_";
-    remove_pairs(cell , card);
+    remove_pairs(i , cell , card);
 
 
     //Find pairs of Player_1 cards----------------------------------------------
@@ -500,7 +500,7 @@ function find_pairs(){
   }
 }
 
-function remove_pairs(cell , card){
+function remove_pairs(i , cell , card){
   var counter = 0;
   var array_found = [];
   var cell_i_exists = $(cell + (i+1)).find("div");
