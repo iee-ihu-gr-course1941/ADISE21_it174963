@@ -211,7 +211,7 @@ function login_result(data){
   me.token = temp_token;
   me.player_turn = data[35];
 
-  console.log('Log_In successful \n' + 'Token: ' +  me.token + "\n Players turn: " + me.player_turn );
+  console.log('Log_In successful \n' + 'Token: ' +  me.token + "\nPlayers turn: " + me.player_turn );
   find_game_status();
 
 }
@@ -425,7 +425,6 @@ function handle_shuffle_effects() {
   }else{
     $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
   }
-
 
   // $('#shuffle_cards_btn').prop('disabled', true);
   // $('#shuffle_cards_btn').fadeTo("slow", 0.4);

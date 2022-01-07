@@ -21,7 +21,7 @@ switch ($r=array_shift($request)) {
             			break;
 	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
 									break;
-  case 'cards_clear': handle_cards_clear($method, $request, $conn);
+  case 'cards_clear': handle_game_clearAll($method, $request, $conn);
                       break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
@@ -183,7 +183,7 @@ function log_user($method, $request, $data, $conn){
 
 
 //---------CLEAR ALL BOARDS SECTION---------------------------------------------
-function handle_cards_clear($method, $request, $conn){
+function handle_game_clearAll($method, $request, $conn){
   $sql = "UPDATE board_1 B1
           INNER JOIN board_empty BE  ON B1.x = BE.x AND B1.y = BE.y
           SET B1.c_symbol = BE.c_symbol , B1.c_number = BE.c_number ";
@@ -212,7 +212,7 @@ function handle_cards_clear($method, $request, $conn){
   	}
   }
 
-  $sql = "  UPDATE `game_status` SET `status`='not active',`p_turn`= NULL,`result`=NULL,`last_change`= CURRENT_TIMESTAMP()";
+  $sql = "  UPDATE `game_status` SET `status`='not active',`p_turn`= 1,`result`=NULL,`last_change`= CURRENT_TIMESTAMP()";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "- Records for game_status cleared successfully ";
   } else {
