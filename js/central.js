@@ -442,7 +442,8 @@ function remove_doubles_from_decks(){
   var c_1 = "#c1-";
 
   for(var i=0; i<=51; i++){
-    var first_encounter = 0;
+    var counter = 0;
+    var array_found = [];
     var c1_i_exists = $(c_1 + (i+1)).find("div");
     var c1_i_span_exists = c1_i_exists.find("span");
 
@@ -454,17 +455,18 @@ function remove_doubles_from_decks(){
         var c1_z_span_exists = c1_z_exists.find("span");
 
         if(c1_z_exists.length){
-          if(first_encounter == 0){
-            first_encounter++;
-          }else{
-            if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
-              var cid = "#div_card_1_" + i;
-              $(cid).remove();
-            }
-          }          
+          if( (c1_i_span_exists[0].innerHTML) == (c1_z_span_exists[0].innerHTML) ){
+            array_found[counter].push(i);
+            counter++;
+          }
         }
       }
-
+      if(counter > 1){
+        for(var w=0; w<array_found.length; w++){
+          var cid = "#div_card_1_" + array_found[w];
+          $(cid).remove();
+        }
+      }
     }
   }
 
