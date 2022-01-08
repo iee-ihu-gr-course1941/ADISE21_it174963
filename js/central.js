@@ -465,10 +465,15 @@ function remove_pairs(i , cell , card){
               			// Delete pairs of cards
               			if( (counter == 2) ){
                 				for(var w=0; w<array_found.length; w++){
-                          if( (cell_z_span_exists[0].innerHTML == "K") && (w !== 0) ){
+                          if(cell_z_span_exists[0].innerHTML == "K"){
+                            if(w !== 0){
+                              var cid = card + array_found[w];
+                      				$(cid).remove();
+                            }
+                          }else{
                             var cid = card + array_found[w];
                     				$(cid).remove();
-                          }                 					
+                          }
                 				}
               			}
             		}
