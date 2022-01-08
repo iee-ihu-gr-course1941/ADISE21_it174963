@@ -494,6 +494,23 @@ function card_picked(cp) {
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
+  //------
+  if(cp_num == '#div_card_1_'){
+    for(var i=0; i<=51; i++){
+      var cell_toSearch = $("c2-" + (i+1)).find("div");
+  		if(cell_toSearch .length){
+        var card_toSearch = cell_toSearch.find("span");
+        if( (cn == card_toSearch[0]) && (card_toSearch[0] !== "K") ){
+          $(cp_num + cp_splited[1]).remove();
+          $(cell_toSearch).remove();
+        }
+      }
+    }
+  }
+
+
+  //------
+
   var spanClass = $(cp_num + cp_splited[1]).find('span').attr('class');
 
   if (spanClass == "number_red") {
