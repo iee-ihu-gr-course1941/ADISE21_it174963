@@ -542,12 +542,12 @@ function card_picked(cp) {
           // var cs_tomove = var_card_picked[1].innerHTML;
 
           $(cp_num + cp_splited[1]).remove();
-          iv = document.createElement('div');
-          div.className = 'card';
-          div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+          div_K = document.createElement('div');
+          div_K.className = 'card';
+          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
           var index = find_empty(2);
-          div.id = 'div_card_2_' + index;
-          $('#c2-' + (index+1)).append(div);
+          div_K.id = 'div_card_2_' + index;
+          $('#c2-' + (index+1)).append(div_K);
           break;
         }
         // else if (card_toSearch[0].innerHTML == "K") {
