@@ -432,7 +432,7 @@ function find_pairs(){
 }
 
 function remove_pairs(i , cell , card){
-  var counter , counter_K = 0;
+  var counter  = 0;
   var array_found = [];
   var cell_i_exists = $(cell + (i+1)).find("div");
   var cell_i_span_exists = cell_i_exists.find("span");
@@ -467,7 +467,7 @@ function remove_pairs(i , cell , card){
                       for(var w=0; w<array_found.length; w++){
                         var cid = card + array_found[w];
                       	$(cid).remove();
-                      }                      
+                      }
               			}
             		}
           }
