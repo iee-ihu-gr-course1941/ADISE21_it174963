@@ -445,22 +445,6 @@ function remove_pairs(i , cell , card){
             		if( (cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML) ){
               			array_found.push(z);
               			counter++;
-                    // if(cell_z_span_exists[0].innerHTML == "K"){
-                    //   counter_K++;
-                    //   if(counter_K !== 1){
-                    //     for(var w=0; w<array_found.length; w++){
-                    //       var cid = card + array_found[w];
-                    //       $(cid).remove();
-                    //     }
-                    //   }
-                    // }else{
-                    //   if( (counter == 2) ){
-                  	// 			for(var w=0; w<array_found.length; w++){
-                   	// 				var cid = card + array_found[w];
-                    // 				$(cid).remove();
-                  	// 			}
-                		// 	}
-                    // }
 
               			// Delete pairs of cards
               			if( (counter == 2) ){
@@ -520,6 +504,19 @@ function card_picked(cp) {
   if(cp_num == '#div_card_1_'){
     for(var i=0; i<=51; i++){
       var cell_toSearch = $("#c2-" + (i+1)).find("div");
+  		if(cell_toSearch.length){
+        var card_toSearch = cell_toSearch.find("span");
+        if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
+          $(cp_num + cp_splited[1]).remove();
+          $(cell_toSearch).remove();
+          //request php to delete card from specific board/players
+          //request php to change the players turn and and lock the onclick on the player who played
+        }
+      }
+    }
+  }else{
+    for(var i=0; i<=51; i++){
+      var cell_toSearch = $("#c1-" + (i+1)).find("div");
   		if(cell_toSearch.length){
         var card_toSearch = cell_toSearch.find("span");
         if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
