@@ -465,7 +465,7 @@ function remove_pairs(i , cell , card){
               			// Delete pairs of cards
               			if( (counter == 2) ){
                       if(cell_z_span_exists[0].innerHTML == "K"){
-                        var cid = card + array_found[0];
+                        var cid = card + array_found[1];
                         $(cid).remove();
                       }else{
                         for(var w=0; w<array_found.length; w++){
