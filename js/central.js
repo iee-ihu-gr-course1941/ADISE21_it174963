@@ -540,7 +540,7 @@ function card_picked(cp) {
         } else if (card_toSearch[0].innerHTML == "K") {
           //request php to transfer the K card to the other player
           //request php to change the players turn and and lock the onclick on the player who played
-          $(cell_toSearch).remove();
+          $(cp_num + cp_splited[1]).remove();
           div = document.createElement('div');
           div.className = 'card';
           div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
