@@ -500,7 +500,7 @@ function card_picked(cp) {
       var cell_toSearch = $("#c2-" + (i+1)).find("div");
   		if(cell_toSearch.length){
         var card_toSearch = cell_toSearch.find("span");
-        if( (cn == card_toSearch[0]) && (card_toSearch[0] !== "K") ){
+        if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
           $(cp_num + cp_splited[1]).remove();
           $(cell_toSearch).remove();
         }
