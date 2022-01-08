@@ -1,5 +1,8 @@
 //-----------------VARIABLES SECTION--------------------------------------------
-var me={token:null, player_turn:null};
+var me = {
+  token: null,
+  player_turn: null
+};
 var timer = null;
 var game_status = {};
 var last_update = new Date().getTime();
@@ -13,23 +16,25 @@ var pos_2_y = 1;
 
 
 //---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
-$(function(){
+$(function() {
   reset_everything();
   shuffle_deck();
 });
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
 
-function find_game_status(){
+function find_game_status() {
   clearTimeout(timer);
 
   refresh();
 
   $.ajax({
-        	url: "methods.php/status/",
-          headers: {"X-Token": me.token} ,
-          success: update_status
-        });
+    url: "methods.php/status/",
+    headers: {
+      "X-Token": me.token
+    },
+    success: update_status
+  });
 }
 
 
@@ -37,56 +42,62 @@ function update_status(data) {
   last_update = new Date().getTime();
   game_players_turn = data[1];
 
-  if( (game_players_turn !== "1") || (game_players_turn !== "1") ){
+  if ((game_players_turn !== "1") || (game_players_turn !== "1")) {
     console.log("game_status : initialized" + " / players_turn : none");
-  }else{
+  } else {
     console.log("game_status : started" + " / players_turn : " + game_players_turn);
   }
 
   clearTimeout(timer);
 
   //show whose turn it is to make a move
-  if(game_players_turn == 1){
-    $('.players_turn_txt').text( "Player's  turn : " + $('.Player1_name').text() ) ;
-  }else if(game_players_turn == 2){
-    $('.players_turn_txt').text( "Player's  turn : " + $('.Player2_name').text() ) ;
+  if (game_players_turn == 1) {
+    $('.players_turn_txt').text("Player's  turn : " + $('.Player1_name').text());
+  } else if (game_players_turn == 2) {
+    $('.players_turn_txt').text("Player's  turn : " + $('.Player2_name').text());
   }
 
-  if(game_players_turn == me.player_turn  &&  me.player_turn != null) {
+  if (game_players_turn == me.player_turn && me.player_turn != null) {
     //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
-    timer=setTimeout(function() { find_game_status();}, 10000);
-    console.log("time : 10000" );
+    timer = setTimeout(function() {
+      find_game_status();
+    }, 10000);
+    console.log("time : 10000");
   } else {
     // αν οχι, περιμενω κινηση απο τον αλλον
     //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-    timer=setTimeout(function() { find_game_status();}, 5000);
-    console.log("time : 5000" );
+    timer = setTimeout(function() {
+      find_game_status();
+    }, 5000);
+    console.log("time : 5000");
   }
 }
 //------------------------------------------------------------------------------
 
 
 //-----------------REFRESH SECTION----------------------------------------------
-function refresh(){
+function refresh() {
   handle_shuffle_effects();
 
   $.ajax({
-        	url: "methods.php/refresh/",
-          headers: {"X-Token": me.token} ,
-          success: refresh_everything
-        });
+    url: "methods.php/refresh/",
+    headers: {
+      "X-Token": me.token
+    },
+    success: refresh_everything
+  });
 }
 
-function refresh_everything(data){
+function refresh_everything(data) {
   clearTimeout(timer);
 
   //split all returned data into board_1-data, board_2-data, both player's name
-  var dataArrays_Splitted = data.split("-",3);
+  var dataArrays_Splitted = data.split("-", 3);
 
-  var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>",52);// board_1-data
-  var dataArray_2_Splitted = dataArrays_Splitted[1].split("<br>",52);// board_2-data
-  var dataArray_3_Splitted = dataArrays_Splitted[2].split("<br>",2); // both player's name
+  var dataArray_1_Splitted = dataArrays_Splitted[0].split("<br>", 52); // board_1-data
+  var dataArray_2_Splitted = dataArrays_Splitted[1].split("<br>", 52); // board_2-data
+  var dataArray_3_Splitted = dataArrays_Splitted[2].split("<br>", 2); // both player's name
 
   //refresh names
   $('.Player1_name').text(dataArray_3_Splitted[0]);
@@ -94,7 +105,7 @@ function refresh_everything(data){
 
 
   //refresh cards
-  for(var i=0; i<=51; i++){
+  for (var i = 0; i <= 51; i++) {
     //-----------Clear both sides from any cards--------------------------------
     var cell_1 = "#c1-" + (i + 1);
     var cell_2 = "#c2-" + (i + 1);
@@ -102,56 +113,56 @@ function refresh_everything(data){
     $(cell_2).html("");
 
     //-----------For board_1----------------------------------------------------
-    var dataArray1_RowSplitted = dataArray_1_Splitted[i].split(" ",4);
+    var dataArray1_RowSplitted = dataArray_1_Splitted[i].split(" ", 4);
     var x1 = dataArray1_RowSplitted[0]; //---------ολα τα x---------------------
     var y1 = dataArray1_RowSplitted[1]; //---------ολα τα y---------------------
     var c_s1 = dataArray1_RowSplitted[2]; //---------ολα τα c_symbol------------
     var c_n1 = dataArray1_RowSplitted[3]; //---------ολα τα c_number------------
 
-    if(c_s1 != ""){
-      var side_1=1;
+    if (c_s1 != "") {
+      var side_1 = 1;
       create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
     }
 
     //-----------For board_2----------------------------------------------------
-    var dataArray2_RowSplitted = dataArray_2_Splitted[i].split(" ",4);
+    var dataArray2_RowSplitted = dataArray_2_Splitted[i].split(" ", 4);
     var x2 = dataArray2_RowSplitted[0]; //---------ολα τα x---------------------
     var y2 = dataArray2_RowSplitted[1]; //---------ολα τα y---------------------
     var c_s2 = dataArray2_RowSplitted[2]; //---------ολα τα c_symbol------------
     var c_n2 = dataArray2_RowSplitted[3]; //---------ολα τα c_number------------
 
-    if(c_s2 != ""){
-      var side_2=2;
+    if (c_s2 != "") {
+      var side_2 = 2;
       create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
     }
   }
 
 
   //hide opponent's cards
-  if(me.player_turn == 1){
-    for(var i=0; i<=51; i++){
+  if (me.player_turn == 1) {
+    for (var i = 0; i <= 51; i++) {
       var cid = "#div_card_2_" + i;
-      var hide_spans = cid +" > span";
-      var remove_bCard = cid +" > img";
+      var hide_spans = cid + " > span";
+      var remove_bCard = cid + " > img";
       $(remove_bCard).remove();
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  ||  hasCardInside2 == true){
+      if (hasCardInside1 == true || hasCardInside2 == true) {
         $(hide_spans).hide();
         $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
     }
-  }else{
-    for(var i=0; i<=51; i++){
+  } else {
+    for (var i = 0; i <= 51; i++) {
       var cid = "#div_card_1_" + i;
-      var hide_spans = cid +" > span";
-      var remove_bCard = cid +" > img";
+      var hide_spans = cid + " > span";
+      var remove_bCard = cid + " > img";
       $(remove_bCard).remove();
 
       var hasCardInside1 = $(cid).is(':has(span.number)');
       var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if(hasCardInside1 == true  ||  hasCardInside2 == true){
+      if (hasCardInside1 == true || hasCardInside2 == true) {
         $(hide_spans).hide();
         $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
       }
@@ -168,30 +179,34 @@ function refresh_everything(data){
 function login_to_game() {
   $('#formModal').hide();
 
-  var dataToPass = JSON.stringify({   username: $('#username').val(),
-                                      player_side: $('#LogIn_selected_player_side :selected').val()   });
+  var dataToPass = JSON.stringify({
+    username: $('#username').val(),
+    player_side: $('#LogIn_selected_player_side :selected').val()
+  });
 
   $.ajax({
-            url: "methods.php/players/",
-            method: 'POST',
-        		headers: {"X-Token": me.token},
-            contentType: 'application/json',
-            data: dataToPass,
-            success: login_result
-          });
+    url: "methods.php/players/",
+    method: 'POST',
+    headers: {
+      "X-Token": me.token
+    },
+    contentType: 'application/json',
+    data: dataToPass,
+    success: login_result
+  });
 }
 
 
-function login_result(data){
+function login_result(data) {
   var temp_token = "";
-  for(var i=1; i<=32; i++){
+  for (var i = 1; i <= 32; i++) {
     temp_token += data[i];
   }
 
   me.token = temp_token;
   me.player_turn = data[35];
 
-  console.log('Log_In successful \n' + 'Token: ' +  me.token + "\nPlayers turn: " + me.player_turn );
+  console.log('Log_In successful \n' + 'Token: ' + me.token + "\nPlayers turn: " + me.player_turn);
   find_game_status();
 }
 //------------------------------------------------------------------------------
@@ -201,12 +216,14 @@ function login_result(data){
 //-------Clear board_1 , board_2 of all data------------------------------------
 function reset_everything() {
   $.ajax({
-            url: "methods.php/cards_clear/",
-            method: 'POST',
-            headers: {"X-Token":  me.token},
-            contentType: 'application/json',
-            success: clear_real_board
-          });
+    url: "methods.php/cards_clear/",
+    method: 'POST',
+    headers: {
+      "X-Token": me.token
+    },
+    contentType: 'application/json',
+    success: clear_real_board
+  });
 }
 
 function clear_real_board() {
@@ -249,10 +266,10 @@ function shuffle_deck() {
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
-    var side_1=1;
+    var side_1 = 1;
     var cell_1 = "#c1-" + (i + 1);
     var card_1 = '#div_card_1_';
-    var side_2=2;
+    var side_2 = 2;
     var cell_2 = "#c2-" + (i + 1);
     var card_2 = '#div_card_2_';
 
@@ -268,7 +285,7 @@ function shuffle_deck() {
         pos_1_y = 0;
       }
       pos_1_y++;
-    }else{
+    } else {
       $(cell_1).html("");
       $(cell_2).html("");
       var c_s2 = myDeck[i].suit;
@@ -290,33 +307,35 @@ function shuffle_deck() {
   var pos_2_x = 1;
   var pos_2_y = 1;
 
-  for (var i=0; i<=51; i++) {
+  for (var i = 0; i <= 51; i++) {
     if (i % 2 == 0) {
-      var card_found =  $("#c1-" + (i + 1)).find("div");;
+      var card_found = $("#c1-" + (i + 1)).find("div");;
 
-      if(card_found.length){
-        fill_board_game(i , pos_1_x , pos_1_y , card_found); // Calls the function that fills the game and database with the cards
+      if (card_found.length) {
+        fill_board_game(i, pos_1_x, pos_1_y, card_found); // Calls the function that fills the game and database with the cards
         if (pos_1_y == 12) {
           pos_1_x++;
           pos_1_y = 0;
-        }pos_1_y++;
+        }
+        pos_1_y++;
       }
-    }else{
-      var card_found =  $("#c2-" + (i + 1)).find("div");;
+    } else {
+      var card_found = $("#c2-" + (i + 1)).find("div");;
 
-      if(card_found.length){
-        fill_board_game(i, pos_2_x , pos_2_y , card_found); // Calls the function that fills the game and database with the cards
+      if (card_found.length) {
+        fill_board_game(i, pos_2_x, pos_2_y, card_found); // Calls the function that fills the game and database with the cards
         if (pos_2_y == 12) {
           pos_2_x++;
           pos_2_y = 0;
-        }pos_2_y++;
+        }
+        pos_2_y++;
       }
     }
   }
 }
 
 //------CREATE CARDS SECTION----------------------------------------------------
-function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
+function create_Cards(index, side, cell_1, cell_2, c_s, c_n) {
   div = document.createElement('div');
   div.className = 'card';
 
@@ -331,10 +350,10 @@ function create_Cards(index , side , cell_1 , cell_2 , c_s , c_n){
     div.innerHTML = '<span class="number">' + c_n + '</span><span class="suit">' + ascii_char + '</span>';
   }
 
-  if(side == 1){
+  if (side == 1) {
     div.id = 'div_card_1_' + index;
     $(cell_1).append(div);
-  }else{
+  } else {
     div.id = 'div_card_2_' + index;
     $(cell_2).append(div);
   }
@@ -374,22 +393,24 @@ function fill_board_game(i, x, y, card_found) {
     number: cn
   });
 
-  fill_board_db(dataToPass , cTP);
+  fill_board_db(dataToPass, cTP);
 
 }
 //------------------------------------------------------------------------------
 
-function fill_board_db(dataToPass , cTP){
-  if(cTP == 'div_card_1_'){
+function fill_board_db(dataToPass, cTP) {
+  if (cTP == 'div_card_1_') {
     var url_value = "methods.php/cards_1/"
-  }else{
+  } else {
     var url_value = "methods.php/cards_2/"
   }
 
   $.ajax({
     url: url_value,
     method: 'POST',
-    headers: {"X-Token":  me.token},
+    headers: {
+      "X-Token": me.token
+    },
     contentType: 'application/json',
     data: dataToPass,
   });
@@ -407,9 +428,9 @@ function fill_board_db(dataToPass , cTP){
 
 //------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
 function handle_shuffle_effects() {
-  if( $("#shuffle_card_img").attr("src") == "extras/shuffled_card.png" ){
+  if ($("#shuffle_card_img").attr("src") == "extras/shuffled_card.png") {
     $("#shuffle_card_img").attr("src", "extras/shuffle_card.png").stop(true, true).hide().fadeIn();
-  }else{
+  } else {
     $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
   }
 }
@@ -417,51 +438,54 @@ function handle_shuffle_effects() {
 
 
 //-----------------FIND - REMOVE DOUBLES SECTION--------------------------------
-function find_pairs(){
-  var cell="";
-  var card="";
-  for(var i=0; i<=51; i++){
-    cell="#c1-";
-    card="#div_card_1_";
-    remove_pairs(i , cell , card);
+function find_pairs() {
+  var cell = "";
+  var card = "";
+  for (var i = 0; i <= 51; i++) {
+    cell = "#c1-";
+    card = "#div_card_1_";
+    remove_pairs(i, cell, card);
 
-    cell="#c2-";
-    card="#div_card_2_";
-    remove_pairs(i , cell , card);
+    cell = "#c2-";
+    card = "#div_card_2_";
+    remove_pairs(i, cell, card);
   }
 }
 
-function remove_pairs(i , cell , card){
+function remove_pairs(i, cell, card) {
   var counter = 0;
   var array_found = [];
-  var cell_i_exists = $(cell + (i+1)).find("div");
+  var cell_i_exists = $(cell + (i + 1)).find("div");
   var cell_i_span_exists = cell_i_exists.find("span");
 
-  if(cell_i_exists.length){
-  	for(var z=0; z<=51; z++){
-  		var cell_z_exists = $(cell + (z+1)).find("div");
+  if (cell_i_exists.length) {
+    for (var z = 0; z <= 51; z++) {
+      var cell_z_exists = $(cell + (z + 1)).find("div");
       var cell_z_span_exists = cell_z_exists.find("span");
-  		if(cell_z_exists .length){
-            		if( (cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML) ){
-              			array_found.push(z);
-              			counter++;
+      if (cell_z_exists.length) {
+        if ((cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML)) {
+          array_found.push(z);
+          counter++;
 
-              			// Delete pairs of cards
-              			if( (counter == 2) ){
-                      if(cell_z_span_exists[0].innerHTML == "K"){
-                        var cid = card + array_found[1];
-                        $(cid).remove();
-                      }else{
-                        for(var w=0; w<array_found.length; w++){
-                          var cid = card + array_found[w];
-                      		$(cid).remove();
-                        }
-                      }
-              			}
-            		}
+          // Delete pairs of cards
+          if ((counter == 2)) {
+            if (cell_z_span_exists[0].innerHTML == "K") {
+              var cid = card + array_found[1];
+              $(cid).remove();
+            } else {
+              for (var w = 0; w < array_found.length; w++) {
+                var cid = card + array_found[w];
+                $(cid).remove();
+              }
+            }
           }
+
         }
       }
+
+    }
+  }
+
 }
 //------------------------------------------------------------------------------
 
@@ -500,35 +524,49 @@ function card_picked(cp) {
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
+
   //------
-  if(cp_num == '#div_card_1_'){
-    for(var i=0; i<=51; i++){
-      var cell_toSearch = $("#c2-" + (i+1)).find("div");
-  		if(cell_toSearch.length){
+
+  if (cp_num == '#div_card_1_') {
+    for (var i = 0; i <= 51; i++) {
+      var cell_toSearch = $("#c2-" + (i + 1)).find("div");
+      if (cell_toSearch.length) {
         var card_toSearch = cell_toSearch.find("span");
-        if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
+        if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
           $(cp_num + cp_splited[1]).remove();
           $(cell_toSearch).remove();
           //request php to delete card from specific board/players
           //request php to change the players turn and and lock the onclick on the player who played
+        } else if (card_toSearch[0].innerHTML == "K") {
+          //request php to transfer the K card to the other player
+          //request php to change the players turn and and lock the onclick on the player who played
+          div = document.createElement('div');
+          div.className = 'card';
+          div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+          var index = find_empty(2);
+          div.id = 'div_card_2_' + index;//index=που θα μπει η καρτα στα χααρτια του αλλου παικτη
+          $('#c2-' + (index+1)).append(div);
+
         }
       }
     }
-  }else{
-    for(var i=0; i<=51; i++){
-      var cell_toSearch = $("#c1-" + (i+1)).find("div");
-  		if(cell_toSearch.length){
+  } else {
+    for (var i = 0; i <= 51; i++) {
+      var cell_toSearch = $("#c1-" + (i + 1)).find("div");
+      if (cell_toSearch.length) {
         var card_toSearch = cell_toSearch.find("span");
-        if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
+        if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
           $(cp_num + cp_splited[1]).remove();
           $(cell_toSearch).remove();
           //request php to delete card from specific board/players
+          //request php to change the players turn and and lock the onclick on the player who played
+        } else if (card_toSearch[0].innerHTML == "K") {
+          //request php to transfer the K card to the other player
           //request php to change the players turn and and lock the onclick on the player who played
         }
       }
     }
   }
-
 
   //------
 
@@ -541,5 +579,22 @@ function card_picked(cp) {
   }
 
   $('.Card_OnTop_div').append(div);
+
+}
+
+function find_empty(d){
+  for (var i = 0; i <= 51; i++) {
+    if(d == 2){
+      var cell_toSearch = $("#c2-" + (i + 1)).find("div");
+      if (cell_toSearch.length == 0) {
+        return i;
+      }
+    }else{
+      var cell_toSearch = $("#c1-" + (i + 1)).find("div");
+      if (cell_toSearch.length == 0) {
+        return i;
+      }
+    }
+  }
 
 }
