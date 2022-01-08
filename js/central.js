@@ -540,13 +540,12 @@ function card_picked(cp) {
         } else if (card_toSearch[0].innerHTML == "K") {
           //request php to transfer the K card to the other player
           //request php to change the players turn and and lock the onclick on the player who played
-          $(cp_num + cp_splited[1]).remove();
           $(cell_toSearch).remove();
           div = document.createElement('div');
           div.className = 'card';
           div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
           var index = find_empty(2);
-          div.id = 'div_card_2_' + index;//index=που θα μπει η καρτα στα χααρτια του αλλου παικτη
+          div.id = 'div_card_2_' + index;
           $('#c2-' + (index+1)).append(div);
 
         }
