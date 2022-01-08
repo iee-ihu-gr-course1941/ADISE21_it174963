@@ -548,6 +548,7 @@ function card_picked(cp) {
           var index = find_empty(2);
           div.id = 'div_card_2_' + index;
           $('#c2-' + (index+1)).append(div);
+          break;
         }
         // else if (card_toSearch[0].innerHTML == "K") {
         //   //request php to transfer the K card to the other player
