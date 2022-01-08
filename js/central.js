@@ -446,7 +446,7 @@ function remove_pairs(i , cell , card){
               			array_found.push(z);
               			counter++;
               			// Delete pairs of cards
-              			if(counter == 2){
+              			if( (counter == 2) && (cell_z_span_exists[0].innerHTML !== "K") ){
                 				for(var w=0; w<array_found.length; w++){
                  					var cid = card + array_found[w];
                   				$(cid).remove();
@@ -503,6 +503,8 @@ function card_picked(cp) {
         if( (cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K") ){
           $(cp_num + cp_splited[1]).remove();
           $(cell_toSearch).remove();
+          //request php to delete card from specific board/players
+          //request php to change the players turn and and lock the onclick on the player who played
         }
       }
     }
