@@ -497,7 +497,7 @@ function card_picked(cp) {
   //------
   if(cp_num == '#div_card_1_'){
     for(var i=0; i<=51; i++){
-      var cell_toSearch = $("c2-" + (i+1)).find("div");
+      var cell_toSearch = $("#c2-" + (i+1)).find("div");
   		if(cell_toSearch.length){
         var card_toSearch = cell_toSearch.find("span");
         if( (cn == card_toSearch[0]) && (card_toSearch[0] !== "K") ){
