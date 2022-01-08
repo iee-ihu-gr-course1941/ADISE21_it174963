@@ -445,30 +445,35 @@ function remove_pairs(i , cell , card){
             		if( (cell_i_span_exists[0].innerHTML) == (cell_z_span_exists[0].innerHTML) ){
               			array_found.push(z);
               			counter++;
-                    if(cell_z_span_exists[0].innerHTML == "K"){
-                      counter_K++;
-                      if(counter_K !== 1){
+                    // if(cell_z_span_exists[0].innerHTML == "K"){
+                    //   counter_K++;
+                    //   if(counter_K !== 1){
+                    //     for(var w=0; w<array_found.length; w++){
+                    //       var cid = card + array_found[w];
+                    //       $(cid).remove();
+                    //     }
+                    //   }
+                    // }else{
+                    //   if( (counter == 2) ){
+                  	// 			for(var w=0; w<array_found.length; w++){
+                   	// 				var cid = card + array_found[w];
+                    // 				$(cid).remove();
+                  	// 			}
+                		// 	}
+                    // }
+
+              			// Delete pairs of cards
+              			if( (counter == 2) ){
+                      if(cell_z_span_exists[0].innerHTML == "K"){
+                        var cid = card + array_found[0];
+                        $(cid).remove();
+                      }else{
                         for(var w=0; w<array_found.length; w++){
                           var cid = card + array_found[w];
-                          $(cid).remove();
+                      		$(cid).remove();
                         }
                       }
-                    }else{
-                      if( (counter == 2) ){
-                  				for(var w=0; w<array_found.length; w++){
-                   					var cid = card + array_found[w];
-                    				$(cid).remove();
-                  				}
-                			}
-                    }
-
-              			// // Delete pairs of cards
-              			// if( (counter == 2) ){
-                		//     for(var w=0; w<array_found.length; w++){
-                    //       var cid = card + array_found[w];
-                    //   		$(cid).remove();
-                    //     }
-              			// }
+              			}
             		}
           }
         }
