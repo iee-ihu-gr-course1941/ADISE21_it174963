@@ -564,15 +564,6 @@ function card_picked(cp) {
         // }
       }
     }
-    $(cp_num + cp_splited[1]).remove();
-    iv = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-    var index = find_empty(2);
-    div.id = 'div_card_2_' + index;
-    $('#c2-' + (index+1)).append(div);
-
-
   } else {
     for (var i = 0; i <= 51; i++) {
       var cell_toSearch = $("#c1-" + (i + 1)).find("div");
