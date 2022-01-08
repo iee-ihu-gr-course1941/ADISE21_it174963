@@ -432,7 +432,7 @@ function find_pairs(){
 }
 
 function remove_pairs(i , cell , card){
-  var counter  = 0;
+  var counter = 0;
   var array_found = [];
   var cell_i_exists = $(cell + (i+1)).find("div");
   var cell_i_span_exists = cell_i_exists.find("span");
@@ -464,9 +464,14 @@ function remove_pairs(i , cell , card){
 
               			// Delete pairs of cards
               			if( (counter == 2) ){
-                      for(var w=0; w<array_found.length; w++){
-                        var cid = card + array_found[w];
-                      	$(cid).remove();
+                      if(cell_z_span_exists[0].innerHTML == "K"){
+                        var cid = card + array_found[1];
+                        $(cid).remove();
+                      }else{
+                        for(var w=0; w<array_found.length; w++){
+                          var cid = card + array_found[w];
+                      		$(cid).remove();
+                        }
                       }
               			}
             		}
