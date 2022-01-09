@@ -435,8 +435,10 @@ function card_picked(cp) {
 
   if (cp_num == '#div_card_1_') {
     card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
+    hide_cards(1);
   } else {
     card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
+    hide_cards(2);
   }
 
 
