@@ -428,18 +428,19 @@ function card_picked(cp) {
     var cp_num = '#div_card_2_';
   }
 
-  var var_card_picked = $(cp_num + cp_splited[1]).find('span');
-  var cn = var_card_picked[0].innerHTML;
-  var cs = var_card_picked[1].innerHTML;
+  var card_picked_id = cp_num + cp_splited[1];
+  var card_picked_spans = $(card_picked_id).find('span');
+  var cn = card_picked_spans[0].innerHTML;
+  var cs = card_picked_spans[1].innerHTML;
 
   if (cp_num == '#div_card_1_') {
-    card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cp_num , cp_splited[1]);
+    card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
   } else {
-    card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cp_num , cp_splited[1]);
+    card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
   }
 
 
-  var spanClass = $(cp_num + cp_splited[1]).find('span').attr('class');
+  var spanClass = $(card_picked_id).find('span').attr('class');
   if (spanClass == "number_red") {
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
   } else {
@@ -450,25 +451,25 @@ function card_picked(cp) {
 }
 
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
-function card_picked_result(cell_half , card_half , target , cn , cp_num , cp_splited){
+function card_picked_result(cell_half , card_half , target , cn , cs , card_picked_id){
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
       var card_toSearch = cell_toSearch.find("span");
       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-        $(cp_num + cp_splited).remove();
+        $(card_picked_id).remove();
         $(cell_toSearch).remove();
         //request php to delete card from specific board/players
         //request php to change the players turn and and lock the onclick on the player who played
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-        $(cp_num + cp_splited).remove();
+        $(card_picked_id).remove();
         div_K = document.createElement('div');
         div_K.className = 'card';
-        var spanClass = $(cp_num + cp_splited).find('span').attr('class');
+        var spanClass = $(card_picked_id).find('span').attr('class');
         if (spanClass == "number_red") {
-          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+          div_K.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
         } else {
-          div_K.innerHTML = '<span class="number">' + card_toSearch[0].innerHTML + '</span><span class="suit">' + card_toSearch[1].innerHTML + '</span>';
+          div_K.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
         }
         var index = find_empty(target);
         div_K.id = card_half + index;
