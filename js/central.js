@@ -155,13 +155,6 @@ function refresh_everything(data) {
 //----HIDE - OPPONENT'S CARDS METHOD--------------------------------------------
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
-    if (me.player_turn == 1) {
-      var cid_lock = "#c1-" + (i+1);
-      $(cid_lock).attr('disabled','disabled');
-    }else{
-      var cid_lock = "#c2-" + (i+1);
-      $(cid_lock).attr('disabled','disabled');
-    }
     var cid = "#div_card_" + c + "_" + i;
     var hide_spans = cid + " > span";
     var remove_bCard = cid + " > img";
@@ -211,6 +204,16 @@ function login_result(data) {
   me.player_turn = data[35];
 
   console.log('Log_In successful \n' + 'Token: ' + me.token + "\nPlayers turn: " + me.player_turn);
+
+  for(var i=0; i<=51; i++){
+    if (me.player_turn == 1) {
+      var cid_lock = "#c1-" + (i+1);
+      $(cid_lock).attr('disabled','disabled');
+    }else{
+      var cid_lock = "#c2-" + (i+1);
+      $(cid_lock).attr('disabled','disabled');
+    }
+  }
   find_game_status();
 }
 //------------------------------------------------------------------------------
