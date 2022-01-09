@@ -139,38 +139,58 @@ function refresh_everything(data) {
 
 
   //hide opponent's cards
+  // if (me.player_turn == 1) {
+  //   for (var i = 0; i <= 51; i++) {
+  //     var cid = "#div_card_2_" + i;
+  //     var hide_spans = cid + " > span";
+  //     var remove_bCard = cid + " > img";
+  //     $(remove_bCard).remove();
+  //
+  //     var hasCardInside1 = $(cid).is(':has(span.number)');
+  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
+  //     if (hasCardInside1 == true || hasCardInside2 == true) {
+  //       $(hide_spans).hide();
+  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+  //     }
+  //   }
+  // } else {
+  //   for (var i = 0; i <= 51; i++) {
+  //     var cid = "#div_card_1_" + i;
+  //     var hide_spans = cid + " > span";
+  //     var remove_bCard = cid + " > img";
+  //     $(remove_bCard).remove();
+  //
+  //     var hasCardInside1 = $(cid).is(':has(span.number)');
+  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
+  //     if (hasCardInside1 == true || hasCardInside2 == true) {
+  //       $(hide_spans).hide();
+  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+  //     }
+  //   }
+  // }
+
   if (me.player_turn == 1) {
-    for (var i = 0; i <= 51; i++) {
-      var cid = "#div_card_2_" + i;
-      var hide_spans = cid + " > span";
-      var remove_bCard = cid + " > img";
-      $(remove_bCard).remove();
-
-      var hasCardInside1 = $(cid).is(':has(span.number)');
-      var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if (hasCardInside1 == true || hasCardInside2 == true) {
-        $(hide_spans).hide();
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-      }
-    }
-  } else {
-    for (var i = 0; i <= 51; i++) {
-      var cid = "#div_card_1_" + i;
-      var hide_spans = cid + " > span";
-      var remove_bCard = cid + " > img";
-      $(remove_bCard).remove();
-
-      var hasCardInside1 = $(cid).is(':has(span.number)');
-      var hasCardInside2 = $(cid).is(':has(span.number_red)');
-      if (hasCardInside1 == true || hasCardInside2 == true) {
-        $(hide_spans).hide();
-        $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-      }
-    }
+    hide_cards(2);
+  }else{
+    hide_cards(1);
   }
-
 }
 
+function hide_cards(c){
+  for (var i = 0; i <= 51; i++) {
+    var cid = "#div_card_" + c "_" + i;
+    var hide_spans = cid + " > span";
+    var remove_bCard = cid + " > img";
+    $(remove_bCard).remove();
+
+    var hasCardInside1 = $(cid).is(':has(span.number)');
+    var hasCardInside2 = $(cid).is(':has(span.number_red)');
+    if (hasCardInside1 == true || hasCardInside2 == true) {
+      $(hide_spans).hide();
+      $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+    }
+  }
+}
 
 //------------------------------------------------------------------------------
 
@@ -538,9 +558,6 @@ function card_picked(cp) {
           //request php to delete card from specific board/players
           //request php to change the players turn and and lock the onclick on the player who played
         } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-          // var cn_tomove = var_card_picked[0].innerHTML;
-          // var cs_tomove = var_card_picked[1].innerHTML;
-
           $(cp_num + cp_splited[1]).remove();
           div_K = document.createElement('div');
           div_K.className = 'card';
@@ -550,18 +567,6 @@ function card_picked(cp) {
           $('#c2-' + (index+1)).append(div_K);
           break;
         }
-        // else if (card_toSearch[0].innerHTML == "K") {
-        //   //request php to transfer the K card to the other player
-        //   //request php to change the players turn and and lock the onclick on the player who played
-        //   $(cp_num + cp_splited[1]).remove();
-        //   div = document.createElement('div');
-        //   div.className = 'card';
-        //   div.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-        //   var index = find_empty(2);
-        //   div.id = 'div_card_2_' + index;
-        //   $('#c2-' + (index+1)).append(div);
-        //
-        // }
       }
     }
   } else {
@@ -574,9 +579,15 @@ function card_picked(cp) {
           $(cell_toSearch).remove();
           //request php to delete card from specific board/players
           //request php to change the players turn and and lock the onclick on the player who played
-        } else if (card_toSearch[0].innerHTML == "K") {
-          //request php to transfer the K card to the other player
-          //request php to change the players turn and and lock the onclick on the player who played
+        } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+          $(cp_num + cp_splited[1]).remove();
+          div_K = document.createElement('div');
+          div_K.className = 'card';
+          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+          var index = find_empty(1);
+          div_K.id = 'div_card_1_' + index;
+          $('#c1-' + (index+1)).append(div_K);
+          break;
         }
       }
     }
@@ -593,8 +604,9 @@ function card_picked(cp) {
   }
 
   $('.Card_OnTop_div').append(div);
-
 }
+
+
 
 function find_empty(d){
   for (var i = 0; i <= 51; i++) {
