@@ -156,10 +156,10 @@ function refresh_everything(data) {
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
     if(c == 2){
-      var cid_lock = "#div_card_" + 1 + "_" + i;
+      var cid_lock = "#c_" + 1 + "_" + (i+1);
       $(cid_lock).attr('disabled','disabled');
     }else{
-      var cid_lock = "#div_card_" + 2 + "_" + i;
+      var cid_lock = "#c_" + 2 + "_" + (i+1);
       $(cid_lock).attr('disabled','disabled');
     }
     var cid = "#div_card_" + c + "_" + i;
