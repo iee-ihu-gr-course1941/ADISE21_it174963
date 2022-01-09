@@ -479,9 +479,9 @@ function card_picked(cp) {
   // }
 
   if (cp_num == '#div_card_1_') {
-    card_picked_result("#c2-" , "div_card_2_" , 2);
+    card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cp_num , cp_splited[1]);
   } else {
-    card_picked_result("#c1-" , "div_card_1_" , 1);
+    card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cp_num , cp_splited[1]);
   }
 
 
@@ -496,18 +496,18 @@ function card_picked(cp) {
 }
 
 
-function card_picked_result(cell_half , card_half , target){
+function card_picked_result(cell_half , card_half , target , cn , cp_num , cp_splited){
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
       var card_toSearch = cell_toSearch.find("span");
       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-        $(cp_num + cp_splited[1]).remove();
+        $(cp_num + cp_splited).remove();
         $(cell_toSearch).remove();
         //request php to delete card from specific board/players
         //request php to change the players turn and and lock the onclick on the player who played
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-        $(cp_num + cp_splited[1]).remove();
+        $(cp_num + cp_splited).remove();
         div_K = document.createElement('div');
         div_K.className = 'card';
         div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
