@@ -155,7 +155,7 @@ function refresh_everything(data) {
 //----HIDE - OPPONENT'S CARDS METHOD--------------------------------------------
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
-    if(c == 2){
+    if (me.player_turn == 1) {
       var cid_lock = "#c_" + 1 + "_" + (i+1);
       $(cid_lock).attr('disabled','disabled');
     }else{
