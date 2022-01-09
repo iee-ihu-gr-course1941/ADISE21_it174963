@@ -432,52 +432,6 @@ function card_picked(cp) {
   var cn = var_card_picked[0].innerHTML;
   var cs = var_card_picked[1].innerHTML;
 
-  // if (cp_num == '#div_card_1_') {
-  //   for (var i = 0; i <= 51; i++) {
-  //     var cell_toSearch = $("#c2-" + (i + 1)).find("div");
-  //     if (cell_toSearch.length) {
-  //       var card_toSearch = cell_toSearch.find("span");
-  //       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-  //         $(cp_num + cp_splited[1]).remove();
-  //         $(cell_toSearch).remove();
-  //         //request php to delete card from specific board/players
-  //         //request php to change the players turn and and lock the onclick on the player who played
-  //       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-  //         $(cp_num + cp_splited[1]).remove();
-  //         div_K = document.createElement('div');
-  //         div_K.className = 'card';
-  //         div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-  //         var index = find_empty(2);
-  //         div_K.id = 'div_card_2_' + index;
-  //         $('#c2-' + (index+1)).append(div_K);
-  //         break;
-  //       }
-  //     }
-  //   }
-  // } else {
-  //   for (var i = 0; i <= 51; i++) {
-  //     var cell_toSearch = $("#c1-" + (i + 1)).find("div");
-  //     if (cell_toSearch.length) {
-  //       var card_toSearch = cell_toSearch.find("span");
-  //       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-  //         $(cp_num + cp_splited[1]).remove();
-  //         $(cell_toSearch).remove();
-  //         //request php to delete card from specific board/players
-  //         //request php to change the players turn and and lock the onclick on the player who played
-  //       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-  //         $(cp_num + cp_splited[1]).remove();
-  //         div_K = document.createElement('div');
-  //         div_K.className = 'card';
-  //         div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-  //         var index = find_empty(1);
-  //         div_K.id = 'div_card_1_' + index;
-  //         $('#c1-' + (index+1)).append(div_K);
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }
-
   if (cp_num == '#div_card_1_') {
     card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cp_num , cp_splited[1]);
   } else {
@@ -495,7 +449,7 @@ function card_picked(cp) {
   $('.Card_OnTop_div').append(div);
 }
 
-
+//----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
 function card_picked_result(cell_half , card_half , target , cn , cp_num , cp_splited){
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
