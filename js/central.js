@@ -18,11 +18,19 @@ var pos_2_y = 1;
 //---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
 $(function() {
   reset_everything();
-  shuffle_deck();
+  initialize_deck();
 });
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 //---------------------------------------------------------------- B A S I C  F U N C T I O N S ----------------------------------------------------------------------------------------
 
+//-----------------STATUS SECTION-----------------------------------------------
+//----FIND STATUS - PHP METHOD--------------------------------------------------
 function find_game_status() {
   clearTimeout(timer);
 
@@ -37,7 +45,7 @@ function find_game_status() {
   });
 }
 
-
+//----UPDATE STATUS METHOD------------------------------------------------------
 function update_status(data) {
   last_update = new Date().getTime();
   game_players_turn = data[1];
@@ -77,6 +85,7 @@ function update_status(data) {
 
 
 //-----------------REFRESH SECTION----------------------------------------------
+//----REFRESH - PHP METHOD------------------------------------------------------
 function refresh() {
   handle_shuffle_effects();
 
@@ -89,6 +98,7 @@ function refresh() {
   });
 }
 
+//----REFRESH - BOARD IN_GAME METHOD--------------------------------------------
 function refresh_everything(data) {
   clearTimeout(timer);
 
@@ -118,7 +128,6 @@ function refresh_everything(data) {
     var y1 = dataArray1_RowSplitted[1]; //---------ολα τα y---------------------
     var c_s1 = dataArray1_RowSplitted[2]; //---------ολα τα c_symbol------------
     var c_n1 = dataArray1_RowSplitted[3]; //---------ολα τα c_number------------
-
     if (c_s1 != "") {
       var side_1 = 1;
       create_Cards(i, side_1, cell_1, cell_2, c_s1, c_n1);
@@ -130,44 +139,11 @@ function refresh_everything(data) {
     var y2 = dataArray2_RowSplitted[1]; //---------ολα τα y---------------------
     var c_s2 = dataArray2_RowSplitted[2]; //---------ολα τα c_symbol------------
     var c_n2 = dataArray2_RowSplitted[3]; //---------ολα τα c_number------------
-
     if (c_s2 != "") {
       var side_2 = 2;
       create_Cards(i, side_2, cell_1, cell_2, c_s2, c_n2);
     }
   }
-
-
-  //hide opponent's cards
-  // if (me.player_turn == 1) {
-  //   for (var i = 0; i <= 51; i++) {
-  //     var cid = "#div_card_2_" + i;
-  //     var hide_spans = cid + " > span";
-  //     var remove_bCard = cid + " > img";
-  //     $(remove_bCard).remove();
-  //
-  //     var hasCardInside1 = $(cid).is(':has(span.number)');
-  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
-  //     if (hasCardInside1 == true || hasCardInside2 == true) {
-  //       $(hide_spans).hide();
-  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-  //     }
-  //   }
-  // } else {
-  //   for (var i = 0; i <= 51; i++) {
-  //     var cid = "#div_card_1_" + i;
-  //     var hide_spans = cid + " > span";
-  //     var remove_bCard = cid + " > img";
-  //     $(remove_bCard).remove();
-  //
-  //     var hasCardInside1 = $(cid).is(':has(span.number)');
-  //     var hasCardInside2 = $(cid).is(':has(span.number_red)');
-  //     if (hasCardInside1 == true || hasCardInside2 == true) {
-  //       $(hide_spans).hide();
-  //       $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
-  //     }
-  //   }
-  // }
 
   if (me.player_turn == 1) {
     hide_cards(2);
@@ -176,6 +152,7 @@ function refresh_everything(data) {
   }
 }
 
+//----HIDE - OPPONENT'S CARDS METHOD--------------------------------------------
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
     var cid = "#div_card_" + c + "_" + i;
@@ -191,11 +168,11 @@ function hide_cards(c){
     }
   }
 }
-
 //------------------------------------------------------------------------------
 
 
 //-----------------LOGIN SECTION------------------------------------------------
+//----LOG_IN - PHP METHOD-------------------------------------------------------
 function login_to_game() {
   $('#formModal').hide();
 
@@ -216,7 +193,7 @@ function login_to_game() {
   });
 }
 
-
+//----LOG_IN - PHP - RESULT METHOD----------------------------------------------
 function login_result(data) {
   var temp_token = "";
   for (var i = 1; i <= 32; i++) {
@@ -232,8 +209,8 @@ function login_result(data) {
 //------------------------------------------------------------------------------
 
 
-
-//-------Clear board_1 , board_2 of all data------------------------------------
+//-----------------RESET SECTION------------------------------------------------
+//----RESET - PHP - METHOD------------------------------------------------------
 function reset_everything() {
   $.ajax({
     url: "methods.php/cards_clear/",
@@ -253,8 +230,8 @@ function clear_real_board() {
 
 
 
-//-----------------SHUFFLE CARDS SECTION----------------------------------------
-//------CREATE CARDS  SECTION---------------------------------------------------
+//-----------------INITIALIZE CARDS FOR GAME SECTION----------------------------
+//------CREATE FIRST DECK  METHOD-----------------------------------------------
 function card(value, name, suit) {
   this.value = value;
   this.name = name;
@@ -273,16 +250,15 @@ function deck() {
   }
   return cards;
 }
-//------------------------------------------------------------------------------
 
-
-//------SHUFFLE CARDS SECTION---------------------------------------------------
+//----SHUFFLE FIRST DECK - METHOD-----------------------------------------------
 function shuffle(o) {
   for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   return o;
 };
 
-function shuffle_deck() {
+//----INITIALIZE IN-GAME CARDS - METHOD-----------------------------------------
+function initialize_deck() {
   myDeck = shuffle(myDeck);
 
   for (var i = 0; i < myDeck.length; i++) {
@@ -354,7 +330,7 @@ function shuffle_deck() {
   }
 }
 
-//------CREATE CARDS SECTION----------------------------------------------------
+//----CREATE IN-GAME CARDS - METHOD---------------------------------------------
 function create_Cards(index, side, cell_1, cell_2, c_s, c_n) {
   div = document.createElement('div');
   div.className = 'card';
@@ -378,10 +354,9 @@ function create_Cards(index, side, cell_1, cell_2, c_s, c_n) {
     $(cell_2).append(div);
   }
 }
-//------------------------------------------------------------------------------
 
 
-//-------Fill the board and the MYSQL database with data------------------------
+//----FILL MYSQL DATABASE - METHOD----------------------------------------------
 function fill_board_game(i, x, y, card_found) {
 
   var c = $(card_found).attr("id");
@@ -416,8 +391,8 @@ function fill_board_game(i, x, y, card_found) {
   fill_board_db(dataToPass, cTP);
 
 }
-//------------------------------------------------------------------------------
 
+//----FILL MYSQL DATABASE - PHP - METHOD----------------------------------------
 function fill_board_db(dataToPass, cTP) {
   if (cTP == 'div_card_1_') {
     var url_value = "methods.php/cards_1/"
@@ -438,6 +413,134 @@ function fill_board_db(dataToPass, cTP) {
 //------------------------------------------------------------------------------
 
 
+//-----------------CLICK ON CARD SECTION----------------------------------------
+//----CLICKED ON A SPECIFIC CARD - METHOD---------------------------------------
+function card_picked(cp) {
+  $('.Card_OnTop_div').empty();
+  div = document.createElement('div');
+  div.className = 'card';
+  div.id = 'div_card_picked';
+
+  var cp_splited = cp.split("-");
+  if (cp_splited[0] == 1) {
+    var cp_num = '#div_card_1_';
+  } else {
+    var cp_num = '#div_card_2_';
+  }
+
+  var var_card_picked = $(cp_num + cp_splited[1]).find('span');
+  var cn = var_card_picked[0].innerHTML;
+  var cs = var_card_picked[1].innerHTML;
+
+  // if (cp_num == '#div_card_1_') {
+  //   for (var i = 0; i <= 51; i++) {
+  //     var cell_toSearch = $("#c2-" + (i + 1)).find("div");
+  //     if (cell_toSearch.length) {
+  //       var card_toSearch = cell_toSearch.find("span");
+  //       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
+  //         $(cp_num + cp_splited[1]).remove();
+  //         $(cell_toSearch).remove();
+  //         //request php to delete card from specific board/players
+  //         //request php to change the players turn and and lock the onclick on the player who played
+  //       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+  //         $(cp_num + cp_splited[1]).remove();
+  //         div_K = document.createElement('div');
+  //         div_K.className = 'card';
+  //         div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+  //         var index = find_empty(2);
+  //         div_K.id = 'div_card_2_' + index;
+  //         $('#c2-' + (index+1)).append(div_K);
+  //         break;
+  //       }
+  //     }
+  //   }
+  // } else {
+  //   for (var i = 0; i <= 51; i++) {
+  //     var cell_toSearch = $("#c1-" + (i + 1)).find("div");
+  //     if (cell_toSearch.length) {
+  //       var card_toSearch = cell_toSearch.find("span");
+  //       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
+  //         $(cp_num + cp_splited[1]).remove();
+  //         $(cell_toSearch).remove();
+  //         //request php to delete card from specific board/players
+  //         //request php to change the players turn and and lock the onclick on the player who played
+  //       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+  //         $(cp_num + cp_splited[1]).remove();
+  //         div_K = document.createElement('div');
+  //         div_K.className = 'card';
+  //         div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+  //         var index = find_empty(1);
+  //         div_K.id = 'div_card_1_' + index;
+  //         $('#c1-' + (index+1)).append(div_K);
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }
+
+  if (cp_num == '#div_card_1_') {
+    card_picked_result("#c2" , "div_card_2_" , 2);
+  } else {
+    card_picked_result("#c1" , "div_card_1_" , 1);
+  }
+
+
+  var spanClass = $(cp_num + cp_splited[1]).find('span').attr('class');
+  if (spanClass == "number_red") {
+    div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
+  } else {
+    div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
+  }
+
+  $('.Card_OnTop_div').append(div);
+}
+
+
+function card_picked_result(cell_half , card_half , target){
+  for (var i = 0; i <= 51; i++) {
+    var cell_toSearch = $(cell_half + (i + 1)).find("div");
+    if (cell_toSearch.length) {
+      var card_toSearch = cell_toSearch.find("span");
+      if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
+        $(cp_num + cp_splited[1]).remove();
+        $(cell_toSearch).remove();
+        //request php to delete card from specific board/players
+        //request php to change the players turn and and lock the onclick on the player who played
+      } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+        $(cp_num + cp_splited[1]).remove();
+        div_K = document.createElement('div');
+        div_K.className = 'card';
+        div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
+        var index = find_empty(target);
+        div_K.id = card_half + index;
+        $(cell_half + (index+1)).append(div_K);
+        break;
+      }
+    }
+  }
+}
+
+
+//----FIND THE FIRST EMPTY SPOT FOR "K" CARD TO MOVE - METHOD-------------------
+function find_empty(d){
+  for (var i = 0; i <= 51; i++) {
+    if(d == 2){
+      var cell_toSearch = $("#c2-" + (i + 1)).find("div");
+      if (cell_toSearch.length == 0) {
+        return i;
+        break;
+      }
+    }else{
+      var cell_toSearch = $("#c1-" + (i + 1)).find("div");
+      if (cell_toSearch.length == 0) {
+        return i;
+        break;
+      }
+    }
+  }
+}
+//------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -458,6 +561,7 @@ function handle_shuffle_effects() {
 
 
 //-----------------FIND - REMOVE DOUBLES SECTION--------------------------------
+//----FIND PAIRS OF 2 IN CARDS - METHOD-----------------------------------------
 function find_pairs() {
   var cell = "";
   var card = "";
@@ -472,6 +576,7 @@ function find_pairs() {
   }
 }
 
+//----REMOVE PAIRS OF 2 IN CARDS - METHOD---------------------------------------
 function remove_pairs(i, cell, card) {
   var counter = 0;
   var array_found = [];
@@ -487,7 +592,7 @@ function remove_pairs(i, cell, card) {
           array_found.push(z);
           counter++;
 
-          // Delete pairs of cards
+          // Delete pairs of 2 in cards
           if ((counter == 2)) {
             if (cell_z_span_exists[0].innerHTML == "K") {
               var cid = card + array_found[1];
@@ -526,103 +631,7 @@ function ShowRules() {
 
 
 
-//-----------------BOARD/TABLE SECTION------------------------------------------
-function card_picked(cp) {
-  $('.Card_OnTop_div').empty();
-  div = document.createElement('div');
-  div.className = 'card';
-  div.id = 'div_card_picked';
-
-  var cp_splited = cp.split("-");
-  if (cp_splited[0] == 1) {
-    var cp_num = '#div_card_1_';
-  } else {
-    var cp_num = '#div_card_2_';
-  }
-
-  var var_card_picked = $(cp_num + cp_splited[1]).find('span');
-  var cn = var_card_picked[0].innerHTML;
-  var cs = var_card_picked[1].innerHTML;
-
-
-  //------
-
-  if (cp_num == '#div_card_1_') {
-    for (var i = 0; i <= 51; i++) {
-      var cell_toSearch = $("#c2-" + (i + 1)).find("div");
-      if (cell_toSearch.length) {
-        var card_toSearch = cell_toSearch.find("span");
-        if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-          $(cp_num + cp_splited[1]).remove();
-          $(cell_toSearch).remove();
-          //request php to delete card from specific board/players
-          //request php to change the players turn and and lock the onclick on the player who played
-        } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-          $(cp_num + cp_splited[1]).remove();
-          div_K = document.createElement('div');
-          div_K.className = 'card';
-          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-          var index = find_empty(2);
-          div_K.id = 'div_card_2_' + index;
-          $('#c2-' + (index+1)).append(div_K);
-          break;
-        }
-      }
-    }
-  } else {
-    for (var i = 0; i <= 51; i++) {
-      var cell_toSearch = $("#c1-" + (i + 1)).find("div");
-      if (cell_toSearch.length) {
-        var card_toSearch = cell_toSearch.find("span");
-        if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-          $(cp_num + cp_splited[1]).remove();
-          $(cell_toSearch).remove();
-          //request php to delete card from specific board/players
-          //request php to change the players turn and and lock the onclick on the player who played
-        } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
-          $(cp_num + cp_splited[1]).remove();
-          div_K = document.createElement('div');
-          div_K.className = 'card';
-          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
-          var index = find_empty(1);
-          div_K.id = 'div_card_1_' + index;
-          $('#c1-' + (index+1)).append(div_K);
-          break;
-        }
-      }
-    }
-  }
-
-  //------
-
-  var spanClass = $(cp_num + cp_splited[1]).find('span').attr('class');
-
-  if (spanClass == "number_red") {
-    div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
-  } else {
-    div.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
-  }
-
-  $('.Card_OnTop_div').append(div);
-}
 
 
 
-function find_empty(d){
-  for (var i = 0; i <= 51; i++) {
-    if(d == 2){
-      var cell_toSearch = $("#c2-" + (i + 1)).find("div");
-      if (cell_toSearch.length == 0) {
-        return i;
-        break;
-      }
-    }else{
-      var cell_toSearch = $("#c1-" + (i + 1)).find("div");
-      if (cell_toSearch.length == 0) {
-        return i;
-        break;
-      }
-    }
-  }
-
-}
+//----------------------------------------------------------------------- T H E  E N D -----------------------------------------------------------------------------------------------
