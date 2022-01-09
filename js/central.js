@@ -208,10 +208,10 @@ function login_result(data) {
   for(var i=0; i<=51; i++){
     if (me.player_turn == 1) {
       var cid_lock = "#c1-" + (i+1);
-      $(cid_lock).off('click');
+      $(cid_lock).unbind("click");
     }else{
       var cid_lock = "#c2-" + (i+1);
-      $(cid_lock).off('click');
+      $(cid_lock).unbind("click");
     }
   }
   find_game_status();
