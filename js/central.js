@@ -178,7 +178,7 @@ function refresh_everything(data) {
 
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
-    var cid = "#div_card_" + c "_" + i;
+    var cid = "#div_card_" + c + "_" + i;
     var hide_spans = cid + " > span";
     var remove_bCard = cid + " > img";
     $(remove_bCard).remove();
