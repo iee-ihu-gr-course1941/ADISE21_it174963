@@ -479,9 +479,9 @@ function card_picked(cp) {
   // }
 
   if (cp_num == '#div_card_1_') {
-    card_picked_result("#c2" , "div_card_2_" , 2);
+    card_picked_result("#c2-" , "div_card_2_" , 2);
   } else {
-    card_picked_result("#c1" , "div_card_1_" , 1);
+    card_picked_result("#c1-" , "div_card_1_" , 1);
   }
 
 
