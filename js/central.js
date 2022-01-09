@@ -466,9 +466,9 @@ function card_picked_result(cell_half , card_half , target , cn , cp_num , cp_sp
         div_K.className = 'card';
         var spanClass = $(cp_num + cp_splited).find('span').attr('class');
         if (spanClass == "number_red") {
-          div_K.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
+          div_K.innerHTML = '<span class="number_red">' + card_toSearch[0].innerHTML + '</span><span class="suit_red">' + card_toSearch[1].innerHTML + '</span>';
         } else {
-          div_K.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
+          div_K.innerHTML = '<span class="number">' + card_toSearch[0].innerHTML + '</span><span class="suit">' + card_toSearch[1].innerHTML + '</span>';
         }
         var index = find_empty(target);
         div_K.id = card_half + index;
