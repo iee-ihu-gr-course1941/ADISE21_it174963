@@ -87,7 +87,7 @@ function update_status(data) {
 //-----------------REFRESH SECTION----------------------------------------------
 //----REFRESH - PHP METHOD------------------------------------------------------
 function refresh() {
-  handle_shuffle_effects();
+  // handle_shuffle_effects();
 
   $.ajax({
     url: "methods.php/refresh/",
@@ -522,13 +522,13 @@ function find_empty(d){
 //---------------------------------------------------------------- E X T R A  F U N C T I O N S ----------------------------------------------------------------------------------------
 
 //------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
-function handle_shuffle_effects() {
-  if ($("#shuffle_card_img").attr("src") == "extras/shuffled_card.png") {
-    $("#shuffle_card_img").attr("src", "extras/shuffle_card.png").stop(true, true).hide().fadeIn();
-  } else {
-    $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
-  }
-}
+// function handle_shuffle_effects() {
+//   if ($("#shuffle_card_img").attr("src") == "extras/shuffled_card.png") {
+//     $("#shuffle_card_img").attr("src", "extras/shuffle_card.png").stop(true, true).hide().fadeIn();
+//   } else {
+//     $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
+//   }
+// }
 //------------------------------------------------------------------------------
 
 
