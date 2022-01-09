@@ -155,6 +155,13 @@ function refresh_everything(data) {
 //----HIDE - OPPONENT'S CARDS METHOD--------------------------------------------
 function hide_cards(c){
   for (var i = 0; i <= 51; i++) {
+    if(c == 2){
+      var cid_lock = "#div_card_" + 1 + "_" + i;
+      $(cid_lock).attr('disabled','disabled');
+    }else{
+      var cid_lock = "#div_card_" + 2 + "_" + i;
+      $(cid_lock).attr('disabled','disabled');
+    }
     var cid = "#div_card_" + c + "_" + i;
     var hide_spans = cid + " > span";
     var remove_bCard = cid + " > img";
