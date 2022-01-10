@@ -281,6 +281,7 @@ function handle_cards_move_K($method, $request, $data, $conn){
   foreach ($rows as $row) {
     if($row["c_symbol"] == ""){
       printf("%s %s <br>", $row["x"], $row["y"]);
+      break;
     }
   }
 }
