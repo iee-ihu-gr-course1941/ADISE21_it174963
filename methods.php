@@ -23,6 +23,8 @@ switch ($r=array_shift($request)) {
                   break;
   case 'cards_delete': handle_cards_delete($method, $request, $data, $conn);
                        break;
+  case 'cards_move_K': handle_cards_move_K($method, $request, $data, $conn);
+                       break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
 }
@@ -263,6 +265,26 @@ function handle_cards_delete($method, $request, $data, $conn){
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }
 }
- //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+
+
+
+//---------MOVE 'K' CARD SECTION------------------------------------------------
+function handle_cards_move_K($method, $request, $data, $conn){
+  $sym=$data->symbol;
+  $num=$data->number;
+  $board=$data->board;
+
+  $sql = "SELECT * FROM `$board`";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+  foreach ($rows as $row) {
+    if($row["c_number"] == "" ){
+      echo $row["x"] . $row["y"] ;
+      break;
+    }
+  }
+}
 
  ?>

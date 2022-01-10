@@ -460,6 +460,14 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   var cs_2 = "";
   var boardToPass_1 = "";
   var boardToPass_2 = "";
+  var cTP = card_picked_id.substring(0, 11);
+  if (cTP == '#div_card_1_') {
+    boardToPass_1 = "board_1";
+    boardToPass_2 = "board_2";
+  } else {
+    boardToPass_1 = "board_2";
+    boardToPass_2 = "board_1";
+  }
 
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
@@ -498,15 +506,6 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
             break;
         }
 
-        var cTP = card_picked_id.substring(0, 11);
-        if (cTP == '#div_card_1_') {
-          boardToPass_1 = "board_1";
-          boardToPass_2 = "board_2";
-        } else {
-          boardToPass_1 = "board_2";
-          boardToPass_2 = "board_1";
-        }
-
         var dataToPass = JSON.stringify({
           symbol_1: cs,
           number_1: cn,
@@ -521,7 +520,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           method: 'POST',
           headers: {"X-Token": me.token},
           contentType: 'application/json',
-          data: JSON.stringify({ str: strToPass }),
+          data: dataToPass,
           success: cards_delete_result
         });
         //--- PHP REQUEST ---
@@ -543,6 +542,21 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         } else {
           div_K.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
         }
+
+        var dataToPass = JSON.stringify({
+          symbol: cs,
+          number: cn,
+          board: boardToPass_1
+        });
+
+        $.ajax({
+          url: "methods.php/cards_move_K/",
+          method: 'POST',
+          headers: {"X-Token": me.token},
+          contentType: 'application/json',
+          data: dataToPass,
+          success: cards_delete_result
+        });
 
         var index = find_empty(target);
         div_K.id = card_half + index;
