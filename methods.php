@@ -275,12 +275,34 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $num=$data->number;
   $board=$data->board;
 
-  $sql = " SELECT * FROM `$board`  ";
+  if($board == "board_2"){
+    $board_opposite = "board_1";
+  }else{
+    $board_opposite = "board_2";
+  }
+
+  $sql = " SELECT * FROM `$board_opposite`  ";
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {
     if($row["c_symbol"] == ""){
-      printf("%s %s <br>", $row["x"], $row["y"]);
+      $xToMove = $row["x"];
+      $yToMove = $row["y"];;
+
+      $sql = " UPDATE `$board_opposite` SET `c_symbol`= `$sym`,`c_number`= `$num` WHERE `x`= '$xToMove' AND `y`= '$yToMove' ";
+      if (mysqli_query($conn, $sql)) {
+        echo "<br>" . "- Card K moved successfully ";
+      } else {
+        echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+      }
+
+      $sql = " UPDATE `$board` SET `c_symbol`= NULL,`c_number`= NULL WHERE  `c_symbol`= '$sym' AND `c_number`= '$num' ";
+      if (mysqli_query($conn, $sql)) {
+        echo "<br>" . "- Card K deleted successfully ";
+      } else {
+        echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+      }
+
       break;
     }
   }
