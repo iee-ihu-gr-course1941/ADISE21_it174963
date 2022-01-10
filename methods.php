@@ -11,20 +11,64 @@ $data = json_decode($json);
 
 
 switch ($r=array_shift($request)) {
-  case 'players': log_user($method, $request, $data, $conn);
-                  break;
+  case 'reset': handle_reset($method, $request, $conn);
+                break;
   case 'status': handle_status($conn);
                  break;
+  case 'players': handle_log_user($method, $request, $data, $conn);
+                  break;
   case 'refresh': handle_refresh($conn);
                   break;
-  case 'cards_1': handle_cards_1($method, $request, $data, $conn);
-            			break;
-	case 'cards_2': handle_cards_2($method, $request, $data, $conn);
-									break;
-  case 'cards_clear': handle_game_clearAll($method, $request, $conn);
-                      break;
+  case 'cards': handle_cards($method, $request, $data, $conn);
+                break;
+  // case 'cards_1': handle_cards_1($method, $request, $data, $conn);
+  //           			break;
+	// case 'cards_2': handle_cards_2($method, $request, $data, $conn);
+	// 								break;
+  case 'cards_delete': handle_cards_delete($method, $request, $data, $conn);
+                       break;
   default:  header("HTTP/1.1 404 Not Found");
             exit;
+}
+//------------------------------------------------------------------------------
+
+
+//---------RESET EVERYTHING SECTION---------------------------------------------
+function handle_reset($method, $request, $conn){
+  $sql = "UPDATE board_1 B1
+          INNER JOIN board_empty BE  ON B1.x = BE.x AND B1.y = BE.y
+          SET B1.c_symbol = BE.c_symbol , B1.c_number = BE.c_number ";
+	if (mysqli_query($conn, $sql)) {
+		echo "<br>" . "- Records for board_1 cleared successfully ";
+	} else {
+		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+	}
+
+  $sql = "UPDATE board_2 B2
+          INNER JOIN board_empty BE  ON B2.x = BE.x AND B2.y = BE.y
+          SET B2.c_symbol = BE.c_symbol , B2.c_number = BE.c_number ";
+	if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "- Records for board_2 cleared successfully ";
+	} else {
+		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+	}
+
+
+  for($i=1; $i<=2; $i++){
+    $sql = "UPDATE `players` SET `username`= NULL ,`token`= NULL WHERE `player_side`='$i' ";
+  	if (mysqli_query($conn, $sql)) {
+      echo "<br>" . "- Records for players cleared successfully ";
+  	} else {
+  		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  	}
+  }
+
+  $sql = "  UPDATE `game_status` SET `status`='not active',`p_turn`= 1,`result`=NULL,`last_change`= CURRENT_TIMESTAMP()";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "- Records for game_status cleared successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
 }
 //------------------------------------------------------------------------------
 
@@ -112,40 +156,8 @@ function update_game_status($conn) {
 //------------------------------------------------------------------------------
 
 
-
-//---------REFRESH EVERYTHING SECTION-------------------------------------------
-function handle_refresh($conn){
-  $sql = " SELECT * FROM `board_1`  ";
-  $result = mysqli_query($conn, $sql);
-  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-  foreach ($rows as $row) {
-      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
-  }
-
-  echo("-");
-
-  $sql = " SELECT * FROM `board_2`  ";
-  $result = mysqli_query($conn, $sql);
-  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-  foreach ($rows as $row) {
-      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
-  }
-
-  echo("-");
-
-  $sql = " SELECT `username` FROM `players`  ";
-  $result = mysqli_query($conn, $sql);
-  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-  foreach ($rows as $row) {
-      printf("%s <br>", $row["username"]);
-  }
-}
-//------------------------------------------------------------------------------
-
-
-
 //---------LOG USER INTO players BOARD SECTION----------------------------------
-function log_user($method, $request, $data, $conn){
+function handle_log_user($method, $request, $data, $conn){
   $user = $data->username;
   $p_side = $data->player_side;
   $StringToToken = $user.date("Y-m-d H:i:s");
@@ -182,81 +194,111 @@ function log_user($method, $request, $data, $conn){
 
 
 
-//---------CLEAR ALL BOARDS SECTION---------------------------------------------
-function handle_game_clearAll($method, $request, $conn){
-  $sql = "UPDATE board_1 B1
-          INNER JOIN board_empty BE  ON B1.x = BE.x AND B1.y = BE.y
-          SET B1.c_symbol = BE.c_symbol , B1.c_number = BE.c_number ";
-	if (mysqli_query($conn, $sql)) {
-		echo "<br>" . "- Records for board_1 cleared successfully ";
-	} else {
-		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-	}
-
-  $sql = "UPDATE board_2 B2
-          INNER JOIN board_empty BE  ON B2.x = BE.x AND B2.y = BE.y
-          SET B2.c_symbol = BE.c_symbol , B2.c_number = BE.c_number ";
-	if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "- Records for board_2 cleared successfully ";
-	} else {
-		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-	}
-
-
-  for($i=1; $i<=2; $i++){
-    $sql = "UPDATE `players` SET `username`= NULL ,`token`= NULL WHERE `player_side`='$i' ";
-  	if (mysqli_query($conn, $sql)) {
-      echo "<br>" . "- Records for players cleared successfully ";
-  	} else {
-  		echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  	}
+//---------REFRESH EVERYTHING SECTION-------------------------------------------
+function handle_refresh($conn){
+  $sql = " SELECT * FROM `board_1`  ";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
   }
 
-  $sql = "  UPDATE `game_status` SET `status`='not active',`p_turn`= 1,`result`=NULL,`last_change`= CURRENT_TIMESTAMP()";
-  if (mysqli_query($conn, $sql)) {
-    echo "<br>" . "- Records for game_status cleared successfully ";
-  } else {
-    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  echo("-");
+
+  $sql = " SELECT * FROM `board_2`  ";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s %s %s %s <br>", $row["x"], $row["y"], $row["c_symbol"], $row["c_number"]);
+  }
+
+  echo("-");
+
+  $sql = " SELECT `username` FROM `players`  ";
+  $result = mysqli_query($conn, $sql);
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      printf("%s <br>", $row["username"]);
   }
 }
 //------------------------------------------------------------------------------
 
 
+//---------FILL board_1/board_2 WITH DATA SECTION-------------------------------
+function handle_cards($method, $request, $data, $conn){
+  $board = $data->board;
+  $x = $data->x;
+  $y = $data->y;
+  $sym=$data->symbol;
+  $num=$data->number;
 
-//---------FILL board_1 WITH DATA SECTION---------------------------------------
-function handle_cards_1($method, $request, $data, $conn){
-  $x1 = $data->x;
-  $y1 = $data->y;
-	$sym = $data->symbol;
-	$num = $data->number;
 
-
-	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x1' AND `y`=' $y1' ;" ;
+	$sql = "UPDATE `$board` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x' AND `y`=' $y' ;" ;
 		if (mysqli_query($conn, $sql)) {
 			echo "<br>" . "- Record updated successfully ";
 		} else {
 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 }
+//------------------------------------------------------------------------------
+
+
+//---------FILL board_1 WITH DATA SECTION---------------------------------------
+// function handle_cards_1($method, $request, $data, $conn){
+//   $x1 = $data->x;
+//   $y1 = $data->y;
+// 	$sym = $data->symbol;
+// 	$num = $data->number;
+//
+//
+// 	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x1' AND `y`=' $y1' ;" ;
+// 		if (mysqli_query($conn, $sql)) {
+// 			echo "<br>" . "- Record updated successfully ";
+// 		} else {
+// 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+// 		}
+// }
 //------------------------------------------------------------------------------
 
 
 
 //---------FILL board_2 WITH DATA SECTION---------------------------------------
-function handle_cards_2($method, $request, $data, $conn){
-  $x2 = $data->x;
-  $y2 = $data->y;
-	$sym=$data->symbol;
-	$num=$data->number;
+// function handle_cards_2($method, $request, $data, $conn){
+//   $x2 = $data->x;
+//   $y2 = $data->y;
+// 	$sym=$data->symbol;
+// 	$num=$data->number;
+//
+//
+// 	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x2' AND `y`='$y2' ;" ;
+// 		if (mysqli_query($conn, $sql)) {
+// 			echo "<br>" . "- Record updated successfully ";
+// 		} else {
+// 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
+// 		}
+//
+// }
+//------------------------------------------------------------------------------
 
 
-	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x2' AND `y`='$y2' ;" ;
-		if (mysqli_query($conn, $sql)) {
-			echo "<br>" . "- Record updated successfully ";
-		} else {
-			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
-		}
+
+//---------DELETE SPECIFIED CARD SECTION----------------------------------------
+function handle_cards_delete($method, $request, $data, $conn){
+  $board = $data->board;
+  $x = $data->x;
+  $y = $data->y;
+  $sym=$data->symbol;
+  $num=$data->number;
+
+  $sql = " UPDATE `$board` SET `c_symbol`= NULL,`c_number`= NULL WHERE `x`= '$x' AND `y`= '$y' ";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "- Specified card deleted successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
+
 
 }
-//------------------------------------------------------------------------------
+ //------------------------------------------------------------------------------
+
  ?>

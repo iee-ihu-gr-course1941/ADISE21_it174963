@@ -38,9 +38,7 @@ function find_game_status() {
 
   $.ajax({
     url: "methods.php/status/",
-    headers: {
-      "X-Token": me.token
-    },
+    headers: {"X-Token": me.token},
     success: update_status
   });
 }
@@ -88,12 +86,9 @@ function update_status(data) {
 //----REFRESH - PHP METHOD------------------------------------------------------
 function refresh() {
   // handle_shuffle_effects();
-
   $.ajax({
     url: "methods.php/refresh/",
-    headers: {
-      "X-Token": me.token
-    },
+    headers: {"X-Token": me.token},
     success: refresh_everything
   });
 }
@@ -184,9 +179,7 @@ function login_to_game() {
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
-    headers: {
-      "X-Token": me.token
-    },
+    headers: {"X-Token": me.token},
     contentType: 'application/json',
     data: dataToPass,
     success: login_result
@@ -223,17 +216,15 @@ function login_result(data) {
 //----RESET - PHP - METHOD------------------------------------------------------
 function reset_everything() {
   $.ajax({
-    url: "methods.php/cards_clear/",
+    url: "methods.php/reset/",
     method: 'POST',
-    headers: {
-      "X-Token": me.token
-    },
+    headers: {"X-Token": me.token},
     contentType: 'application/json',
-    success: clear_real_board
+    success: reset_everything_result
   });
 }
 
-function clear_real_board() {
+function reset_everything_result() {
   console.log("! RESET SUCCESSFUL !");
 }
 //------------------------------------------------------------------------------
@@ -368,6 +359,7 @@ function create_Cards(index, side, cell_1, cell_2, c_s, c_n) {
 
 //----FILL MYSQL DATABASE - PHP - METHOD----------------------------------------
 function fill_board_game(i, x, y, card_found) {
+  var boardToPass = "";
 
   var c = $(card_found).attr("id");
   var cardToPass = $(card_found).find("span");
@@ -391,25 +383,39 @@ function fill_board_game(i, x, y, card_found) {
       break;
   }
 
+  //--- PHP REQUEST ---
+  // if (cTP == 'div_card_1_') {
+  //   var url_value = "methods.php/cards_1/"
+  // } else {
+  //   var url_value = "methods.php/cards_2/"
+  // }
+  //
+  // $.ajax({
+  //   url: url_value,
+  //   method: 'POST',
+  //   headers: {"X-Token": me.token},
+  //   contentType: 'application/json',
+  //   data: dataToPass,
+  // });
+
+  if (cTP == 'div_card_1_') {
+    boardToPass = "board_1";
+  } else {
+    boardToPass = "board_2";
+  }
+
   var dataToPass = JSON.stringify({
+    board: boardToPass,
     x: x,
     y: y,
     symbol: cs,
     number: cn
   });
 
-  if (cTP == 'div_card_1_') {
-    var url_value = "methods.php/cards_1/"
-  } else {
-    var url_value = "methods.php/cards_2/"
-  }
-
   $.ajax({
-    url: url_value,
+    url: "methods.php/cards/",
     method: 'POST',
-    headers: {
-      "X-Token": me.token
-    },
+    headers: {"X-Token": me.token},
     contentType: 'application/json',
     data: dataToPass,
   });
@@ -420,6 +426,7 @@ function fill_board_game(i, x, y, card_found) {
 //-----------------CLICK ON CARD SECTION----------------------------------------
 //----CLICKED ON A SPECIFIC CARD - METHOD---------------------------------------
 function card_picked(cp) {
+  var boardToPass = "";
   $('.Card_OnTop_div').empty();
   div = document.createElement('div');
   div.className = 'card';
@@ -449,11 +456,36 @@ function card_picked(cp) {
   if (cp_num == '#div_card_1_') {
     card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
     hide_cards(1);
+    boardToPass = "board_1";
   } else {
     card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
     hide_cards(2);
+    boardToPass = "board_2";
   }
+
+  //--- PHP REQUEST ---
+  var dataToPass = JSON.stringify({
+    board: boardToPass,
+    x: cp_splited[0],
+    y: cp_splited[1],
+    symbol: cs,
+    number: cn
+  });
+
+  $.ajax({
+    url: "methods.php/cards_delete/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+    success: cards_delete_result
+  });
 }
+
+function cards_delete_result() {
+  console.log("! CARD DELETE - SUCCESSFUL !");
+}
+
 
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
 function card_picked_result(cell_half , card_half , target , cn , cs , card_picked_id){
