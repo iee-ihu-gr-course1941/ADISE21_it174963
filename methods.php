@@ -280,10 +280,11 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $rows = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   foreach ($rows as $row) {
-    if($row["c_number"] == NULL ){
-      echo $row["x"] . $row["y"] ;
-      break;
-    }
+    echo   $row["c_number"] ;
+    // if($row["c_number"] == NULL ){
+    //   echo $row["x"] . $row["y"] ;
+    //   break;
+    // }
   }
 }
 
