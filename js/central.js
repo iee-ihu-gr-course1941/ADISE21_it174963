@@ -443,43 +443,11 @@ function card_picked(cp) {
   if (cp_num == '#div_card_1_') {
     card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
     hide_cards(1);
-    boardToPass = "board_1";
   } else {
     card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
     hide_cards(2);
-    boardToPass = "board_2";
   }
 
-  //--- PHP REQUEST ---
-  switch (cs) {
-    case "♣":
-      cs = "Clubs";
-      break;
-    case "♥":
-      cs = "Hearts";
-      break;
-    case "♠":
-      cs = "Spades";
-      break;
-    case "♦":
-      cs = "Diamonds";
-      break;
-  }
-  
-  var dataToPass = JSON.stringify({
-    board: boardToPass,
-    symbol: cs,
-    number: cn
-  });
-
-  $.ajax({
-    url: "methods.php/cards_delete/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: dataToPass,
-    success: cards_delete_result
-  });
 }
 
 function cards_delete_result() {
@@ -489,6 +457,7 @@ function cards_delete_result() {
 
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
 function card_picked_result(cell_half , card_half , target , cn , cs , card_picked_id){
+  var cs_2 = "";
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
@@ -497,7 +466,54 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         $(card_picked_id).remove();
         $(cell_toSearch).remove();
         //request php to delete card from specific board/players
+        //--- PHP REQUEST ---
+        switch (cs) {
+          case "♣":
+            cs = "Clubs";
+            break;
+          case "♥":
+            cs = "Hearts";
+            break;
+          case "♠":
+            cs = "Spades";
+            break;
+          case "♦":
+            cs = "Diamonds";
+            break;
+        }
+
+        switch (card_toSearch[0].innerHTML) {
+          case "♣":
+            cs_2 = "Clubs";
+            break;
+          case "♥":
+            cs_2 = "Hearts";
+            break;
+          case "♠":
+            cs_2 = "Spades";
+            break;
+          case "♦":
+            cs_2 = "Diamonds";
+            break;
+        }
+
+        var dataToPass = JSON.stringify({
+          symbol_1: cs,
+          number_1: cn,
+          symbol_2: cs_2,
+          number_2: card_toSearch[0].innerHTML
+        });
+
+        $.ajax({
+          url: "methods.php/cards_delete/",
+          method: 'POST',
+          headers: {"X-Token": me.token},
+          contentType: 'application/json',
+          data: dataToPass,
+          success: cards_delete_result
+        });
         //request php to change the players turn and and lock the onclick on the player who played
+        
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
         var spanClass = $(card_picked_id).find('span').attr('class');
         $(card_picked_id).remove();
