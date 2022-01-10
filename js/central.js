@@ -507,14 +507,19 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           boardToPass_2 = "board_1";
         }
 
+        var strToPass = cs + "/" + cn + "/" + boardToPass_1 + "/" + cs_2 + "/" + card_toSearch[0].innerHTML + "/" + boardToPass_2;
         var dataToPass = JSON.stringify({
-          symbol_1: cs,
-          number_1: cn,
-          board_1: boardToPass_1,
-          symbol_2: cs_2,
-          number_2: card_toSearch[0].innerHTML,
-          board_2: boardToPass_2
+          str: strToPass
         });
+
+        // var dataToPass = JSON.stringify({
+        //   symbol_1: cs,
+        //   number_1: cn,
+        //   board_1: boardToPass_1,
+        //   symbol_2: cs_2,
+        //   number_2: card_toSearch[0].innerHTML,
+        //   board_2: boardToPass_2
+        // });
 
         $.ajax({
           url: "methods.php/cards_delete/",
