@@ -437,15 +437,6 @@ function card_picked(cp) {
   var cn = card_picked_spans[0].innerHTML;
   var cs = card_picked_spans[1].innerHTML;
 
-  if (cp_num == '#div_card_1_') {
-    card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
-    hide_cards(1);
-  } else {
-    card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
-    hide_cards(2);
-  }
-
-
   var spanClass = $(card_picked_id).find('span').attr('class');
   if (spanClass == "number_red") {
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
@@ -454,6 +445,14 @@ function card_picked(cp) {
   }
 
   $('.Card_OnTop_div').append(div);
+
+  if (cp_num == '#div_card_1_') {
+    card_picked_result("#c2-" , "div_card_2_" , 2 , cn , cs , card_picked_id);
+    hide_cards(1);
+  } else {
+    card_picked_result("#c1-" , "div_card_1_" , 1 , cn , cs , card_picked_id);
+    hide_cards(2);
+  }
 }
 
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
@@ -478,7 +477,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         } else {
           div_K.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
         }
-        
+
         var index = find_empty(target);
         div_K.id = card_half + index;
         $(cell_half + (index+1)).append(div_K);
