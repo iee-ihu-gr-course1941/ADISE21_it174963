@@ -275,16 +275,11 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $num=$data->number;
   $board=$data->board;
 
-  $sql = "SELECT `c_number` FROM `$board`";
+  $sql = " SELECT * FROM `$board`  ";
   $result = mysqli_query($conn, $sql);
-  $rows = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
+  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {
-    printf("%s <br>", $row["c_number"]);
-    // if($row["c_number"] == NULL ){
-    //   echo $row["x"] . $row["y"] ;
-    //   break;
-    // }
+      printf("%s <br>", $row["c_symbol"], $row["c_number"]);
   }
 }
 
