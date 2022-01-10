@@ -275,7 +275,7 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $num=$data->number;
   $board=$data->board;
 
-  $sql = "SELECT * FROM `$board`";
+  $sql = "SELECT `c_number` FROM `$board`";
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
