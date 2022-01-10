@@ -499,7 +499,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         }
 
         var cTP = card_picked_id.substring(0, 11);
-        if (cTP == 'div_card_1_') {
+        if (cTP == '#div_card_1_') {
           boardToPass_1 = "board_1";
           boardToPass_2 = "board_2";
         } else {
