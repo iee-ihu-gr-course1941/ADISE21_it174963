@@ -253,13 +253,6 @@ function handle_cards_delete($method, $request, $data, $conn){
   $num_2=$splitted[4];
   $board_2=$splitted[5];
 
-  echo $sym_1;
-  echo $num_1;
-  echo $board_1;
-  echo "<br>" . $sym_2;
-  echo $num_2;
-  echo $board_2;
-
   // $sym_1=$data->symbol_1;
   // $num_1=$data->number_1;
   // $board_1=$data->board_1;
@@ -268,19 +261,19 @@ function handle_cards_delete($method, $request, $data, $conn){
   // $num_2=$data->number_2;
   // $board_2=$data->board_2;
 
-  // $sql = " UPDATE `$board_1` SET `c_symbol`= NULL,`c_number`= NULL WHERE `c_symbol`= '$sym_1' AND `c_number`= '$num_1' ";
-  // if (mysqli_query($conn, $sql)) {
-  //   echo "<br>" . "- Specified card deleted successfully ";
-  // } else {
-  //   echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  // }
-  //
-  // $sql = " UPDATE `$board_2` SET `c_symbol`= NULL,`c_number`= NULL WHERE  `c_symbol`= '$sym_2' AND `c_number`= '$num_2' ";
-  // if (mysqli_query($conn, $sql)) {
-  //   echo "<br>" . "- Specified card deleted successfully ";
-  // } else {
-  //   echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  // }
+  $sql = " UPDATE `$board_1` SET `c_symbol`= NULL,`c_number`= NULL WHERE `c_symbol`= '$sym_1' AND `c_number`= '$num_1' ";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "- Specified card deleted successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
+
+  $sql = " UPDATE `$board_2` SET `c_symbol`= NULL,`c_number`= NULL WHERE  `c_symbol`= '$sym_2' AND `c_number`= '$num_2' ";
+  if (mysqli_query($conn, $sql)) {
+    echo "<br>" . "- Specified card deleted successfully ";
+  } else {
+    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+  }
 }
  //------------------------------------------------------------------------------
 
