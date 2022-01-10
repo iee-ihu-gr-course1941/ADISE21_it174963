@@ -458,6 +458,9 @@ function cards_delete_result() {
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
 function card_picked_result(cell_half , card_half , target , cn , cs , card_picked_id){
   var cs_2 = "";
+  var boardToPass_1 = "";
+  var boardToPass_2 = "";
+
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
@@ -495,11 +498,22 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
             break;
         }
 
+        var cTP = card_picked_id.substring(0, 11);
+        if (cTP == 'div_card_1_') {
+          boardToPass_1 = "board_1";
+          boardToPass_2 = "board_2";
+        } else {
+          boardToPass_1 = "board_2";
+          boardToPass_2 = "board_1";
+        }
+
         var dataToPass = JSON.stringify({
           symbol_1: cs,
           number_1: cn,
+          board_1: boardToPass_1,
           symbol_2: cs_2,
-          number_2: card_toSearch[0].innerHTML
+          number_2: card_toSearch[0].innerHTML,
+          board_2: boardToPass_2,
         });
 
         $.ajax({
