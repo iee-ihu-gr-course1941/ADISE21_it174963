@@ -508,10 +508,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         }
 
         var strToPass = cs + "/" + cn + "/" + boardToPass_1 + "/" + cs_2 + "/" + card_toSearch[0].innerHTML + "/" + boardToPass_2;
-        var dataToPass = JSON.stringify({
-          str: strToPass
-        });
-
+        
         // var dataToPass = JSON.stringify({
         //   symbol_1: cs,
         //   number_1: cn,
@@ -526,7 +523,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           method: 'POST',
           headers: {"X-Token": me.token},
           contentType: 'application/json',
-          data: dataToPass,
+          data: JSON.stringify({ str: strToPass }),
           success: cards_delete_result
         });
         //--- PHP REQUEST ---
