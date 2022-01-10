@@ -480,7 +480,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
             break;
         }
 
-        switch (card_toSearch[0].innerHTML) {
+        switch (card_toSearch[1].innerHTML) {
           case "♣":
             cs_2 = "Clubs";
             break;
