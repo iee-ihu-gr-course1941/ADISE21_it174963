@@ -384,19 +384,6 @@ function fill_board_game(i, x, y, card_found) {
   }
 
   //--- PHP REQUEST ---
-  // if (cTP == 'div_card_1_') {
-  //   var url_value = "methods.php/cards_1/"
-  // } else {
-  //   var url_value = "methods.php/cards_2/"
-  // }
-  //
-  // $.ajax({
-  //   url: url_value,
-  //   method: 'POST',
-  //   headers: {"X-Token": me.token},
-  //   contentType: 'application/json',
-  //   data: dataToPass,
-  // });
 
   if (cTP == 'div_card_1_') {
     boardToPass = "board_1";
@@ -466,8 +453,6 @@ function card_picked(cp) {
   //--- PHP REQUEST ---
   var dataToPass = JSON.stringify({
     board: boardToPass,
-    x: cp_splited[0],
-    y: cp_splited[1],
     symbol: cs,
     number: cn
   });

@@ -13,18 +13,14 @@ $data = json_decode($json);
 switch ($r=array_shift($request)) {
   case 'reset': handle_reset($method, $request, $conn);
                 break;
+  case 'cards': handle_cards($method, $request, $data, $conn);
+                break;
   case 'status': handle_status($conn);
                  break;
   case 'players': handle_log_user($method, $request, $data, $conn);
                   break;
   case 'refresh': handle_refresh($conn);
                   break;
-  case 'cards': handle_cards($method, $request, $data, $conn);
-                break;
-  // case 'cards_1': handle_cards_1($method, $request, $data, $conn);
-  //           			break;
-	// case 'cards_2': handle_cards_2($method, $request, $data, $conn);
-	// 								break;
   case 'cards_delete': handle_cards_delete($method, $request, $data, $conn);
                        break;
   default:  header("HTTP/1.1 404 Not Found");
@@ -243,61 +239,18 @@ function handle_cards($method, $request, $data, $conn){
 //------------------------------------------------------------------------------
 
 
-//---------FILL board_1 WITH DATA SECTION---------------------------------------
-// function handle_cards_1($method, $request, $data, $conn){
-//   $x1 = $data->x;
-//   $y1 = $data->y;
-// 	$sym = $data->symbol;
-// 	$num = $data->number;
-//
-//
-// 	$sql = "UPDATE `board_1` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x1' AND `y`=' $y1' ;" ;
-// 		if (mysqli_query($conn, $sql)) {
-// 			echo "<br>" . "- Record updated successfully ";
-// 		} else {
-// 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
-// 		}
-// }
-//------------------------------------------------------------------------------
-
-
-
-//---------FILL board_2 WITH DATA SECTION---------------------------------------
-// function handle_cards_2($method, $request, $data, $conn){
-//   $x2 = $data->x;
-//   $y2 = $data->y;
-// 	$sym=$data->symbol;
-// 	$num=$data->number;
-//
-//
-// 	$sql = "UPDATE `board_2` SET `c_symbol`='$sym',`c_number`='$num' WHERE `x`= '$x2' AND `y`='$y2' ;" ;
-// 		if (mysqli_query($conn, $sql)) {
-// 			echo "<br>" . "- Record updated successfully ";
-// 		} else {
-// 			echo "<br>" . "- Error: " . $sql . "<br>" . mysqli_error($conn);
-// 		}
-//
-// }
-//------------------------------------------------------------------------------
-
-
-
 //---------DELETE SPECIFIED CARD SECTION----------------------------------------
 function handle_cards_delete($method, $request, $data, $conn){
   $board = $data->board;
-  $x = $data->x;
-  $y = $data->y;
   $sym=$data->symbol;
   $num=$data->number;
 
-  $sql = " UPDATE `$board` SET `c_symbol`= NULL,`c_number`= NULL WHERE `x`= '$x' AND `y`= '$y' ";
+  $sql = " UPDATE `$board` SET `c_symbol`= NULL,`c_number`= NULL WHERE `c_symbol`= '$sym' AND `c_number`= '$num' ";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "- Specified card deleted successfully ";
   } else {
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }
-
-
 }
  //------------------------------------------------------------------------------
 
