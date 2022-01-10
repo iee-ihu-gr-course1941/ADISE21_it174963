@@ -279,7 +279,9 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $result = mysqli_query($conn, $sql);
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $row) {
-      printf("%s %s <br>", $row["c_symbol"], $row["c_number"]);
+    if($row["c_symbol"] == ""){
+      printf("%s %s <br>", $row["x"], $row["y"]);
+    }
   }
 }
 
