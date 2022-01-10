@@ -510,12 +510,10 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         var dataToPass = JSON.stringify({
           symbol_1: cs,
           number_1: cn,
-          hi_1: 1,
-          // board_1: boardToPass_1,
+          board_1: boardToPass_1,
           symbol_2: cs_2,
           number_2: card_toSearch[0].innerHTML,
-          // board_2: boardToPass_2
-          hi_2: 2
+          board_2: boardToPass_2
         });
 
         $.ajax({
