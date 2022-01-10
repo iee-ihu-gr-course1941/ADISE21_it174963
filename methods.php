@@ -275,6 +275,8 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $num=$data->number;
   $board=$data->board;
 
+  echo $sym . $num;
+
   if($board == "board_2"){
     $board_opposite = "board_1";
   }else{
@@ -289,7 +291,7 @@ function handle_cards_move_K($method, $request, $data, $conn){
       $xToMove = $row["x"];
       $yToMove = $row["y"];;
 
-      $sql = " UPDATE `$board_opposite` SET `c_symbol`= $sym,`c_number`= $num WHERE `x`= '$xToMove' AND `y`= '$yToMove' ";
+      $sql = " UPDATE `$board_opposite` SET `c_symbol`= '$sym',`c_number`= '$num' WHERE `x`= '$xToMove' AND `y`= '$yToMove' ";
       if (mysqli_query($conn, $sql)) {
         echo "<br>" . "- Card K moved successfully ";
       } else {
