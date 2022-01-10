@@ -451,6 +451,21 @@ function card_picked(cp) {
   }
 
   //--- PHP REQUEST ---
+  switch (cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+  
   var dataToPass = JSON.stringify({
     board: boardToPass,
     symbol: cs,
