@@ -457,6 +457,7 @@ function cards_delete_result() {
 
 //----CLICKED ON A SPECIFIC CARD - RESULT - METHOD------------------------------
 function card_picked_result(cell_half , card_half , target , cn , cs , card_picked_id){
+  var cs_1 = "";
   var cs_2 = "";
   var boardToPass_1 = "";
   var boardToPass_2 = "";
@@ -472,16 +473,16 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
 
   switch (cs) {
     case "♣":
-      cs = "Clubs";
+      cs_1 = "Clubs";
       break;
     case "♥":
-      cs = "Hearts";
+      cs_1 = "Hearts";
       break;
     case "♠":
-      cs = "Spades";
+      cs_1 = "Spades";
       break;
     case "♦":
-      cs = "Diamonds";
+      cs_1 = "Diamonds";
       break;
   }
 
@@ -508,7 +509,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         }
 
         var dataToPass = JSON.stringify({
-          symbol_1: cs,
+          symbol_1: cs_1,
           number_1: cn,
           board_1: boardToPass_1,
           symbol_2: cs_2,
@@ -545,7 +546,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         }
 
         var dataToPass = JSON.stringify({
-          symbol: cs,
+          symbol: cs_1,
           number: cn,
           board: boardToPass_1
         });
