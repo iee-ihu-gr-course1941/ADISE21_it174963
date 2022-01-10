@@ -241,25 +241,13 @@ function handle_cards($method, $request, $data, $conn){
 
 //---------DELETE SPECIFIED CARD SECTION----------------------------------------
 function handle_cards_delete($method, $request, $data, $conn){
-  $strToSplit = $data->str;
-  $splitted = explode('/',$strToSplit,6);
+  $sym_1=$data->symbol_1;
+  $num_1=$data->number_1;
+  $board_1=$data->board_1;
 
-
-  $sym_1=$splitted[0];
-  $num_1=$splitted[1];
-  $board_1=$splitted[2];
-
-  $sym_2=$splitted[3];
-  $num_2=$splitted[4];
-  $board_2=$splitted[5];
-
-  // $sym_1=$data->symbol_1;
-  // $num_1=$data->number_1;
-  // $board_1=$data->board_1;
-  //
-  // $sym_2=$data->symbol_2;
-  // $num_2=$data->number_2;
-  // $board_2=$data->board_2;
+  $sym_2=$data->symbol_2;
+  $num_2=$data->number_2;
+  $board_2=$data->board_2;
 
   $sql = " UPDATE `$board_1` SET `c_symbol`= NULL,`c_number`= NULL WHERE `c_symbol`= '$sym_1' AND `c_number`= '$num_1' ";
   if (mysqli_query($conn, $sql)) {
