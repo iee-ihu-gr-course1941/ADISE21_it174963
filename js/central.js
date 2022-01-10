@@ -460,6 +460,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   var cs_2 = "";
   var boardToPass_1 = "";
   var boardToPass_2 = "";
+
   var cTP = card_picked_id.substring(0, 11);
   if (cTP == '#div_card_1_') {
     boardToPass_1 = "board_1";
@@ -469,6 +470,21 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     boardToPass_2 = "board_1";
   }
 
+  switch (cs) {
+    case "♣":
+      cs = "Clubs";
+      break;
+    case "♥":
+      cs = "Hearts";
+      break;
+    case "♠":
+      cs = "Spades";
+      break;
+    case "♦":
+      cs = "Diamonds";
+      break;
+  }
+
   for (var i = 0; i <= 51; i++) {
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
@@ -476,21 +492,6 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
         //request php to delete the cards from each board
         //--- PHP REQUEST ---
-        switch (cs) {
-          case "♣":
-            cs = "Clubs";
-            break;
-          case "♥":
-            cs = "Hearts";
-            break;
-          case "♠":
-            cs = "Spades";
-            break;
-          case "♦":
-            cs = "Diamonds";
-            break;
-        }
-
         switch (card_toSearch[1].innerHTML) {
           case "♣":
             cs_2 = "Clubs";
