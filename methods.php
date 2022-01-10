@@ -245,7 +245,7 @@ function handle_cards_delete($method, $request, $data, $conn){
   $num_1=$data->number_1;
   $sym_2=$data->symbol_2;
   $num_2=$data->number_2;
-  echo ($sym_1 $num_1 "-" $sym_2 $num_2);
+  echo . $sym_1 . $num_1 . "-" . $sym_2 . $num_2);
 
   $sql = " UPDATE `board_1` SET `c_symbol`= NULL,`c_number`= NULL WHERE `c_symbol`= '$sym_1' AND `c_number`= '$num_1' ";
   if (mysqli_query($conn, $sql)) {
