@@ -275,8 +275,6 @@ function handle_cards_move_K($method, $request, $data, $conn){
   $num=$data->number;
   $board=$data->board;
 
-  echo $sym . $num;
-
   if($board == "board_2"){
     $board_opposite = "board_1";
   }else{
