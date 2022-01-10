@@ -366,7 +366,7 @@ function create_Cards(index, side, cell_1, cell_2, c_s, c_n) {
 }
 
 
-//----FILL MYSQL DATABASE - METHOD----------------------------------------------
+//----FILL MYSQL DATABASE - PHP - METHOD----------------------------------------
 function fill_board_game(i, x, y, card_found) {
 
   var c = $(card_found).attr("id");
@@ -398,12 +398,6 @@ function fill_board_game(i, x, y, card_found) {
     number: cn
   });
 
-  fill_board_db(dataToPass, cTP);
-
-}
-
-//----FILL MYSQL DATABASE - PHP - METHOD----------------------------------------
-function fill_board_db(dataToPass, cTP) {
   if (cTP == 'div_card_1_') {
     var url_value = "methods.php/cards_1/"
   } else {
@@ -474,15 +468,17 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         //request php to delete card from specific board/players
         //request php to change the players turn and and lock the onclick on the player who played
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+        var spanClass = $(card_picked_id).find('span').attr('class');
         $(card_picked_id).remove();
+
         div_K = document.createElement('div');
         div_K.className = 'card';
-        var spanClass = $(card_picked_id).find('span').attr('class');
         if (spanClass == "number_red") {
           div_K.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
         } else {
           div_K.innerHTML = '<span class="number">' + cn + '</span><span class="suit">' + cs + '</span>';
         }
+        
         var index = find_empty(target);
         div_K.id = card_half + index;
         $(cell_half + (index+1)).append(div_K);
