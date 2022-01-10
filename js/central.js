@@ -198,7 +198,7 @@ function login_result(data) {
 
   console.log('Log_In successful \n' + 'Token: ' + me.token + "\nPlayers turn: " + me.player_turn);
 
-  for(var i=0; i<=51; i++){
+  for(var i=0; i<=51; i++){ // make this into a method for the 'click on a card ' event
     if (me.player_turn == 1) {
       var cid_lock = "#c1-" + (i+1);
       $(cid_lock).prop('onclick', null);
@@ -463,9 +463,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     if (cell_toSearch.length) {
       var card_toSearch = cell_toSearch.find("span");
       if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
-        $(card_picked_id).remove();
-        $(cell_toSearch).remove();
-        //request php to delete card from specific board/players
+        //request php to delete the cards from each board
         //--- PHP REQUEST ---
         switch (cs) {
           case "♣":
@@ -512,8 +510,14 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           data: dataToPass,
           success: cards_delete_result
         });
+        //--- PHP REQUEST ---
+
+        //delete the cards from each player in_game
+        $(card_picked_id).remove();
+        $(cell_toSearch).remove();
+
         //request php to change the players turn and and lock the onclick on the player who played
-        
+
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
         var spanClass = $(card_picked_id).find('span').attr('class');
         $(card_picked_id).remove();
