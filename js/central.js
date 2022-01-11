@@ -564,12 +564,14 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   }
 
 
+  var data_ChangeTurn = JSON.stringify({  new_turn: turnToChange  });
+
   $.ajax({
     url: "methods.php/status_change_turn/",
     method: 'POST',
     headers: {"X-Token": me.token},
     contentType: 'application/json',
-    data: JSON.stringify( { new_turn: turnToChange } ),
+    data: data_ChangeTurn,
     success: cards_delete_result2
   });
 }
