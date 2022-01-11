@@ -456,7 +456,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   var turnToChange = "";
 
   var cTP = card_picked_id.substring(0, 11);
-  if (cTP == '#div_card_1_') {
+  if (cTP == '#div_card_1') {
     boardToPass_1 = "board_1";
     boardToPass_2 = "board_2";
     turnToChange = 1;
@@ -485,7 +485,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
       var card_toSearch = cell_toSearch.find("span");
-      if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {
+      if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {//---------------------------if the card is NOT "K" then--------------------------
         //request php to delete the cards from each board
         //--- PHP REQUEST ---
         switch (card_toSearch[1].innerHTML) {
@@ -528,7 +528,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
 
         //request php to change the players turn and and lock the onclick on the player who played
 
-      } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){
+      } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){ //---------------------------if the card is "K" then--------------------------
         var spanClass = $(card_picked_id).find('span').attr('class');
         $(card_picked_id).remove();
 
