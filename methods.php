@@ -17,8 +17,8 @@ switch ($r=array_shift($request)) {
                 break;
   case 'status': handle_status($conn);
                  break;
-  case 'status_change_turn': handle_status_change($method, $request, $data, $conn);
-                             break;
+  // case 'status_change_turn': handle_status_change($method, $request, $data, $conn);
+  //                            break;
   case 'players': handle_log_user($method, $request, $data, $conn);
                   break;
   case 'refresh': handle_refresh($conn);
@@ -154,16 +154,16 @@ function update_game_status($conn) {
 }
 
 
-function  handle_status_change($method, $request, $data, $conn){
-  $new_turn = $data->new_turn;
-
-  $sql = "UPDATE `game_status` SET `p_turn` = '$new_turn' ";
-  if (mysqli_query($conn, $sql)) {
-    // echo "<br>" . "-  Checked the aborted successfully ";
-  } else {
-    echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
-  }
-}
+// function  handle_status_change($method, $request, $data, $conn){
+//   $new_turn = $data->new_turn;
+//
+//   $sql = "UPDATE `game_status` SET `p_turn` = '$new_turn' ";
+//   if (mysqli_query($conn, $sql)) {
+//     // echo "<br>" . "-  Checked the aborted successfully ";
+//   } else {
+//     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
+//   }
+// }
 //------------------------------------------------------------------------------
 
 
