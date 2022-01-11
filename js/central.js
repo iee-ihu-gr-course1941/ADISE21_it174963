@@ -569,7 +569,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     method: 'POST',
     headers: {"X-Token": me.token},
     contentType: 'application/json',
-    data: JSON.stringify( { new_turn: turnToChange } );,
+    data: JSON.stringify( { new_turn: turnToChange } ),
     success: cards_delete_result2
   });
 }
