@@ -74,7 +74,7 @@ function update_status(data) {
   //   timer = setTimeout(function() { find_game_status(); }, 5000);
   //   console.log("time : 5000");
   // }
-  timer = setTimeout(function() { find_game_status(); }, 10000);
+  timer = setTimeout(function() { find_game_status(); }, 4000);
 
 }
 //------------------------------------------------------------------------------
