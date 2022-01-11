@@ -459,11 +459,11 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   if (cTP == '#div_card_1_') {
     boardToPass_1 = "board_1";
     boardToPass_2 = "board_2";
-    turnToChange = "2";
+    turnToChange = 1;
   } else {
     boardToPass_1 = "board_2";
     boardToPass_2 = "board_1";
-    turnToChange = "1";
+    turnToChange = 2;
   }
 
   switch (cs) {
