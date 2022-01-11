@@ -158,7 +158,7 @@ function  handle_status_change($method, $request, $data, $conn){
 
   $sql = "UPDATE `game_status` SET `p_turn` = '$new_turn' ";
   if (mysqli_query($conn, $sql)) {
-    // echo "<br>" . "-  Checked the aborted successfully ";
+    echo "<br>" . "-  Player's turn changed successfully ";
   } else {
     echo "<br>" . "- Error: " . $sql . "<br>" .  mysqli_error($conn);
   }

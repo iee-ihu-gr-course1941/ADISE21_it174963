@@ -572,17 +572,17 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     headers: {"X-Token": me.token},
     contentType: 'application/json',
     data: data_ChangeTurn,
-    success: cards_delete_result2
+    success: find_game_status
+
   });
 }
+
 
 //----CLICKED ON A SPECIFIC CARD - DELETED - RESULT - METHOD--------------------
 function cards_delete_result() {
   console.log("! CARD DELETE - SUCCESSFUL !");
 }
-function cards_delete_result2() {
-  console.log("! Turn changed - SUCCESSFUL !");
-}
+
 
 //----FIND THE FIRST EMPTY SPOT FOR "K" CARD TO MOVE - METHOD-------------------
 function find_empty(d){
