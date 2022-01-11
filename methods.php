@@ -9,7 +9,6 @@ $request = explode ('/',trim($_SERVER['PATH_INFO'],'/'));
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-status_change_turn
 switch ($r=array_shift($request)) {
   case 'reset': handle_reset($method, $request, $conn);
                 break;
