@@ -157,11 +157,11 @@ function  handle_status_change($method, $request, $data, $conn){
   $new_turn = $data->new_turn;
   $winner = $data->winner;
   $new_status = $data->new_status;
-  if($winner == 0){
-    $result = NULL;
-  }else{
-    $result = $winner;
-  }
+  // if($winner == 0){
+  //   $result = 0;
+  // }else{
+  //   $result = $winner;
+  // }
 
   $sql = "UPDATE `game_status` SET  `status` = '$new_status' , `p_turn` = '$new_turn' , `result` = '$result' ";
   if (mysqli_query($conn, $sql)) {
