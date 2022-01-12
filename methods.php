@@ -155,8 +155,14 @@ function update_game_status($conn) {
 
 function  handle_status_change($method, $request, $data, $conn){
   $new_turn = $data->new_turn;
+  $winner = $data->winner;
+  if($winner == 0){
+    $result = NULL;
+  }else{
+    $result = $winner;
+  }
 
-  $sql = "UPDATE `game_status` SET `p_turn` = '$new_turn' ";
+  $sql = "UPDATE `game_status` SET `p_turn` = '$new_turn' , `result` = '$result' ";
   if (mysqli_query($conn, $sql)) {
     echo "<br>" . "-  Player's turn changed successfully ";
   } else {

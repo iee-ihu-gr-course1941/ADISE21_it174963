@@ -72,6 +72,12 @@ function update_status(data) {
         if(sideIsEmpty == 52){
           var winner_selector = ".Player" + z + "_name";
           $('.players_turn_txt').text("The WINNER is : " + $(winner_selector).text());
+          var data_ChangeTurn = JSON.stringify({
+            new_turn: z,
+            winner: z
+          });
+
+          CALL_status_change_turn(data_ChangeTurn);
         }
       }
     }
@@ -570,17 +576,12 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   }
 
 
-  var data_ChangeTurn = JSON.stringify({  new_turn: turnToChange  });
-
-  $.ajax({
-    url: "methods.php/status_change_turn/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: data_ChangeTurn,
-    success: find_game_status
-
+  var data_ChangeTurn = JSON.stringify({
+    new_turn: turnToChange,
+    winner: 0
   });
+
+  CALL_status_change_turn(data_ChangeTurn);
 }
 
 
@@ -617,18 +618,6 @@ function find_empty(d){
 
 
 //---------------------------------------------------------------- E X T R A  F U N C T I O N S ----------------------------------------------------------------------------------------
-
-//------SHUFFLE BUTTONS SPECIAL_EFFECTS SECTION---------------------------------
-// function handle_shuffle_effects() {
-//   if ($("#shuffle_card_img").attr("src") == "extras/shuffled_card.png") {
-//     $("#shuffle_card_img").attr("src", "extras/shuffle_card.png").stop(true, true).hide().fadeIn();
-//   } else {
-//     $("#shuffle_card_img").attr("src", "extras/shuffled_card.png").stop(true, true).hide().fadeIn();
-//   }
-// }
-//------------------------------------------------------------------------------
-
-
 //-----------------FIND - REMOVE DOUBLES SECTION--------------------------------
 //----FIND PAIRS OF 2 IN CARDS - METHOD-----------------------------------------
 function find_pairs() {
@@ -700,7 +689,17 @@ function ShowRules() {
 
 
 
-
+//---------------------------------------------------------------- PHP  C A L L S   F U N C T I O N S ----------------------------------------------------------------------------------------
+function CALL_status_change_turn(data_ChangeTurn){
+  $.ajax({
+    url: "methods.php/status_change_turn/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: data_ChangeTurn,
+    success: find_game_status
+  });
+}
 
 
 //----------------------------------------------------------------------- T H E  E N D -----------------------------------------------------------------------------------------------
