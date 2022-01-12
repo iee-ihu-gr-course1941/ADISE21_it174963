@@ -602,7 +602,7 @@ function CALL_status_change_turn(data_ChangeTurn){
 
 
 //----players - PHP - call METHOD-----------------------------------------------
-function CALL_players(datatToPass){
+function CALL_players(dataToPass){
   $.ajax({
     url: "methods.php/players/",
     method: 'POST',
