@@ -511,7 +511,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   var statusToChange = "started";
   var data_ChangeTurn = JSON.stringify({
     new_turn: turnToChange,
-    winner: 0,
+    winner: 1,
     new_status: statusToChange
   });
   CALL_status_change_turn(data_ChangeTurn);
