@@ -157,8 +157,8 @@ function  handle_status_change($method, $request, $data, $conn){
   $new_turn = $data->new_turn;
   $winner = $data->winner;
   $new_status = $data->new_status;
-  if($winner == 0){
-    $result = $winner;
+  if($winner == ""){
+    $result = 0;
   }else{
     $result = $winner;
   }
