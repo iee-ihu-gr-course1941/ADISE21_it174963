@@ -62,17 +62,22 @@ function update_status(data) {
     $('.players_turn_txt').text("Player's  turn : " + $('.Player2_name').text());
   }
 
-  // if (game_players_turn == me.player_turn && me.player_turn != null) {
-  //   //αν ειναι η σειρα μου βαση τοκεν και p_turn τοτε μπορω να κανω την κινηση μου
-  //   //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο παικτης μου
-  //   timer = setTimeout(function() { find_game_status(); }, 10000);
-  //   console.log("time : 10000");
-  // } else {
-  //   // αν οχι, περιμενω κινηση απο τον αλλον
-  //   //θα καλω την μεθοδο που χρειαζεται για να κανει κινηση ο αντιπαλος παικτης
-  //   timer = setTimeout(function() { find_game_status(); }, 5000);
-  //   console.log("time : 5000");
-  // }
+  for(var z=1; z<=2; z++){
+    var sideIsEmpty = 0;
+    for(var i=0; i<=51; i++){
+      var card_found = $("#c" + z + "-" + (i + 1)).find("div");;
+
+      if (!card_found.length) {
+        sideIsEmpty++;
+        if(sideIsEmpty == 52){
+          var winner_selector = ".Player" + z + "_name";
+          $('.players_turn_txt').text("The WINNER is : " + $(winner_selector).text());
+        }
+      }
+    }
+  }
+
+
   timer = setTimeout(function() { find_game_status(); }, 6000);
 
 }
