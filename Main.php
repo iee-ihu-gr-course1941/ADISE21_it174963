@@ -193,12 +193,8 @@
     <div class="Card_Shuffle_div">
       <div class="Card_Shuffle_img_div">
         <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back">
+        <button id="refresh-btn" type="button" onclick="find_game_status()">REFRESH</button>
       </div>
-      <div class="Card_Shuffle_buttons_div">
-        <!-- <input type="button" id="shuffle_cards_btn" name="" value="SHUFFLE" onclick="shuffle_deck()"> -->
-        <!-- <input type="button" id="clear_board_btn" name="" value="RESET" onclick="reset_everything()"  > -->
-      </div>
-
     </div>
 
     <div class="div_players_turn_txt">
