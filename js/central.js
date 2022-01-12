@@ -48,11 +48,10 @@ function update_status(data) {
   last_update = new Date().getTime();
   game_players_turn = data[1];
 
-  if ((game_players_turn !== "1") || (game_players_turn !== "2")) {
-    console.log("game_status : initialized" + " / players_turn : none");
-  } else {
+  if ((game_players_turn == "1") || (game_players_turn == "2")) {
     console.log("game_status : started" + " / players_turn : " + game_players_turn);
-  }
+  } else {
+    console.log("game_status : initialized" + " / players_turn : none");
 
   clearTimeout(timer);
 
