@@ -72,9 +72,11 @@ function update_status(data) {
         if(sideIsEmpty == 52){
           var winner_selector = ".Player" + z + "_name";
           $('.players_turn_txt').text("The WINNER is : " + $(winner_selector).text());
+          var statusToChange = "ended";
           var data_ChangeTurn = JSON.stringify({
             new_turn: z,
-            winner: z
+            winner: z,
+            new_status: statusToChange
           });
 
           CALL_status_change_turn(data_ChangeTurn);
@@ -575,12 +577,12 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     }
   }
 
-
+  var statusToChange = "started";
   var data_ChangeTurn = JSON.stringify({
     new_turn: turnToChange,
-    winner: 0
+    winner: 0,
+    new_status: statusToChange
   });
-
   CALL_status_change_turn(data_ChangeTurn);
 }
 
