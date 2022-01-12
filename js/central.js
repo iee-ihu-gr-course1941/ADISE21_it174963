@@ -52,7 +52,7 @@ function update_status(data) {
     console.log("game_status : started" + " / players_turn : " + game_players_turn);
   } else {
     console.log("game_status : initialized" + " / players_turn : none");
-
+  }
   clearTimeout(timer);
 
   //show whose turn it is to make a move
