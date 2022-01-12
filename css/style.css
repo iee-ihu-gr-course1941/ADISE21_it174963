@@ -218,7 +218,7 @@ td{
   border-radius: 5px;
 }
 
-.Card_Shuffle_img_div img:hover{
+/* .Card_Shuffle_img_div img:hover{
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
@@ -235,7 +235,7 @@ td{
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
+} */
 
 .Game_Details_div {
   background-color: #f2f2f2;
