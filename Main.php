@@ -193,7 +193,6 @@
     <div class="Card_Shuffle_div">
       <div class="Card_Shuffle_img_div">
         <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back"  onclick="find_game_status()">
-        <!-- <button id="refresh-btn" type="button" onclick="find_game_status()">REFRESH</button> -->
       </div>
     </div>
 
