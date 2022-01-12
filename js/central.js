@@ -1,8 +1,5 @@
 //-----------------VARIABLES SECTION--------------------------------------------
-var me = {
-  token: null,
-  player_turn: null
-};
+var me = {token: null , player_turn: null};
 var timer = null;
 var game_status = {};
 var last_update = new Date().getTime();
@@ -14,15 +11,12 @@ var pos_2_x = 1;
 var pos_2_y = 1;
 //------------------------------------------------------------------------------
 
-
 //---------------------------------------------------------------- S T A R T  U P  F U N C T I O N S -----------------------------------------------------------------------------------
 $(function() {
-  reset_everything();
+  CALL_reset();
   initialize_deck();
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 
 
@@ -33,14 +27,8 @@ $(function() {
 //----FIND STATUS - PHP METHOD--------------------------------------------------
 function find_game_status() {
   clearTimeout(timer);
-
-  refresh();
-
-  $.ajax({
-    url: "methods.php/status/",
-    headers: {"X-Token": me.token},
-    success: update_status
-  });
+  CALL_refresh();
+  CALL_status();
 }
 
 //----UPDATE STATUS METHOD------------------------------------------------------
@@ -93,16 +81,6 @@ function update_status(data) {
 
 
 //-----------------REFRESH SECTION----------------------------------------------
-//----REFRESH - PHP METHOD------------------------------------------------------
-function refresh() {
-  // handle_shuffle_effects();
-  $.ajax({
-    url: "methods.php/refresh/",
-    headers: {"X-Token": me.token},
-    success: refresh_everything
-  });
-}
-
 //----REFRESH - BOARD IN_GAME METHOD--------------------------------------------
 function refresh_everything(data) {
   clearTimeout(timer);
@@ -186,14 +164,7 @@ function login_to_game() {
     player_side: $('#LogIn_selected_player_side :selected').val()
   });
 
-  $.ajax({
-    url: "methods.php/players/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: dataToPass,
-    success: login_result
-  });
+  CALL_players(dataToPass);
 }
 
 //----LOG_IN - PHP - RESULT METHOD----------------------------------------------
@@ -220,25 +191,6 @@ function login_result(data) {
   find_game_status();
 }
 //------------------------------------------------------------------------------
-
-
-//-----------------RESET SECTION------------------------------------------------
-//----RESET - PHP - METHOD------------------------------------------------------
-function reset_everything() {
-  $.ajax({
-    url: "methods.php/reset/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    success: reset_everything_result
-  });
-}
-
-function reset_everything_result() {
-  console.log("! RESET SUCCESSFUL !");
-}
-//------------------------------------------------------------------------------
-
 
 
 //-----------------INITIALIZE CARDS FOR GAME SECTION----------------------------
@@ -409,13 +361,7 @@ function fill_board_game(i, x, y, card_found) {
     number: cn
   });
 
-  $.ajax({
-    url: "methods.php/cards/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: dataToPass,
-  });
+  CALL_cards(dataToPass);
 }
 //------------------------------------------------------------------------------
 
@@ -526,15 +472,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           board_2: boardToPass_2
         });
 
-        $.ajax({
-          url: "methods.php/cards_delete/",
-          method: 'POST',
-          headers: {"X-Token": me.token},
-          contentType: 'application/json',
-          data: dataToPass,
-          success: cards_delete_result
-        });
-        //--- PHP REQUEST ---
+        CALL_cards_delete(dataToPass);
 
         //delete the cards from each player in_game
         $(card_picked_id).remove();
@@ -560,14 +498,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           board: boardToPass_1
         });
 
-        $.ajax({
-          url: "methods.php/cards_move_K/",
-          method: 'POST',
-          headers: {"X-Token": me.token},
-          contentType: 'application/json',
-          data: dataToPass,
-          success: cards_delete_result
-        });
+        CALL_cards_move_K(dataToPass);
 
         var index = find_empty(target);
         div_K.id = card_half + index;
@@ -586,11 +517,6 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
   CALL_status_change_turn(data_ChangeTurn);
 }
 
-
-//----CLICKED ON A SPECIFIC CARD - DELETED - RESULT - METHOD--------------------
-function cards_delete_result() {
-  console.log("! CARD DELETE - SUCCESSFUL !");
-}
 
 
 //----FIND THE FIRST EMPTY SPOT FOR "K" CARD TO MOVE - METHOD-------------------
@@ -615,6 +541,126 @@ function find_empty(d){
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+
+//---------------------------------------------------------------- PHP  C A L L S   F U N C T I O N S ----------------------------------------------------------------------------------------
+//----reset - PHP - call METHOD-------------------------------------------------
+function CALL_reset() {
+  $.ajax({
+    url: "methods.php/reset/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    success: reset_everything_result
+  });
+}
+
+function reset_everything_result() {
+  console.log("! RESET SUCCESSFUL !");
+}
+//------------------------------------------------------------------------------
+
+
+
+//----refresh - PHP - call METHOD-----------------------------------------------
+function CALL_refresh() {
+  $.ajax({
+    url: "methods.php/refresh/",
+    headers: {"X-Token": me.token},
+    success: refresh_everything
+  });
+}
+//------------------------------------------------------------------------------
+
+
+
+//----status - call - PHP METHOD------------------------------------------------
+function CALL_status(){
+  $.ajax({
+    url: "methods.php/status/",
+    headers: {"X-Token": me.token},
+    success: update_status
+  });
+}
+//------------------------------------------------------------------------------
+
+
+
+//----status_change_turn - call - PHP METHOD------------------------------------
+function CALL_status_change_turn(data_ChangeTurn){
+  $.ajax({
+    url: "methods.php/status_change_turn/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: data_ChangeTurn,
+    success: find_game_status
+  });
+}
+//------------------------------------------------------------------------------
+
+
+
+//----players - PHP - call METHOD-----------------------------------------------
+function CALL_players(datatToPass){
+  $.ajax({
+    url: "methods.php/players/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+    success: login_result
+  });
+}
+//------------------------------------------------------------------------------
+
+
+
+//----cards - PHP - call METHOD-------------------------------------------------
+function CALL_cards(dataToPass){
+  $.ajax({
+    url: "methods.php/cards/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+  });
+}
+//------------------------------------------------------------------------------
+
+
+
+//----cards_delete - PHP - call METHOD------------------------------------------
+function CALL_cards_delete(dataToPass){
+  $.ajax({
+    url: "methods.php/cards_delete/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+    success: cards_delete_result
+  });
+}
+
+function cards_delete_result() {
+  console.log("! CARD DELETE - SUCCESSFUL !");
+}
+//------------------------------------------------------------------------------
+
+
+
+//----cards_move_K - PHP - call METHOD------------------------------------------
+function CALL_cards_move_K(dataToPass){
+  $.ajax({
+    url: "methods.php/cards_move_K/",
+    method: 'POST',
+    headers: {"X-Token": me.token},
+    contentType: 'application/json',
+    data: dataToPass,
+    success: cards_delete_result
+  });
+}
+//------------------------------------------------------------------------------
 
 
 
@@ -670,7 +716,6 @@ function remove_pairs(i, cell, card) {
 
     }
   }
-
 }
 //------------------------------------------------------------------------------
 
@@ -689,19 +734,6 @@ function ShowRules() {
 }
 //------------------------------------------------------------------------------
 
-
-
-//---------------------------------------------------------------- PHP  C A L L S   F U N C T I O N S ----------------------------------------------------------------------------------------
-function CALL_status_change_turn(data_ChangeTurn){
-  $.ajax({
-    url: "methods.php/status_change_turn/",
-    method: 'POST',
-    headers: {"X-Token": me.token},
-    contentType: 'application/json',
-    data: data_ChangeTurn,
-    success: find_game_status
-  });
-}
 
 
 //----------------------------------------------------------------------- T H E  E N D -----------------------------------------------------------------------------------------------
