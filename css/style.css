@@ -378,4 +378,166 @@ td{
 /*----------------------------------------------------------------------------*/
 
 
+
+
+
+
+
+
+
 /*-----------------RESPONSIVE WINDOW------------------------------------------*/
+/*---------GENERAL SECTION----------------------------------------------------*/
+table{
+  margin-left: 2px;
+}
+
+td{
+  width: 30px;
+  height: 45px
+}
+/*----------------------------------------------------------------------------*/
+
+
+/*---------LOGIN SECTION------------------------------------------------------*/
+.LogIn_content {
+  width: 400px;
+  height: 350px;
+}
+
+.LogIn_content label {
+  font-size: 3vw;
+}
+
+.LogIn_content .btn {
+  width: 70%;
+  margin: 0 0 10px 60px;
+  font-size: 2.5vw;
+}
+
+.LogIn_content div {
+  margin: 0 0 25px 152.5px;
+}
+
+.LogIn_content div select{
+  font-size: 2vw;
+}
+/*----------------------------------------------------------------------------*/
+
+
+/*---------DIV => Game_div SECTION--------------------------------------------*/
+.Game_div {
+  margin: 1% 0 4% 1%;
+  width: 50%;
+  height: 570px;
+}
+
+.Player1_div {
+  height: 50%;
+  width: 100%;
+}
+
+.Player2_div {
+  height: 50%;
+  width: 100%;
+}
+/* -------------------------------------------------------------------------- */
+
+
+
+/*---------DIV => Card_OnTop_div SECTION--------------------------------------*/
+.Card_OnTop_div{
+  margin: 25% 0 0 1%;
+  height: 200px;
+}
+
+#div_card_picked{
+	width:95px;
+	height:140px;
+  margin: 22.5px 0 5px 4px;
+}
+
+#div_card_picked span{
+  font-size: 6vw;
+}
+/* -------------------------------------------------------------------------- */
+
+
+
+/*---------DIV => Game_Details_div SECTION------------------------------------*/
+.Game_Details_div {
+  width: 31%;
+  height: 572.5px;
+}
+
+.Card_Shuffle_div{
+  height: 150px;
+}
+
+.Card_Shuffle_img_div img{
+  width: 44%;
+  margin: 1% 0 0 30%;
+}
+
+.div_players_turn_txt{
+  height: 10%;
+}
+
+.players_turn_txt{
+  margin-top: 180px;
+  font-size: 2.2vw;
+}
+/* -------------------------------------------------------------------------- */
+
+
+
+/*---------DIV => Rules_div SECTION-------------------------------------------*/
+.Rules_div {
+  height: 55%;
+  margin-top: 3%;
+}
+
+#Rules_box {
+  height: 270px;
+}
+
+#Rules_box p{
+  font-size: 1.4vw;
+}
+
+/*----RULES BUTTON----*/
+#Rules-btn {
+  padding: 5px 12px 5px 12px;
+  font-size: 1.5vw;
+}
+/*----------------------------------------------------------------------------*/
+
+
+
+/*---------DIV => footer SECTION----------------------------------------------*/
+.footer{
+  height: 40px;
+  margin-top: 85%;
+}
+
+.footer p{
+  font-size: 1.8vw;
+  padding-top:1.2%;
+}
+/*----------------------------------------------------------------------------*/
+
+
+/*-----------------CARDS style SECTION ---------------------------------------*/
+.card{
+  width:22px;
+	height:32px;
+  margin: 2px 0 2px 4px;
+}
+
+.number, .suit, .number_red, .suit_red{
+  font-size: 1.4vw;
+}
+
+.bCard{
+  margin-top: 3%;
+}
+/*----------------------------------------------------------------------------*/
