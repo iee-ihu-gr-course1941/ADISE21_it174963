@@ -205,7 +205,7 @@
     <div class="Rules_div">
       <button id="Rules-btn" type="button" onclick="ShowRules()">Show Rules</button>
       <div id="Rules_box" style="display: none;">
-        <b>⥤ RULES ⥢</b> <br>
+        <b>﴾ RULES ﴿</b> <br>
         <p><b>Στόχος :</b>
             Ο στόχος του παιχνιδιού είναι να μείνεις χωρίς φύλλα στο χέρι. Αυτός που θα μείνει με ένα φύλλο είναι ο χαμένος.<br><br>
            <b>Διαδικασία παιχνιδιού :</b>
