@@ -114,21 +114,24 @@ td{
 }
 
 .LogIn_content .btn {
-  background-color: #548bac;
   color: white;
   padding: 10px;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.6);
   cursor: pointer;
   width: 80%;
   margin: 0 0 10px 45px;
   font-size: 1.5vw;
+  text-align: center;
+  font-size: 1.2vw;
+  border-color: #4086BE;
+  border-radius: 25px;
+  box-shadow: 0 0 40px 40px #4086BE inset, 0 0 0 0 #4086BE;
+  transition: all 150ms ease-in-out;
 }
 
 .LogIn_content .btn:hover {
-  opacity: 0.8;
-  transition: 1.5s
+  box-shadow: 0 0 10px 0 #4086BE inset, 0 0 10px 4px #4086BE;
+  background-color: #1e1e1e;
+  color: white;
 }
 
 .LogIn_content div {
