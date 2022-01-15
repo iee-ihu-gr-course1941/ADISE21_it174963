@@ -43,14 +43,14 @@ function update_status(data) {
   }
   clearTimeout(timer);
 
-  //show whose turn it is to make a move
+  //show whose turn it is to make a move----------------------------------------
   if (game_players_turn == 1) {
     $('.players_turn_txt').text("🢖 " + $('.Player1_name').text() + "  make a move");
   } else if (game_players_turn == 2) {
     $('.players_turn_txt').text("🢖 " + $('.Player2_name').text() + " make a move");
   }
 
-  for(var z=1; z<=2; z++){
+  for(var z=1; z<=2; z++){ //check if there is a winner,by looking for empty side
     var sideIsEmpty = 0;
     for(var i=0; i<=51; i++){
       var card_found = $("#c" + z + "-" + (i + 1)).find("div");;
@@ -59,7 +59,7 @@ function update_status(data) {
         sideIsEmpty++;
         if(sideIsEmpty == 52){
           var winner_selector = ".Player" + z + "_name";
-          $('.players_turn_txt').text("👏 " + $(winner_selector).text() + " WINS 👏");
+          $('.players_turn_txt').text("👏 '" + $(winner_selector).text() + "' WINS 👏");
           var statusToChange = "ended";
           var data_ChangeTurn = JSON.stringify({
             new_turn: z,
@@ -179,7 +179,7 @@ function login_result(data) {
 
   console.log('Log_In successful \n' + 'Token: ' + me.token + "\nPlayers turn: " + me.player_turn);
 
-  for(var i=0; i<=51; i++){ // make this into a method for the 'click on a card ' event
+  for(var i=0; i<=51; i++){ //locks your side of cards, based on the me.player_turn value
     if (me.player_turn == 1) {
       var cid_lock = "#c1-" + (i+1);
       $(cid_lock).prop('onclick', null);
@@ -232,7 +232,7 @@ function initialize_deck() {
     var cell_2 = "#c2-" + (i + 1);
     var card_2 = '#div_card_2_';
 
-    if (i % 2 == 0) { // Calls the function that creates each card--------------
+    if (i % 2 == 0) { //calls the function that creates each card---------------
       $(cell_1).html("");
       $(cell_2).html("");
       var c_s1 = myDeck[i].suit;
@@ -259,7 +259,7 @@ function initialize_deck() {
     }
   }
 
-  find_pairs(); // Calls the function that finds and remove pairs of 2 ---------
+  find_pairs(); //calls the function that finds and remove pairs of 2 forr each card
 
   var pos_1_x = 1;
   var pos_1_y = 1;
@@ -345,7 +345,6 @@ function fill_board_game(i, x, y, card_found) {
       break;
   }
 
-  //--- PHP REQUEST ---
 
   if (cTP == 'div_card_1_') {
     boardToPass = "board_1";
@@ -387,7 +386,7 @@ function card_picked(cp) {
   var cn = card_picked_spans[0].innerHTML;
   var cs = card_picked_spans[1].innerHTML;
 
-  var spanClass = $(card_picked_id).find('span').attr('class');
+  var spanClass = $(card_picked_id).find('span').attr('class'); //shows the card that was picked (in bigger size) at the div in the center
   if (spanClass == "number_red") {
     div.innerHTML = '<span class="number_red">' + cn + '</span><span class="suit_red">' + cs + '</span>';
   } else {
@@ -441,14 +440,12 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
       break;
   }
 
-  for (var i = 0; i <= 51; i++) {
+  for (var i = 0; i <= 51; i++) { //scans your cards to find a pair-------------
     var cell_toSearch = $(cell_half + (i + 1)).find("div");
     if (cell_toSearch.length) {
       var card_toSearch = cell_toSearch.find("span");
-      if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) {//---------------------------if the card is NOT "K" then--------------------------
-        //request php to delete the cards from each board
-        //--- PHP REQUEST ---
-        switch (card_toSearch[1].innerHTML) {
+      if ((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML !== "K")) { //if the card it found is NOT "K" then
+        switch (card_toSearch[1].innerHTML) {//request php to delete the cards from each board in the database
           case "♣":
             cs_2 = "Clubs";
             break;
@@ -474,11 +471,11 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
 
         CALL_cards_delete(dataToPass);
 
-        //delete the cards from each player in_game
+        //delete the cards from each player in_game-----------------------------
         $(card_picked_id).remove();
         $(cell_toSearch).remove();
 
-      } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){ //---------------------------if the card is "K" then--------------------------
+      } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){ //else if the card that it found is "K" then
         var spanClass = $(card_picked_id).find('span').attr('class');
         $(card_picked_id).remove();
 
@@ -496,7 +493,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
           board: boardToPass_1
         });
 
-        CALL_cards_move_K(dataToPass);
+        CALL_cards_move_K(dataToPass); //moves the "K" card on the other side of the board then removes it from the side it was found
 
         var index = find_empty(target);
         div_K.id = card_half + index;
@@ -506,7 +503,7 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
     }
   }
 
-  var statusToChange = "started";
+  var statusToChange = "started"; //calls the function that will update the game_status table in the database
   var winnerEmpty = "";
   var data_ChangeTurn = JSON.stringify({
     new_turn: turnToChange,
