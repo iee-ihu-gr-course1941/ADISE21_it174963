@@ -37,12 +37,12 @@
   </div>
 
 
-  <!--Main Page SECTION -->
+  <!-- IN_GAME SECTION -->
   <div class="Game_div">
+
+    <!-- PLAYER_1 INNER_SECTION -->
     <div class="Player1_div">
-      <b>
-        <p class="Player1_name"> PLAYER 1 </p>
-      </b> <br>
+      <b> <p class="Player1_name"> PLAYER 1 </p> </b>   <br>
 
       <table id="player1_cards" border="1">
         <tbody>
@@ -113,6 +113,7 @@
     </div>
 
 
+    <!-- PLAYER_2 INNER_SECTION -->
     <div class="Player2_div">
       <table id="player2_cards" border="1">
         <tbody>
@@ -179,29 +180,32 @@
             <td id="c2-52" onclick="card_picked('2-51')"></td>
           </tr>
         </tbody>
-      </table> <br>
-      <b>
-        <p class="Player2_name"> PLAYER 2 </p>
-      </b>
+      </table>    <br>
+
+      <b> <p class="Player2_name"> PLAYER 2 </p> </b>
     </div>
   </div>
 
-  <!--CARD SHUFFLE SECTION-->
+
+  <!--CARD LAST PICKED SECTION-->
   <div class="Card_OnTop_div" onmouseover="find_game_status()">    </div>
 
+
+  <!--GAME DETAILS SECTION-->
   <div class="Game_Details_div">
-    <!--CARD SHUFFLE SECTION-->
+    <!--CARD SHUFFLE IMG INNER_SECTION-->
     <div class="Card_Shuffle_div">
       <div class="Card_Shuffle_img_div">
         <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_effect" onmouseover="find_game_status()">
       </div>
     </div>
 
+    <!--PLAYERS TURN INNER_SECTION-->
     <div class="div_players_turn_txt">
       <h2 class="players_turn_txt"></h2>
     </div>
 
-    <!--RULES SECTION-->
+    <!--RULES INNER_SECTION-->
     <div class="Rules_div">
       <button id="Rules-btn" type="button" onclick="ShowRules()">Show Rules</button>
       <div id="Rules_box" style="display: none;">
@@ -217,6 +221,7 @@
     </div>
   </div>
 
+  <!--COPYRIGHT FOOTER SECTION-->
 <div class="footer">
   <p class="footer_txt"> Copyright © 2022 </p>
 </div>
