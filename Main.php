@@ -38,7 +38,7 @@
 
 
   <!--Main Page SECTION -->
-  <div class="Game_div" onmouseover="find_game_status()">
+  <div class="Game_div">
     <div class="Player1_div">
       <b>
         <p class="Player1_name"> PLAYER 1 </p>
@@ -112,7 +112,7 @@
       </table>
     </div>
 
-    <div class="Player2_div" onmouseover="find_game_status()">
+    <div class="Player2_div">
       <b>
         <p class="Player2_name"> PLAYER 2 </p>
       </b> <br>
@@ -186,7 +186,7 @@
   </div>
 
   <!--CARD SHUFFLE SECTION-->
-  <div class="Card_OnTop_div">    </div>
+  <div class="Card_OnTop_div" onmouseover="find_game_status()">    </div>
 
   <div class="Game_Details_div">
     <!--CARD SHUFFLE SECTION-->
