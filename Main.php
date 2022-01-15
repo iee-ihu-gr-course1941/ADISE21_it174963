@@ -112,10 +112,8 @@
       </table>
     </div>
 
+
     <div class="Player2_div">
-      <b>
-        <p class="Player2_name"> PLAYER 2 </p>
-      </b> <br>
       <table id="player2_cards" border="1">
         <tbody>
           <tr>
@@ -181,7 +179,10 @@
             <td id="c2-52" onclick="card_picked('2-51')"></td>
           </tr>
         </tbody>
-      </table>
+      </table> <br>
+      <b>
+        <p class="Player2_name"> PLAYER 2 </p>
+      </b>
     </div>
   </div>
 
@@ -192,7 +193,7 @@
     <!--CARD SHUFFLE SECTION-->
     <div class="Card_Shuffle_div">
       <div class="Card_Shuffle_img_div">
-        <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_back">
+        <img id="shuffle_card_img" src="extras/shuffle_card.png" alt="card_effect" onmouseover="find_game_status()">
       </div>
     </div>
 
