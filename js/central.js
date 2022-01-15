@@ -147,7 +147,7 @@ function hide_cards(c){
     var hasCardInside2 = $(cid).is(':has(span.number_red)');
     if (hasCardInside1 == true || hasCardInside2 == true) {
       $(hide_spans).hide();
-      $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffled_card.png'/>");
+      $(cid).append("<img id='BackOfCard' class='bCard' src='extras/shuffle_card.png'/>");
     }
   }
 }
@@ -477,8 +477,6 @@ function card_picked_result(cell_half , card_half , target , cn , cs , card_pick
         //delete the cards from each player in_game
         $(card_picked_id).remove();
         $(cell_toSearch).remove();
-
-        //request php to change the players turn and and lock the onclick on the player who played
 
       } else if((cn == card_toSearch[0].innerHTML) && (card_toSearch[0].innerHTML == "K")){ //---------------------------if the card is "K" then--------------------------
         var spanClass = $(card_picked_id).find('span').attr('class');
