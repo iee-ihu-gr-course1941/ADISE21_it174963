@@ -269,6 +269,20 @@ td{
   width: 100%;
   margin-top: 7%;
 }
+
+.footer{
+  width: 100%;
+  height: 70px;
+  margin-top: 55%;
+  background-color: #1e1e1e;
+}
+
+.footer p{
+  color: #fff;
+  text-align: center;
+  font-size: 1.4vw;
+  padding-top:1%;
+}
 /*----------------------------------------------------------------------------*/
 
 
