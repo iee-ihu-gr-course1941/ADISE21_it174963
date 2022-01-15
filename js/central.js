@@ -45,9 +45,9 @@ function update_status(data) {
 
   //show whose turn it is to make a move
   if (game_players_turn == 1) {
-    $('.players_turn_txt').text("PLAY:  🢖 " + $('.Player1_name').text() + " 🢔");
+    $('.players_turn_txt').text("Player's  turn ☛" + $('.Player1_name').text());
   } else if (game_players_turn == 2) {
-    $('.players_turn_txt').text("PLAY:  🢖 " + $('.Player2_name').text() + " 🢔");
+    $('.players_turn_txt').text("Player's  turn ☛" + $('.Player2_name').text());
   }
 
   for(var z=1; z<=2; z++){
@@ -59,7 +59,7 @@ function update_status(data) {
         sideIsEmpty++;
         if(sideIsEmpty == 52){
           var winner_selector = ".Player" + z + "_name";
-          $('.players_turn_txt').text("WINNER:  🢖 " + $(winner_selector).text() + " 🢔");
+          $('.players_turn_txt').text("The WINNER is ☛" + $(winner_selector).text());
           var statusToChange = "ended";
           var data_ChangeTurn = JSON.stringify({
             new_turn: z,
