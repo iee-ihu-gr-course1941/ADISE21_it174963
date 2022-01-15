@@ -217,7 +217,9 @@
     </div>
   </div>
 
-
+<div class="footer">
+  <p class="footer_txt"> Copyright © 2022 </p>
+</div>
 </body>
 
 </html>
