@@ -45,9 +45,9 @@ function update_status(data) {
 
   //show whose turn it is to make a move
   if (game_players_turn == 1) {
-    $('.players_turn_txt').text("Player's  turn /n " + $('.Player1_name').text());
+    $('.players_turn_txt').text("Player's  turn \n " + $('.Player1_name').text());
   } else if (game_players_turn == 2) {
-    $('.players_turn_txt').text("Player's  turn /n " + $('.Player2_name').text());
+    $('.players_turn_txt').text("Player's  turn \n " + $('.Player2_name').text());
   }
 
   for(var z=1; z<=2; z++){
