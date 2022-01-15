@@ -384,7 +384,7 @@ td{
 
 
 /*-----------------RESPONSIVE WINDOW------------------------------------------*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 786px) {
     /*---------GENERAL SECTION----------------------------------------------------*/
   table{
     margin-left: 2px;
