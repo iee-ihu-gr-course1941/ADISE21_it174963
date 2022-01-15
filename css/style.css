@@ -47,7 +47,7 @@ td{
 #h1 {
   font-size: 40px;
   text-align: center;
-  background-color: #4c4c4c;
+  background-color: #1e1e1e;
   color: white;
   width: 100%;
   height: 25%;
@@ -298,16 +298,16 @@ td{
   margin: 2% auto;
   text-align: center;
   font-size: 1.2vw;
-  border-color: #9b0000;
+  border-color: #4086BE;
   border-radius: 25px;
   color: #fff;
-  box-shadow: 0 0 40px 40px #9b0000 inset, 0 0 0 0 #9b0000;
+  box-shadow: 0 0 40px 40px #4086BE inset, 0 0 0 0 #4086BE;
   transition: all 150ms ease-in-out;
 }
 
 #Rules-btn:hover {
-  box-shadow: 0 0 10px 0 #9b0000 inset, 0 0 10px 4px #9b0000;
-  background-color: #323232;
+  box-shadow: 0 0 10px 0 #4086BE inset, 0 0 10px 4px #4086BE;
+  background-color: #1e1e1e;
 }
 
 

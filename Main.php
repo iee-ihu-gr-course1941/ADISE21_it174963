@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <h1 id="h1">🃏 G A M E 🃏</h1>
+  <h1 id="h1">🂡 G A M E 🂡</h1>
 
   <!--Log In SECTION-->
   <div class="LogIn" id="formModal" style="display: block;">
