@@ -59,7 +59,7 @@ function update_status(data) {
         sideIsEmpty++;
         if(sideIsEmpty == 52){
           var winner_selector = ".Player" + z + "_name";
-          $('.players_turn_txt').text("🎉🢖 " + $(winner_selector).text() + " 🢔  WINS🎉");
+          $('.players_turn_txt').text("👏 " + $(winner_selector).text() + " WINS 👏");
           var statusToChange = "ended";
           var data_ChangeTurn = JSON.stringify({
             new_turn: z,
